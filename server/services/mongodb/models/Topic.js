@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const TopicSchema = new mongoose.Schema(
   {
@@ -8,9 +8,13 @@ const TopicSchema = new mongoose.Schema(
       required: true,
     },
     SpecialityId: { type: mongoose.Schema.Types.ObjectId, required: true },
-    articles: [{ type: mongoose.Schema.Types.ObjectId, ref: "Article" }],
+    locked: {
+      type: Boolean,
+      default: false,
+    },
+    articles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Article' }],
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Topic", TopicSchema);
+module.exports = mongoose.model('Topic', TopicSchema);

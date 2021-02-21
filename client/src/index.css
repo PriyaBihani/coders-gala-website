@@ -1,0 +1,12 @@
+/* ABOUT PAGE*/
+
+@import "./styles/about/lightMode/about.css";
+@import "./styles/about/lightMode/aboutDin.css";
+@import "./styles/about/lightMode/aboutUs.css";
+@import "./styles/about/lightMode/contactUs.css";
+@import "./styles/about/lightMode/profileCard.css";
+@import "./styles/about/lightMode/topSlide.css";
+@import "./styles/about/darkMode/aboutDinDark.css";
+@import "./styles/about/darkMode/aboutUsDark.css";
+@import "./styles/about/darkMode/profileCardDark.css";
+@import "./styles/about/darkMode/topSlideDark.css";

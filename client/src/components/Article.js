@@ -1,23 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import $ from 'jquery';
-import { Row, Col, Tooltip, OverlayTrigger } from 'react-bootstrap';
-import { Redirect, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import Footer from '../layout/Footer/Footer';
-import { servicePost } from '../helpers/api';
-import { getSpeciality } from '../actions/speciality';
-import { connect } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import $ from "jquery";
+import { Row, Col, Tooltip, OverlayTrigger } from "react-bootstrap";
+import { Redirect, Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import Footer from "../layout/Footer/Footer";
+import { servicePost } from "../helpers/api";
+import { getSpeciality } from "../actions/speciality";
+import { connect } from "react-redux";
 // import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const ShareArticle = ({ NId, url }, props) => {
-  const value = 'https://codersgala.com/WebDevelopment/read/' + NId;
+  const value = "https://codersgala.com/WebDevelopment/read/" + NId;
   console.log(props.match);
 
   const [copied, setCopied] = useState(false);
 
   function actionToggle() {
-    var action = $('.action');
-    action.toggleClass('active');
+    var action = $(".action");
+    action.toggleClass("active");
   }
 
   return (
@@ -25,7 +25,7 @@ const ShareArticle = ({ NId, url }, props) => {
       <div class="action" onClick={actionToggle}>
         <span>
           <img
-            style={{ width: '25px' }}
+            style={{ width: "25px" }}
             src="https://www.svgrepo.com/show/19199/share.svg"
             alt=""
           />
@@ -56,9 +56,9 @@ const ShareArticle = ({ NId, url }, props) => {
             >
               Share on
               <img
-                style={{ width: '25px', marginLeft: '20px' }}
+                style={{ width: "25px", marginLeft: "20px" }}
                 src="https://www.svgrepo.com/show/303150/whatsapp-symbol-logo.svg"
-                alt={'share ' + NId + ' on Whatsapp'}
+                alt={"share " + NId + " on Whatsapp"}
               />
             </a>
           </li>
@@ -67,17 +67,17 @@ const ShareArticle = ({ NId, url }, props) => {
             <a
               className="mail-icon"
               href={`mailto:?Subject=${
-                'Article on ' + NId
+                "Article on " + NId
               }&Body=Hey look i just found out this Amazing article on "${NId}",Check it out : ${url}`}
               target="_top"
               rel="nofollow"
             >
               Share on
               <img
-                style={{ width: '25px', marginLeft: '20px' }}
+                style={{ width: "25px", marginLeft: "20px" }}
                 className="share-image"
                 src="https://www.svgrepo.com/show/303161/gmail-icon-logo.svg"
-                alt={'share ' + NId + ' on Gmail'}
+                alt={"share " + NId + " on Gmail"}
               />
             </a>
           </li>
@@ -93,7 +93,7 @@ const Article = (props) => {
 
   useEffect(() => {
     console.log(Id);
-    if (!props.specialities.speciality && Id == 'before-starting') {
+    if (!props.specialities.speciality && Id == "before-starting") {
       getSpeciality(props.match.params.specialityId);
     }
   }, []);
@@ -101,14 +101,14 @@ const Article = (props) => {
   const [article, setArticle] = useState({});
 
   const goToTop = () => {
-    $('html, body').animate({ scrollTop: 10 }, 200);
+    $("html, body").animate({ scrollTop: 10 }, 200);
   };
 
   // console.log(Id);
   // console.log(Id.replace(/-/g, " "));
-  const NId = Id.replace(/-/g, ' ');
+  const NId = Id.replace(/-/g, " ");
   var url;
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     url = window.location.href;
   }
 
@@ -119,7 +119,7 @@ const Article = (props) => {
         articleName: NId,
       },
       {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       }
     );
     return res.data.article;
@@ -132,7 +132,7 @@ const Article = (props) => {
 
   return (
     <div>
-      {Id === 'before-starting' ? (
+      {Id === "before-starting" ? (
         <>
           <div className="selected-article">
             <div>
@@ -157,7 +157,7 @@ const Article = (props) => {
                   <br /> */}
                 </Col>
 
-                <Col id="top" style={{ padding: '0px' }} sm={8}>
+                <Col id="top" style={{ padding: "0px" }} sm={8}>
                   <div className="ql-snow">
                     {console.log(
                       props.specialities &&
@@ -179,9 +179,9 @@ const Article = (props) => {
                       onClick={goToTop}
                       className="top-icon"
                       id="go-to-top"
-                      style={{ width: '30px' }}
+                      style={{ width: "30px" }}
                       src="https://www.svgrepo.com/show/247787/up-arrow-upload.svg"
-                      alt={'Go on Top of '}
+                      alt={"Go on Top of "}
                     />
                   </a>
                 </Col>
@@ -231,7 +231,7 @@ const Article = (props) => {
                   <br /> */}
                 </Col>
 
-                <Col id="top" style={{ padding: '0px' }} sm={8}>
+                <Col id="top" style={{ padding: "0px" }} sm={8}>
                   <div className="ql-snow">
                     <div
                       className="full-article ql-editor"
@@ -245,9 +245,9 @@ const Article = (props) => {
                       onClick={goToTop}
                       className="top-icon"
                       id="go-to-top"
-                      style={{ width: '30px' }}
+                      style={{ width: "30px" }}
                       src="https://www.svgrepo.com/show/247787/up-arrow-upload.svg"
-                      alt={'Go on Top of ' + article && article.ArticleName}
+                      alt={"Go on Top of " + article && article.ArticleName}
                     />
                   </a>
                 </Col>

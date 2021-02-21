@@ -1,12 +1,12 @@
-import React, { useContext } from 'react';
-import TopSection from '../sections/home/TopSection';
-import BottomSection from '../sections/home/BottomSection';
-import Preloader from '../layout/Preloader/preloader';
-import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet';
+import React, { useContext } from "react";
+import TopSection from "../sections/home/TopSection";
+import BottomSection from "../sections/home/BottomSection";
+import Preloader from "../layout/Preloader/preloader";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
-  var homeContent = 'adsf';
+  var homeContent = "adsf";
   return (
     <motion.div
       initial={{ opacity: 0 }}

@@ -1,28 +1,28 @@
 /* eslint-disable */
-import React, { useState, useContext } from 'react';
-import { Redirect, NavLink } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import $ from 'jquery';
-import { connect } from 'react-redux';
-import { register } from '../actions/auth';
+import React, { useState, useContext } from "react";
+import { Redirect, NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import $ from "jquery";
+import { connect } from "react-redux";
+import { register } from "../actions/auth";
 
 const SignUp = ({ register }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [age, setAge] = useState();
-  const [codeReferred, setCodeReferred] = useState('');
+  const [codeReferred, setCodeReferred] = useState("");
   const [data, setData] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    $('.sign-in-section h1').addClass('changed');
+    $(".sign-in-section h1").addClass("changed");
     console.log(data);
     register(data);
   };
 
-  const dinText = '<Coders Gala/>';
+  const dinText = "<Coders Gala/>";
   return (
     <div className="login-form-container">
       <Helmet>

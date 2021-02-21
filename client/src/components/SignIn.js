@@ -1,23 +1,23 @@
-import React, { useState, useContext } from 'react';
-import { Redirect, NavLink } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
-import { connect } from 'react-redux';
-import { login } from '../actions/auth';
+import React, { useState, useContext } from "react";
+import { Redirect, NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { connect } from "react-redux";
+import { login } from "../actions/auth";
 
-import $ from 'jquery';
+import $ from "jquery";
 
 const SignIn = ({ login }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
-    $('.sign-in-section h1').addClass('changed');
+    $(".sign-in-section h1").addClass("changed");
     console.log({ email, password });
     login({ email, password });
     e.preventDefault();
   };
 
-  const dinText = '<Coders Gala/>';
+  const dinText = "<Coders Gala/>";
 
   return (
     <div className="login-form-container">

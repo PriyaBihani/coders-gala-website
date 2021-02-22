@@ -2,7 +2,7 @@
 import React from 'react';
 import Editor from '../../editor/editor';
 import { SpecialityContext } from '../../../contexts/specialityContext';
-import Preloader from '../../layout/preloader';
+import Preloader from '../../layout/Preloader';
 import { AddCardFunction } from '../../../crudFunctions/specialityFunctions';
 
 class AddCard extends React.Component {

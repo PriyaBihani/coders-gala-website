@@ -3,7 +3,7 @@ import React from 'react';
 import Editor from '../../editor/editor';
 import { SpecialityContext } from '../../../contexts/specialityContext';
 import { Spinner } from 'react-bootstrap';
-import Preloader from '../../layout/preloader';
+import Preloader from '../../layout/Preloader';
 import { UpdateCard } from '../../../crudFunctions/specialityFunctions';
 
 class EditCard extends React.Component {

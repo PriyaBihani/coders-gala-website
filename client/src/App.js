@@ -6,14 +6,11 @@ import store from './store';
 import { setAuthToken } from './helpers/setAuthToken';
 import { loadUser } from './actions/auth';
 
-import Loader from './layout/preloader';
+import Loader from './layout/Preloader';
 
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import 'react-tippy/dist/tippy.css';
 
 import 'bootstrap/dist/js/bootstrap.js';
-import 'bootstrap/dist/css/bootstrap.css';
 
 import Navbar from './layout/Navbar/Navbar';
 import Article from './components/Article';
@@ -65,12 +62,13 @@ const App = () => {
         <Switch>
           <Redirect exact from="/" to="home" />;
           <Route exact path="/home" component={Home} />
-          <Route path="/about" component={About} />
+          <Route exact path="/about" component={About} />
           <Route exact path="/learn" component={Learn} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signup/:referCode" component={SignUp} />
-          <Route path="/login" component={SignIn} />
+          <Route exact path="/login" component={SignIn} />
           <Route exact path="/learn/:specialityName" component={PreviewPage} />
+          <Route exact path="/:specialityId/:topicId/:Id" component={Article} />
           <Route
             render={(props) => <AddArticle {...props} edit={false} />}
             exact
@@ -81,7 +79,6 @@ const App = () => {
             exact
             path="/article/update/:articleId"
           />
-          <Route component={Article} exact path="/:specialityId/:topicId/:Id" />
           <Route component={AddCard} exact path="/AddCard" />
           <Route
             exact

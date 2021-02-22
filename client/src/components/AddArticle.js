@@ -4,7 +4,6 @@ import { Row, Col, Spinner } from "react-bootstrap";
 import Editor from "../editor/editor";
 import { toast } from "react-toastify";
 import { connect } from "react-redux";
-import $ from "jquery";
 import { servicePost, serviceGet } from "../helpers/api";
 import { addArticle, editArticle, getArticle } from "../actions/article";
 
@@ -22,8 +21,15 @@ const AddArticle = (props) => {
   // const [prevArticle, setprevArticle] = useState();
   const [Loading, setLoading] = useState(false);
   const { topicId } = props.match.params;
+  function scrollTo(element) {
+    window.scroll({
+      behavior: "smooth",
+      left: 0,
+      top: element.offsetTop,
+    });
+  }
   const goToTop = () => {
-    $("html, body").animate({ scrollTop: 10 }, 600);
+    scrollTo(document.getElementById("nav"));
   };
 
   useEffect(async () => {

@@ -4,14 +4,12 @@ import { Helmet } from "react-helmet";
 import { connect } from "react-redux";
 import { login } from "../actions/auth";
 
-import $ from "jquery";
-
 const SignIn = ({ login }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
-    $(".sign-in-section h1").addClass("changed");
+    document.querySelector(".sign-in-section h1").classList.add("changed");
     console.log({ email, password });
     login({ email, password });
     e.preventDefault();

@@ -25,10 +25,6 @@ const Article = ({
 
   const handleDelete = (data) => {
     const { ArticleName, _id } = data;
-    console.log();
-
-    // console.log({ ArticleName, _id, topic });
-    // console.log(_id);
     const confirm = window.prompt(
       `You sure want to delete "${ArticleName}" ? Y or N `
     );
@@ -36,7 +32,6 @@ const Article = ({
       deleteArticle(_id, topic._id, specialities.speciality.Name);
     }
   };
-  console.log(isAdmin);
 
   return (
     <div className="row">
@@ -118,9 +113,7 @@ const Article = ({
         </div>
       </div>
       <div className=" col-2">
-        <div className="update-delete float-right">
-          <div>{console.log(item)}</div>
-        </div>
+        <div className="update-delete float-right"></div>
       </div>
     </div>
   );

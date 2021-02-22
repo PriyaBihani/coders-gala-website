@@ -1,7 +1,5 @@
 /* eslint-disable */
 import React, { useState } from "react";
-import $ from "jquery";
-
 const FooterNewsletterForm = () => {
   const url =
     "https://script.google.com/macros/s/AKfycbzqvgKzk3xx20JNS26szIIyJNI3FllBJRhOoQ4IY0fBEqLwU1_9/exec";
@@ -13,7 +11,7 @@ const FooterNewsletterForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    $(".border").addClass("anim");
+    document.querySelector(".border").classList.add("anim");
     var jqxhr = $.ajax({
       url: url,
       method: "GET",

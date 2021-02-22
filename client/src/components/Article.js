@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import $ from "jquery";
 import { Row, Col, Tooltip, OverlayTrigger } from "react-bootstrap";
 import { Redirect, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -11,13 +10,11 @@ import { connect } from "react-redux";
 
 const ShareArticle = ({ NId, url }, props) => {
   const value = "https://codersgala.com/WebDevelopment/read/" + NId;
-  console.log(props.match);
 
   const [copied, setCopied] = useState(false);
 
   function actionToggle() {
-    var action = $(".action");
-    action.toggleClass("active");
+    document.querySelector(".action").classList.toggle("active");
   }
 
   return (
@@ -92,20 +89,24 @@ const Article = (props) => {
   const { specialityId, topicId, Id } = props.match.params;
 
   useEffect(() => {
-    console.log(Id);
     if (!props.specialities.speciality && Id == "before-starting") {
       getSpeciality(props.match.params.specialityId);
     }
   }, []);
 
   const [article, setArticle] = useState({});
+  function scrollTo(element) {
+    window.scroll({
+      behavior: "smooth",
+      left: 0,
+      top: element.offsetTop,
+    });
+  }
 
   const goToTop = () => {
-    $("html, body").animate({ scrollTop: 10 }, 200);
+    scrollTo(document.getElementById("nav"));
   };
 
-  // console.log(Id);
-  // console.log(Id.replace(/-/g, " "));
   const NId = Id.replace(/-/g, " ");
   var url;
   if (typeof window !== "undefined") {
@@ -159,11 +160,6 @@ const Article = (props) => {
 
                 <Col id="top" style={{ padding: "0px" }} sm={8}>
                   <div className="ql-snow">
-                    {console.log(
-                      props.specialities &&
-                        props.specialities.speciality &&
-                        props.specialities.speciality.ArticleContent
-                    )}
                     <div
                       className="full-article ql-editor"
                       dangerouslySetInnerHTML={{

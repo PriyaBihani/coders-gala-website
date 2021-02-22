@@ -2,7 +2,6 @@
 import React, { useState, useContext } from "react";
 import { Redirect, NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import $ from "jquery";
 import { connect } from "react-redux";
 import { register } from "../actions/auth";
 
@@ -17,7 +16,7 @@ const SignUp = ({ register }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    $(".sign-in-section h1").addClass("changed");
+    document.querySelector(".sign-in-section h1").classList.add("changed");
     console.log(data);
     register(data);
   };

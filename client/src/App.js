@@ -79,12 +79,21 @@ const App = () => {
             exact
             path="/article/update/:articleId"
           />
-          <Route component={AddCard} exact path="/AddCard" />
           <Route
+            render={(props) => <AddCard {...props} edit={false} />}
+            exact
+            path="/AddCard"
+          />
+          <Route
+            render={(props) => <AddCard {...props} edit={true} />}
+            exact
+            path="/updatespeciality/:specialityName"
+          />
+          {/* <Route
             exact
             path="/updatespeciality/:specialityName"
             component={EditSpeciality}
-          />
+          /> */}
         </Switch>
       </AnimatePresence>
       <ToastContainer />

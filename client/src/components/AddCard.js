@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Editor from '../editor/editor';
-import { serviceGet } from '../helpers/api';
-import { connect } from 'react-redux';
-import { addSpeciality, editSpeciality } from '../actions/speciality';
+import React, { useState, useEffect } from "react";
+import Editor from "../editor/editor";
+import { serviceGet } from "../helpers/api";
+import { connect } from "react-redux";
+import { addSpeciality, editSpeciality } from "../actions/speciality";
 
 const AddCard = ({ addSpeciality, editSpeciality, edit, match }) => {
   const [state, setState] = useState({});
@@ -49,7 +49,7 @@ const AddCard = ({ addSpeciality, editSpeciality, edit, match }) => {
             required
             placeholder="Speciality Name"
             className="form-control"
-            defaultValue={edit ? data && data.Name : ''}
+            defaultValue={edit ? data && data.Name : ""}
             onChange={handleChange}
           />
           <br />
@@ -60,7 +60,7 @@ const AddCard = ({ addSpeciality, editSpeciality, edit, match }) => {
             onChange={handleChange}
             placeholder="Image URL"
             className="form-control"
-            defaultValue={edit ? data && data.imageUrl : ''}
+            defaultValue={edit ? data && data.imageUrl : ""}
           />
           <br />
           {!edit && (
@@ -78,10 +78,9 @@ const AddCard = ({ addSpeciality, editSpeciality, edit, match }) => {
           )}
 
           <div className="ql-snow">
-            {' '}
             <Editor
               required
-              defaultValue={edit ? data && data.ArticleContent : ''}
+              defaultValue={edit ? data && data.ArticleContent : ""}
               className="ql-editor"
               handleEditor={handleEditor}
             />
@@ -95,7 +94,7 @@ const AddCard = ({ addSpeciality, editSpeciality, edit, match }) => {
               type="submit"
               className="btn btn-outline-primary m-3"
             >
-              {edit ? 'Update' : 'Add'}
+              {edit ? "Update" : "Add"}
             </button>
           </div>
         </div>

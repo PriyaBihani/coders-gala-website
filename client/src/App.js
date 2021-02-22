@@ -12,12 +12,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-tippy/dist/tippy.css';
 
-// import Navbar from "./components/layout/Navbar/Navbar";
-
 import 'bootstrap/dist/js/bootstrap.js';
 import 'bootstrap/dist/css/bootstrap.css';
+
 import Navbar from './layout/Navbar/Navbar';
-import Footer from './layout/Footer/Footer';
 import Article from './components/Article';
 import AddCard from './components/AddCard';
 import EditSpeciality from './components/EditSpeciality';
@@ -54,8 +52,6 @@ if (localStorage.token) {
   console.log('-------->>>>>>>');
   setAuthToken(localStorage.token);
 }
-
-// bootstrap
 
 const App = () => {
   useEffect(() => {

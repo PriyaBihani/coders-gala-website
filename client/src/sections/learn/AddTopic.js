@@ -1,16 +1,16 @@
 /* eslint-disable */
-import React, { useState, useContext } from "react";
-import { Tooltip } from "react-tippy";
-import { Spinner } from "react-bootstrap";
-import { servicePost } from "../../helpers/api";
-import { connect } from "react-redux";
-import { addTopic } from "../../actions/topic";
-import { toast } from "react-toastify";
+import React, { useState } from 'react';
+import { Tooltip } from 'react-tippy';
+import { Spinner } from 'react-bootstrap';
+import { servicePost } from '../../helpers/api';
+import { connect } from 'react-redux';
+import { addTopic } from '../../actions/topic';
+import { toast } from 'react-toastify';
 
 const AddTopicName = (props) => {
   const { addTopic } = props;
   const [locked, setLocked] = useState(true);
-  const [Name, setName] = useState("");
+  const [Name, setName] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,13 +26,13 @@ const AddTopicName = (props) => {
       { locked, Name, SpecialityId: props.speciality._id },
       props.specialityName
     );
-    toast("Topic Added successfully");
+    toast('Topic Added successfully');
     console.log(props.specialityName);
   };
 
   return (
     <div className="container add-topic m-0 p-0 ">
-      {" "}
+      {' '}
       <button
         type="button"
         data-toggle="modal"
@@ -45,7 +45,7 @@ const AddTopicName = (props) => {
           position="bottom"
           trigger="mouseenter"
         >
-          <i style={{ marginLeft: "20px" }} className="fa fa-plus"></i>
+          <i style={{ marginLeft: '20px' }} className="fa fa-plus"></i>
         </Tooltip>
       </button>
       <div
@@ -89,8 +89,8 @@ const AddTopicName = (props) => {
                     <span
                       onClick={() => {
                         document
-                          .querySelector(".add-topic-modal .lock")
-                          .classList.toggle("unlocked");
+                          .querySelector('.add-topic-modal .lock')
+                          .classList.toggle('unlocked');
                         setLocked(!locked);
                       }}
                       className="lock"

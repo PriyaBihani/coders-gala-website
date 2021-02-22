@@ -1,10 +1,10 @@
 /* eslint-disable */
-import React from "react";
-import Editor from "../../editor/editor";
-import { SpecialityContext } from "../../../contexts/specialityContext";
-import { Spinner } from "react-bootstrap";
-import Preloader from "../../Preloader/preloader";
-import { UpdateCard } from "../../../crudFunctions/specialityFunctions";
+import React from 'react';
+import Editor from '../../editor/editor';
+import { SpecialityContext } from '../../../contexts/specialityContext';
+import { Spinner } from 'react-bootstrap';
+import Preloader from '../../layout/preloader';
+import { UpdateCard } from '../../../crudFunctions/specialityFunctions';
 
 class EditCard extends React.Component {
   state = {
@@ -27,7 +27,7 @@ class EditCard extends React.Component {
     var lastArticle;
     articles &&
       articles.map((article) => {
-        if (article.ArticleName === "WebDevelopmentIntro") {
+        if (article.ArticleName === 'WebDevelopmentIntro') {
           lastArticle = article;
         }
       });
@@ -88,7 +88,7 @@ class EditCard extends React.Component {
               <br />
 
               <div className="ql-snow">
-                {" "}
+                {' '}
                 <Editor
                   defaultValue={lastArticle.ArticleContent}
                   className="ql-editor"
@@ -111,7 +111,7 @@ class EditCard extends React.Component {
                     </Spinner>
                   </div>
                 ) : (
-                  <div className={"text-center " + "text-" + color}>
+                  <div className={'text-center ' + 'text-' + color}>
                     {message}
                   </div>
                 )}

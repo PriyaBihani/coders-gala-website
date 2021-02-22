@@ -16,6 +16,7 @@
 @import "./styles/home/lightMode/topSection.css";
 @import "./styles/home/darkMode/bottomSection.css";
 @import "./styles/home/darkMode/topSectionDark.css";
+@import './styles/preloader.css';
 
 /* ABOUT PAGE*/
 

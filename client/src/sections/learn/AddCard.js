@@ -1,9 +1,9 @@
 /* eslint-disable */
-import React from "react";
-import Editor from "../../editor/editor";
-import { SpecialityContext } from "../../../contexts/specialityContext";
-import Preloader from "../../Preloader/preloader";
-import { AddCardFunction } from "../../../crudFunctions/specialityFunctions";
+import React from 'react';
+import Editor from '../../editor/editor';
+import { SpecialityContext } from '../../../contexts/specialityContext';
+import Preloader from '../../layout/preloader';
+import { AddCardFunction } from '../../../crudFunctions/specialityFunctions';
 
 class AddCard extends React.Component {
   static contextType = SpecialityContext;
@@ -87,7 +87,7 @@ class AddCard extends React.Component {
                 </button>
 
                 <div className="text-center">
-                  <div className={"text-center " + "text-" + color}>
+                  <div className={'text-center ' + 'text-' + color}>
                     {message && message}
                   </div>
                 </div>

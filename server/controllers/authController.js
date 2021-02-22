@@ -1,29 +1,27 @@
-const User = require("../services/mongodb/models/User");
-const { validationResult } = require("express-validator");
+const User = require('../services/mongodb/models/User');
+const { validationResult } = require('express-validator');
 
-const bcrypt = require("bcryptjs");
-let dbFilters = require("./../services/filters/db-filters"),
-  jwt = require("./../services/jwt/jwt");
-const { event } = require("../services/events/event");
+const bcrypt = require('bcryptjs');
+let dbFilters = require('./../services/filters/db-filters'),
+  jwt = require('./../services/jwt/jwt');
+const { event } = require('../services/events/event');
 
-const crypto = require("crypto");
+const crypto = require('crypto');
 
 exports.signup = async (req) => {
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
     return {
-      message: "FAILED",
       data: null,
       errors: errors.array(),
-      errorMessage: "validation Error",
+      message: 'Validation Error',
       statusCode: 400,
       status: 0,
     };
   }
 
   // check for referral code if it exists then increment the points of user whose referral code was used
-
   const { firstName, lastName, email, password, age, codeReferred } = req.body;
 
   try {
@@ -31,9 +29,9 @@ exports.signup = async (req) => {
 
     if (user) {
       return {
-        message: "FAILED",
         data: null,
-        errorMessage: "User already exists",
+        error: null,
+        message: 'User already exists',
         statusCode: 200,
         status: 0,
       };
@@ -65,7 +63,7 @@ exports.signup = async (req) => {
 
     await user.save();
 
-    if (codeReferred != "") {
+    if (codeReferred != '') {
       console.log(codeReferred);
       const referCodeUser = await User.findOne({ referCode: codeReferred });
       if (referCodeUser) {
@@ -78,8 +76,8 @@ exports.signup = async (req) => {
 
     const token = jwt.signJWT(dbFilters.sanitizeUser(user));
     // event to log user
-    event.emit("log", {
-      type: "USER_ADDED",
+    event.emit('log', {
+      type: 'USER_ADDED',
       metadata: dbFilters.sanitizeUser(user),
       hasFailed: false,
       // message: `Agent "${userSave.name}" was Added`,
@@ -88,22 +86,22 @@ exports.signup = async (req) => {
     return {
       data: { user: dbFilters.sanitizeUser(user), token },
       error: null,
-      message: "SUCCESS",
+      message: 'User registered successfully',
       statusCode: 200,
       status: 1,
     };
   } catch (err) {
     console.error(err.message);
-    event.emit("log", {
-      type: "USER_ADDED",
+    event.emit('log', {
+      type: 'USER_ADDED',
       metadata: req.body,
       hasFailed: true,
       // message: `Agent "${userSave.name}" was Added`,
     });
     return {
-      message: "FAILED",
       data: null,
-      errorMessage: "Server Error",
+      error: err.message,
+      message: 'Server Error',
       statusCode: 400,
       status: 0,
     };
@@ -114,10 +112,10 @@ exports.signin = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return {
-      message: "FAILED",
+      message: 'FAILED',
       data: null,
       errors: errors.array(),
-      errorMessage: "validation Error",
+      errorMessage: 'validation Error',
       statusCode: 400,
       status: 0,
     };
@@ -130,9 +128,9 @@ exports.signin = async (req, res) => {
 
     if (!user) {
       return {
-        message: "FAILED",
+        message: 'FAILED',
         data: null,
-        errorMessage: "User does not exist",
+        errorMessage: 'User does not exist',
         statusCode: 200,
         status: 0,
       };
@@ -142,9 +140,9 @@ exports.signin = async (req, res) => {
 
     if (!isMatch) {
       return {
-        message: "FAILED",
+        message: 'FAILED',
         data: null,
-        errorMessage: "Incorrect password",
+        errorMessage: 'Incorrect password',
         statusCode: 200,
         status: 0,
       };
@@ -155,16 +153,16 @@ exports.signin = async (req, res) => {
     return {
       data: { user: dbFilters.sanitizeUser(user), token },
       error: null,
-      message: "SUCCESS",
+      message: 'SUCCESS',
       statusCode: 200,
       status: 1,
     };
   } catch (err) {
     console.error(err.message);
     return {
-      message: "FAILED",
+      message: 'FAILED',
       data: null,
-      errorMessage: "Server Error",
+      errorMessage: 'Server Error',
       statusCode: 400,
       status: 0,
     };
@@ -178,15 +176,15 @@ exports.getUserById = async (req) => {
     return {
       data: { user: dbFilters.sanitizeUser(user) },
       error: null,
-      message: "SUCCESS",
+      message: 'SUCCESS',
       statusCode: 200,
       status: 1,
     };
   } catch (err) {
     return {
-      message: "FAILED",
+      message: 'FAILED',
       data: null,
-      errorMessage: "Server Error",
+      errorMessage: 'Server Error',
       statusCode: 400,
       status: 0,
     };
@@ -201,15 +199,15 @@ exports.fetchAllUsers = async (req) => {
     return {
       data: users,
       error: null,
-      message: "SUCCESS",
+      message: 'SUCCESS',
       statusCode: 200,
       status: 1,
     };
   } catch (err) {
     return {
-      message: "FAILED",
+      message: 'FAILED',
       data: null,
-      errorMessage: "Server Error",
+      errorMessage: 'Server Error',
       statusCode: 400,
       status: 0,
     };

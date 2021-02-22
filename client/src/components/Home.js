@@ -1,7 +1,7 @@
 import React from 'react';
 import TopSection from '../sections/home/TopSection';
 import BottomSection from '../sections/home/BottomSection';
-import Preloader from '../layout/preloader';
+import Preloader from '../layout/Preloader';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 

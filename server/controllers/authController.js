@@ -96,7 +96,6 @@ exports.signup = async (req) => {
       type: 'USER_ADDED',
       metadata: req.body,
       hasFailed: true,
-      // message: `Agent "${userSave.name}" was Added`,
     });
     return {
       data: null,
@@ -112,10 +111,9 @@ exports.signin = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return {
-      message: 'FAILED',
       data: null,
       errors: errors.array(),
-      errorMessage: 'validation Error',
+      message: 'Validation Error',
       statusCode: 400,
       status: 0,
     };
@@ -128,9 +126,9 @@ exports.signin = async (req, res) => {
 
     if (!user) {
       return {
-        message: 'FAILED',
         data: null,
-        errorMessage: 'User does not exist',
+        error: null,
+        message: 'User does not exist',
         statusCode: 200,
         status: 0,
       };
@@ -140,9 +138,9 @@ exports.signin = async (req, res) => {
 
     if (!isMatch) {
       return {
-        message: 'FAILED',
         data: null,
-        errorMessage: 'Incorrect password',
+        error: null,
+        message: 'Incorrect password',
         statusCode: 200,
         status: 0,
       };
@@ -153,16 +151,16 @@ exports.signin = async (req, res) => {
     return {
       data: { user: dbFilters.sanitizeUser(user), token },
       error: null,
-      message: 'SUCCESS',
+      message: 'You logged in successfully.',
       statusCode: 200,
       status: 1,
     };
   } catch (err) {
     console.error(err.message);
     return {
-      message: 'FAILED',
       data: null,
-      errorMessage: 'Server Error',
+      error: err.message,
+      message: 'Server Error',
       statusCode: 400,
       status: 0,
     };
@@ -182,9 +180,9 @@ exports.getUserById = async (req) => {
     };
   } catch (err) {
     return {
-      message: 'FAILED',
       data: null,
-      errorMessage: 'Server Error',
+      error: err.message,
+      message: 'Server Error',
       statusCode: 400,
       status: 0,
     };
@@ -205,9 +203,9 @@ exports.fetchAllUsers = async (req) => {
     };
   } catch (err) {
     return {
-      message: 'FAILED',
       data: null,
-      errorMessage: 'Server Error',
+      error: err.message,
+      message: 'Server Error',
       statusCode: 400,
       status: 0,
     };

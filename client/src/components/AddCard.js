@@ -1,11 +1,23 @@
-import React, { useState, useEffect } from "react";
-import Editor from "../editor/editor";
-import { servicePost } from "../helpers/api";
-import { connect } from "react-redux";
-import { addSpeciality } from "../actions/speciality";
+import React, { useState, useEffect } from 'react';
+import Editor from '../editor/editor';
+import { serviceGet } from '../helpers/api';
+import { connect } from 'react-redux';
+import { addSpeciality, editSpeciality } from '../actions/speciality';
 
-const AddCard = ({ addSpeciality }) => {
+const AddCard = ({ addSpeciality, editSpeciality, edit, match }) => {
   const [state, setState] = useState({});
+  const [data, setData] = useState({});
+
+  useEffect(async () => {
+    if (edit) {
+      const res = await serviceGet(
+        `api/speciality/get/${match.params.specialityName}`
+      );
+      const { Name, imageUrl, ArticleContent, _id } = res.data.speciality;
+      setData({ Name, imageUrl, ArticleContent, _id });
+    }
+  }, []);
+  console.log(edit, data);
 
   const handleChange = (e) => {
     setState({
@@ -21,10 +33,10 @@ const AddCard = ({ addSpeciality }) => {
     });
   };
 
-  const handleSubmit = async (e, data) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    addSpeciality(data);
+    if (edit) editSpeciality(state, data._id);
+    else addSpeciality(state);
   };
 
   return (
@@ -35,9 +47,10 @@ const AddCard = ({ addSpeciality }) => {
             type="text"
             id="Name"
             required
-            onChange={handleChange}
             placeholder="Speciality Name"
             className="form-control"
+            defaultValue={edit ? data && data.Name : ''}
+            onChange={handleChange}
           />
           <br />
           <input
@@ -47,43 +60,43 @@ const AddCard = ({ addSpeciality }) => {
             onChange={handleChange}
             placeholder="Image URL"
             className="form-control"
+            defaultValue={edit ? data && data.imageUrl : ''}
           />
           <br />
-          <input
-            required
-            type="text"
-            id="alt"
-            onChange={handleChange}
-            placeholder="Image alt text"
-            className="form-control"
-          />
-          <br />
+          {!edit && (
+            <>
+              <input
+                required
+                type="text"
+                id="alt"
+                onChange={handleChange}
+                placeholder="Image alt text"
+                className="form-control"
+              />
+              <br />
+            </>
+          )}
 
           <div className="ql-snow">
+            {' '}
             <Editor
               required
+              defaultValue={edit ? data && data.ArticleContent : ''}
               className="ql-editor"
               handleEditor={handleEditor}
-              defaultValue=""
             />
           </div>
 
           <div className="add-article-button">
             <button
               onClick={(e) => {
-                handleSubmit(e, state);
+                handleSubmit(e);
               }}
               type="submit"
               className="btn btn-outline-primary m-3"
             >
-              Add
+              {edit ? 'Update' : 'Add'}
             </button>
-
-            {/* <div className="text-center">
-              <div className={"text-center " + "text-" + color}>
-                {message && message}
-              </div>
-            </div> */}
           </div>
         </div>
       </form>
@@ -91,4 +104,4 @@ const AddCard = ({ addSpeciality }) => {
   );
 };
 
-export default connect(null, { addSpeciality })(AddCard);
+export default connect(null, { addSpeciality, editSpeciality })(AddCard);

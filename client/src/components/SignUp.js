@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Redirect, NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';

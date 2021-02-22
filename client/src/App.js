@@ -1,89 +1,57 @@
-import React, { useContext, useEffect } from "react";
-import Loadable from "react-loadable";
-import { Switch, Route, Redirect } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
-import store from "./store";
-import { setAuthToken } from "./helpers/setAuthToken";
-import { loadUser } from "./actions/auth";
+import React, { useEffect } from 'react';
+import Loadable from 'react-loadable';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import store from './store';
+import { setAuthToken } from './helpers/setAuthToken';
+import { loadUser } from './actions/auth';
 
-import Loader from "./layout/Preloader/preloader";
+import Loader from './layout/Preloader/preloader';
 
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "react-tippy/dist/tippy.css";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import 'react-tippy/dist/tippy.css';
 
 // import Navbar from "./components/layout/Navbar/Navbar";
 
-import "bootstrap/dist/js/bootstrap.js";
-import "bootstrap/dist/css/bootstrap.css";
-import Navbar from "./layout/Navbar/Navbar";
-import Footer from "./layout/Footer/Footer";
-import Article from "./components/Article";
-import AddCard from "./components/AddCard";
-import EditSpeciality from "./components/EditSpeciality";
-import AddArticle from "./components/AddArticle";
+import 'bootstrap/dist/js/bootstrap.js';
+import 'bootstrap/dist/css/bootstrap.css';
+import Navbar from './layout/Navbar/Navbar';
+import Footer from './layout/Footer/Footer';
+import Article from './components/Article';
+import AddCard from './components/AddCard';
+import EditSpeciality from './components/EditSpeciality';
+import AddArticle from './components/AddArticle';
 
 const SignUp = Loadable({
-  loader: () => import("./components/SignUp"),
+  loader: () => import('./components/SignUp'),
   loading: () => <Loader />,
 });
 const SignIn = Loadable({
-  loader: () => import("./components/SignIn"),
+  loader: () => import('./components/SignIn'),
   loading: () => <Loader />,
 });
 
 const PreviewPage = Loadable({
-  loader: () => import("./components/PreviewPage"),
+  loader: () => import('./components/PreviewPage'),
   loading: () => <Loader />,
 });
 
-// Article page
-
-// const PreviewPage = Loadable({
-//   loader: () => import("./components/learn/preview/PreviewPage"),
-//   loading: () => <Loader />,
-// });
-
-// Components
 const Home = Loadable({
-  loader: () => import("./components/Home"),
+  loader: () => import('./components/Home'),
   loading: () => <Loader />,
 });
 const About = Loadable({
-  loader: () => import("./components/About"),
+  loader: () => import('./components/About'),
   loading: () => <Loader />,
 });
 const Learn = Loadable({
-  loader: () => import("./components/Learn"),
+  loader: () => import('./components/Learn'),
   loading: () => <Loader />,
 });
 
-// const EditHomepage = Loadable({
-//   loader: () => import("./components/home/EDIT/editHomepage"),
-//   loading: () => <Loader />,
-// });
-// const EditCard = Loadable({
-//   loader: () => import("./components/learn/learningCards/UpdateCard"),
-//   loading: () => <Loader />,
-// });
-// const AddCard = Loadable({
-//   loader: () => import("./components/learn/learningCards/AddCard"),
-//   loading: () => <Loader />,
-// });
-// const AddArticle = Loadable({
-//   loader: () => import("./components/learn/articles/addArticle"),
-//   loading: () => <Loader />,
-// });
-// const UpdateArticle = Loadable({
-//   loader: () => import("./components/learn/articles/updateArticle"),
-//   loading: () => <Loader />,
-// });
-// const AdminPanel = Loadable({
-//   loader: () => import("./components/adminPanel/adminPanel"),
-//   loading: () => <Loader />,
-// });
 if (localStorage.token) {
-  console.log("-------->>>>>>>");
+  console.log('-------->>>>>>>');
   setAuthToken(localStorage.token);
 }
 
@@ -93,6 +61,7 @@ const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
+
   return (
     <div className="App">
       <Navbar />

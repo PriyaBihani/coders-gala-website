@@ -78,13 +78,23 @@ const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
           )}
 
           <div className="ql-snow">
-            {' '}
-            <Editor
-              required
-              defaultValue={edit ? data && data.ArticleContent : ''}
-              className="ql-editor"
-              handleEditor={handleEditor}
-            />
+            {edit ? (
+              data && data.ArticleContent ? (
+                <Editor
+                  required
+                  defaultValue={data && data.ArticleContent}
+                  className="ql-editor"
+                  handleEditor={handleEditor}
+                />
+              ) : null
+            ) : (
+              <Editor
+                required
+                defaultValue=""
+                className="ql-editor"
+                handleEditor={handleEditor}
+              />
+            )}
           </div>
 
           <div className="add-article-button">

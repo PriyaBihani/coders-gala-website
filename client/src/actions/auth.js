@@ -87,15 +87,20 @@ export const login = ({ email, password }) => async (dispatch) => {
   try {
     const res = await servicePost('api/auth/login', body, headers);
 
-    console.log(res.data);
-    setTimeout(() => {
+    console.log(res);
+
+    if (res.data) {
       dispatch({
         type: LOGIN_SUCCESS,
         payload: { userId: res.data.user.userId, token: res.data.token },
       });
-    });
 
-    dispatch(loadUser());
+      dispatch(loadUser());
+    } else {
+      dispatch({
+        type: LOGIN_FAIL,
+      });
+    }
   } catch (err) {
     const errors = err && err.response.data.errors;
 

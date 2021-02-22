@@ -1,17 +1,18 @@
-var express = require("express");
-let authController = require("./../controllers/authController"),
-  authMiddleware = require("./../services/middlewares/auth"),
-  adminMiddleware = require("./../services/middlewares/admin");
+var express = require('express');
+
+let authController = require('./../controllers/authController'),
+  authMiddleware = require('./../services/middlewares/auth'),
+  adminMiddleware = require('./../services/middlewares/admin');
 
 var router = express.Router();
-const { check } = require("express-validator");
+const { check } = require('express-validator');
 
-var ms = require("ms");
-var TIME_OUT_TIME = "30m";
+var ms = require('ms');
+var TIME_OUT_TIME = '30m';
 
 // SNIPPET TO INCREASE REQUEST TIME OUT
 const setConnectionTimeout = (time) => {
-  var delay = typeof time === "string" ? ms(time) : Number(time || 5000);
+  var delay = typeof time === 'string' ? ms(time) : Number(time || 5000);
 
   return function (req, res, next) {
     res.connection.setTimeout(delay);
@@ -20,16 +21,16 @@ const setConnectionTimeout = (time) => {
 };
 
 router.post(
-  "/signup",
+  '/signup',
   setConnectionTimeout(`${TIME_OUT_TIME}`),
   [
-    check("firstName", "First name is required").notEmpty(),
-    check("lastName", "Last name is required").notEmpty(),
-    check("email", "Please enter a valid email").isEmail(),
-    check("age", "Age is required").notEmpty(),
+    check('firstName', 'First name is required').notEmpty(),
+    check('lastName', 'Last name is required').notEmpty(),
+    check('email', 'Please enter a valid email').isEmail(),
+    check('age', 'Age is required').notEmpty(),
     check(
-      "password",
-      "Please enter a password with 6 or more character"
+      'password',
+      'Please enter a password with 6 or more character'
     ).isLength({ min: 6 }),
   ],
   async (req, res) => {
@@ -40,7 +41,7 @@ router.post(
       res.status(code).send(userRegister);
     } catch (error) {
       res.status(500).send({
-        message: "FAILED",
+        message: 'FAILED',
         data: null,
         error: error,
       });
@@ -49,11 +50,11 @@ router.post(
 );
 
 router.post(
-  "/login",
+  '/login',
   setConnectionTimeout(`${TIME_OUT_TIME}`),
   [
-    check("email", "Email is required").isEmail(),
-    check("password", "Password field is required").isLength({
+    check('email', 'Email is required').isEmail(),
+    check('password', 'Password field is required').isLength({
       min: 1,
     }),
   ],
@@ -65,7 +66,7 @@ router.post(
       res.status(code).send(userRegister);
     } catch (error) {
       res.status(500).send({
-        message: "FAILED",
+        message: 'FAILED',
         data: null,
         error: error,
       });
@@ -74,7 +75,7 @@ router.post(
 );
 
 router.get(
-  "/user/:userId",
+  '/user/:userId',
   setConnectionTimeout(`${TIME_OUT_TIME}`),
   async (req, res) => {
     try {
@@ -84,7 +85,7 @@ router.get(
       res.status(code).send(user);
     } catch (error) {
       res.status(500).send({
-        message: "FAILED",
+        message: 'FAILED',
         data: null,
         error: error,
       });
@@ -93,7 +94,7 @@ router.get(
 );
 
 router.get(
-  "/getUsers",
+  '/getUsers',
   setConnectionTimeout(`${TIME_OUT_TIME}`),
   adminMiddleware,
   async (req, res) => {
@@ -104,7 +105,7 @@ router.get(
       res.status(code).send(users);
     } catch (error) {
       res.status(500).send({
-        message: "FAILED",
+        message: 'FAILED',
         data: null,
         error: error,
       });

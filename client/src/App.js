@@ -6,7 +6,7 @@ import store from './store';
 import { setAuthToken } from './helpers/setAuthToken';
 import { loadUser } from './actions/auth';
 
-import Loader from './layout/Preloader/preloader';
+import Loader from './layout/preloader';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

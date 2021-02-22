@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import $ from "jquery";
 import { Link } from "react-router-dom";
 
 const PreviewArticle = ({ SelectedArticle, specialityName }) => {
@@ -29,7 +28,11 @@ const PreviewArticle = ({ SelectedArticle, specialityName }) => {
       <div>
         <Link
           onClick={() => {
-            $("html, body").animate({ scrollTop: 10 }, 200);
+            window.scroll({
+              behavior: "smooth",
+              left: 0,
+              top: "0px",
+            });
           }}
           to={
             "/" +

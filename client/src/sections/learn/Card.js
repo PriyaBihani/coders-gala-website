@@ -4,7 +4,6 @@ import { NavLink, Link } from "react-router-dom";
 import DeleteButton from "../../layout/Button/DeleteButton";
 import SomeButton from "../../layout/Button/button";
 import { connect } from "react-redux";
-import $ from "jquery";
 import { serviceGet, servicePost } from "../../helpers/api";
 import {
   getSpecialities,
@@ -20,13 +19,6 @@ const Card = ({
   clearSpeciality,
 }) => {
   console.log(isAdmin);
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (window.innerWidth <= 600) {
-        $(".container .card .contentBx").css("height", "150px");
-      }
-    }
-  });
 
   const [learningCards, setLearningCards] = useState([{}]);
 
@@ -65,7 +57,12 @@ const Card = ({
                         alt={item.alt}
                       />
                     </div>
-                    <div className="contentBx">
+                    <div
+                      style={{
+                        height: window.innerWidth <= 600 ? "150px" : "auto",
+                      }}
+                      className="contentBx"
+                    >
                       <h2> {item.Name}</h2>
                       {isAdmin ? (
                         <Row>

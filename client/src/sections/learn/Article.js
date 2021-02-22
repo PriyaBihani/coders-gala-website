@@ -1,7 +1,6 @@
 /* eslint-disable */
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import $ from "jquery";
 import { Tooltip } from "react-tippy";
 import { deleteArticle } from "../../actions/article";
 import { connect } from "react-redux";
@@ -33,6 +32,14 @@ const Article = ({
     }
   };
 
+  function scrollTo(element) {
+    window.scroll({
+      behavior: "smooth",
+      left: 0,
+      top: "0px",
+    });
+  }
+
   return (
     <div className="row">
       <div className=" read col-10">
@@ -41,9 +48,9 @@ const Article = ({
             type="button"
             onClick={() => {
               readArticle(article);
-              const pos = $(".card-container").offset().top;
+              const pos = document.querySelector(".card-container");
               if (window.innerWidth <= 500) {
-                $("html, body").animate({ scrollTop: pos }, 69);
+                scrollTo(pos);
               }
             }}
             className="display-article"
@@ -92,9 +99,9 @@ const Article = ({
                     type="button"
                     onClick={() => {
                       readArticle(article);
-                      const pos = $(".card-container").offset().top;
+                      const pos = document.querySelector(".card-container");
                       if (window.innerWidth <= 500) {
-                        $("html, body").animate({ scrollTop: pos }, 69);
+                        scrollTo(pos);
                       }
                     }}
                   >

@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
-import $ from "jquery";
 
 const SignedInLinks = () => {
   return (

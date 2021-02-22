@@ -1,52 +1,51 @@
-import React, { useEffect } from 'react';
-import Loadable from 'react-loadable';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
-import store from './store';
-import { setAuthToken } from './helpers/setAuthToken';
-import { loadUser } from './actions/auth';
+import React, { useEffect } from "react";
+import Loadable from "react-loadable";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
+import store from "./store";
+import { setAuthToken } from "./helpers/setAuthToken";
+import { loadUser } from "./actions/auth";
 
-import Loader from './layout/Preloader';
+import Loader from "./layout/Preloader";
 
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 
-import 'bootstrap/dist/js/bootstrap.js';
+import "bootstrap/dist/js/bootstrap.js";
 
-import Navbar from './layout/Navbar/Navbar';
-import Article from './components/Article';
-import AddCard from './components/AddCard';
-import EditSpeciality from './components/EditSpeciality';
-import AddArticle from './components/AddArticle';
+import Navbar from "./layout/Navbar/Navbar";
+import Article from "./components/Article";
+import AddCard from "./components/AddCard";
+import AddArticle from "./components/AddArticle";
 
 const SignUp = Loadable({
-  loader: () => import('./components/SignUp'),
+  loader: () => import("./components/SignUp"),
   loading: () => <Loader />,
 });
 const SignIn = Loadable({
-  loader: () => import('./components/SignIn'),
+  loader: () => import("./components/SignIn"),
   loading: () => <Loader />,
 });
 
 const PreviewPage = Loadable({
-  loader: () => import('./components/PreviewPage'),
+  loader: () => import("./components/PreviewPage"),
   loading: () => <Loader />,
 });
 
 const Home = Loadable({
-  loader: () => import('./components/Home'),
+  loader: () => import("./components/Home"),
   loading: () => <Loader />,
 });
 const About = Loadable({
-  loader: () => import('./components/About'),
+  loader: () => import("./components/About"),
   loading: () => <Loader />,
 });
 const Learn = Loadable({
-  loader: () => import('./components/Learn'),
+  loader: () => import("./components/Learn"),
   loading: () => <Loader />,
 });
 
 if (localStorage.token) {
-  console.log('-------->>>>>>>');
+  console.log("-------->>>>>>>");
   setAuthToken(localStorage.token);
 }
 

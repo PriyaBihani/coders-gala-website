@@ -1,34 +1,38 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import $ from "jquery";
 
 const BottomSection = () => {
+  const scrollFunction = () => {
+    window.addEventListener("scroll", () => {
+      var scroll = window.scrollY;
+      if (scroll < 150) {
+        $(".hero-box__circle--blue").removeClass("one");
+        $(".hero-box__circle--orange").removeClass("three");
+        $(".hero-box__circle--green").removeClass("two");
+      }
+      if (scroll > 150 && scroll < 450) {
+        $(".hero-box__circle--blue").addClass("one");
+        $(".hero-box__circle--orange").removeClass("three");
+        $(".hero-box__circle--green").removeClass("two");
+      }
+      if (scroll > 450 && scroll < 650) {
+        $(".hero-box__circle--green").addClass("two");
+        $(".hero-box__circle--blue").removeClass("one");
+        $(".hero-box__circle--orange").removeClass("three");
+      }
+      if (scroll > 650) {
+        $(".hero-box__circle--orange").addClass("three");
+        $(".hero-box__circle--green").removeClass("two");
+        $(".hero-box__circle--blue").removeClass("one");
+      }
+    });
+  };
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       if (window.innerWidth < 600) {
-        $(window).scroll(() => {
-          var scroll = window.scrollY;
-          if (scroll < 150) {
-            $(".hero-box__circle--blue").removeClass("one");
-            $(".hero-box__circle--orange").removeClass("three");
-            $(".hero-box__circle--green").removeClass("two");
-          }
-          if (scroll > 150 && scroll < 450) {
-            $(".hero-box__circle--blue").addClass("one");
-            $(".hero-box__circle--orange").removeClass("three");
-            $(".hero-box__circle--green").removeClass("two");
-          }
-          if (scroll > 450 && scroll < 650) {
-            $(".hero-box__circle--green").addClass("two");
-            $(".hero-box__circle--blue").removeClass("one");
-            $(".hero-box__circle--orange").removeClass("three");
-          }
-          if (scroll > 650) {
-            $(".hero-box__circle--orange").addClass("three");
-            $(".hero-box__circle--green").removeClass("two");
-            $(".hero-box__circle--blue").removeClass("one");
-          }
-        });
+        window.addEventListener("scroll", scrollFunction);
       }
     }
     if (window.innerWidth > 600) {
@@ -48,6 +52,9 @@ const BottomSection = () => {
         }, 650);
       });
     }
+    return () => {
+      window.removeEventListener("scroll", scrollFunction);
+    };
   }, []);
 
   return (

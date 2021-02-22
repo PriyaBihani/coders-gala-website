@@ -14,9 +14,8 @@ import 'bootstrap/dist/js/bootstrap.js';
 
 import Navbar from './layout/Navbar/Navbar';
 import Article from './components/Article';
-import AddCard from './components/AddCard';
-import EditSpeciality from './components/EditSpeciality';
-import AddArticle from './components/AddArticle';
+import UpsertCard from './components/UpsertCard';
+import UpsertArticle from './components/UpsertArticle';
 
 const SignUp = Loadable({
   loader: () => import('./components/SignUp'),
@@ -70,30 +69,25 @@ const App = () => {
           <Route exact path="/learn/:specialityName" component={PreviewPage} />
           <Route exact path="/:specialityId/:topicId/:Id" component={Article} />
           <Route
-            render={(props) => <AddArticle {...props} edit={false} />}
+            render={(props) => <UpsertArticle {...props} edit={false} />}
             exact
             path="/article/add/:topicId"
           />
           <Route
-            render={(props) => <AddArticle {...props} edit={true} />}
+            render={(props) => <UpsertArticle {...props} edit={true} />}
             exact
             path="/article/update/:articleId"
           />
           <Route
-            render={(props) => <AddCard {...props} edit={false} />}
+            render={(props) => <UpsertCard {...props} edit={false} />}
             exact
             path="/AddCard"
           />
           <Route
-            render={(props) => <AddCard {...props} edit={true} />}
+            render={(props) => <UpsertCard {...props} edit={true} />}
             exact
             path="/updatespeciality/:specialityName"
           />
-          {/* <Route
-            exact
-            path="/updatespeciality/:specialityName"
-            component={EditSpeciality}
-          /> */}
         </Switch>
       </AnimatePresence>
       <ToastContainer />

@@ -4,7 +4,7 @@ import { serviceGet } from '../helpers/api';
 import { connect } from 'react-redux';
 import { addSpeciality, editSpeciality } from '../actions/speciality';
 
-const AddCard = ({ addSpeciality, editSpeciality, edit, match }) => {
+const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
   const [state, setState] = useState({});
   const [data, setData] = useState({});
 
@@ -104,4 +104,4 @@ const AddCard = ({ addSpeciality, editSpeciality, edit, match }) => {
   );
 };
 
-export default connect(null, { addSpeciality, editSpeciality })(AddCard);
+export default connect(null, { addSpeciality, editSpeciality })(UpsertCard);

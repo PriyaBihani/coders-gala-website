@@ -1,13 +1,12 @@
 /* eslint-disable */
-import React, { useState, useEffect } from "react";
-import { Row, Col, Spinner } from "react-bootstrap";
-import Editor from "../editor/editor";
-import { toast } from "react-toastify";
-import { connect } from "react-redux";
-import { servicePost, serviceGet } from "../helpers/api";
-import { addArticle, editArticle, getArticle } from "../actions/article";
+import React, { useState, useEffect } from 'react';
+import { Row, Col, Spinner } from 'react-bootstrap';
+import Editor from '../editor/editor';
+import { toast } from 'react-toastify';
+import { connect } from 'react-redux';
+import { addArticle, editArticle, getArticle } from '../actions/article';
 
-const AddArticle = (props) => {
+const UpsertArticle = (props) => {
   const {
     addArticle,
     specialities,
@@ -15,21 +14,21 @@ const AddArticle = (props) => {
     getArticle,
     prevArticle,
   } = props;
-  const [ArticleContent, setArticleContent] = useState("");
-  const [ArticleName, setArticleName] = useState("");
-  const [keywords, setArticleKeywords] = useState("");
+  const [ArticleContent, setArticleContent] = useState('');
+  const [ArticleName, setArticleName] = useState('');
+  const [keywords, setArticleKeywords] = useState('');
   // const [prevArticle, setprevArticle] = useState();
   const [Loading, setLoading] = useState(false);
   const { topicId } = props.match.params;
   function scrollTo(element) {
     window.scroll({
-      behavior: "smooth",
+      behavior: 'smooth',
       left: 0,
       top: element.offsetTop,
     });
   }
   const goToTop = () => {
-    scrollTo(document.getElementById("nav"));
+    scrollTo(document.getElementById('nav'));
   };
 
   useEffect(async () => {
@@ -47,20 +46,13 @@ const AddArticle = (props) => {
     console.log(ArticleName);
     console.log(keywords);
     const data = {
-      ArticleName: ArticleName == "" ? prevArticle.ArticleName : ArticleName,
-      keywords: keywords == "" ? prevArticle.keywords : keywords,
+      ArticleName: ArticleName == '' ? prevArticle.ArticleName : ArticleName,
+      keywords: keywords == '' ? prevArticle.keywords : keywords,
       ArticleContent:
-        ArticleContent == "" ? prevArticle.ArticleContent : ArticleContent,
+        ArticleContent == '' ? prevArticle.ArticleContent : ArticleContent,
     };
-    // const res = await servicePost(
-    //   `api/article/update/${prevArticle._id}`,
-    //   data,
-    //   {
-    //     "Content-Type": "application/json",
-    //   }
-    // );
     editArticle(data, prevArticle._id, specialities.speciality.Name);
-    toast("Article updated successfully");
+    toast('Article updated successfully');
   };
 
   const handleAdd = async (e) => {
@@ -70,22 +62,8 @@ const AddArticle = (props) => {
       topicId,
       specialities.speciality.Name
     );
-    // const res = await servicePost(
-    //   `api/article/add/${topicId}`,
-    //   { ArticleContent, ArticleName, keywords },
-    //   {
-    //     "Content-Type": "application/json",
-    //   }
-    // );
-    toast("Article added successfully");
-
-    // console.log({ ArticleContent, ArticleName, keywords });
+    toast('Article added successfully');
   };
-
-  // console.log(this.props);
-  // console.log("render");
-
-  // console.log(prevArticle);
 
   return (
     <Row className="full-view-article p-2">
@@ -99,7 +77,7 @@ const AddArticle = (props) => {
             <h4 className="" id="">
               {props.edit
                 ? `Update Article - ${prevArticle && prevArticle.ArticleName}`
-                : "Add a Article"}
+                : 'Add a Article'}
             </h4>
           </div>
 
@@ -112,7 +90,7 @@ const AddArticle = (props) => {
                   placeholder="Article Name"
                   className="form-control"
                   defaultValue={
-                    props.edit ? prevArticle && prevArticle.ArticleName : ""
+                    props.edit ? prevArticle && prevArticle.ArticleName : ''
                   }
                   onChange={(e) => {
                     setArticleName(e.target.value);
@@ -126,7 +104,7 @@ const AddArticle = (props) => {
                   placeholder="Article Description"
                   className="form-control"
                   defaultValue={
-                    props.edit ? prevArticle && prevArticle.keywords : ""
+                    props.edit ? prevArticle && prevArticle.keywords : ''
                   }
                   onChange={(e) => {
                     setArticleKeywords(e.target.value);
@@ -193,4 +171,4 @@ export default connect(mapStateToProps, {
   addArticle,
   editArticle,
   getArticle,
-})(AddArticle);
+})(UpsertArticle);

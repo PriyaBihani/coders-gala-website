@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import $ from "jquery";
 import { servicePost } from "../../helpers/api";
 import { toast } from "react-toastify";
 import { connect } from "react-redux";
@@ -66,7 +65,9 @@ const EditTopic = ({
                   <div className="add-topic-modal lock-container">
                     <span
                       onClick={() => {
-                        $(".add-topic-modal .lock").toggleClass("unlocked");
+                        document
+                          .querySelector(".add-topic-modal .lock")
+                          .classList.toggle("unlocked");
                         setLocked(!locked);
                       }}
                       className="lock"

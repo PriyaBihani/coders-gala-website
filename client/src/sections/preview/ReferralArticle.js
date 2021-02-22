@@ -5,15 +5,13 @@ import { unlockTopic } from "../../crudFunctions/referralFunctions";
 import { AuthContext } from "../../contexts/authContext";
 import { TopicsContext } from "../../contexts/topicContext";
 
-import $ from "jquery";
-
 const ReferralArticle = ({ topicId, hideReferralArticle }) => {
   const { authData, authState } = useContext(AuthContext);
   const { dispatch } = useContext(TopicsContext);
   const credentials = authData && authData.userProfile;
   const uid = authState && authState.uid;
   const runFunctions = () => {
-    $(`.lock#${topicId}`).toggleClass("unlocked");
+    document.querySelector(`.lock#${topicId}`).classList.toggle("unlocked");
     unlockTopic(topicId, uid, dispatch);
     hideReferralArticle();
   };

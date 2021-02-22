@@ -1,52 +1,37 @@
-import React, { useState } from 'react';
-import $ from 'jquery';
+import React, { useState } from "react";
 const FooterNewsletterForm = () => {
   const url =
-    'https://script.google.com/macros/s/AKfycbzqvgKzk3xx20JNS26szIIyJNI3FllBJRhOoQ4IY0fBEqLwU1_9/exec';
+    "https://script.google.com/macros/s/AKfycbzqvgKzk3xx20JNS26szIIyJNI3FllBJRhOoQ4IY0fBEqLwU1_9/exec";
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState(
-    'Enter Your Email here to subscribe for Newsletter'
+    "Enter Your Email here to subscribe for Newsletter"
   );
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    document.querySelector('.border').classList.add('anim');
-    var jqxhr = $.ajax({
-      url: url,
-      method: 'GET',
-      dataType: 'json',
-      data: $('form').serialize(),
-    })
-      .then(() => {
-        $('.border').removeClass('anim');
-        setMessage("YAY!! you'll now receive Coders Gala updates");
-      })
-      .catch((err) => {
-        $('.border').removeClass('anim');
-        setMessage('Error subsribing for newsletter');
-      });
+    document.querySelector(".border").classList.add("anim");
   };
 
   const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
   let dateObj = new Date();
   let month = monthNames[dateObj.getMonth()];
-  let day = String(dateObj.getDate()).padStart(2, '0');
+  let day = String(dateObj.getDate()).padStart(2, "0");
   let year = dateObj.getFullYear();
-  let output = day + ' ' + month + ',' + year;
+  let output = day + " " + month + "," + year;
 
   return (
     <div className="right-col">
@@ -65,7 +50,7 @@ const FooterNewsletterForm = () => {
           placeholder="Enter Your Email"
         />
         <input
-          style={{ visibility: 'hidden' }}
+          style={{ visibility: "hidden" }}
           defaultValue={output}
           type="text"
           name="Date"

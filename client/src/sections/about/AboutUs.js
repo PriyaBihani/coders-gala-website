@@ -1,5 +1,4 @@
 import React from "react";
-import $ from "jquery";
 import { Row, Col } from "react-bootstrap";
 import ProfileCard from "./ProfileCard";
 
@@ -11,7 +10,9 @@ const AboutUs = () => {
 
     function myFunction() {
       if (window.scrollY > 1550) {
-        $(".profile-card").addClass("profile-card-anim");
+        document
+          .querySelector(".profile-card")
+          .classList.add("profile-card-anim");
       }
     }
   }

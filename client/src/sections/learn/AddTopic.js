@@ -2,7 +2,6 @@
 import React, { useState, useContext } from "react";
 import { Tooltip } from "react-tippy";
 import { Spinner } from "react-bootstrap";
-import $ from "jquery";
 import { servicePost } from "../../helpers/api";
 import { connect } from "react-redux";
 import { addTopic } from "../../actions/topic";
@@ -89,7 +88,9 @@ const AddTopicName = (props) => {
                   <div className="add-topic-modal lock-container">
                     <span
                       onClick={() => {
-                        $(".add-topic-modal .lock").toggleClass("unlocked");
+                        document
+                          .querySelector(".add-topic-modal .lock")
+                          .classList.toggle("unlocked");
                         setLocked(!locked);
                       }}
                       className="lock"

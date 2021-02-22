@@ -52,7 +52,7 @@ const PreviewPage = (props) => {
     window.scroll({
       behavior: "smooth",
       left: 0,
-      top: element.offsetTop,
+      top: "0px",
     });
   }
 
@@ -60,7 +60,7 @@ const PreviewPage = (props) => {
     displayArticle(article);
     if (typeof window !== "undefined") {
       if (window.innerWidth <= 569) {
-        scrollTo(document.getElementById("nav"));
+        scrollTo();
       }
     }
   };

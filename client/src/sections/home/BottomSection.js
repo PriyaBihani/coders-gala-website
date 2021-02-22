@@ -1,48 +1,48 @@
-import React, { useEffect, useContext } from 'react';
-import { NavLink } from 'react-router-dom';
-import $ from 'jquery';
+import React, { useEffect, useContext } from "react";
+import { NavLink } from "react-router-dom";
+import $ from "jquery";
 
 const BottomSection = () => {
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       if (window.innerWidth < 600) {
         $(window).scroll(() => {
           var scroll = window.scrollY;
           if (scroll < 150) {
-            $('.hero-box__circle--blue').removeClass('one');
-            $('.hero-box__circle--orange').removeClass('three');
-            $('.hero-box__circle--green').removeClass('two');
+            $(".hero-box__circle--blue").removeClass("one");
+            $(".hero-box__circle--orange").removeClass("three");
+            $(".hero-box__circle--green").removeClass("two");
           }
           if (scroll > 150 && scroll < 450) {
-            $('.hero-box__circle--blue').addClass('one');
-            $('.hero-box__circle--orange').removeClass('three');
-            $('.hero-box__circle--green').removeClass('two');
+            $(".hero-box__circle--blue").addClass("one");
+            $(".hero-box__circle--orange").removeClass("three");
+            $(".hero-box__circle--green").removeClass("two");
           }
           if (scroll > 450 && scroll < 650) {
-            $('.hero-box__circle--green').addClass('two');
-            $('.hero-box__circle--blue').removeClass('one');
-            $('.hero-box__circle--orange').removeClass('three');
+            $(".hero-box__circle--green").addClass("two");
+            $(".hero-box__circle--blue").removeClass("one");
+            $(".hero-box__circle--orange").removeClass("three");
           }
           if (scroll > 650) {
-            $('.hero-box__circle--orange').addClass('three');
-            $('.hero-box__circle--green').removeClass('two');
-            $('.hero-box__circle--blue').removeClass('one');
+            $(".hero-box__circle--orange").addClass("three");
+            $(".hero-box__circle--green").removeClass("two");
+            $(".hero-box__circle--blue").removeClass("one");
           }
         });
       }
     }
     if (window.innerWidth > 600) {
-      console.log('width is greater than 600');
+      console.log("width is greater than 600");
       $(document).ready(() => {
-        $('.hero-box__circle--green').addClass('two');
-        $('.hero-box__circle--orange').addClass('three');
-        $('.hero-box__circle--blue').addClass('one');
+        $(".hero-box__circle--green").addClass("two");
+        $(".hero-box__circle--orange").addClass("three");
+        $(".hero-box__circle--blue").addClass("one");
         window.setTimeout(() => {
-          $('.hero-box__circle--blue').removeClass('one');
+          $(".hero-box__circle--blue").removeClass("one");
           window.setTimeout(() => {
-            $('.hero-box__circle--green').removeClass('two');
+            $(".hero-box__circle--green").removeClass("two");
             window.setTimeout(() => {
-              $('.hero-box__circle--orange').removeClass('three');
+              $(".hero-box__circle--orange").removeClass("three");
             }, 850);
           }, 750);
         }, 650);

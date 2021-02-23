@@ -26,9 +26,9 @@ const SignIn = ({ login, token }) => {
         <meta name="description" content="Coders Gala LogIn Page" />
         <meta name="robots" content="index follow" />
       </Helmet>
-      <div className="login-container">
-        <div className="login-form">
-          <div className="sign-in-section">
+      <div className="container">
+        <div className="form-container">
+          <div className="section">
             <h6 className="dinTag">{dinText}</h6>
             <h1>Log in</h1>
             <p>Hey, Welcome Back !!</p>

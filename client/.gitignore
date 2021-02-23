@@ -5,8 +5,11 @@
 /.pnp
 .pnp.js
 
+/client/.eslintcache
+
 # testing
 /coverage
+
 # production
 /build
 

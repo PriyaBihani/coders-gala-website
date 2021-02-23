@@ -25,14 +25,14 @@ const SignUp = ({ register, token }) => {
 
   const dinText = "<Coders Gala/>";
   return (
-    <div className="login-form-container">
+    <div className="auth-container">
       <Helmet>
         <title>Coders Gala - SignUp</title>
         <meta name="description" content="Coders Gala SignUp page." />
       </Helmet>
-      <div className="login-container">
-        <div className="login-form">
-          <div className="sign-in-section">
+      <div className="container">
+        <div className="form-container">
+          <div className="section">
             <h6 className="dinTag">{dinText}</h6>
             <h1>SignUp</h1>
             <p>Hey, Welcome Back !!</p>

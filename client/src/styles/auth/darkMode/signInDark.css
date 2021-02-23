@@ -1,16 +1,16 @@
-body.dark .login-form {
+body.dark .auth-container .container .form-container {
     background-color: #123;
 }
 
-body.dark .login-form-container h1 {
+body.dark .auth-container h1 {
     color: #f1f1f1;
 }
 
-body.dark .login-form-container {
+body.dark .auth-container {
     background: #111;
 }
 
-body.dark .login-form-container label {
+body.dark .auth-container label {
     color: #ffbd2f;
     font-weight: 600;
     font-size: 0.85em;
@@ -28,11 +28,11 @@ body.dark .sign-in-section h6 {
     color: #0dd3ac;
 }
 
-body.dark .login-form-container .sign-in-section p {
+body.dark .auth-container .sign-in-section p {
     color: #0dd3ac;
 }
 
-body.dark .login-form-container h3 {
+body.dark .auth-container h3 {
     color: #fff;
     font-weight: 600;
 }

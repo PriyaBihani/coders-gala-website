@@ -1,4 +1,4 @@
-.login-form-container {
+.auth-container {
     font-family: "Raleway", sans-serif;
     color: #151515;
     overflow-x: hidden;
@@ -10,13 +10,13 @@
     align-items: center;
 }
 
-.login-container {
+.auth-container .container {
     display: flex;
     align-items: stretch !important;
     justify-content: center;
 }
 
-.login-container .flex {
+.auth-container .container .flex {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -25,10 +25,10 @@
 }
 
 @media(min-width:600px) {
-    /* .login-container .flex input {
+    /* .auth-container .container .flex input {
         margin: 0px 10px 0px 10px;
     } */
-    .login-container .flex input {
+    .auth-container .container .flex input {
         width: 85%;
         margin: 0px auto !important;
     }
@@ -40,7 +40,7 @@
     }
 }
 
-.login-form {
+.auth-container .container .form-container {
     display: flex;
     width: auto;
     background: #fff;
@@ -50,39 +50,39 @@
     box-shadow: 0px 10px 25px 5px #0000000f;
 }
 
-.login-form-container a {
+.auth-container a {
     color: black;
     font-weight: 600;
     font-size: 0.85em;
     text-decoration: none;
 }
 
-.login-form-container label {
+.auth-container label {
     color: black;
     font-weight: 600;
     font-size: 0.85em;
 }
 
-.login-form-container input:focus {
+.auth-container input:focus {
     outline: none;
 }
 
-.sign-in-section {
+.form-container .section {
     padding: 30px;
 }
 
-.sign-in-section h6 {
+.form-container .section h6 {
     margin-top: 0px;
     font-size: 0.75em;
 }
 
-.sign-in-section h1 {
+.form-container .section h1 {
     text-align: center;
     font-weight: 700;
     position: relative;
 }
 
-.sign-in-section h1.changed:after {
+.form-container .section h1.changed:after {
     animation: logAnim;
     position: absolute;
     content: "";
@@ -104,7 +104,7 @@
     animation-iteration-count: infinite;
 }
 
-.sign-in-section h1:after {
+.form-container .section h1:after {
     position: absolute;
     content: "";
     height: 5px;
@@ -126,7 +126,7 @@
 }
 
 
-/* .sign-in-section h1:hover:after {
+/* .form-container .section h1:hover:after {
     width: 100px;
 } */
 
@@ -142,14 +142,14 @@
     }
 }
 
-.sign-in-section ul {
+.form-container .section ul {
     list-style: none;
     padding: 0;
     margin: 0;
     text-align: center;
 }
 
-.sign-in-section ul>li {
+.form-container .section ul>li {
     display: inline-block;
     padding: 10px;
     font-size: 15px;
@@ -162,7 +162,7 @@
     border: 1px solid #e2e2e2;
 }
 
-.login-form-container .sign-in-section p {
+.auth-container .form-container .section p {
     padding-top: 10px;
     text-align: center;
     font-size: 0.85em;
@@ -201,7 +201,7 @@ input[type="number"] {
     display: inline-block;
 }
 
-.login-form-container .form-options {
+.auth-container .form-options {
     display: block;
     margin: auto;
     width: 300px;
@@ -217,7 +217,7 @@ input[type="number"] {
     text-decoration: none;
 }
 
-.login-form-container .btn {
+.auth-container .btn {
     padding: 15px;
     font-size: 1em;
     width: 100%;
@@ -226,7 +226,7 @@ input[type="number"] {
     margin: 20px 0px;
 }
 
-.login-form-container .btn-signin {
+.auth-container .btn-signin {
     cursor: pointer;
     background: #7f00ff;
     background: -webkit-linear-gradient(to right, #e100ff, #7f00ff);
@@ -235,20 +235,20 @@ input[type="number"] {
     color: #fff;
 }
 
-.login-form-container .links a:nth-child(1) {
+.auth-container .links a:nth-child(1) {
     float: left;
 }
 
-.login-form-container .links a:nth-child(2) {
+.auth-container .links a:nth-child(2) {
     float: right;
 }
 
-.login-form-container .dinTag {
+.auth-container .dinTag {
     font-size: 0.8rem;
 }
 
 @media (max-width: 500px) {
-    .login-container {
+    .auth-container .container {
         height: auto;
     }
 }

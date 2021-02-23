@@ -20,9 +20,14 @@ import Logo from "./images/codersgalaLogo.PNG";
 const Navbar = ({ auth, ui, setDisplayMode }) => {
   // -------------------------------------------------
   const [navbarExpanded, setnavbarExpanded] = useState(false);
+  const [switched, setswitched] = useState(false);
 
   useEffect(() => {
     document.querySelector("body").classList.add(ui.displayMode);
+    console.log(ui.displayMode);
+    if (ui.displayMode == "dark") {
+      setswitched(true);
+    }
   });
 
   // Getting the current mode from local storage
@@ -64,18 +69,10 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
                   id="switch"
                   onClick={() => {
                     setDisplayMode();
-                    if (ui.displayMode == "dark") {
-                      document
-                        .querySelector(".switch")
-                        .classList.remove("switched");
-                    } else {
-                      document
-                        .querySelector(".switch")
-                        .classList.add("switched");
-                    }
+                    setswitched(!switched);
                     // window.location.reload();
                   }}
-                  className="switch float-right"
+                  className={`switch float-right ${switched ? "switched" : ""}`}
                 >
                   <div
                     style={{

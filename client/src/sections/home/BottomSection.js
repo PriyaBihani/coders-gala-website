@@ -1,49 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 
 const BottomSection = () => {
+  // refs for the three section
+  const heroBlue = useRef();
+  const heroOrange = useRef();
+  const heroGreen = useRef();
+
   const scrollFunction = () => {
     window.addEventListener("scroll", () => {
       var scroll = window.scrollY;
       if (scroll < 150) {
-        document
-          .querySelector(".hero-box__circle--blue")
-          .classList.remove("one");
-        document
-          .querySelector(".hero-box__circle--orange")
-          .classList.remove("three");
-        document
-          .querySelector(".hero-box__circle--green")
-          .classList.remove("two");
+        heroBlue.current.classList.remove("one");
+        heroOrange.current.classList.remove("three");
+        heroGreen.current.classList.remove("two");
       }
       if (scroll > 150 && scroll < 450) {
-        document.querySelector(".hero-box__circle--blue").classList.add("one");
-        document
-          .querySelector(".hero-box__circle--orange")
-          .classList.remove("three");
-        document
-          .querySelector(".hero-box__circle--green")
-          .classList.remove("two");
+        heroBlue.current.classList.add("one");
+        heroOrange.current.classList.remove("three");
+        heroGreen.current.classList.remove("two");
       }
       if (scroll > 450 && scroll < 650) {
-        document.querySelector(".hero-box__circle--green").classList.add("two");
-        document
-          .querySelector(".hero-box__circle--blue")
-          .classList.remove("one");
-        document
-          .querySelector(".hero-box__circle--orange")
-          .classList.remove("three");
+        heroGreen.current.classList.add("two");
+        heroBlue.current.classList.remove("one");
+        heroOrange.current.classList.remove("three");
       }
       if (scroll > 650) {
-        document
-          .querySelector(".hero-box__circle--orange")
-          .classList.add("three");
-        document
-          .querySelector(".hero-box__circle--green")
-          .classList.remove("two");
-        document
-          .querySelector(".hero-box__circle--blue")
-          .classList.remove("one");
+        heroGreen.current.classList.add("two");
+        heroBlue.current.classList.remove("one");
+        heroOrange.current.classList.add("three");
       }
     });
   };
@@ -55,25 +40,16 @@ const BottomSection = () => {
       }
     }
     if (window.innerWidth > 600) {
-      console.log("width is greater than 600");
       document.addEventListener("DOMContentLoaded", () => {
-        document.querySelector(".hero-box__circle--green").classList.add("two");
-        document
-          .querySelector(".hero-box__circle--orange")
-          .classList.add("three");
-        document.querySelector(".hero-box__circle--blue").classList.add("one");
+        heroGreen.current.classList.add("two");
+        heroOrange.current.classList.add("three");
+        heroBlue.current.classList.add("one");
         window.setTimeout(() => {
-          document
-            .querySelector(".hero-box__circle--blue")
-            .classList.remove("one");
+          heroBlue.current.classList.remove("one");
           window.setTimeout(() => {
-            document
-              .querySelector(".hero-box__circle--green")
-              .classList.remove("two");
+            heroGreen.current.classList.remove("two");
             window.setTimeout(() => {
-              document
-                .querySelector(".hero-box__circle--orange")
-                .classList.remove("three");
+              heroOrange.current.classList.remove("three");
             }, 850);
           }, 750);
         }, 650);
@@ -88,7 +64,10 @@ const BottomSection = () => {
     <section className="hero">
       <div className="hero-box-container">
         <NavLink to="/about" className="hero-box">
-          <span className="hero-box__circle hero-box__circle--blue"></span>
+          <span
+            ref={heroBlue}
+            className="hero-box__circle hero-box__circle--blue"
+          ></span>
           <h2 className="hero-box__title">What is CodersGala?</h2>
           <p className="hero-box__body">
             CodersGala is a free to use platform for all those people who are
@@ -98,7 +77,10 @@ const BottomSection = () => {
           </p>
         </NavLink>
         <NavLink to="/about/#aboutus" className="hero-box">
-          <span className="hero-box__circle hero-box__circle--green"></span>
+          <span
+            ref={heroGreen}
+            className="hero-box__circle hero-box__circle--green"
+          ></span>
           <h2 className="hero-box__title">Who are we?</h2>
           <p className="hero-box__body">
             We started web development on our own, with no direction and no
@@ -108,7 +90,10 @@ const BottomSection = () => {
           </p>
         </NavLink>
         <NavLink to="/learn" className="hero-box">
-          <span className="hero-box__circle hero-box__circle--orange"></span>
+          <span
+            ref={heroOrange}
+            className="hero-box__circle hero-box__circle--orange"
+          ></span>
           <h2 className="hero-box__title">Start Learning ..</h2>
           <p className="hero-box__body">
             Right now we have the articles on front-end-development. We are

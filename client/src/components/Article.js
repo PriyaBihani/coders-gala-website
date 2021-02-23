@@ -139,7 +139,7 @@ const Article = (props) => {
               <Seo
                 title={`Before starting ${specialityId}`}
                 description={specialityId}
-                meta={ [{name: 'robots', content="index follow" }] }
+                meta={[{ name: 'robots', content: 'index follow' }]}
               />
               <Row className="full-view-article p-2">
                 <Col sm={2}>
@@ -198,12 +198,12 @@ const Article = (props) => {
       ) : (
         <>
           <div className="selected-article">
-              <div>
-                <Seo
-                  title={article && article.ArticleName}
-                  description={article && article.keywords}
-                  meta={[{ name: 'robots', content="index follow" }]}
-                />
+            <div>
+              <Seo
+                title={article && article.ArticleName}
+                description={article && article.keywords}
+                meta={[{ name: 'robots', content: 'index follow' }]}
+              />
               <Row
                 key={article && article._id}
                 className="full-view-article p-2"

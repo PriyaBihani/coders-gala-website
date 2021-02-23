@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Seo } from '../helpers'
+import { Seo } from '../helpers';
 import TopSection from '../sections/home/TopSection';
 import BottomSection from '../sections/home/BottomSection';
 import Preloader from '../layout/Preloader';
@@ -12,7 +12,7 @@ const Home = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Seo meta={ [{name: 'robots', content="index follow" }] } />
+      <Seo meta={[{ name: 'robots', content: 'index follow' }]} />
       <div id="myDiv">
         {homeContent ? (
           <div className="home-container">

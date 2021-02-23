@@ -1,13 +1,11 @@
-import { motion } from "framer-motion";
-import { Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
+import { motion } from 'framer-motion';
+import { Button } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { Seo } from '../helpers'
-import Card from "../sections/learn/Card";
-import Footer from "../layout/Footer/Footer";
-
-
+import { Seo } from '../helpers';
+import Card from '../sections/learn/Card';
+import Footer from '../layout/Footer/Footer';
 
 const Learn = ({ auth }) => {
   const isAdmin = auth.user && auth.isAdmin;
@@ -17,7 +15,7 @@ const Learn = ({ auth }) => {
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
     >
-      <Seo meta={ [{name: 'robots', content="index follow" }] } />
+      <Seo meta={[{ name: 'robots', content: 'index follow' }]} />
       <div>
         <div className="container learn-container">
           <div className="flex">

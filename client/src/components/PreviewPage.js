@@ -1,37 +1,36 @@
-import React, { useContext, useState, useEffect } from "react";
-import { Accordion, Row, Col, Button } from "react-bootstrap";
-import { Redirect, Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { Tooltip } from "react-tippy";
-import { toast } from "react-toastify";
+import React, { useState, useEffect } from 'react';
+import { Accordion, Row, Col, Button } from 'react-bootstrap';
+import { Redirect, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Tooltip } from 'react-tippy';
+import { toast } from 'react-toastify';
 
+import Article from '../sections/learn/Article';
+import SpecialityPreviewArticle from '../sections/preview/SpecialityPreviewArticle';
+import PreviewArticle from '../sections/preview/PreviewArticle';
 
-import Article from "../sections/learn/Article";
-import SpecialityPreviewArticle from "../sections/preview/SpecialityPreviewArticle";
-import PreviewArticle from "../sections/preview/PreviewArticle";
-
-import { Seo } from '../helpers'
-import { getSpeciality } from "../actions/speciality";
-import { getTopics, deleteTopic } from "../actions/topic";
-import { clearArticle } from "../actions/article";
-import { setOpenTopics } from "../actions/ui";
+import { Seo } from '../helpers';
+import { getSpeciality } from '../actions/speciality';
+import { getTopics, deleteTopic } from '../actions/topic';
+import { clearArticle } from '../actions/article';
+import { setOpenTopics } from '../actions/ui';
 
 // import DisplayTopicNames from "../TopicNames/DisplayTopicNames";
 
-import Footer from "../layout/Footer/Footer";
+import Footer from '../layout/Footer/Footer';
 // import ShareIcon from "./shareIcon";
 // import Preloader from "../../Preloader/preloader";
 
-import { serviceGet, servicePost } from "../helpers/api";
-import AddTopicName from "../sections/learn/AddTopic";
-import EditTopic from "../sections/learn/EditTopic";
+import { serviceGet, servicePost } from '../helpers/api';
+import AddTopicName from '../sections/learn/AddTopic';
+import EditTopic from '../sections/learn/EditTopic';
 
 const PreviewPage = (props) => {
   const [topics, setTopics] = useState({});
   const [selected, setSelected] = useState(false);
   const [SelectedArticle, setSelectedArticle] = useState();
   const [showReferralArticle, setshowReferralArticle] = useState(false);
-  const [referralTopicId, setreferralTopicId] = useState("");
+  const [referralTopicId, setreferralTopicId] = useState('');
   const { user } = props;
 
   const isAdmin = user && user.isAdmin;
@@ -53,15 +52,15 @@ const PreviewPage = (props) => {
 
   function scrollTo(element) {
     window.scroll({
-      behavior: "smooth",
+      behavior: 'smooth',
       left: 0,
-      top: "0px",
+      top: '0px',
     });
   }
 
   const readArticle = (article) => {
     displayArticle(article);
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       if (window.innerWidth <= 569) {
         scrollTo();
       }
@@ -77,16 +76,16 @@ const PreviewPage = (props) => {
     const confirm = window.prompt(
       `You sure want to delete "${topic.Name}" ? Y or N (Deleting a topic will lead to deletion of all articles inside it) `
     );
-    if (confirm === "Y") {
+    if (confirm === 'Y') {
       props.deleteTopic(topic._id, requiredSpeciality);
-      toast("Deleted speciality sucessfully");
+      toast('Deleted speciality sucessfully');
     }
   };
 
   return (
     <div className="topics-ovr-cont">
-      <Seo meta={ [{name: 'robots', content="index follow" }] } />
-      
+      <Seo meta={[{ name: 'robots', content: 'index follow' }]} />
+
       <div className="speciality-container">
         <div className="speciality-heading">
           <h2>{requiredSpeciality}</h2>
@@ -95,9 +94,9 @@ const PreviewPage = (props) => {
         <Row>
           <Col className="topic-ovr-container" lg={4}>
             {/* Yeh pehla accordian deekhta kyun nahi h desktop mode mein */}
-            <Accordion defaultActiveKey={window.innerWidth <= 500 ? "1" : "0"}>
+            <Accordion defaultActiveKey={window.innerWidth <= 500 ? '1' : '0'}>
               <div className="topics-overview">
-                <h3 style={{ fontSize: "1rem" }} className="overview">
+                <h3 style={{ fontSize: '1rem' }} className="overview">
                   {window.innerWidth <= 500 ? (
                     <span>In this Module...</span>
                   ) : (
@@ -116,11 +115,11 @@ const PreviewPage = (props) => {
                   variant="link"
                   onClick={() => {
                     document
-                      .querySelector(".arrow-down.overview")
-                      .classList.toggle("down");
+                      .querySelector('.arrow-down.overview')
+                      .classList.toggle('down');
                     document
-                      .querySelector(".arrow-down svg.topics-overview-toggle")
-                      .classList.remove("anim");
+                      .querySelector('.arrow-down svg.topics-overview-toggle')
+                      .classList.remove('anim');
                   }}
                   className="float-right speciality-dropdown overview arrow-down"
                   eventKey="0"
@@ -159,14 +158,14 @@ const PreviewPage = (props) => {
                                   name={topic.Name}
                                   Locked={topic.locked}
                                   id={topic._id}
-                                  modalId={topic.Name.split(" ")[0]}
+                                  modalId={topic.Name.split(' ')[0]}
                                 />
 
                                 <Accordion
                                   defaultActiveKey={
                                     props.openTopics.includes(topic._id)
-                                      ? topic.Name.split(/\s/).join("")
-                                      : ""
+                                      ? topic.Name.split(/\s/).join('')
+                                      : ''
                                   }
                                 >
                                   <div className="action-buttons">
@@ -181,11 +180,11 @@ const PreviewPage = (props) => {
                                           className="edit-topic-modal-toggle"
                                           data-toggle="modal"
                                           data-target={`#${
-                                            topic.Name.split(" ")[0]
+                                            topic.Name.split(' ')[0]
                                           }`}
                                         >
                                           <i
-                                            style={{ marginLeft: "20px" }}
+                                            style={{ marginLeft: '20px' }}
                                             className="fa fa-edit"
                                           ></i>
                                         </a>
@@ -204,7 +203,7 @@ const PreviewPage = (props) => {
                                               handleDelete(topic);
                                             }}
                                             style={{
-                                              color: "crimson",
+                                              color: 'crimson',
                                             }}
                                             className="fa fa-trash"
                                           ></i>
@@ -240,20 +239,20 @@ const PreviewPage = (props) => {
                                       as={Button}
                                       variant="link"
                                       className="float-right arrow-down"
-                                      eventKey={topic.Name.split(/\s/).join("")} // to remove spaces
+                                      eventKey={topic.Name.split(/\s/).join('')} // to remove spaces
                                       onClick={() => {
                                         props.setOpenTopics(topic._id);
                                         document
                                           .querySelector(
                                             `.fa-angle-down#${topic.Name.split(
                                               /\s/
-                                            ).join("")}`
+                                            ).join('')}`
                                           )
-                                          .classList.toggle("rotate");
+                                          .classList.toggle('rotate');
                                       }}
                                     >
                                       <svg
-                                        id={topic.Name.split(/\s/).join("")}
+                                        id={topic.Name.split(/\s/).join('')}
                                         viewBox="0 0 32 32"
                                         className=" icon icon-chevron-bottom article-dwn article-toggle fa-angle-down"
                                         viewBox="0 0 32 32"
@@ -269,7 +268,7 @@ const PreviewPage = (props) => {
                                   </div>
                                   <hr />
                                   <Accordion.Collapse
-                                    eventKey={topic.Name.split(/\s/).join("")}
+                                    eventKey={topic.Name.split(/\s/).join('')}
                                   >
                                     <div>
                                       <ol>
@@ -290,7 +289,7 @@ const PreviewPage = (props) => {
                                                   isAdmin={isAdmin}
                                                   topic={topic}
                                                   readArticle={readArticle}
-                                                  displayMode={"light"}
+                                                  displayMode={'light'}
                                                   article={article}
                                                 />
                                               </div>

@@ -1,11 +1,13 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Helmet } from "react-helmet";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
 
-import TopSlide from "../sections/about/TopSlide";
-import AboutDin from "../sections/about/AboutDin";
-import AboutUs from "../sections/about/AboutUs";
-import Footer from "../layout/Footer/Footer";
+import { Seo } from '../helpers';
+
+import TopSlide from '../sections/about/TopSlide';
+import AboutDin from '../sections/about/AboutDin';
+import AboutUs from '../sections/about/AboutUs';
+import Footer from '../layout/Footer/Footer';
 
 const About = () => {
   return (
@@ -14,14 +16,7 @@ const About = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Helmet>
-        <title>Coders Gala - about</title>
-        <meta
-          name="description"
-          content="DoItNow is a free platform to learn webdevelopment for freelancing"
-        />
-        <meta name="robots" content="index follow" />
-      </Helmet>
+      <Seo title="About" />
       <div className="about-page">
         <div className="scroller">
           <section className="about-header">

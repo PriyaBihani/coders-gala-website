@@ -1,35 +1,32 @@
 /* eslint-disable */
-import React, { useState } from "react";
-import { Redirect, NavLink } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { register } from "../actions/auth";
+import React, { useState } from 'react';
+import { Redirect, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { register } from '../actions/auth';
+import { Seo } from '../helpers';
 
 const SignUp = ({ register, token }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [age, setAge] = useState();
-  const [codeReferred, setCodeReferred] = useState("");
+  const [codeReferred, setCodeReferred] = useState('');
   const [data, setData] = useState({});
 
   if (token) return <Redirect to="/learn" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    document.querySelector(".sign-in-section h1").classList.add("changed");
+    document.querySelector('.sign-in-section h1').classList.add('changed');
     // console.log(data);
     register(data);
   };
 
-  const dinText = "<Coders Gala/>";
+  const dinText = '<Coders Gala/>';
   return (
     <div className="auth-container">
-      <Helmet>
-        <title>Coders Gala - SignUp</title>
-        <meta name="description" content="Coders Gala SignUp page." />
-      </Helmet>
+      <Seo title="SignUp" />
       <div className="container">
         <div className="form-container">
           <div className="section">

@@ -1,17 +1,20 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Tooltip } from "react-tippy";
-import { connect } from "react-redux";
-import { Helmet } from "react-helmet";
-import { Redirect, Link } from "react-router-dom";
 import { Accordion, Row, Col, Button } from "react-bootstrap";
+import { Redirect, Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Tooltip } from "react-tippy";
+import { toast } from "react-toastify";
+
+
 import Article from "../sections/learn/Article";
 import SpecialityPreviewArticle from "../sections/preview/SpecialityPreviewArticle";
 import PreviewArticle from "../sections/preview/PreviewArticle";
+
+import { Seo } from '../helpers'
 import { getSpeciality } from "../actions/speciality";
 import { getTopics, deleteTopic } from "../actions/topic";
 import { clearArticle } from "../actions/article";
 import { setOpenTopics } from "../actions/ui";
-import { toast } from "react-toastify";
 
 // import DisplayTopicNames from "../TopicNames/DisplayTopicNames";
 
@@ -82,16 +85,8 @@ const PreviewPage = (props) => {
 
   return (
     <div className="topics-ovr-cont">
-      <Helmet>
-        <title>Coders Gala</title>
-        <meta
-          name="description"
-          content={"Learn these Web development topics free" + ""}
-        />
-
-        <meta name="robots" content="index follow" />
-      </Helmet>
-
+      <Seo meta={ [{name: 'robots', content="index follow" }] } />
+      
       <div className="speciality-container">
         <div className="speciality-heading">
           <h2>{requiredSpeciality}</h2>

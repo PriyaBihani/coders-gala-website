@@ -1,31 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { Redirect, NavLink } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import { connect } from "react-redux";
-import { login } from "../actions/auth";
+import React, { useState, useEffect } from 'react';
+import { Redirect, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { login } from '../actions/auth';
+import { Seo } from '../helpers';
 
 const SignIn = ({ login, token }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   if (token) return <Redirect to="/learn" />;
 
   const handleSubmit = (e) => {
-    document.querySelector(".sign-in-section h1").classList.add("changed");
+    document.querySelector('.sign-in-section h1').classList.add('changed');
     console.log({ email, password });
     login({ email, password });
     e.preventDefault();
   };
 
-  const dinText = "<Coders Gala/>";
+  const dinText = '<Coders Gala/>';
 
   return (
     <div className="auth-container">
-      <Helmet>
-        <title>Coders Gala-LogIn</title>
-        <meta name="description" content="Coders Gala LogIn Page" />
-        <meta name="robots" content="index follow" />
-      </Helmet>
+      <Seo title="LogIn" />
       <div className="container">
         <div className="form-container">
           <div className="section">

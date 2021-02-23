@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Accordion, Row, Col, Button } from 'react-bootstrap';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Tooltip } from 'react-tippy';
 import { toast } from 'react-toastify';

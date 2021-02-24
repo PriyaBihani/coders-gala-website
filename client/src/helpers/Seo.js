@@ -2,9 +2,9 @@ import { Helmet } from 'react-helmet';
 
 export const Seo = ({
   description,
-  title = '',
+  title = ' ',
   lang = 'en',
-  meta,
+  meta = [],
   richresult,
 }) => {
   const { favicon } = '';

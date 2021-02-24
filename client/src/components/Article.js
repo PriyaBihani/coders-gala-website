@@ -6,7 +6,7 @@ import ReactHtmlParser from 'react-html-parser';
 
 import Footer from '../layout/Footer/Footer';
 
-import { getSpeciality } from '../actions/speciality';
+import { getSpeciality } from '../actions';
 import { servicePost, Seo, scrollTo, isClient } from '../helpers';
 import { ChevronsUp, ChevronsLeft } from '../assets/icons';
 

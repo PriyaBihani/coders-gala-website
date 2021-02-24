@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import { AnimatePresence } from 'framer-motion';
 import Loadable from 'react-loadable';
 
-import { setAuthToken } from './helpers/setAuthToken';
+import { setAuthToken } from './helpers';
 import { loadUser } from './actions/auth';
 
 import 'bootstrap/dist/js/bootstrap.js';

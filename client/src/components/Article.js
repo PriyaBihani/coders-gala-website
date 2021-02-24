@@ -6,9 +6,8 @@ import ReactHtmlParser from 'react-html-parser';
 
 import Footer from '../layout/Footer/Footer';
 
-import { Seo } from '../helpers';
-import { servicePost } from '../helpers/api';
 import { getSpeciality } from '../actions/speciality';
+import { servicePost, Seo, scrollTo, isClient } from '../helpers';
 import { ChevronsUp, ChevronsLeft } from '../assets/icons';
 
 const ShareArticle = ({ Nid, url }, props) => {
@@ -77,9 +76,9 @@ const Article = (props) => {
   const [article, setArticle] = useState({});
 
   const Nid = id.replace(/-/g, ' ');
-  var url;
-  // Go to helper
-  if (typeof window !== 'undefined') {
+
+  let url;
+  if (isClient) {
     url = window.location.href;
   }
 
@@ -104,15 +103,6 @@ const Article = (props) => {
       setArticle(article);
     }
   }, []);
-
-  // Go to Helper
-  function scrollTo(element) {
-    window.scroll({
-      behavior: 'smooth',
-      left: 0,
-      top: element.offsetTop,
-    });
-  }
 
   const goToTop = () => {
     scrollTo(document.getElementById('nav'));

@@ -29,7 +29,6 @@ const Learn = ({ auth }) => {
             </div>
           ) : null}
         </div>
-
         <Footer />
       </div>
     </motion.div>

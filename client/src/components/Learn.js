@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { connect } from 'react-redux';
 
 import { Seo } from '../helpers';
-import { Button } from '../assets/icons';
+import { Button } from '../layout';
 import Card from '../sections/learn/Card';
 import Footer from '../layout/Footer/Footer';
 

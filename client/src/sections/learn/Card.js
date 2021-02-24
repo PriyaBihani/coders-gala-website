@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { NavLink, Link } from 'react-router-dom';
 import DeleteButton from '../../layout/Button/DeleteButton';
-import { Button } from '../../assets/icons';
+import { Button } from '../../layout';
 import { connect } from 'react-redux';
 import { serviceGet, servicePost } from '../../helpers/api';
 import {

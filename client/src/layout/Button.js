@@ -1,12 +1,13 @@
+import { Children } from 'react';
 import { Link } from 'react-router-dom';
 
-export const Button = ({ text, url, dark, bg }) => (
+export const Button = ({ children, url, dark, bg }) => (
   <Link to={url ? url : '/'}>
     <div
       className={`button ${dark && 'dark'}`}
       style={{ backgroundColor: `${bg && 'bg'}` }}
     >
-      <span>{text}</span>
+      <span>{children}</span>
       <svg>
         <polyline
           className="o1"

@@ -1,5 +1,5 @@
 import React from 'react';
-const Update = ({ size = 33, color = '#000000' }) => (
+export const Update = ({ size = 33, color = '#000000' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -15,4 +15,3 @@ const Update = ({ size = 33, color = '#000000' }) => (
     <polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon>
   </svg>
 );
-export default Update;

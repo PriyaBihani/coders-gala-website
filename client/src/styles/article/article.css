@@ -37,8 +37,6 @@ body.dark .full-view-article {
     bottom: 60px;
     right: 60px;
     z-index: 1000;
-    font-size: 2rem;
-    color: #241e4e;
     transition: all 0.2s linear;
 }
 

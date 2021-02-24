@@ -5,6 +5,7 @@ import Editor from '../editor/editor';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { addArticle, editArticle, getArticle } from '../actions/article';
+import { ChevronsUp } from '../assets/icons';
 
 const UpsertArticle = (props) => {
   const {
@@ -127,34 +128,26 @@ const UpsertArticle = (props) => {
                 </>
 
                 <div className="add-article-button">
-                  {props.edit ? (
-                    <button
-                      className="btn btn-outline-primary m-3"
-                      onClick={handleEdit}
-                    >
-                      Update
-                    </button>
-                  ) : (
-                    <button
-                      className="btn btn-outline-primary m-3"
-                      onClick={handleAdd}
-                    >
-                      Add
-                    </button>
-                  )}
+                  <Button
+                    className="btn btn-outline-primary m-3"
+                    onClick={props.edit ? handleEdit : handleAdd}
+                  >
+                    {props.edit ? 'Update' : 'Add'} Update
+                  </Button>
                 </div>
               </div>
             </form>
           </div>
         </div>
-        <a href="#">
+        <ChevronsUp size="30" onClick={goToTop} />
+        {/* <a href="#">
           <i
             onClick={goToTop}
             rel="nofollow"
             id="go-to-top"
             className=" top-icon fas fa-angle-double-up"
           ></i>
-        </a>
+        </a> */}
       </Col>
 
       <Col sm={1}></Col>

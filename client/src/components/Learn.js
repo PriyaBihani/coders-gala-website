@@ -23,7 +23,9 @@ const Learn = ({ auth }) => {
           <div className="clear-flex"></div>
           {isAdmin ? (
             <div className="text-center">
-              <Button text="Add Card" url="/addcard" dark={true} />
+              <Button url="/addcard" dark={true}>
+                Add Card
+              </Button>
             </div>
           ) : null}
         </div>

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
-import Editor from "../editor/editor";
-import { serviceGet } from "../helpers/api";
-import { connect } from "react-redux";
-import { addSpeciality, editSpeciality } from "../actions/speciality";
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Button } from '../layout';
+import { serviceGet } from '../helpers/api';
+import { addSpeciality, editSpeciality } from '../actions/speciality';
+import Editor from '../editor/editor';
 
 const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
   const [state, setState] = useState({});
@@ -49,7 +50,7 @@ const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
             required
             placeholder="Speciality Name"
             className="form-control"
-            defaultValue={edit ? data && data.Name : ""}
+            defaultValue={edit ? data && data.Name : ''}
             onChange={handleChange}
           />
           <br />
@@ -60,7 +61,7 @@ const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
             onChange={handleChange}
             placeholder="Image URL"
             className="form-control"
-            defaultValue={edit ? data && data.imageUrl : ""}
+            defaultValue={edit ? data && data.imageUrl : ''}
           />
           <br />
           {!edit && (
@@ -98,15 +99,14 @@ const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
           </div>
 
           <div className="add-article-button">
-            <button
+            <Button
               onClick={(e) => {
                 handleSubmit(e);
               }}
               type="submit"
-              className="btn btn-outline-primary m-3"
             >
-              {edit ? "Update" : "Add"}
-            </button>
+              {edit ? 'Update' : 'Add'}
+            </Button>
           </div>
         </div>
       </form>

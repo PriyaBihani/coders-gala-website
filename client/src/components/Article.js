@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Tooltip, OverlayTrigger } from 'react-bootstrap';
-import { Redirect, Link } from 'react-router-dom';
+import { Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
+
 import { Seo } from '../helpers';
+import { ChevronsUp } from '../assets/icons';
 import Footer from '../layout/Footer/Footer';
 import { servicePost } from '../helpers/api';
 import { getSpeciality } from '../actions/speciality';
@@ -27,22 +28,6 @@ const ShareArticle = ({ NId, url }, props) => {
           />
         </span>
         <ul>
-          <li>
-            {/* {copied ? (
-              <article className="copyto">Copied to </article>
-            ) : (
-              <article className="copyto">Copy to</article>
-            )} */}
-            {/* <CopyToClipboard text={value} onCopy={() => setCopied(true)}>
-              <img
-                alt={"copy link of " + NId}
-                style={{ width: "25px", marginLeft: "20px" }}
-                src="https://www.svgrepo.com/show/30388/clipboard.svg"
-                alt=""
-              />
-            </CopyToClipboard> */}
-          </li>
-
           <li>
             <a
               className="whatsapp-icon"
@@ -131,135 +116,47 @@ const Article = (props) => {
   }, []);
 
   return (
-    <div>
-      {Id === 'before-starting' ? (
-        <>
-          <div className="selected-article">
-            <div>
-              <Seo
-                title={`Before starting ${specialityId}`}
-                description={specialityId}
-                meta={[{ name: 'robots', content: 'index follow' }]}
-              />
-              <Row className="full-view-article p-2">
-                <Col sm={2}>
-                  {/* ads here
-                  <br />
-                  ads here
-                  <br />
-                  ads here
-                  <br />
-                  ads here
-                  <br />
-                  ads here
-                  <br />
-                  ads here
-                  <br /> */}
-                </Col>
+    <>
+      <div className="selected-article">
+        <div>
+          <Seo
+            title={`Before starting ${specialityId}`}
+            description={specialityId}
+            meta={[{ name: 'robots', content: 'index follow' }]}
+          />
+          <Row className="full-view-article p-2">
+            <Col sm={2}>{/* Adds Here */}</Col>
 
-                <Col id="top" style={{ padding: '0px' }} sm={8}>
-                  <div className="ql-snow">
-                    <div
-                      className="full-article ql-editor"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          props.specialities &&
-                          props.specialities.speciality &&
-                          props.specialities.speciality.ArticleContent,
-                      }}
-                    ></div>
-                  </div>
-                  <a rel="nofollow" href="#">
-                    <img
-                      onClick={goToTop}
-                      className="top-icon"
-                      id="go-to-top"
-                      style={{ width: '30px' }}
-                      src="https://www.svgrepo.com/show/247787/up-arrow-upload.svg"
-                      alt={'Go on Top of '}
-                    />
-                  </a>
-                </Col>
-
-                <Col className="full-page ad" sm={2}></Col>
-              </Row>
-            </div>
-          </div>
-          {/* <Link to={"/learn/" + specialityId}>
+            <Col id="top" style={{ padding: '0px' }} sm={8}>
+              <div className="ql-snow">
+                <div
+                  className="full-article ql-editor"
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      Id === 'before-starting'
+                        ? props.specialities?.speciality?.ArticleContent
+                        : article && article.ArticleContent,
+                  }}
+                ></div>
+              </div>
+              <div className="top-icon">
+                <ChevronsUp size="50" color="#dc143c" onClick={goToTop} />
+              </div>
+            </Col>
+            <Col className="full-page ad" sm={2}></Col>
+          </Row>
+        </div>
+      </div>
+      {/* <Link to={"/learn/" + specialityId}>
       <img
         className="back-btn"
         src="https://www.svgrepo.com/show/50213/back.svg"
         alt="back button"
       />
     </Link> */}
-          <ShareArticle NId={NId} url={url} />
-          <Footer />
-        </>
-      ) : (
-        <>
-          <div className="selected-article">
-            <div>
-              <Seo
-                title={article && article.ArticleName}
-                description={article && article.keywords}
-                meta={[{ name: 'robots', content: 'index follow' }]}
-              />
-              <Row
-                key={article && article._id}
-                className="full-view-article p-2"
-              >
-                <Col sm={2}>
-                  {/* ads here
-                  <br />
-                  ads here
-                  <br />
-                  ads here
-                  <br />
-                  ads here
-                  <br />
-                  ads here
-                  <br />
-                  ads here
-                  <br /> */}
-                </Col>
-
-                <Col id="top" style={{ padding: '0px' }} sm={8}>
-                  <div className="ql-snow">
-                    <div
-                      className="full-article ql-editor"
-                      dangerouslySetInnerHTML={{
-                        __html: article && article.ArticleContent,
-                      }}
-                    ></div>
-                  </div>
-                  <a rel="nofollow" href="#">
-                    <img
-                      onClick={goToTop}
-                      className="top-icon"
-                      id="go-to-top"
-                      style={{ width: '30px' }}
-                      src="https://www.svgrepo.com/show/247787/up-arrow-upload.svg"
-                      alt={'Go on Top of ' + article && article.ArticleName}
-                    />
-                  </a>
-                </Col>
-
-                <Col className="full-page ad" sm={2}></Col>
-              </Row>
-            </div>
-          </div>
-          {/* <Link to={"/learn/" + specialityId}>
-      <img
-        className="back-btn"
-        src="https://www.svgrepo.com/show/50213/back.svg"
-        alt="back button"
-      />
-    </Link> */}
-          <ShareArticle NId={NId} url={url} />
-          <Footer />
-        </>
-      )}
-    </div>
+      <ShareArticle NId={NId} url={url} />
+      <Footer />
+    </>
   );
 };
 

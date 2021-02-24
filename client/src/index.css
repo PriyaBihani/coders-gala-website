@@ -63,7 +63,7 @@
 
 /* LAYOUT */
 
-@import "./layout/Button/button.css";
+@import "./styles/button.css";
 @import "./layout/css/lightMode/footer.css";
 @import "./layout/css/lightMode/navbar.css";
 @import "./layout/css/darkMode/footerDark.css";

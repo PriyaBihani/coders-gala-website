@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
-import { NavLink, Link } from "react-router-dom";
-import DeleteButton from "../../layout/Button/DeleteButton";
-import SomeButton from "../../layout/Button/button";
-import { connect } from "react-redux";
-import { serviceGet, servicePost } from "../../helpers/api";
+import React, { useContext, useEffect, useState } from 'react';
+import { Row, Col } from 'react-bootstrap';
+import { NavLink, Link } from 'react-router-dom';
+import DeleteButton from '../../layout/Button/DeleteButton';
+import { Button } from '../../assets/icons';
+import { connect } from 'react-redux';
+import { serviceGet, servicePost } from '../../helpers/api';
 import {
   getSpecialities,
   deleteSpeciality,
   clearSpeciality,
-} from "../../actions/speciality";
+} from '../../actions/speciality';
 
 const Card = ({
   getSpecialities,
@@ -34,12 +34,12 @@ const Card = ({
     const confirm = window.prompt(
       `You sure want to delete "${item.Name}" ? Y or N (Deleting a speciality will lead to deletion of all topics and articles inside it) `
     );
-    if (confirm === "Y") {
+    if (confirm === 'Y') {
       deleteSpeciality(item._id);
     }
   };
 
-  console.log("data");
+  console.log('data');
 
   return (
     <div className="learn-container">
@@ -59,7 +59,7 @@ const Card = ({
                     </div>
                     <div
                       style={{
-                        height: window.innerWidth <= 600 ? "150px" : "auto",
+                        height: window.innerWidth <= 600 ? '150px' : 'auto',
                       }}
                       className="contentBx"
                     >
@@ -68,20 +68,20 @@ const Card = ({
                         <Row>
                           <Col>
                             <NavLink
-                              to={"/updatespeciality/" + item.Name}
+                              to={'/updatespeciality/' + item.Name}
                               rel="nofollow"
                             >
                               <img
                                 src="https://www.svgrepo.com/show/241804/edit.svg"
-                                style={{ width: "20px" }}
-                                alt={"edit" + item.Name}
+                                style={{ width: '20px' }}
+                                alt={'edit' + item.Name}
                               />
                             </NavLink>
                             <a
                               onClick={() => {
                                 handleDelete(item);
                               }}
-                              style={{ marginLeft: "10px" }}
+                              style={{ marginLeft: '10px' }}
                               href="#"
                             >
                               <svg className="svg-icon del" viewBox="0 0 20 20">
@@ -99,8 +99,8 @@ const Card = ({
                           </Col>
                         </Row>
                       ) : null}
-                      <Link to={"/learn/" + item.Name}>
-                        <SomeButton buttonText={"Start Now"} />
+                      <Link to={'/learn/' + item.Name}>
+                        <Button text={'Start Now'} />
                       </Link>
                     </div>
                   </div>

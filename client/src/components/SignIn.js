@@ -11,10 +11,10 @@ const SignIn = ({ login, token }) => {
   if (token) return <Redirect to="/learn" />;
 
   const handleSubmit = (e) => {
-    document.querySelector('.sign-in-section h1').classList.add('changed');
+    e.preventDefault();
+    document.querySelector('.section h1').classList.add('changed');
     console.log({ email, password });
     login({ email, password });
-    e.preventDefault();
   };
 
   const dinText = '<Coders Gala/>';

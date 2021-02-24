@@ -10,18 +10,20 @@ import SpecialityPreviewArticle from '../sections/preview/SpecialityPreviewArtic
 import PreviewArticle from '../sections/preview/PreviewArticle';
 
 import { Seo } from '../helpers';
-import { getSpeciality } from '../actions/speciality';
-import { getTopics, deleteTopic } from '../actions/topic';
-import { clearArticle } from '../actions/article';
-import { setOpenTopics } from '../actions/ui';
-
+import {
+  getSpeciality,
+  getTopics,
+  deleteTopic,
+  clearArticle,
+  setOpenTopics,
+} from '../actions';
 // import DisplayTopicNames from "../TopicNames/DisplayTopicNames";
 
 import Footer from '../layout/Footer/Footer';
 // import ShareIcon from "./shareIcon";
 // import Preloader from "../../Preloader/preloader";
 
-import { serviceGet, servicePost } from '../helpers/api';
+import { serviceGet, servicePost } from '../helpers';
 import AddTopicName from '../sections/learn/AddTopic';
 import EditTopic from '../sections/learn/EditTopic';
 

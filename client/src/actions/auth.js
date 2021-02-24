@@ -10,8 +10,7 @@ import {
 } from './types';
 
 import { toast } from 'react-toastify';
-import { setAuthToken } from '../helpers/setAuthToken';
-import { serviceGet, servicePost } from '../helpers/api';
+import { serviceGet, servicePost, setAuthToken } from '../helpers';
 
 // Load User : Every time we logged in or register or refresh the page its gonna load.
 

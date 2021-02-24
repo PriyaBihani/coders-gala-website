@@ -1,4 +1,4 @@
 export * from './Add';
 export * from './Delete';
 export * from './Update';
-export * from './ChevronsUp';
+export * from './Chevrons';

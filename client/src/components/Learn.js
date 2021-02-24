@@ -15,7 +15,7 @@ const Learn = ({ auth }) => {
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
     >
-      <Seo meta={[{ name: 'robots', content: 'index follow' }]} />
+      <Seo title="Learn" meta={[{ name: 'robots', content: 'index follow' }]} />
       <div>
         <div className="container learn-container">
           <div className="flex">

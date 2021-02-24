@@ -1,6 +1,12 @@
 import { Helmet } from 'react-helmet';
 
-export const Seo = ({ description, title, lang = 'en', meta, richresult }) => {
+export const Seo = ({
+  description,
+  title = '',
+  lang = 'en',
+  meta,
+  richresult,
+}) => {
   const { favicon } = '';
 
   const metaTitle = `CodersGala | ${title}`;

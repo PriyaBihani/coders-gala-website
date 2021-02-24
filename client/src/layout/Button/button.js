@@ -1,4 +1,3 @@
-import React from "react";
 const SomeButton = ({ buttonText }) => {
   return (
     <div className="button">

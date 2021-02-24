@@ -12,7 +12,7 @@ const Home = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Seo meta={[{ name: 'robots', content: 'index follow' }]} />
+      <Seo title="Home" meta={[{ name: 'robots', content: 'index follow' }]} />
       <div id="myDiv">
         {homeContent ? (
           <div className="home-container">

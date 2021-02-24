@@ -1,4 +1,3 @@
-import { Children } from 'react';
 import { Link } from 'react-router-dom';
 
 export const Button = ({ children, url, dark, bg }) => (

@@ -139,15 +139,9 @@ const UpsertArticle = (props) => {
             </form>
           </div>
         </div>
-        <ChevronsUp size="30" onClick={goToTop} />
-        {/* <a href="#">
-          <i
-            onClick={goToTop}
-            rel="nofollow"
-            id="go-to-top"
-            className=" top-icon fas fa-angle-double-up"
-          ></i>
-        </a> */}
+        <div className="top-icon">
+          <ChevronsUp size="50" color="#dc143c" onClick={goToTop} />
+        </div>
       </Col>
 
       <Col sm={1}></Col>

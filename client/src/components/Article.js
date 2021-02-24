@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import ReactHtmlParser from 'react-html-parser';
+
+import Footer from '../layout/Footer/Footer';
 
 import { Seo } from '../helpers';
-import { ChevronsUp } from '../assets/icons';
-import Footer from '../layout/Footer/Footer';
 import { servicePost } from '../helpers/api';
 import { getSpeciality } from '../actions/speciality';
+import { ChevronsUp, ChevronsLeft } from '../assets/icons';
 
-const ShareArticle = ({ NId, url }, props) => {
-  const value = 'https://codersgala.com/WebDevelopment/read/' + NId;
+const ShareArticle = ({ Nid, url }, props) => {
+  const value = 'https://codersgala.com/WebDevelopment/read/' + Nid;
 
   const [copied, setCopied] = useState(false);
 
@@ -32,14 +35,14 @@ const ShareArticle = ({ NId, url }, props) => {
             <a
               className="whatsapp-icon"
               rel="noopener noreferrer"
-              href={`https://api.whatsapp.com/send?text=Hey look i just found out this Amazing article on "${NId}",Check it out : ${url}`}
+              href={`https://api.whatsapp.com/send?text=Hey look i just found out this Amazing article on "${Nid}",Check it out : ${url}`}
               target="_blank"
             >
               Share on
               <img
                 style={{ width: '25px', marginLeft: '20px' }}
                 src="https://www.svgrepo.com/show/303150/whatsapp-symbol-logo.svg"
-                alt={'share ' + NId + ' on Whatsapp'}
+                alt={'share ' + Nid + ' on Whatsapp'}
               />
             </a>
           </li>
@@ -48,8 +51,8 @@ const ShareArticle = ({ NId, url }, props) => {
             <a
               className="mail-icon"
               href={`mailto:?Subject=${
-                'Article on ' + NId
-              }&Body=Hey look i just found out this Amazing article on "${NId}",Check it out : ${url}`}
+                'Article on ' + Nid
+              }&Body=Hey look i just found out this Amazing article on "${Nid}",Check it out : ${url}`}
               target="_top"
               rel="nofollow"
             >
@@ -58,7 +61,7 @@ const ShareArticle = ({ NId, url }, props) => {
                 style={{ width: '25px', marginLeft: '20px' }}
                 className="share-image"
                 src="https://www.svgrepo.com/show/303161/gmail-icon-logo.svg"
-                alt={'share ' + NId + ' on Gmail'}
+                alt={'share ' + Nid + ' on Gmail'}
               />
             </a>
           </li>
@@ -70,15 +73,39 @@ const ShareArticle = ({ NId, url }, props) => {
 
 const Article = (props) => {
   const { getSpeciality } = props;
-  const { specialityId, topicId, Id } = props.match.params;
+  const { specialityId, topicId, id } = props.match.params;
+  const [article, setArticle] = useState({});
 
-  useEffect(() => {
-    if (!props.specialities.speciality && Id == 'before-starting') {
+  const Nid = id.replace(/-/g, ' ');
+  var url;
+  // Go to helper
+  if (typeof window !== 'undefined') {
+    url = window.location.href;
+  }
+
+  const getArticle = async (Nid) => {
+    const res = await servicePost(
+      `api/article/get`,
+      {
+        articleName: Nid,
+      },
+      {
+        'Content-Type': 'application/json',
+      }
+    );
+    return res.data.article;
+  };
+
+  useEffect(async () => {
+    if (!props.specialities.speciality && id == 'before-starting') {
       getSpeciality(props.match.params.specialityId);
+    } else {
+      const article = await getArticle(Nid);
+      setArticle(article);
     }
   }, []);
 
-  const [article, setArticle] = useState({});
+  // Go to Helper
   function scrollTo(element) {
     window.scroll({
       behavior: 'smooth',
@@ -91,70 +118,40 @@ const Article = (props) => {
     scrollTo(document.getElementById('nav'));
   };
 
-  const NId = Id.replace(/-/g, ' ');
-  var url;
-  if (typeof window !== 'undefined') {
-    url = window.location.href;
-  }
-
-  const getArticle = async (NId) => {
-    const res = await servicePost(
-      `api/article/get`,
-      {
-        articleName: NId,
-      },
-      {
-        'Content-Type': 'application/json',
-      }
-    );
-    return res.data.article;
-  };
-
-  useEffect(async () => {
-    const article = await getArticle(NId);
-    setArticle(article);
-  }, []);
+  const html =
+    id === 'before-starting'
+      ? props.specialities?.speciality?.ArticleContent
+      : article && article.ArticleContent;
 
   return (
     <>
       <div className="selected-article">
-        <div>
-          <Seo
-            title={`Before starting ${specialityId}`}
-            description={specialityId}
-            meta={[{ name: 'robots', content: 'index follow' }]}
-          />
-          <Row className="full-view-article p-2">
-            <Col sm={2}>{/* Adds Here */}</Col>
+        <Seo
+          title={`Before starting ${specialityId}`}
+          description={specialityId}
+          meta={[{ name: 'robots', content: 'index follow' }]}
+        />
+        <Row className="full-view-article p-2">
+          <Col sm={2}>{/* Adds Here */}</Col>
 
-            <Col id="top" style={{ padding: '0px' }} sm={8}>
-              <div className="ql-snow">
-                <div
-                  className="full-article ql-editor"
-                  dangerouslySetInnerHTML={{
-                    __html:
-                      Id === 'before-starting'
-                        ? props.specialities?.speciality?.ArticleContent
-                        : article && article.ArticleContent,
-                  }}
-                ></div>
+          <Col id="top" style={{ padding: '0px' }} sm={8}>
+            <div className="ql-snow">
+              <div className="full-article ql-editor">
+                {ReactHtmlParser(html)}
               </div>
-              <div className="top-icon">
-                <ChevronsUp size="50" color="#dc143c" onClick={goToTop} />
-              </div>
-            </Col>
-            <Col className="full-page ad" sm={2}></Col>
-          </Row>
-        </div>
+            </div>
+            <div className="top-icon">
+              <ChevronsUp size="50" color="#dc143c" onClick={goToTop} />
+            </div>
+          </Col>
+
+          <Col sm={2}>{/* Adds Here */}</Col>
+        </Row>
       </div>
-      {/* <Link to={"/learn/" + specialityId}>
-      <img
-        className="back-btn"
-        src="https://www.svgrepo.com/show/50213/back.svg"
-        alt="back button"
-      />
-    </Link> */}
-      <ShareArticle NId={NId} url={url} />
+      <Link to={'/learn/' + specialityId} className="back-btn">
+        <ChevronsLeft size="50" color="#dc143c" />
+      </Link>
+      <ShareArticle Nid={Nid} url={url} />
       <Footer />
     </>
   );

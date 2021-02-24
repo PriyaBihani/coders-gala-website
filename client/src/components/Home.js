@@ -1,9 +1,8 @@
-import React from 'react';
+import { motion } from 'framer-motion';
+import { Seo } from '../helpers';
 import TopSection from '../sections/home/TopSection';
 import BottomSection from '../sections/home/BottomSection';
 import Preloader from '../layout/Preloader';
-import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet';
 
 const Home = () => {
   var homeContent = 'adsf';
@@ -13,15 +12,7 @@ const Home = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      {/* Key words in the description should be coordinated with the stuff written in home page */}
-      <Helmet>
-        <title>Coders Gala</title>
-        <meta
-          name="description"
-          content="Coders Gala is a free platform to learn webdevelopment for freelancing"
-        />
-        <meta name="robots" content="index follow" />
-      </Helmet>
+      <Seo title="Home" meta={[{ name: 'robots', content: 'index follow' }]} />
       <div id="myDiv">
         {homeContent ? (
           <div className="home-container">

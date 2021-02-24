@@ -1,5 +1,5 @@
 import React from 'react';
-const Delete = ({ size = 33, color = '#000000' }) => (
+export const Delete = ({ size = 33, color = '#000000' }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
@@ -17,4 +17,3 @@ const Delete = ({ size = 33, color = '#000000' }) => (
     <line x1="14" y1="11" x2="14" y2="17"></line>
   </svg>
 );
-export default Delete;

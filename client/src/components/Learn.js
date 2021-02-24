@@ -1,9 +1,8 @@
 import { motion } from 'framer-motion';
-import { Button } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { Seo } from '../helpers';
+import { Button } from '../layout';
 import Card from '../sections/learn/Card';
 import Footer from '../layout/Footer/Footer';
 
@@ -22,15 +21,13 @@ const Learn = ({ auth }) => {
             <Card />
           </div>
           <div className="clear-flex"></div>
-          <div className="mb-3 ml-3 mr-3">
-            {isAdmin ? (
-              <div className="text-center">
-                <NavLink to="/addcard">
-                  <Button>Add Card</Button>
-                </NavLink>
-              </div>
-            ) : null}
-          </div>
+          {isAdmin ? (
+            <div className="text-center">
+              <Button url="/addcard" dark={true}>
+                Add Card
+              </Button>
+            </div>
+          ) : null}
         </div>
 
         <Footer />

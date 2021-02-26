@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { connect } from "react-redux";
 import { editTopic } from "../../actions/topic";
 
-const EditTopic = ({
+const EditTopicModal = ({
   name,
   Locked,
   id,
@@ -89,4 +89,4 @@ const EditTopic = ({
   );
 };
 
-export default connect(null, { editTopic })(EditTopic);
+export default connect(null, { editTopic })(EditTopicModal);

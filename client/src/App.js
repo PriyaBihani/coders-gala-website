@@ -1,50 +1,50 @@
-import React, { useEffect } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import { AnimatePresence } from 'framer-motion';
-import Loadable from 'react-loadable';
+import React, { useEffect } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { AnimatePresence } from "framer-motion";
+import Loadable from "react-loadable";
 
-import { setAuthToken } from './helpers';
-import { loadUser } from './actions/auth';
+import { setAuthToken } from "./helpers";
+import { loadUser } from "./actions/auth";
 
-import 'bootstrap/dist/js/bootstrap.js';
+import "bootstrap/dist/js/bootstrap.js";
 
-import store from './store';
-import Loader from './layout/Preloader';
-import Navbar from './layout/Navbar/Navbar';
-import Article from './components/Article';
-import UpsertCard from './components/UpsertCard';
-import UpsertArticle from './components/UpsertArticle';
+import store from "./store";
+import Loader from "./layout/Preloader";
+import Navbar from "./layout/Navbar/Navbar";
+import Article from "./components/Article";
+import UpsertCard from "./components/UpsertCard";
+import UpsertArticle from "./components/UpsertArticle";
 
 const SignUp = Loadable({
-  loader: () => import('./components/SignUp'),
+  loader: () => import("./components/SignUp"),
   loading: () => <Loader />,
 });
 const SignIn = Loadable({
-  loader: () => import('./components/SignIn'),
+  loader: () => import("./components/SignIn"),
   loading: () => <Loader />,
 });
 
-const PreviewPage = Loadable({
-  loader: () => import('./components/PreviewPage'),
+const Preview = Loadable({
+  loader: () => import("./components/Preview"),
   loading: () => <Loader />,
 });
 
 const Home = Loadable({
-  loader: () => import('./components/Home'),
+  loader: () => import("./components/Home"),
   loading: () => <Loader />,
 });
 const About = Loadable({
-  loader: () => import('./components/About'),
+  loader: () => import("./components/About"),
   loading: () => <Loader />,
 });
 const Learn = Loadable({
-  loader: () => import('./components/Learn'),
+  loader: () => import("./components/Learn"),
   loading: () => <Loader />,
 });
 
 if (localStorage.token) {
-  console.log('-------->>>>>>>');
+  console.log("-------->>>>>>>");
   setAuthToken(localStorage.token);
 }
 
@@ -65,7 +65,7 @@ const App = () => {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signup/:referCode" component={SignUp} />
           <Route exact path="/login" component={SignIn} />
-          <Route exact path="/learn/:specialityName" component={PreviewPage} />
+          <Route exact path="/learn/:specialityName" component={Preview} />
           <Route exact path="/:specialityId/:topicId/:id" component={Article} />
           <Route
             render={(props) => <UpsertArticle {...props} edit={false} />}

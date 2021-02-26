@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '../layout';
-import { serviceGet } from '../helpers/api';
-import { addSpeciality, editSpeciality } from '../actions/speciality';
+import { serviceGet } from '../helpers';
+import { addSpeciality, editSpeciality } from '../actions';
 import Editor from '../editor/editor';
 
 const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {

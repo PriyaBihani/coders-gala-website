@@ -1,7 +1,7 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
-const TopSection = () => {
+const Hero = () => {
   return (
     <section className="floatingHero">
       <div className="floatingHero-container">
@@ -41,4 +41,4 @@ const TopSection = () => {
   );
 };
 
-export default TopSection;
+export default Hero;

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { Seo } from '../helpers';
 import { Button } from '../layout';
+import AdminButtons from '../layout/Buttons/AdminButtons';
 import Card from '../sections/learn/Card';
 import Footer from '../layout/Footer/Footer';
 
@@ -15,22 +16,13 @@ const Learn = ({ auth }) => {
       initial={{ opacity: 0 }}
     >
       <Seo title="Learn" meta={[{ name: 'robots', content: 'index follow' }]} />
-      <div>
-        <div className="container learn-container">
-          <div className="flex">
-            <Card />
-          </div>
-          <div className="clear-flex"></div>
-          {isAdmin ? (
-            <div className="text-center">
-              <Button url="/addcard" dark={true}>
-                Add Card
-              </Button>
-            </div>
-          ) : null}
+      <div className="container learn-container">
+        <AdminButtons type="Add" url="/addcard" data={{ Name: 'Add Card' }} />
+        <div className="flex">
+          <Card />
         </div>
-        <Footer />
       </div>
+      <Footer />
     </motion.div>
   );
 };

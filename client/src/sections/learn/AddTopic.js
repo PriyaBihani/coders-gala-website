@@ -1,11 +1,10 @@
 /* eslint-disable */
 import React, { useState } from 'react';
 import { Tooltip } from 'react-tippy';
-import { Spinner } from 'react-bootstrap';
-import { servicePost } from '../../helpers/api';
 import { connect } from 'react-redux';
-import { addTopic } from '../../actions/topic';
 import { toast } from 'react-toastify';
+import AdminButtons from '../../layout/Buttons/AdminButtons';
+import { addTopic } from '../../actions/topic';
 
 const AddTopicName = (props) => {
   const { addTopic } = props;
@@ -33,21 +32,21 @@ const AddTopicName = (props) => {
   return (
     <div className="container add-topic m-0 p-0 ">
       {' '}
-      <button
-        type="button"
-        data-toggle="modal"
-        className="add-topic-btn"
-        data-target="#exampleModal12"
-      >
-        <Tooltip
+      <div className="add-topic-btn">
+        <AdminButtons
+          type="Add"
+          data-target="#exampleModal12"
+          data={{ Name: 'Add topic' }}
+        />
+        {/* <Tooltip
           // options
           title={`Add Topic to "${props.specialityName}"`}
           position="bottom"
           trigger="mouseenter"
         >
           <i style={{ marginLeft: '20px' }} className="fa fa-plus"></i>
-        </Tooltip>
-      </button>
+        </Tooltip> */}
+      </div>
       <div
         className="modal fade"
         id="exampleModal12"

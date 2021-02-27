@@ -26,7 +26,7 @@ import Footer from '../layout/Footer/Footer';
 import { serviceGet, servicePost } from '../helpers';
 import AddTopicName from '../sections/learn/AddTopic';
 import EditTopicModal from '../sections/learn/EditTopicModal';
-import { AdminButtons } from '../layout';
+import AdminButtons from '../layout/Buttons/AdminButtons';
 
 const ActionButtons = ({ handleDelete, topic, setOpenTopics }) => {
   return (
@@ -37,11 +37,7 @@ const ActionButtons = ({ handleDelete, topic, setOpenTopics }) => {
         data={topic}
       />
       <AdminButtons type="Delete" handler={handleDelete} data={topic} />
-      <AdminButtons
-        type="Add"
-        data={topic}
-        link={`/article/add/${topic._id}`}
-      />
+      <AdminButtons type="Add" data={topic} url={`/article/add/${topic._id}`} />
 
       <Accordion.Toggle
         as={Button}

@@ -11,13 +11,13 @@ const TooltipWrapper = ({ title, position, children }) => {
   );
 };
 
-export const AdminButtons = ({
+const AdminButtons = ({
   type,
-  link,
+  url,
   handler,
   isAdmin,
   dataTarget = '',
-  data,
+  data = {},
 }) => {
   console.log('dhfk', isAdmin);
   return isAdmin ? (
@@ -27,7 +27,7 @@ export const AdminButtons = ({
     >
       <AdminButtonsWrapper
         type={type}
-        link={link}
+        url={url}
         handler={handler}
         dataTarget={dataTarget}
         data={data}
@@ -36,11 +36,11 @@ export const AdminButtons = ({
   ) : null;
 };
 
-const AdminButtonsWrapper = ({ type, link, handler, dataTarget, data }) => {
+const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
   switch (type) {
     case 'Add':
       return (
-        <Link to={link}>
+        <Link to={url}>
           <Add size="20" color="#A40E4C" />
         </Link>
       );
@@ -54,7 +54,7 @@ const AdminButtonsWrapper = ({ type, link, handler, dataTarget, data }) => {
           <Update size="20" color="#A40E4C" />
         </a>
       ) : (
-        <Link to={link}>
+        <Link to={url}>
           <Update size="20" color="#ffbf00" />
         </Link>
       );

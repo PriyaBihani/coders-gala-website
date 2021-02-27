@@ -1,15 +1,14 @@
 /* eslint-disable */
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
 import { Tooltip } from 'react-tippy';
-import { deleteArticle } from '../../actions/article';
 import { connect } from 'react-redux';
-import { AdminButtons } from '../../layout';
+import { scrollTo } from '../../helpers';
+import { deleteArticle } from '../../actions/article';
+import AdminButtons from '../../layout/Buttons/AdminButtons';
 
 const Article = ({
   readArticle,
   article,
-  item,
   isAdmin,
   displayMode,
   deleteArticle,
@@ -33,14 +32,6 @@ const Article = ({
     }
   };
 
-  function scrollTo(element) {
-    window.scroll({
-      behavior: 'smooth',
-      left: 0,
-      top: '0px',
-    });
-  }
-
   return (
     <div className="row read-icon">
       <div className=" read col-10">
@@ -63,7 +54,7 @@ const Article = ({
                   <>
                     <AdminButtons
                       type="Edit"
-                      link={`/article/update/${article._id}`}
+                      url={`/article/update/${article._id}`}
                       data={article}
                       dataTarget=""
                     />

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Button, AdminButtons } from '../../layout';
 import { connect } from 'react-redux';
+import { Button } from '../../layout';
+import AdminButtons from '../../layout/Buttons/AdminButtons';
 import { getSpecialities, deleteSpeciality } from '../../actions';
 
 const Card = ({ getSpecialities, specialities, deleteSpeciality }) => {
@@ -47,12 +48,14 @@ const Card = ({ getSpecialities, specialities, deleteSpeciality }) => {
                       <AdminButtons
                         type="Edit"
                         url={'/updatespeciality/' + item.Name}
+                        data={item}
                       />
                       <AdminButtons
                         type="Delete"
                         handler={() => {
                           handleDelete(item);
                         }}
+                        data={item}
                       />
                       <Button url={'/learn/' + item.Name}>Start Now</Button>
                     </div>

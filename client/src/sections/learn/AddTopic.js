@@ -1,15 +1,15 @@
 /* eslint-disable */
-import React, { useState } from 'react';
-import { Tooltip } from 'react-tippy';
-import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
-import AdminButtons from '../../layout/Buttons/AdminButtons';
-import { addTopic } from '../../actions/topic';
+import React, { useState } from "react";
+import { Tooltip } from "react-tippy";
+import { connect } from "react-redux";
+import { toast } from "react-toastify";
+import AdminButtons from "../../layout/Buttons/AdminButtons";
+import { addTopic } from "../../actions/topic";
 
 const AddTopicName = (props) => {
   const { addTopic } = props;
   const [locked, setLocked] = useState(true);
-  const [Name, setName] = useState('');
+  const [Name, setName] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,28 +25,18 @@ const AddTopicName = (props) => {
       { locked, Name, SpecialityId: props.speciality._id },
       props.specialityName
     );
-    toast('Topic Added successfully');
+    toast("Topic Added successfully");
     console.log(props.specialityName);
   };
 
   return (
     <div className="container add-topic m-0 p-0 ">
-      {' '}
-      <div className="add-topic-btn">
-        <AdminButtons
-          type="Add"
-          data-target="#exampleModal12"
-          data={{ Name: 'Add topic' }}
-        />
-        {/* <Tooltip
-          // options
-          title={`Add Topic to "${props.specialityName}"`}
-          position="bottom"
-          trigger="mouseenter"
-        >
-          <i style={{ marginLeft: '20px' }} className="fa fa-plus"></i>
-        </Tooltip> */}
-      </div>
+      {" "}
+      <AdminButtons
+        type="Add"
+        dataTarget={"#exampleModal12"}
+        data={{ Name: "Add topic" }}
+      />
       <div
         className="modal fade"
         id="exampleModal12"
@@ -88,8 +78,8 @@ const AddTopicName = (props) => {
                     <span
                       onClick={() => {
                         document
-                          .querySelector('.add-topic-modal .lock')
-                          .classList.toggle('unlocked');
+                          .querySelector(".add-topic-modal .lock")
+                          .classList.toggle("unlocked");
                         setLocked(!locked);
                       }}
                       className="lock"

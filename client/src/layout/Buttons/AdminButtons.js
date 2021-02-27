@@ -1,7 +1,7 @@
-import { Tooltip } from 'react-tippy';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Delete, Update, Add } from '../../assets/icons';
+import { Tooltip } from "react-tippy";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Delete, Update, Add } from "../../assets/icons";
 
 const TooltipWrapper = ({ title, position, children }) => {
   return (
@@ -16,14 +16,13 @@ const AdminButtons = ({
   url,
   handler,
   isAdmin,
-  dataTarget = '',
+  dataTarget = "",
   data = {},
 }) => {
-  console.log('dhfk', isAdmin);
   return isAdmin ? (
     <TooltipWrapper
       title={`${type} "${data.Name ? data.Name : data.ArticleName}"`}
-      position={'top'}
+      position={"top"}
     >
       <AdminButtonsWrapper
         type={type}
@@ -36,16 +35,28 @@ const AdminButtons = ({
   ) : null;
 };
 
-const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
+const AdminButtonsWrapper = ({ type, dataTarget, url, handler, data }) => {
   switch (type) {
-    case 'Add':
-      return (
+    case "Add":
+      console.log(dataTarget == "");
+      console.log(dataTarget);
+
+      return dataTarget == "" ? (
         <Link to={url}>
           <Add size="20" color="#A40E4C" />
         </Link>
+      ) : (
+        <button
+          type="button"
+          data-toggle="modal"
+          className="add-topic-btn"
+          data-target={dataTarget}
+        >
+          <Add size="20" color="#A40E4C" />
+        </button>
       );
-    case 'Edit':
-      return dataTarget != '' ? (
+    case "Edit":
+      return dataTarget != "" ? (
         <a
           className="edit-topic-modal-toggle"
           data-toggle="modal"
@@ -58,7 +69,7 @@ const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
           <Update size="20" color="#ffbf00" />
         </Link>
       );
-    case 'Delete':
+    case "Delete":
       return (
         <a className="edit-topic-modal-toggle">
           <Delete

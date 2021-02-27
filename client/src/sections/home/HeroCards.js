@@ -63,7 +63,7 @@ const HeroCards = () => {
   return (
     <section className="hero">
       <div className="hero-box-container">
-        <Link to="/about">
+        <Link to="/about" className="hero-box">
           <span
             ref={heroBlue}
             className="hero-box__circle hero-box__circle--blue"
@@ -76,7 +76,7 @@ const HeroCards = () => {
             guide you. Anyway, if you are eager to learn you will find a way.
           </p>
         </Link>
-        <Link to="/about/#aboutus">
+        <Link to="/about/#aboutus" className="hero-box">
           <span
             ref={heroGreen}
             className="hero-box__circle hero-box__circle--green"
@@ -89,7 +89,7 @@ const HeroCards = () => {
             provided to us.
           </p>
         </Link>
-        <Link to="/learn">
+        <Link to="/learn" className="hero-box">
           <span
             ref={heroOrange}
             className="hero-box__circle hero-box__circle--orange"

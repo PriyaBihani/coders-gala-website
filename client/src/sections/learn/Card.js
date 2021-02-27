@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import DeleteButton from '../../layout/Button/DeleteButton';
 import { Button } from '../../layout';
 import { Delete, Update } from '../../assets/icons';
 import { connect } from 'react-redux';

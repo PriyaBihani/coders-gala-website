@@ -1,115 +1,73 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Tooltip } from "react-tippy";
-import { Delete, Update } from "../../assets/icons";
+import { Tooltip } from 'react-tippy';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Delete, Update, Add } from '../../assets/icons';
 
-const TooltipWrapper = (props) => {
+const TooltipWrapper = ({ title, position, children }) => {
   return (
-    <Tooltip title={props.title} position={props.position} trigger="mouseenter">
-      {props.render()}
+    <Tooltip title={title} position={position} trigger="mouseenter">
+      {children}
     </Tooltip>
   );
 };
 
-const ButtonRenderer = ({ type, link, handler, isAdmin, dataTarget, data }) => {
-  if (type == "Edit") {
-    if (dataTarget != "") {
-      return (
-        <TooltipWrapper
-          title={`${type} "${data.Name ? data.Name : data.ArticleName}"`}
-          position={"top"}
-          render={() => {
-            return (
-              <>
-                {" "}
-                {isAdmin ? (
-                  <a
-                    className="edit-topic-modal-toggle"
-                    data-toggle="modal"
-                    data-target={dataTarget}
-                  >
-                    <Update size="20" color="#A40E4C" />
-                  </a>
-                ) : null}
-              </>
-            );
-          }}
-        />
-      );
-    } else {
-      return (
-        <TooltipWrapper
-          title={`${type} "${data.Name ? data.Name : data.ArticleName}"`}
-          position={"top"}
-          render={() => {
-            return (
-              <>
-                {" "}
-                {isAdmin ? (
-                  <Link to={link}>
-                    <Update size="20" color="#ffbf00" />
-                  </Link>
-                ) : null}
-              </>
-            );
-          }}
-        />
-      );
-    }
-  }
-  if (type == "Delete") {
-    return (
-      <TooltipWrapper
-        title={`${type} "${data.Name ? data.Name : data.ArticleName}"`}
-        position={"top"}
-        render={() => {
-          return (
-            <>
-              {" "}
-              {isAdmin ? (
-                <a className="edit-topic-modal-toggle">
-                  <Delete
-                    onClick={() => {
-                      handler(data);
-                    }}
-                    size="20"
-                    color="crimson"
-                  />
-                </a>
-              ) : null}
-            </>
-          );
-        }}
+const ButtonRenderer = ({ type, link, handler, isAdmin, dataTarget, data }) =>
+  isAdmin ? (
+    <TooltipWrapper
+      title={`${type} "${data.Name ? data.Name : data.ArticleName}"`}
+      position={'top'}
+    >
+      <ButtonRendererWrapper
+        type={type}
+        link={link}
+        handler={handler}
+        dataTarget={dataTarget}
+        data={data}
       />
-    );
-  }
-  if (type == "Add") {
-    if (dataTarget != "") {
-    } else {
+    </TooltipWrapper>
+  ) : null;
+
+const ButtonRendererWrapper = ({ type, link, handler, dataTarget, data }) => {
+  switch (type) {
+    case 'Add':
       return (
-        <TooltipWrapper
-          title={`${type} "${data.Name}"`}
-          position={"top"}
-          render={() => {
-            return (
-              <>
-                {" "}
-                {isAdmin ? (
-                  <Link to={link}>
-                    <img
-                      className="add-article-btn"
-                      src="https://www.svgrepo.com/show/56237/add.svg"
-                      alt=""
-                    />
-                  </Link>
-                ) : null}
-              </>
-            );
-          }}
-        />
+        <Link to={link}>
+          <Add size="20" color="#A40E4C" />
+        </Link>
       );
-    }
+    case 'Edit':
+      return dataTarget != '' ? (
+        <a
+          className="edit-topic-modal-toggle"
+          data-toggle="modal"
+          data-target={dataTarget}
+        >
+          <Update size="20" color="#A40E4C" />
+        </a>
+      ) : (
+        <Link to={link}>
+          <Update size="20" color="#ffbf00" />
+        </Link>
+      );
+    case 'Delete':
+      return (
+        <a className="edit-topic-modal-toggle">
+          <Delete
+            onClick={() => {
+              handler(data);
+            }}
+            size="20"
+            color="crimson"
+          />
+        </a>
+      );
+    default:
+      return null;
   }
 };
 
-export default ButtonRenderer;
+const mapStateToProps = (state) => ({
+  isAdmin: state.auth.isAdmin,
+});
+
+export default connect(mapStateToProps, null)(ButtonRenderer);

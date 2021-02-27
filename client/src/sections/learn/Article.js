@@ -1,10 +1,10 @@
 /* eslint-disable */
-import React from "react";
-import { NavLink, Link } from "react-router-dom";
-import { Tooltip } from "react-tippy";
-import { deleteArticle } from "../../actions/article";
-import { connect } from "react-redux";
-import ButtonRenderer from "../../layout/Button/ButtonRenderer";
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { Tooltip } from 'react-tippy';
+import { deleteArticle } from '../../actions/article';
+import { connect } from 'react-redux';
+import { AdminButtons } from '../../layout';
 
 const Article = ({
   readArticle,
@@ -17,10 +17,10 @@ const Article = ({
   specialities,
 }) => {
   var readIconUrl;
-  if (displayMode === "light") {
-    readIconUrl = "https://www.svgrepo.com/show/21266/open-book.svg";
+  if (displayMode === 'light') {
+    readIconUrl = 'https://www.svgrepo.com/show/21266/open-book.svg';
   } else {
-    readIconUrl = "https://www.svgrepo.com/show/1110/reader.svg";
+    readIconUrl = 'https://www.svgrepo.com/show/1110/reader.svg';
   }
 
   const handleDelete = (data) => {
@@ -28,16 +28,16 @@ const Article = ({
     const confirm = window.prompt(
       `You sure want to delete "${ArticleName}" ? Y or N `
     );
-    if (confirm === "Y") {
+    if (confirm === 'Y') {
       deleteArticle(_id, topic._id, specialities.speciality.Name);
     }
   };
 
   function scrollTo(element) {
     window.scroll({
-      behavior: "smooth",
+      behavior: 'smooth',
       left: 0,
-      top: "0px",
+      top: '0px',
     });
   }
 
@@ -49,7 +49,7 @@ const Article = ({
             type="button"
             onClick={() => {
               readArticle(article);
-              const pos = document.querySelector(".card-container");
+              const pos = document.querySelector('.card-container');
               if (window.innerWidth <= 500) {
                 scrollTo(pos);
               }
@@ -57,19 +57,17 @@ const Article = ({
             className="display-article"
           >
             <li className="article-name m-0">
-              {article.ArticleName}{" "}
+              {article.ArticleName}{' '}
               <span className="article-action-icons">
                 {isAdmin ? (
                   <>
-                    <ButtonRenderer
-                      isAdmin={isAdmin}
+                    <AdminButtons
                       type="Edit"
                       link={`/article/update/${article._id}`}
                       data={article}
                       dataTarget=""
                     />
-                    <ButtonRenderer
-                      isAdmin={isAdmin}
+                    <AdminButtons
                       type="Delete"
                       handler={handleDelete}
                       data={article}
@@ -86,7 +84,7 @@ const Article = ({
                     type="button"
                     onClick={() => {
                       readArticle(article);
-                      const pos = document.querySelector(".card-container");
+                      const pos = document.querySelector('.card-container');
                       if (window.innerWidth <= 500) {
                         scrollTo(pos);
                       }
@@ -95,8 +93,8 @@ const Article = ({
                     <span>
                       <img
                         src={readIconUrl}
-                        style={{ width: "20px" }}
-                        alt={"read " + article.ArticleName}
+                        style={{ width: '20px' }}
+                        alt={'read ' + article.ArticleName}
                       />
                     </span>
                   </a>

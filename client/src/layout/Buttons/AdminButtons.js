@@ -11,13 +11,21 @@ const TooltipWrapper = ({ title, position, children }) => {
   );
 };
 
-const ButtonRenderer = ({ type, link, handler, isAdmin, dataTarget, data }) =>
-  isAdmin ? (
+export const AdminButtons = ({
+  type,
+  link,
+  handler,
+  isAdmin,
+  dataTarget = '',
+  data,
+}) => {
+  console.log('dhfk', isAdmin);
+  return isAdmin ? (
     <TooltipWrapper
       title={`${type} "${data.Name ? data.Name : data.ArticleName}"`}
       position={'top'}
     >
-      <ButtonRendererWrapper
+      <AdminButtonsWrapper
         type={type}
         link={link}
         handler={handler}
@@ -26,8 +34,9 @@ const ButtonRenderer = ({ type, link, handler, isAdmin, dataTarget, data }) =>
       />
     </TooltipWrapper>
   ) : null;
+};
 
-const ButtonRendererWrapper = ({ type, link, handler, dataTarget, data }) => {
+const AdminButtonsWrapper = ({ type, link, handler, dataTarget, data }) => {
   switch (type) {
     case 'Add':
       return (
@@ -70,4 +79,4 @@ const mapStateToProps = (state) => ({
   isAdmin: state.auth.isAdmin,
 });
 
-export default connect(mapStateToProps, null)(ButtonRenderer);
+export default connect(mapStateToProps, null)(AdminButtons);

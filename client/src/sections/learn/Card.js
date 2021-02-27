@@ -1,27 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { Button } from '../../layout';
-import { Delete, Update } from '../../assets/icons';
+import React, { useEffect } from 'react';
+import { Button, AdminButtons } from '../../layout';
 import { connect } from 'react-redux';
-import { serviceGet, servicePost } from '../../helpers/api';
-import {
-  getSpecialities,
-  deleteSpeciality,
-  clearSpeciality,
-} from '../../actions/speciality';
+import { getSpecialities, deleteSpeciality } from '../../actions';
 
-const Card = ({
-  getSpecialities,
-  specialities,
-  deleteSpeciality,
-  isAdmin,
-  clearSpeciality,
-}) => {
-  console.log(isAdmin);
-
-  const [learningCards, setLearningCards] = useState([{}]);
-
+const Card = ({ getSpecialities, specialities, deleteSpeciality }) => {
   useEffect(async () => {
     console.log(specialities);
     if (specialities.length == 0) {
@@ -30,6 +12,7 @@ const Card = ({
   }, []);
 
   const handleDelete = (item) => {
+    // Got to helper, check
     const confirm = window.prompt(
       `You sure want to delete "${item.Name}" ? Y or N (Deleting a speciality will lead to deletion of all topics and articles inside it) `
     );
@@ -37,8 +20,6 @@ const Card = ({
       deleteSpeciality(item._id);
     }
   };
-
-  console.log('data');
 
   return (
     <div className="learn-container">
@@ -63,20 +44,16 @@ const Card = ({
                       className="contentBx"
                     >
                       <h2> {item.Name}</h2>
-                      {isAdmin ? (
-                        <>
-                          <Link to={'/updatespeciality/' + item.Name}>
-                            <Update size="20" color="#A40E4C" />
-                          </Link>
-                          <Delete
-                            onClick={() => {
-                              handleDelete(item);
-                            }}
-                            size="20"
-                            color="#A40E4C"
-                          />
-                        </>
-                      ) : null}
+                      <AdminButtons
+                        type="Edit"
+                        url={'/updatespeciality/' + item.Name}
+                      />
+                      <AdminButtons
+                        type="Delete"
+                        handler={() => {
+                          handleDelete(item);
+                        }}
+                      />
                       <Button url={'/learn/' + item.Name}>Start Now</Button>
                     </div>
                   </div>
@@ -91,11 +68,9 @@ const Card = ({
 
 const mapStateToProps = (state) => ({
   specialities: state.speciality.specialities,
-  isAdmin: state.auth.isAdmin,
 });
 
 export default connect(mapStateToProps, {
   getSpecialities,
   deleteSpeciality,
-  clearSpeciality,
 })(Card);

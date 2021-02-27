@@ -38,9 +38,6 @@ const AdminButtons = ({
 const AdminButtonsWrapper = ({ type, dataTarget, url, handler, data }) => {
   switch (type) {
     case "Add":
-      console.log(dataTarget == "");
-      console.log(dataTarget);
-
       return dataTarget == "" ? (
         <Link to={url}>
           <Add size="20" color="#A40E4C" />

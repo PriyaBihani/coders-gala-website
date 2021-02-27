@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 export const Button = ({ children, url, dark, bg }) => (
-  <Link to={url ? url : '/'}>
+  <Link to={url ? url : "/"}>
     <div
-      className={`button ${dark && 'dark'}`}
-      style={{ backgroundColor: `${bg && 'bg'}` }}
+      className={`button ${dark && "dark"}`}
+      style={{ backgroundColor: `${bg && "bg"}` }}
     >
       <span>{children}</span>
       <svg>

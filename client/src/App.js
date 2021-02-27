@@ -66,7 +66,6 @@ const App = () => {
           <Route exact path="/signup/:referCode" component={SignUp} />
           <Route exact path="/login" component={SignIn} />
           <Route exact path="/learn/:specialityName" component={Preview} />
-          <Route exact path="/:specialityId/:topicId/:id" component={Article} />
           <Route
             render={(props) => <UpsertArticle {...props} edit={false} />}
             exact
@@ -77,6 +76,7 @@ const App = () => {
             exact
             path="/article/update/:articleId"
           />
+          <Route exact path="/:specialityId/:topicId/:id" component={Article} />
           <Route
             render={(props) => <UpsertCard {...props} edit={false} />}
             exact

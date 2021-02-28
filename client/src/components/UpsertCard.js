@@ -5,13 +5,7 @@ import { serviceGet } from "../helpers";
 import { addSpeciality, editSpeciality } from "../actions";
 import Editor from "../editor/editor";
 
-const UpsertCard = ({
-  addSpeciality,
-  editSpeciality,
-  edit,
-  match,
-  handler,
-}) => {
+const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
   const [state, setState] = useState({});
   const [data, setData] = useState({});
 
@@ -105,7 +99,12 @@ const UpsertCard = ({
           </div>
 
           <div className="add-article-button">
-            <Button onClick={handler()} type="submit">
+            <Button
+              onClick={(e) => {
+                handleSubmit(e);
+              }}
+              type="submit"
+            >
               {edit ? "Update" : "Add"}
             </Button>
           </div>

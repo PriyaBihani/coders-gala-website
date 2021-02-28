@@ -19,6 +19,7 @@ const AdminButtons = ({
   dataTarget = "",
   data = {},
 }) => {
+  console.log("dhfk", isAdmin);
   return isAdmin ? (
     <TooltipWrapper
       title={`${type} "${data.Name ? data.Name : data.ArticleName}"`}
@@ -38,7 +39,16 @@ const AdminButtons = ({
 const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
   switch (type) {
     case "Add":
-      return (
+      return dataTarget.length > 0 ? (
+        <button
+          type="button"
+          data-toggle="modal"
+          className="add-topic-btn"
+          data-target="#exampleModal12"
+        >
+          <Add size="20" color="#A40E4C" />
+        </button>
+      ) : (
         <Link to={url}>
           <Add size="20" color="#A40E4C" />
         </Link>
@@ -59,14 +69,13 @@ const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
       );
     case "Delete":
       return (
-        <a className="edit-topic-modal-toggle">
-          <Delete
-            onClick={() => {
-              handler(data);
-            }}
-            size="20"
-            color="crimson"
-          />
+        <a
+          onClick={() => {
+            handler(data);
+          }}
+          className="edit-topic-modal-toggle"
+        >
+          <Delete size="20" color="crimson" />
         </a>
       );
     default:

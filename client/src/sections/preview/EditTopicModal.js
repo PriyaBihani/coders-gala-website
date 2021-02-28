@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { servicePost } from "../../helpers/api";
 import { toast } from "react-toastify";
 import { connect } from "react-redux";
 import { editTopic } from "../../actions/topic";

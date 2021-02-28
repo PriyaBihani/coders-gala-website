@@ -15,15 +15,7 @@ import Navbar from "./layout/Navbar/Navbar";
 import Article from "./components/Article";
 import UpsertCard from "./components/UpsertCard";
 import UpsertArticle from "./components/UpsertArticle";
-
-const SignUp = Loadable({
-  loader: () => import("./components/SignUp"),
-  loading: () => <Loader />,
-});
-const SignIn = Loadable({
-  loader: () => import("./components/SignIn"),
-  loading: () => <Loader />,
-});
+import Auth from "./components/Auth";
 
 const Preview = Loadable({
   loader: () => import("./components/Preview"),
@@ -44,7 +36,6 @@ const Learn = Loadable({
 });
 
 if (localStorage.token) {
-  console.log("-------->>>>>>>");
   setAuthToken(localStorage.token);
 }
 
@@ -62,9 +53,24 @@ const App = () => {
           <Route exact path="/home" component={Home} />
           <Route exact path="/about" component={About} />
           <Route exact path="/learn" component={Learn} />
-          <Route exact path="/signup" component={SignUp} />
+          {/* <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signup/:referCode" component={SignUp} />
-          <Route exact path="/login" component={SignIn} />
+          <Route exact path="/login" component={SignIn} /> */}
+          <Route
+            render={(props) => <Auth {...props} type={"signup"} />}
+            exact
+            path="/signup"
+          />
+          <Route
+            render={(props) => <Auth {...props} type={"signup"} />}
+            exact
+            path="/signup/:referCode"
+          />
+          <Route
+            render={(props) => <Auth {...props} type={"login"} />}
+            exact
+            path="/login"
+          />
           <Route exact path="/learn/:specialityName" component={Preview} />
           <Route
             render={(props) => <UpsertArticle {...props} edit={false} />}

@@ -135,3 +135,18 @@ footer .logo {
         font-size: 2rem;
     }
 }
+
+
+/* footer */
+
+body.dark footer {
+    background-color: #00171f;
+}
+
+body.dark .rights-text {
+    color: #d3d4d9;
+}
+
+body.dark .newsletter-form .btn {
+    background-color: #6610f2;
+}

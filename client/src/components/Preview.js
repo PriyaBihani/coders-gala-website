@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Accordion, Row, Col, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { Tooltip } from "react-tippy";
 import { toast } from "react-toastify";
 
 import Article from "../sections/learn/Article";
@@ -20,11 +18,9 @@ import {
 // import DisplayTopicNames from "../TopicNames/DisplayTopicNames";
 
 import Footer from "../layout/Footer/Footer";
-// import ShareIcon from "./shareIcon";
-// import Preloader from "../../Preloader/preloader";
 
 import AddTopicName from "../sections/learn/AddTopic";
-import EditTopicModal from "../sections/learn/EditTopicModal";
+import EditTopicModal from "../sections/preview/EditTopicModal";
 import AdminButtons from "../layout/Buttons/AdminButtons";
 
 const ActionButtons = ({ handleDelete, topic, setOpenTopics }) => {

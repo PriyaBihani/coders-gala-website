@@ -15,7 +15,7 @@ const SpecialityPreviewArticle = ({ item, requiredSpeciality }) => {
           key={item && item.id}
           className="card-no-body ql-editor"
           dangerouslySetInnerHTML={{
-            __html: item && item.ArticleContent.slice(0, 1000),
+            __html: item && item.ArticleContent,
           }}
         ></div>
         <div>

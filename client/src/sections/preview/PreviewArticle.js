@@ -19,7 +19,7 @@ const PreviewArticle = ({ SelectedArticle, specialityName }) => {
             <div
               className="card-no-body ql-editor"
               dangerouslySetInnerHTML={{
-                __html: SelectedArticle.ArticleContent.slice(0, 2000),
+                __html: SelectedArticle.ArticleContent,
               }}
             ></div>
           </div>

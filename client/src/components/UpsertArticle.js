@@ -60,6 +60,7 @@ const UpsertArticle = (props) => {
 
   const handleAdd = async (e) => {
     e.preventDefault();
+    // console.log({ ArticleContent, ArticleName, keywords });
     addArticle(
       { ArticleContent, ArticleName, keywords },
       topicId,
@@ -131,12 +132,12 @@ const UpsertArticle = (props) => {
 
                 <div className="add-article-button">
                   <Button
-                    onClick={(e) => {
-                      e.preventDefault();
+                    isButton={true}
+                    handler={(e) => {
                       props.edit ? handleEdit(e) : handleAdd(e);
                     }}
                   >
-                    {props.edit ? "Update" : "Add"} Update
+                    {props.edit ? "Update" : "Add"}
                   </Button>
                 </div>
               </div>

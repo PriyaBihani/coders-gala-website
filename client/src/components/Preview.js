@@ -19,7 +19,7 @@ import {
 
 import Footer from "../layout/Footer/Footer";
 
-import AddTopicName from "../sections/learn/AddTopic";
+import AddTopicName from "../sections/preview/AddTopic";
 import EditTopicModal from "../sections/preview/EditTopicModal";
 import AdminButtons from "../layout/Buttons/AdminButtons";
 

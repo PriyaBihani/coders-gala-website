@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Accordion, Row, Col, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Tooltip } from 'react-tippy';
 import { toast } from 'react-toastify';
 
 import Article from '../sections/learn/Article';
 import SpecialityPreviewArticle from '../sections/preview/SpecialityPreviewArticle';
 import PreviewArticle from '../sections/preview/PreviewArticle';
 
-import { Seo } from '../helpers';
+import { Seo, scrollTo } from '../helpers';
 import {
   getSpeciality,
   getTopics,
@@ -17,13 +15,9 @@ import {
   clearArticle,
   setOpenTopics,
 } from '../actions';
-// import DisplayTopicNames from "../TopicNames/DisplayTopicNames";
 
 import Footer from '../layout/Footer/Footer';
-// import ShareIcon from "./shareIcon";
-// import Preloader from "../../Preloader/preloader";
 
-import { serviceGet, servicePost } from '../helpers';
 import AddTopicName from '../sections/learn/AddTopic';
 import EditTopicModal from '../sections/learn/EditTopicModal';
 import AdminButtons from '../layout/Buttons/AdminButtons';
@@ -84,14 +78,6 @@ const Preview = (props) => {
 
     props.getTopics(requiredSpeciality);
   }, []);
-
-  function scrollTo(element) {
-    window.scroll({
-      behavior: 'smooth',
-      left: 0,
-      top: '0px',
-    });
-  }
 
   const readArticle = (article) => {
     displayArticle(article);

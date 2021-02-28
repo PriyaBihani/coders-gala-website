@@ -36,7 +36,7 @@ const AddTopicName = (props) => {
         <AdminButtons
           type="Add"
           data-target="#exampleModal12"
-          data={{ Name: 'Add topic' }}
+          data={{ Name: 'Add Topic' }}
         />
         {/* <Tooltip
           // options

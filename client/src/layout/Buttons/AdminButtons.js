@@ -18,9 +18,8 @@ const AdminButtons = ({
   isAdmin,
   dataTarget = '',
   data = {},
-}) => {
-  console.log('dhfk', isAdmin);
-  return isAdmin ? (
+}) =>
+  isAdmin ? (
     <TooltipWrapper
       title={`${type} "${data.Name ? data.Name : data.ArticleName}"`}
       position={'top'}
@@ -34,14 +33,13 @@ const AdminButtons = ({
       />
     </TooltipWrapper>
   ) : null;
-};
 
 const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
   switch (type) {
     case 'Add':
       return (
         <Link to={url}>
-          <Add size="20" color="#A40E4C" />
+          <Add size="20" color="#000" />
         </Link>
       );
     case 'Edit':
@@ -51,11 +49,11 @@ const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
           data-toggle="modal"
           data-target={dataTarget}
         >
-          <Update size="20" color="#A40E4C" />
+          <Update size="20" color="#000" />
         </a>
       ) : (
         <Link to={url}>
-          <Update size="20" color="#ffbf00" />
+          <Update size="20" color="#000" />
         </Link>
       );
     case 'Delete':

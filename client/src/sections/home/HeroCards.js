@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const BottomSection = () => {
+const HeroCards = () => {
   // refs for the three section
   const heroBlue = useRef();
   const heroOrange = useRef();
@@ -63,7 +63,7 @@ const BottomSection = () => {
   return (
     <section className="hero">
       <div className="hero-box-container">
-        <NavLink to="/about" className="hero-box">
+        <Link to="/about" className="hero-box">
           <span
             ref={heroBlue}
             className="hero-box__circle hero-box__circle--blue"
@@ -75,8 +75,8 @@ const BottomSection = () => {
             learning web Development. We won't be spoon feeding you but we will
             guide you. Anyway, if you are eager to learn you will find a way.
           </p>
-        </NavLink>
-        <NavLink to="/about/#aboutus" className="hero-box">
+        </Link>
+        <Link to="/about/#aboutus" className="hero-box">
           <span
             ref={heroGreen}
             className="hero-box__circle hero-box__circle--green"
@@ -88,8 +88,8 @@ const BottomSection = () => {
             ourselves lucky to be able to provide the support that had been
             provided to us.
           </p>
-        </NavLink>
-        <NavLink to="/learn" className="hero-box">
+        </Link>
+        <Link to="/learn" className="hero-box">
           <span
             ref={heroOrange}
             className="hero-box__circle hero-box__circle--orange"
@@ -102,10 +102,10 @@ const BottomSection = () => {
             Nodejs-express, MongoDb, MySQL, Hosting, React, Firebase... and a
             lot more projects.
           </p>
-        </NavLink>
+        </Link>
       </div>
     </section>
   );
 };
 
-export default BottomSection;
+export default HeroCards;

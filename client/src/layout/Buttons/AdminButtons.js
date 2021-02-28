@@ -35,22 +35,13 @@ const AdminButtons = ({
   ) : null;
 };
 
-const AdminButtonsWrapper = ({ type, dataTarget, url, handler, data }) => {
+const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
   switch (type) {
     case "Add":
-      return dataTarget == "" ? (
+      return (
         <Link to={url}>
           <Add size="20" color="#A40E4C" />
         </Link>
-      ) : (
-        <button
-          type="button"
-          data-toggle="modal"
-          className="add-topic-btn"
-          data-target={dataTarget}
-        >
-          <Add size="20" color="#A40E4C" />
-        </button>
       );
     case "Edit":
       return dataTarget != "" ? (

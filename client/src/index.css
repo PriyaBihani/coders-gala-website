@@ -10,28 +10,15 @@
 
 @import "../node_modules/highlight.js/styles/gradient-dark.css";
 @import "./styles/font-families.css";
+@import './styles/preloader.css';
 
 /* HOME*/
 
 @import "./styles/home/home.css";
-@import "./styles/home/lightMode/bottomSection.css";
-@import "./styles/home/lightMode/topSection.css";
-@import "./styles/home/darkMode/bottomSection.css";
-@import "./styles/home/darkMode/topSectionDark.css";
-@import './styles/preloader.css';
 
 /* ABOUT PAGE*/
 
-@import "./styles/about/lightMode/about.css";
-@import "./styles/about/lightMode/aboutDin.css";
-@import "./styles/about/lightMode/aboutUs.css";
-@import "./styles/about/lightMode/contactUs.css";
-@import "./styles/about/lightMode/profileCard.css";
-@import "./styles/about/lightMode/topSlide.css";
-@import "./styles/about/darkMode/aboutDinDark.css";
-@import "./styles/about/darkMode/aboutUsDark.css";
-@import "./styles/about/darkMode/profileCardDark.css";
-@import "./styles/about/darkMode/topSlideDark.css";
+@import "./styles/about/about.css";
 
 /* Learn page */
 

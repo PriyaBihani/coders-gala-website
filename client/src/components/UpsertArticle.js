@@ -1,11 +1,13 @@
 /* eslint-disable */
-import React, { useState, useEffect } from 'react';
-import { Row, Col, Spinner } from 'react-bootstrap';
-import Editor from '../editor/editor';
-import { toast } from 'react-toastify';
-import { connect } from 'react-redux';
-import { addArticle, editArticle, getArticle } from '../actions/article';
-import { ChevronsUp } from '../assets/icons';
+import React, { useState, useEffect } from "react";
+import { Row, Col, Spinner } from "react-bootstrap";
+import Editor from "../editor/editor";
+import { toast } from "react-toastify";
+import { connect } from "react-redux";
+import { Button } from "../layout";
+
+import { addArticle, editArticle, getArticle } from "../actions/article";
+import { ChevronsUp } from "../assets/icons";
 
 const UpsertArticle = (props) => {
   const {
@@ -15,21 +17,21 @@ const UpsertArticle = (props) => {
     getArticle,
     prevArticle,
   } = props;
-  const [ArticleContent, setArticleContent] = useState('');
-  const [ArticleName, setArticleName] = useState('');
-  const [keywords, setArticleKeywords] = useState('');
+  const [ArticleContent, setArticleContent] = useState("");
+  const [ArticleName, setArticleName] = useState("");
+  const [keywords, setArticleKeywords] = useState("");
   // const [prevArticle, setprevArticle] = useState();
   const [Loading, setLoading] = useState(false);
   const { topicId } = props.match.params;
   function scrollTo(element) {
     window.scroll({
-      behavior: 'smooth',
+      behavior: "smooth",
       left: 0,
       top: element.offsetTop,
     });
   }
   const goToTop = () => {
-    scrollTo(document.getElementById('nav'));
+    scrollTo(document.getElementById("nav"));
   };
 
   useEffect(async () => {
@@ -47,13 +49,13 @@ const UpsertArticle = (props) => {
     console.log(ArticleName);
     console.log(keywords);
     const data = {
-      ArticleName: ArticleName == '' ? prevArticle.ArticleName : ArticleName,
-      keywords: keywords == '' ? prevArticle.keywords : keywords,
+      ArticleName: ArticleName == "" ? prevArticle.ArticleName : ArticleName,
+      keywords: keywords == "" ? prevArticle.keywords : keywords,
       ArticleContent:
-        ArticleContent == '' ? prevArticle.ArticleContent : ArticleContent,
+        ArticleContent == "" ? prevArticle.ArticleContent : ArticleContent,
     };
     editArticle(data, prevArticle._id, specialities.speciality.Name);
-    toast('Article updated successfully');
+    toast("Article updated successfully");
   };
 
   const handleAdd = async (e) => {
@@ -63,7 +65,7 @@ const UpsertArticle = (props) => {
       topicId,
       specialities.speciality.Name
     );
-    toast('Article added successfully');
+    toast("Article added successfully");
   };
 
   return (
@@ -78,7 +80,7 @@ const UpsertArticle = (props) => {
             <h4 className="" id="">
               {props.edit
                 ? `Update Article - ${prevArticle && prevArticle.ArticleName}`
-                : 'Add a Article'}
+                : "Add a Article"}
             </h4>
           </div>
 
@@ -91,7 +93,7 @@ const UpsertArticle = (props) => {
                   placeholder="Article Name"
                   className="form-control"
                   defaultValue={
-                    props.edit ? prevArticle && prevArticle.ArticleName : ''
+                    props.edit ? prevArticle && prevArticle.ArticleName : ""
                   }
                   onChange={(e) => {
                     setArticleName(e.target.value);
@@ -105,7 +107,7 @@ const UpsertArticle = (props) => {
                   placeholder="Article Description"
                   className="form-control"
                   defaultValue={
-                    props.edit ? prevArticle && prevArticle.keywords : ''
+                    props.edit ? prevArticle && prevArticle.keywords : ""
                   }
                   onChange={(e) => {
                     setArticleKeywords(e.target.value);
@@ -129,10 +131,12 @@ const UpsertArticle = (props) => {
 
                 <div className="add-article-button">
                   <Button
-                    className="btn btn-outline-primary m-3"
-                    onClick={props.edit ? handleEdit : handleAdd}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      props.edit ? handleEdit(e) : handleAdd(e);
+                    }}
                   >
-                    {props.edit ? 'Update' : 'Add'} Update
+                    {props.edit ? "Update" : "Add"} Update
                   </Button>
                 </div>
               </div>

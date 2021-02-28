@@ -1,8 +1,8 @@
 import React from "react";
 
-const AboutDin = () => {
+const Questions = () => {
   return (
-    <div className="aboutDin-cont">
+    <div className="questions-container">
       <div className="s-s-1">
         <h2>
           About <span className="logo">Coders Gala</span>
@@ -45,4 +45,4 @@ const AboutDin = () => {
   );
 };
 
-export default AboutDin;
+export default Questions;

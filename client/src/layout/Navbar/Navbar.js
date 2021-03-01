@@ -15,7 +15,7 @@ import SignedInLinks from "./SignedInLinks";
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 // logo imports
-import Logo from "./images/codersgalaLogo.PNG";
+import Logo from "./images/cgTransparent.PNG";
 
 const Navbar = ({ auth, ui, setDisplayMode }) => {
   // -------------------------------------------------

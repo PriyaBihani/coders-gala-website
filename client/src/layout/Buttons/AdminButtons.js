@@ -1,7 +1,7 @@
-import { Tooltip } from "react-tippy";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { Delete, Update, Add } from "../../assets/icons";
+import { Tooltip } from 'react-tippy';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Delete, Update, Add } from '../../assets/icons';
 
 const TooltipWrapper = ({ title, position, children }) => {
   return (
@@ -16,14 +16,13 @@ const AdminButtons = ({
   url,
   handler,
   isAdmin,
-  dataTarget = "",
+  dataTarget = '',
   data = {},
-}) => {
-  console.log("dhfk", isAdmin);
-  return isAdmin ? (
+}) =>
+  isAdmin ? (
     <TooltipWrapper
       title={`${type} "${data.Name ? data.Name : data.ArticleName}"`}
-      position={"top"}
+      position={'top'}
     >
       <AdminButtonsWrapper
         type={type}
@@ -34,11 +33,10 @@ const AdminButtons = ({
       />
     </TooltipWrapper>
   ) : null;
-};
 
 const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
   switch (type) {
-    case "Add":
+    case 'Add':
       return dataTarget.length > 0 ? (
         <button
           type="button"
@@ -50,24 +48,24 @@ const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
         </button>
       ) : (
         <Link to={url}>
-          <Add size="20" color="#A40E4C" />
+          <Add size="20" color="#000" />
         </Link>
       );
-    case "Edit":
-      return dataTarget != "" ? (
+    case 'Edit':
+      return dataTarget != '' ? (
         <a
           className="edit-topic-modal-toggle"
           data-toggle="modal"
           data-target={dataTarget}
         >
-          <Update size="20" color="#A40E4C" />
+          <Update size="20" color="#000" />
         </a>
       ) : (
         <Link to={url}>
-          <Update size="20" color="#ffbf00" />
+          <Update size="20" color="#000" />
         </Link>
       );
-    case "Delete":
+    case 'Delete':
       return (
         <a
           onClick={() => {

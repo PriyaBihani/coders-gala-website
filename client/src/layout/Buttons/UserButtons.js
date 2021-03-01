@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 export const Button = ({ children, url, dark, bg, isButton, handler }) => {
-  return typeof isButton == "undefined" ? (
-    <Link to={url ? url : "/"}>
+  return typeof isButton == 'undefined' ? (
+    <Link to={url ? url : '/'}>
       <div
-        className={`button ${dark && "dark"}`}
-        style={{ backgroundColor: `${bg && "bg"}` }}
+        className={`button ${dark && 'dark'}`}
+        style={{ backgroundColor: `${bg && 'bg'}` }}
       >
         <span>{children}</span>
         <svg>
@@ -22,8 +22,8 @@ export const Button = ({ children, url, dark, bg, isButton, handler }) => {
     </Link>
   ) : (
     <div
-      className={`button ${dark && "dark"}`}
-      style={{ backgroundColor: `${bg && "bg"}` }}
+      className={`button ${dark && 'dark'}`}
+      style={{ backgroundColor: `${bg && 'bg'}` }}
       onClick={(e) => {
         handler(e);
       }}

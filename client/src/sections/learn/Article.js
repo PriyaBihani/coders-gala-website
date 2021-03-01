@@ -50,21 +50,16 @@ const Article = ({
             <li className="article-name m-0">
               {article.ArticleName}{' '}
               <span className="article-action-icons">
-                {isAdmin ? (
-                  <>
-                    <AdminButtons
-                      type="Edit"
-                      url={`/article/update/${article._id}`}
-                      data={article}
-                      dataTarget=""
-                    />
-                    <AdminButtons
-                      type="Delete"
-                      handler={handleDelete}
-                      data={article}
-                    />
-                  </>
-                ) : null}
+                <AdminButtons
+                  type="Edit"
+                  url={`/article/update/${article._id}`}
+                  data={article}
+                />
+                <AdminButtons
+                  type="Delete"
+                  handler={handleDelete}
+                  data={article}
+                />
                 <Tooltip
                   // options
                   title={`Read "${article.ArticleName}"`}
@@ -95,7 +90,7 @@ const Article = ({
           </a>
         </div>
       </div>
-      <div className=" col-2">
+      <div className="col-2">
         <div className="update-delete float-right"></div>
       </div>
     </div>

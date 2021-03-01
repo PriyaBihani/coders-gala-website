@@ -1,34 +1,33 @@
-import React, { useState, useEffect } from "react";
-import { Accordion, Row, Col, Button } from "react-bootstrap";
-import { connect } from "react-redux";
-import { toast } from "react-toastify";
+import React, { useState, useEffect } from 'react';
+import { Accordion, Row, Col, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { toast } from 'react-toastify';
 
-import Article from "../sections/learn/Article";
-import SpecialityPreviewArticle from "../sections/preview/SpecialityPreviewArticle";
-import PreviewArticle from "../sections/preview/PreviewArticle";
+import Article from '../sections/learn/Article';
+import SpecialityPreviewArticle from '../sections/preview/SpecialityPreviewArticle';
+import PreviewArticle from '../sections/preview/PreviewArticle';
 
-import { Seo } from "../helpers";
+import { Seo, scrollTo } from '../helpers';
 import {
   getSpeciality,
   getTopics,
   deleteTopic,
   clearArticle,
   setOpenTopics,
-} from "../actions";
-// import DisplayTopicNames from "../TopicNames/DisplayTopicNames";
+} from '../actions';
 
-import Footer from "../layout/Footer/Footer";
+import Footer from '../layout/Footer/Footer';
 
-import AddTopicName from "../sections/preview/AddTopic";
-import EditTopicModal from "../sections/preview/EditTopicModal";
-import AdminButtons from "../layout/Buttons/AdminButtons";
+import AddTopicName from '../sections/learn/AddTopic';
+import EditTopicModal from '../sections/learn/EditTopicModal';
+import AdminButtons from '../layout/Buttons/AdminButtons';
 
 const ActionButtons = ({ handleDelete, topic, setOpenTopics }) => {
   return (
     <div className="action-buttons">
       <AdminButtons
         type="Edit"
-        dataTarget={`#${topic.Name.split(" ")[0]}`}
+        dataTarget={`#${topic.Name.split(' ')[0]}`}
         data={topic}
       />
       <AdminButtons type="Delete" handler={handleDelete} data={topic} />
@@ -38,16 +37,16 @@ const ActionButtons = ({ handleDelete, topic, setOpenTopics }) => {
         as={Button}
         variant="link"
         className="float-right arrow-down"
-        eventKey={topic.Name.split(/\s/).join("")} // to remove spaces
+        eventKey={topic.Name.split(/\s/).join('')} // to remove spaces
         onClick={() => {
           setOpenTopics(topic._id);
           document
-            .querySelector(`.fa-angle-down#${topic.Name.split(/\s/).join("")}`)
-            .classList.toggle("rotate");
+            .querySelector(`.fa-angle-down#${topic.Name.split(/\s/).join('')}`)
+            .classList.toggle('rotate');
         }}
       >
         <svg
-          id={topic.Name.split(/\s/).join("")}
+          id={topic.Name.split(/\s/).join('')}
           viewBox="0 0 32 32"
           className=" icon icon-chevron-bottom article-dwn article-toggle fa-angle-down"
           viewBox="0 0 32 32"
@@ -65,7 +64,7 @@ const Preview = (props) => {
   const [selected, setSelected] = useState(false);
   const [SelectedArticle, setSelectedArticle] = useState();
   const [showReferralArticle, setshowReferralArticle] = useState(false);
-  const [referralTopicId, setreferralTopicId] = useState("");
+  const [referralTopicId, setreferralTopicId] = useState('');
   const { user } = props;
 
   const isAdmin = user && user.isAdmin;
@@ -80,17 +79,9 @@ const Preview = (props) => {
     props.getTopics(requiredSpeciality);
   }, []);
 
-  function scrollTo(element) {
-    window.scroll({
-      behavior: "smooth",
-      left: 0,
-      top: "0px",
-    });
-  }
-
   const readArticle = (article) => {
     displayArticle(article);
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       if (window.innerWidth <= 569) {
         scrollTo();
       }
@@ -106,15 +97,15 @@ const Preview = (props) => {
     const confirm = window.prompt(
       `You sure want to delete "${topic.Name}" ? Y or N (Deleting a topic will lead to deletion of all articles inside it) `
     );
-    if (confirm === "Y") {
+    if (confirm === 'Y') {
       props.deleteTopic(topic._id, requiredSpeciality);
-      toast("Deleted speciality sucessfully");
+      toast('Deleted speciality sucessfully');
     }
   };
 
   return (
     <div className="topics-ovr-cont">
-      <Seo meta={[{ name: "robots", content: "index follow" }]} />
+      <Seo meta={[{ name: 'robots', content: 'index follow' }]} />
 
       <div className="speciality-container">
         <div className="speciality-heading">
@@ -125,13 +116,13 @@ const Preview = (props) => {
           <Col className="topic-ovr-container" lg={4}>
             {/* Yeh pehla accordian deekhta kyun nahi h desktop mode mein */}
             {/* {Kyuki mobile view mein vo collapse ho jata hai aur desktop mein nahi :) } */}
-            <Accordion defaultActiveKey={window.innerWidth <= 500 ? "1" : "0"}>
+            <Accordion defaultActiveKey={window.innerWidth <= 500 ? '1' : '0'}>
               <div className="topics-overview">
-                <h3 style={{ fontSize: "1rem" }} className="overview">
+                <h3 style={{ fontSize: '1rem' }} className="overview">
                   <span>
                     {window.innerWidth <= 500
-                      ? " In this Module..."
-                      : "Topics Overview"}{" "}
+                      ? ' In this Module...'
+                      : 'Topics Overview'}{' '}
                   </span>
 
                   {isAdmin ? (
@@ -147,11 +138,11 @@ const Preview = (props) => {
                   variant="link"
                   onClick={() => {
                     document
-                      .querySelector(".arrow-down.overview")
-                      .classList.toggle("down");
+                      .querySelector('.arrow-down.overview')
+                      .classList.toggle('down');
                     document
-                      .querySelector(".arrow-down svg.topics-overview-toggle")
-                      .classList.remove("anim");
+                      .querySelector('.arrow-down svg.topics-overview-toggle')
+                      .classList.remove('anim');
                   }}
                   className="float-right speciality-dropdown overview arrow-down"
                   eventKey="0"
@@ -187,14 +178,14 @@ const Preview = (props) => {
                               name={topic.Name}
                               Locked={topic.locked}
                               id={topic._id}
-                              modalId={topic.Name.split(" ")[0]}
+                              modalId={topic.Name.split(' ')[0]}
                             />
 
                             <Accordion
                               defaultActiveKey={
                                 props.openTopics.includes(topic._id)
-                                  ? topic.Name.split(/\s/).join("")
-                                  : ""
+                                  ? topic.Name.split(/\s/).join('')
+                                  : ''
                               }
                             >
                               <ActionButtons
@@ -205,7 +196,7 @@ const Preview = (props) => {
 
                               <hr />
                               <Accordion.Collapse
-                                eventKey={topic.Name.split(/\s/).join("")}
+                                eventKey={topic.Name.split(/\s/).join('')}
                               >
                                 <ol>
                                   {topic.articles &&
@@ -216,7 +207,7 @@ const Preview = (props) => {
                                           isAdmin={isAdmin}
                                           topic={topic}
                                           readArticle={readArticle}
-                                          displayMode={"light"}
+                                          displayMode={'light'}
                                           article={article}
                                         />
                                       );

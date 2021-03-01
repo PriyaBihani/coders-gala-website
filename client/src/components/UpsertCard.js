@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Button } from '../layout';
-import { serviceGet } from '../helpers';
-import { addSpeciality, editSpeciality } from '../actions';
-import Editor from '../editor/editor';
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { Button } from "../layout";
+import { serviceGet } from "../helpers";
+import { addSpeciality, editSpeciality } from "../actions";
+import Editor from "../editor/editor";
 
 const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
   const [state, setState] = useState({});
@@ -50,7 +50,7 @@ const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
             required
             placeholder="Speciality Name"
             className="form-control"
-            defaultValue={edit ? data && data.Name : ''}
+            defaultValue={edit ? data && data.Name : ""}
             onChange={handleChange}
           />
           <br />
@@ -61,7 +61,7 @@ const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
             onChange={handleChange}
             placeholder="Image URL"
             className="form-control"
-            defaultValue={edit ? data && data.imageUrl : ''}
+            defaultValue={edit ? data && data.imageUrl : ""}
           />
           <br />
           {!edit && (
@@ -105,7 +105,7 @@ const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
               }}
               type="submit"
             >
-              {edit ? 'Update' : 'Add'}
+              {edit ? "Update" : "Add"}
             </Button>
           </div>
         </div>

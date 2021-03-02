@@ -1,21 +1,17 @@
-/* eslint-disable */
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Accordion, Button, Col, Row } from "react-bootstrap";
-import { connect } from "react-redux";
-import { setDisplayMode } from "../../actions/ui";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Accordion, Button, Col, Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { setDisplayMode } from '../../actions/ui';
+import { isClient } from '../../helpers';
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-import SignedOutLinks from "./SignedOutLinks";
-import SignedInLinks from "./SignedInLinks";
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-// jQuery-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
+import SignedOutLinks from './SignedOutLinks';
+import SignedInLinks from './SignedInLinks';
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 // logo imports
-import Logo from "./images/cgTransparent.PNG";
+import Logo from '../../assets/img/cgTransparent.PNG';
 
 const Navbar = ({ auth, ui, setDisplayMode }) => {
   // -------------------------------------------------
@@ -23,23 +19,23 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
   const [switched, setswitched] = useState(false);
 
   useEffect(() => {
-    document.querySelector("body").classList.add(ui.displayMode);
+    document.querySelector('body').classList.add(ui.displayMode);
     console.log(ui.displayMode);
-    if (ui.displayMode == "dark") {
+    if (ui.displayMode == 'dark') {
       setswitched(true);
     }
   });
 
   // Getting the current mode from local storage
-  if (typeof window !== "undefined") {
-    let mode = "light";
+  if (isClient) {
+    let mode = 'light';
 
-    mode = localStorage.getItem("mode");
+    mode = localStorage.getItem('mode');
 
-    if (mode === "dark") {
-      document.querySelector("body").classList.add("dark");
+    if (mode === 'dark') {
+      document.querySelector('body').classList.add('dark');
     } else {
-      document.querySelector("body").classList.remove("dark");
+      document.querySelector('body').classList.remove('dark');
     }
   }
 
@@ -50,7 +46,7 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
     <div className="navigation-wrap bg-light start-header start-style">
       <div className="container">
         <Accordion
-          className={window.innerWidth >= 767 ? null : "dropdown-accordion"}
+          className={window.innerWidth >= 767 ? null : 'dropdown-accordion'}
         >
           <Row>
             <Col>
@@ -58,7 +54,7 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
                 <Link to="/">
                   <img
                     style={{
-                      fontSize: window.innerHeight >= 767 ? "2rem" : "1.2rem",
+                      fontSize: window.innerHeight >= 767 ? '2rem' : '1.2rem',
                     }}
                     className="nav-logo"
                     src={Logo}
@@ -70,24 +66,23 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
                   onClick={() => {
                     setDisplayMode();
                     setswitched(!switched);
-                    // window.location.reload();
                   }}
-                  className={`switch float-right ${switched ? "switched" : ""}`}
+                  className={`switch float-right ${switched ? 'switched' : ''}`}
                 >
                   <div
                     style={{
                       backgroundColor:
-                        ui.displayMode == "dark" ? "#111" : "#f1f1f1",
+                        ui.displayMode == 'dark' ? '#111' : '#f1f1f1',
                     }}
                     id="circle"
                   >
                     <img
                       className="mode-icon"
-                      style={{ width: "20px" }}
+                      style={{ width: '20px' }}
                       src={
-                        ui.displayMode == "dark"
-                          ? "https://www.svgrepo.com/show/3158/moon.svg"
-                          : "https://www.svgrepo.com/show/83726/sun.svg"
+                        ui.displayMode == 'dark'
+                          ? 'https://www.svgrepo.com/show/3158/moon.svg'
+                          : 'https://www.svgrepo.com/show/83726/sun.svg'
                       }
                       alt=""
                     />

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Seo } from '../helpers';
 import AdminButtons from '../layout/Buttons/AdminButtons';
 import Card from '../sections/learn/Card';
-import Footer from '../layout/Footer/Footer';
+import { Footer } from '../layout/';
 
 const Learn = () => {
   return (

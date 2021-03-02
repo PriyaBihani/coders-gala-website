@@ -7,7 +7,11 @@ import Article from '../sections/learn/Article';
 import SpecialityPreviewArticle from '../sections/preview/SpecialityPreviewArticle';
 import PreviewArticle from '../sections/preview/PreviewArticle';
 
-import { Seo, scrollTo } from '../helpers';
+import { Footer } from '../layout';
+import { Seo, scrollTo, isClient } from '../helpers';
+import AddTopicName from '../sections/preview/AddTopic';
+import EditTopicModal from '../sections/preview/EditTopicModal';
+import AdminButtons from '../layout/Buttons/AdminButtons';
 import {
   getSpeciality,
   getTopics,
@@ -15,12 +19,6 @@ import {
   clearArticle,
   setOpenTopics,
 } from '../actions';
-
-import Footer from '../layout/Footer/Footer';
-
-import AddTopicName from '../sections/learn/AddTopic';
-import EditTopicModal from '../sections/learn/EditTopicModal';
-import AdminButtons from '../layout/Buttons/AdminButtons';
 
 const ActionButtons = ({ handleDelete, topic, setOpenTopics }) => {
   return (
@@ -50,7 +48,6 @@ const ActionButtons = ({ handleDelete, topic, setOpenTopics }) => {
           viewBox="0 0 32 32"
           className=" icon icon-chevron-bottom article-dwn article-toggle fa-angle-down"
           viewBox="0 0 32 32"
-          aria-hidden="true"
         >
           <path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z" />
         </svg>
@@ -81,7 +78,7 @@ const Preview = (props) => {
 
   const readArticle = (article) => {
     displayArticle(article);
-    if (typeof window !== 'undefined') {
+    if (isClient) {
       if (window.innerWidth <= 569) {
         scrollTo();
       }

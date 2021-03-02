@@ -1,17 +1,17 @@
-import React from "react";
-import hljs from "highlight.js";
-import ReactQuill, { Quill } from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import "./editor.css";
-let BlockEmbed = Quill.import("blots/block/embed");
-let Inline = Quill.import("blots/inline");
+import React from 'react';
+import hljs from 'highlight.js';
+import ReactQuill, { Quill } from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import './editor.css';
+let BlockEmbed = Quill.import('blots/block/embed');
+let Inline = Quill.import('blots/inline');
 hljs.configure({
-  languages: ["javascript", "python", "html", "css"],
+  languages: ['javascript', 'python', 'html', 'css'],
 });
 
 const CustomButton = () => (
   <img
-    style={{ width: "20px" }}
+    style={{ width: '20px' }}
     src="https://www.svgrepo.com/show/77584/image.svg"
     alt=""
   />
@@ -19,66 +19,66 @@ const CustomButton = () => (
 
 const CodeLine = () => (
   <img
-    style={{ width: "20px" }}
+    style={{ width: '20px' }}
     src="https://www.svgrepo.com/show/294145/code.svg"
     alt=""
   />
 );
 
-const Size = Quill.import("formats/size");
+const Size = Quill.import('formats/size');
 Size.whitelist = [
-  "1",
-  "2",
-  "4",
-  "6",
-  "8",
-  "10",
-  "12",
-  "14",
-  "16",
-  "20",
-  "24",
-  "26",
-  "30",
+  '1',
+  '2',
+  '4',
+  '6',
+  '8',
+  '10',
+  '12',
+  '14',
+  '16',
+  '20',
+  '24',
+  '26',
+  '30',
 ];
 Quill.register(Size, true);
 
 class inlineCodeBlot extends Inline {}
-inlineCodeBlot.blotName = "inlineCode";
-inlineCodeBlot.tagName = "code";
+inlineCodeBlot.blotName = 'inlineCode';
+inlineCodeBlot.tagName = 'code';
 
 class ImageBlot extends BlockEmbed {
   static create(value) {
     let node = super.create();
-    node.setAttribute("alt", value.alt);
-    node.setAttribute("src", value.url);
-    node.setAttribute("class", value.class);
+    node.setAttribute('alt', value.alt);
+    node.setAttribute('src', value.url);
+    node.setAttribute('class', value.class);
     return node;
   }
 
   static value(node) {
     return {
-      alt: node.getAttribute("alt"),
-      url: node.getAttribute("src"),
-      class: node.getAttribute("class"),
+      alt: node.getAttribute('alt'),
+      url: node.getAttribute('src'),
+      class: node.getAttribute('class'),
     };
   }
 }
-ImageBlot.blotName = "image";
-ImageBlot.tagName = "img";
+ImageBlot.blotName = 'image';
+ImageBlot.tagName = 'img';
 Quill.register(ImageBlot);
 Quill.register(inlineCodeBlot);
 
-function insertImage() {
-  let url = prompt("Enter link URL");
-  let alt = prompt("Enter link alt");
-  let clas = prompt("Enter class Name");
+const insertImage = () => {
+  let url = prompt('Enter link URL');
+  let alt = prompt('Enter link alt');
+  let clas = prompt('Enter class Name');
   let range = this.quill.getSelection(true);
   console.log(Quill.sources);
-  this.quill.insertText(range.index, "\n", Quill.sources.USER);
+  this.quill.insertText(range.index, '\n', Quill.sources.USER);
   this.quill.insertEmbed(
     range.index + 1,
-    "image",
+    'image',
     {
       alt: alt,
       url: url,
@@ -87,20 +87,20 @@ function insertImage() {
     Quill.sources.USER
   );
   this.quill.setSelection(range.index + 2, Quill.sources.SILENT);
-}
+};
 
-function insertInlineCode(e) {
+const insertInlineCode = (e) => {
   e.preventDefault();
   // console.log(this.quill);
   // this.quill.format("inlineCode", true);
-  console.log("inline code ins");
-}
+  console.log('inline code ins');
+};
 
 const CustomToolbar = () => (
   <div id="toolbar">
     <select
       className="ql-header"
-      defaultValue={""}
+      defaultValue={''}
       onChange={(e) => e.persist()}
     >
       <option value="1"></option>
@@ -210,7 +210,7 @@ class Editor extends React.Component {
         <ReactQuill
           onChange={this.handleChange}
           modules={Editor.modules}
-          value={this.state.editorHtml || ""}
+          value={this.state.editorHtml || ''}
         />
       </div>
     );
@@ -222,7 +222,7 @@ Editor.modules = {
     highlight: (text) => hljs.highlightAuto(text).value,
   },
   toolbar: {
-    container: "#toolbar",
+    container: '#toolbar',
 
     handlers: {
       insertImage: insertImage,
@@ -232,27 +232,21 @@ Editor.modules = {
 };
 
 Editor.formats = [
-  "header",
-  "font",
-  "size",
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "blockquote",
-  "list",
-  "bullet",
-  "indent",
-  "link",
-  "image",
-  "color",
-  "code-block",
+  'header',
+  'font',
+  'size',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+  'color',
+  'code-block',
 ];
 
-/*
- * PropType validation
- */
-
 export default Editor;
-
-// // // -----------------------

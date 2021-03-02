@@ -1,37 +1,37 @@
-import React, { useEffect } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
-import { AnimatePresence } from "framer-motion";
-import Loadable from "react-loadable";
+import React, { useEffect } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import { AnimatePresence } from 'framer-motion';
+import Loadable from 'react-loadable';
 
-import { setAuthToken } from "./helpers";
-import { loadUser } from "./actions/auth";
+import { setAuthToken } from './helpers';
+import { loadUser } from './actions/auth';
 
-import "bootstrap/dist/js/bootstrap.js";
+import 'bootstrap/dist/js/bootstrap.js';
 
-import store from "./store";
-import Loader from "./layout/Preloader";
-import Navbar from "./layout/Navbar/Navbar";
-import Article from "./components/Article";
-import UpsertCard from "./components/UpsertCard";
-import UpsertArticle from "./components/UpsertArticle";
-import Auth from "./components/Auth";
+import store from './store';
+import { Preloader as Loader } from './layout';
+import Navbar from './layout/Navbar/Navbar';
+import Article from './components/Article';
+import UpsertCard from './components/UpsertCard';
+import UpsertArticle from './components/UpsertArticle';
+import Auth from './components/Auth';
 
 const Preview = Loadable({
-  loader: () => import("./components/Preview"),
+  loader: () => import('./components/Preview'),
   loading: () => <Loader />,
 });
 
 const Home = Loadable({
-  loader: () => import("./components/Home"),
+  loader: () => import('./components/Home'),
   loading: () => <Loader />,
 });
 const About = Loadable({
-  loader: () => import("./components/About"),
+  loader: () => import('./components/About'),
   loading: () => <Loader />,
 });
 const Learn = Loadable({
-  loader: () => import("./components/Learn"),
+  loader: () => import('./components/Learn'),
   loading: () => <Loader />,
 });
 
@@ -54,17 +54,17 @@ const App = () => {
           <Route exact path="/about" component={About} />
           <Route exact path="/learn" component={Learn} />
           <Route
-            render={(props) => <Auth {...props} type={"signup"} />}
+            render={(props) => <Auth {...props} type={'signup'} />}
             exact
             path="/signup"
           />
           <Route
-            render={(props) => <Auth {...props} type={"signup"} />}
+            render={(props) => <Auth {...props} type={'signup'} />}
             exact
             path="/signup/:referCode"
           />
           <Route
-            render={(props) => <Auth {...props} type={"login"} />}
+            render={(props) => <Auth {...props} type={'login'} />}
             exact
             path="/login"
           />

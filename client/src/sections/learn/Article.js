@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import { Tooltip } from 'react-tippy';
 import { connect } from 'react-redux';
@@ -9,7 +8,6 @@ import AdminButtons from '../../layout/Buttons/AdminButtons';
 const Article = ({
   readArticle,
   article,
-  isAdmin,
   displayMode,
   deleteArticle,
   topic,

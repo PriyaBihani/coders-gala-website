@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 
-import Footer from '../layout/Footer/Footer';
+import { Footer } from '../layout';
 
 import { getSpeciality } from '../actions';
 import { servicePost, Seo, scrollTo, isClient } from '../helpers';

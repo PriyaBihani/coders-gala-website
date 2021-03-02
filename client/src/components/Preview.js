@@ -18,8 +18,8 @@ import {
 
 import Footer from '../layout/Footer/Footer';
 
-import AddTopicName from '../sections/learn/AddTopic';
-import EditTopicModal from '../sections/learn/EditTopicModal';
+import AddTopicName from '../sections/preview/AddTopic';
+import EditTopicModal from '../sections/preview/EditTopicModal';
 import AdminButtons from '../layout/Buttons/AdminButtons';
 
 const ActionButtons = ({ handleDelete, topic, setOpenTopics }) => {

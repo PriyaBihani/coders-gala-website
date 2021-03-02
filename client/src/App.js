@@ -9,6 +9,8 @@ import { loadUser } from "./actions/auth";
 
 import "bootstrap/dist/js/bootstrap.js";
 
+//this i s. a change
+
 import store from "./store";
 import Loader from "./layout/Preloader";
 import Navbar from "./layout/Navbar/Navbar";

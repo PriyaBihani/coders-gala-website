@@ -1,5 +1,5 @@
-const { EventEmitter } = require("events");
-const Log = require("../../services/mongodb/models/logs");
+const { EventEmitter } = require('events');
+const Log = require('../../services/mongodb/models/Logs');
 
 const eventEmitter = new EventEmitter();
 
@@ -7,7 +7,7 @@ const eventMessage = (type, metadata, hasFailed) => {
   var message;
 
   switch (type) {
-    case "USER_ADDED":
+    case 'USER_ADDED':
       if (hasFailed) {
         message = metadata.email
           ? `Failed to add user "${metadata.email}`
@@ -19,12 +19,12 @@ const eventMessage = (type, metadata, hasFailed) => {
   }
 };
 
-eventEmitter.on("log", async ({ metadata, type, userId, hasFailed }) => {
-  var eventType = type.split("_")[0];
+eventEmitter.on('log', async ({ metadata, type, userId, hasFailed }) => {
+  var eventType = type.split('_')[0];
   var data;
   var message;
   switch (eventType) {
-    case "USER":
+    case 'USER':
       message = eventMessage(type, metadata, hasFailed);
       break;
   }

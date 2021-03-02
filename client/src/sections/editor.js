@@ -1,8 +1,6 @@
 import React from 'react';
 import hljs from 'highlight.js';
 import ReactQuill, { Quill } from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
-import './editor.css';
 let BlockEmbed = Quill.import('blots/block/embed');
 let Inline = Quill.import('blots/inline');
 hljs.configure({

@@ -5,6 +5,7 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 @import '../node_modules/react-toastify/dist/ReactToastify.css';
 @import '../node_modules/react-tippy/dist/tippy.css';
+@import '../node_modules/react-quill/dist/quill.snow.css';
 
 /* highlight js */
 
@@ -46,6 +47,7 @@
 @import "./styles/button.css";
 @import "./styles/footer.css";
 @import "./styles/navbar.css";
+@import './styles/editor.css';
 
 /* EDIt topic modal and add article button style */
 
@@ -59,7 +61,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.text-editor{
+.text-editor {
     background-color: #fff;
 }
 

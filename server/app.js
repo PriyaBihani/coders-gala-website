@@ -28,11 +28,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // routes
+app.use('/', indexRouter);
 app.use('/api/auth', authRoutes);
 app.use('/api/speciality', specialityRoutes);
 app.use('/api/topic', topicRoutes);
 app.use('/api/article', articleRoutes);
-app.use('/', indexRouter);
 
 // mongooseConnect
 mongoose

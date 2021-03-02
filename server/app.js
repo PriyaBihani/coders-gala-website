@@ -6,6 +6,14 @@ var logger = require('morgan');
 var express = require('express');
 var mongoose = require('mongoose');
 
+// routes
+
+let authRoutes = require('./routes/auth'),
+  specialityRoutes = require('./routes/speciality'),
+  topicRoutes = require('./routes/topic'),
+  articleRoutes = require('./routes/article');
+var indexRouter = require('./routes/index');
+
 // ================================================
 //            SERVER CONFIGURATION
 // ================================================
@@ -20,6 +28,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // routes
+app.use('/api/auth', authRoutes);
+app.use('/api/speciality', specialityRoutes);
+app.use('/api/topic', topicRoutes);
+app.use('/api/article', articleRoutes);
+app.use('/', indexRouter);
 
 // mongooseConnect
 mongoose

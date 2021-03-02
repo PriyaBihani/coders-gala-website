@@ -1,3 +1,4 @@
+@import './shareArticle.css';
 .full-view-article {
     background-color: #fff;
     border-top: 1px solid #ef5166;
@@ -37,8 +38,6 @@ body.dark .full-view-article {
     bottom: 60px;
     right: 60px;
     z-index: 1000;
-    font-size: 2rem;
-    color: #241e4e;
     transition: all 0.2s linear;
 }
 
@@ -123,4 +122,32 @@ SVG Icons - svgicons.sparkk.fr
     .share-toggle {
         display: block;
     }
+}
+
+.ql-editor {
+    min-height: 60vh;
+}
+
+.add-article-button {
+    text-align: center;
+}
+
+
+/* share styles */
+
+.add-article-btn {
+    width: 15px;
+    display: inline-block;
+}
+
+div.action-buttons {
+    text-align: right;
+    /* margin-top: 10px; */
+}
+
+div.action-buttons a {
+    margin: 7px;
+    position: relative;
+    top: 5px;
+    /* margin-top: 10px; */
 }

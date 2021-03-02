@@ -1,4 +1,4 @@
-import store from '../store';
+import store from "../store";
 
 export const setOpenTopics = (id) => async (dispatch) => {
   console.log(id);
@@ -10,7 +10,18 @@ export const setOpenTopics = (id) => async (dispatch) => {
   }
 
   dispatch({
-    type: 'SET_OPEN_TOPICS',
+    type: "SET_OPEN_TOPICS",
     payload: openTopicsArray,
+  });
+};
+
+export const setDisplayMode = () => async (dispatch) => {
+  const displayMode =
+    store.getState().ui.displayMode == "dark" ? "light" : "dark";
+  localStorage.setItem("mode", displayMode);
+
+  dispatch({
+    type: "SET_DISPLAY_MODE",
+    payload: displayMode,
   });
 };

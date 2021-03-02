@@ -1,4 +1,4 @@
-import { serviceGet, servicePost } from '../helpers/api';
+import { serviceGet, servicePost } from '../helpers';
 
 export const getTopics = (specialityName) => async (dispatch) => {
   try {

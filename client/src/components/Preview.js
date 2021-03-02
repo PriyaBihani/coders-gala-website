@@ -102,7 +102,10 @@ const Preview = (props) => {
 
   return (
     <div className="topics-ovr-cont">
-      <Seo meta={[{ name: 'robots', content: 'index follow' }]} />
+      <Seo
+        title="Select Article"
+        meta={[{ name: 'robots', content: 'index follow' }]}
+      />
 
       <div className="speciality-container">
         <div className="speciality-heading">
@@ -116,6 +119,7 @@ const Preview = (props) => {
             <Accordion defaultActiveKey={window.innerWidth <= 500 ? '1' : '0'}>
               <div className="topics-overview">
                 <h3 style={{ fontSize: '1rem' }} className="overview">
+                  {/* Use content method of CSS */}
                   <span>
                     {window.innerWidth <= 500
                       ? ' In this Module...'

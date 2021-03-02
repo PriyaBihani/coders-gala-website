@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { scrollTo } from '../../helpers';
 import { deleteArticle } from '../../actions/article';
 import AdminButtons from '../../layout/Buttons/AdminButtons';
+import { Button } from '../../layout';
 
 const Article = ({
   readArticle,
@@ -64,24 +65,16 @@ const Article = ({
                   position="top"
                   trigger="mouseenter"
                 >
-                  <a
-                    type="button"
-                    onClick={() => {
+                  <Button
+                    isButton={true}
+                    handler={() => {
                       readArticle(article);
                       const pos = document.querySelector('.card-container');
                       if (window.innerWidth <= 500) {
                         scrollTo(pos);
                       }
                     }}
-                  >
-                    <span>
-                      <img
-                        src={readIconUrl}
-                        style={{ width: '20px' }}
-                        alt={'read ' + article.ArticleName}
-                      />
-                    </span>
-                  </a>
+                  />
                 </Tooltip>
               </span>
             </li>

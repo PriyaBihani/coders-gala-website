@@ -8,7 +8,7 @@ var server = http.createServer(app);
  * Get port from environment and store in Express.
  */
 
-var port = process.env.SERVICE_PORT || '3001';
+var port = process.env.PORT || '3001';
 app.set('port', port);
 
 /**

@@ -53,9 +53,6 @@ const App = () => {
           <Route exact path="/home" component={Home} />
           <Route exact path="/about" component={About} />
           <Route exact path="/learn" component={Learn} />
-          {/* <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/signup/:referCode" component={SignUp} />
-          <Route exact path="/login" component={SignIn} /> */}
           <Route
             render={(props) => <Auth {...props} type={"signup"} />}
             exact

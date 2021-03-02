@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet";
 
-import TopSlide from "../sections/about/TopSlide";
-import AboutDin from "../sections/about/AboutDin";
+import { Seo } from "../helpers";
+
+import Questions from "../sections/about/Questions";
 import AboutUs from "../sections/about/AboutUs";
 import Footer from "../layout/Footer/Footer";
 
@@ -14,26 +14,24 @@ const About = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Helmet>
-        <title>Coders Gala - about</title>
-        <meta
-          name="description"
-          content="DoItNow is a free platform to learn webdevelopment for freelancing"
-        />
-        <meta name="robots" content="index follow" />
-      </Helmet>
-      <div className="about-page">
-        <div className="scroller">
-          <section className="about-header">
-            <TopSlide />
-          </section>
-          <section className="main">
-            <AboutDin />
-          </section>
-          <section id="aboutus">
-            <AboutUs />
-          </section>
+      <Seo title="About" />
+      <div className="about-page scroller">
+        <div className="ovr-wave top-slide">
+          <h1 style={{ textAlign: "center" }}>Hello there,</h1>
+          <div className="subheading-about">
+            We created <span className="logo text-dark">Coders Gala</span> to
+            provide You Quality resources to learn From
+          </div>
+          <div>
+            <img
+              alt="scroll icon"
+              src="https://gifimage.net/wp-content/uploads/2018/05/scroll-gif-10.gif"
+              className="scroll-icon"
+            />
+          </div>
         </div>
+        <Questions />
+        <AboutUs />
         <Footer />
       </div>
     </motion.div>

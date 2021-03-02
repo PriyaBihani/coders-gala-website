@@ -3,98 +3,51 @@
 /* CSS Imports */
 
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import '../node_modules/react-toastify/dist/ReactToastify.css';
+@import '../node_modules/react-tippy/dist/tippy.css';
 
 /* highlight js */
 
 @import "../node_modules/highlight.js/styles/gradient-dark.css";
 @import "./styles/font-families.css";
+@import './styles/preloader.css';
 
 /* HOME*/
 
 @import "./styles/home/home.css";
-@import "./styles/home/lightMode/bottomSection.css";
-@import "./styles/home/lightMode/topSection.css";
-@import "./styles/home/darkMode/bottomSection.css";
-@import "./styles/home/darkMode/topSectionDark.css";
 
 /* ABOUT PAGE*/
 
-@import "./styles/about/lightMode/about.css";
-@import "./styles/about/lightMode/aboutDin.css";
-@import "./styles/about/lightMode/aboutUs.css";
-@import "./styles/about/lightMode/contactUs.css";
-@import "./styles/about/lightMode/profileCard.css";
-@import "./styles/about/lightMode/topSlide.css";
-@import "./styles/about/darkMode/aboutDinDark.css";
-@import "./styles/about/darkMode/aboutUsDark.css";
-@import "./styles/about/darkMode/profileCardDark.css";
-@import "./styles/about/darkMode/topSlideDark.css";
+@import "./styles/about/about.css";
 
 /* Learn page */
 
 @import "./styles/learn/addButton.css";
-@import "./styles/learn/card2.css";
+@import "./styles/learn/card.css";
 
 /* Preview page */
 
-@import "./styles/preview/Preview-page-dark.css";
-@import "./styles/preview/Preview-page.css";
-@import "./styles/preview/shre.css";
+@import "./styles/preview/preview.css";
 
 /* Article */
 
-@import './styles/article/addArticle.css';
 @import './styles/article/article.css';
-@import './styles/article/backButton.css';
-@import './styles/article/shareArticle.css';
 
 /* AUTH */
 
-@import "./styles/auth/darkMode/signInDark.css";
-@import "./styles/auth/lightMode/signIn.css";
+@import "./styles/auth/auth.css";
 
 /* Topic */
 
-@import './styles/topic/AddTopicNames.css';
-@import './styles/topic/Article-names.css';
+@import './styles/topic/topic.css';
 
 /* LAYOUT */
 
-@import "./layout/Button/button.css";
-@import "./layout/css/lightMode/footer.css";
-@import "./layout/css/lightMode/navbar.css";
-@import "./layout/css/darkMode/footerDark.css";
-@import "./layout/css/darkMode/navbarDark.css";
+@import "./styles/button.css";
+@import "./layout/css/footer.css";
+@import "./layout/css/navbar.css";
 
 /* EDIt topic modal and add article button style */
-
-.edit-topic-modal-toggle:hover {
-    cursor: pointer;
-}
-
-.edit-topic-modal-toggle {
-    color: #ffbf00 !important;
-}
-
-.add-article-btn {
-    width: 15px;
-    display: inline-block;
-}
-
-div.action-buttons {
-    text-align: right;
-    /* margin-top: 10px; */
-}
-
-div.action-buttons a {
-    margin: 7px;
-    position: relative;
-    top: 5px;
-    /* margin-top: 10px; */
-}
-
-
-/* ---------------------- */
 
 
 /*  */

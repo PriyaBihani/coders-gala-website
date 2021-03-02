@@ -1,5 +1,3 @@
-import axios from 'axios';
-import { setAlert } from './alert';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -11,8 +9,8 @@ import {
   SEND_RESET_EMAIL_FAIL,
 } from './types';
 
-import { setAuthToken } from '../helpers/setAuthToken';
-import { serviceGet, servicePost } from '../helpers/api';
+import { toast } from 'react-toastify';
+import { serviceGet, servicePost, setAuthToken } from '../helpers';
 
 // Load User : Every time we logged in or register or refresh the page its gonna load.
 
@@ -53,20 +51,18 @@ export const register = (data) => async (dispatch) => {
   const body = JSON.stringify(data);
 
   try {
-    const res = await servicePost('api/auth/signup', data, headers);
+    const res = await servicePost('api/auth/signup', body, headers);
+
     dispatch({
-      type: REGISTER_SUCCESS,
+      type: res.status === 1 ? REGISTER_SUCCESS : REGISTER_FAIL,
       payload: res.data,
     });
-    dispatch(setAlert('SIGNED UP SUCCESSFULLY', 'danger'));
+    toast(res.message);
 
+    console.log(res);
     dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
-
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    }
 
     dispatch({
       type: REGISTER_FAIL,
@@ -87,21 +83,16 @@ export const login = ({ email, password }) => async (dispatch) => {
   try {
     const res = await servicePost('api/auth/login', body, headers);
 
-    console.log(res.data);
-    setTimeout(() => {
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: { userId: res.data.user.userId, token: res.data.token },
-      });
-    });
+    console.log(res);
 
+    dispatch({
+      type: res.status === 1 ? LOGIN_SUCCESS : LOGIN_FAIL,
+      payload: { userId: res.data?.user?.userId, token: res.data?.token },
+    });
+    toast(res.message);
     dispatch(loadUser());
   } catch (err) {
     const errors = err && err.response.data.errors;
-
-    if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    }
 
     dispatch({
       type: LOGIN_FAIL,
@@ -125,13 +116,11 @@ export const sendResetEmail = ({ email }) => async (dispatch) => {
   const body = JSON.stringify({ email });
 
   try {
-    const res = await axios.post('/api/forgotpassword', body, config);
+    const res = await servicePost('/api/forgotpassword', body, config);
 
     const messagesArray = res.data.messages;
     // brand added message alert
-    messagesArray.forEach((message) =>
-      dispatch(setAlert(message.msg, 'danger'))
-    );
+    messagesArray.forEach((message) => dispatch((message.msg, 'danger')));
     dispatch({
       type: SEND_RESET_EMAIL,
       payload: res.data,
@@ -139,7 +128,6 @@ export const sendResetEmail = ({ email }) => async (dispatch) => {
   } catch (err) {
     const errors = err && err.response.data.errors;
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
     dispatch({
       type: SEND_RESET_EMAIL_FAIL,

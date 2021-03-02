@@ -30,10 +30,6 @@ export default function (state = initialState, action) {
         loading: false,
       };
     case REGISTER_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-      };
     case LOGIN_SUCCESS:
       localStorage.setItem('token', payload.token);
       localStorage.setItem('userId', payload.userId);

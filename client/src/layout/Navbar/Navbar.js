@@ -1,8 +1,9 @@
 /* eslint-disable */
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Accordion, Button, Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
+import { setDisplayMode } from "../../actions/ui";
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 import SignedOutLinks from "./SignedOutLinks";
@@ -10,45 +11,24 @@ import SignedInLinks from "./SignedInLinks";
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 // jQuery-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-// import $ from "jquery";
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 // logo imports
-import Logo from "./images/codersgalaLogo.PNG";
+import Logo from "./images/cgTransparent.PNG";
 
-import $ from "jquery";
-
-const Navbar = ({ auth }) => {
+const Navbar = ({ auth, ui, setDisplayMode }) => {
   // -------------------------------------------------
-  console.log(auth.user);
-  // =-=-
+  const [navbarExpanded, setnavbarExpanded] = useState(false);
+  const [switched, setswitched] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      if (window.innerWidth >= 767) {
-        $("body .logo").css({
-          "font-size": "2rem",
-        });
-        $(".dropdown-accordion").removeClass("dropdown-accordion");
-      }
-
-      $(window).resize(function () {
-        if (window.innerWidth >= 767) {
-          $("body .logo").css({
-            "font-size": "2rem",
-          });
-          $(".dropdown-accordion").removeClass("dropdown-accordion");
-        } else {
-          $("body .logo").css({
-            "font-size": "1.2rem",
-          });
-        }
-      });
+    document.querySelector("body").classList.add(ui.displayMode);
+    console.log(ui.displayMode);
+    if (ui.displayMode == "dark") {
+      setswitched(true);
     }
-
-    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-  }, []);
+  });
 
   // Getting the current mode from local storage
   if (typeof window !== "undefined") {
@@ -57,15 +37,9 @@ const Navbar = ({ auth }) => {
     mode = localStorage.getItem("mode");
 
     if (mode === "dark") {
-      $("body").addClass("dark");
-      $(".mode-icon").attr("src", "https://www.svgrepo.com/show/3158/moon.svg");
-      $("#circle").css("background-color", "#111");
-      $(".switch").addClass("switched");
+      document.querySelector("body").classList.add("dark");
     } else {
-      $("body").removeClass("dark");
-      $(".mode-icon").attr("src", "https://www.svgrepo.com/show/83726/sun.svg");
-      $("#circle").css("background-color", "#f1f1f1");
-      $(".switch").removeClass("switched");
+      document.querySelector("body").classList.remove("dark");
     }
   }
 
@@ -75,43 +49,46 @@ const Navbar = ({ auth }) => {
   return (
     <div className="navigation-wrap bg-light start-header start-style">
       <div className="container">
-        <Accordion className="dropdown-accordion">
+        <Accordion
+          className={window.innerWidth >= 767 ? null : "dropdown-accordion"}
+        >
           <Row>
             <Col>
               <nav className="navbar navbar-expand-md navbar-light">
                 <Link to="/">
-                  <img className="nav-logo" src={Logo} alt="" />
+                  <img
+                    style={{
+                      fontSize: window.innerHeight >= 767 ? "2rem" : "1.2rem",
+                    }}
+                    className="nav-logo"
+                    src={Logo}
+                    alt=""
+                  />
                 </Link>
                 <div
                   id="switch"
                   onClick={() => {
-                    if ($("body").hasClass("dark")) {
-                      $("body").removeClass("dark");
-                      localStorage.setItem("mode", "light");
-                      $(".mode-icon").attr(
-                        "src",
-                        "https://www.svgrepo.com/show/83726/sun.svg"
-                      );
-                      $("#circle").css("background-color", "#f1f1f1");
-                      $(".switch").removeClass("switched");
-                    } else {
-                      $("body").addClass("dark");
-                      localStorage.setItem("mode", "dark");
-                      $(".mode-icon").attr(
-                        "src",
-                        "https://www.svgrepo.com/show/3158/moon.svg"
-                      );
-                      $("#circle").css("background-color", "#111");
-                      $(".switch").addClass("switched");
-                    }
+                    setDisplayMode();
+                    setswitched(!switched);
                     // window.location.reload();
                   }}
-                  className="switch float-right"
+                  className={`switch float-right ${switched ? "switched" : ""}`}
                 >
-                  <div id="circle">
+                  <div
+                    style={{
+                      backgroundColor:
+                        ui.displayMode == "dark" ? "#111" : "#f1f1f1",
+                    }}
+                    id="circle"
+                  >
                     <img
                       className="mode-icon"
                       style={{ width: "20px" }}
+                      src={
+                        ui.displayMode == "dark"
+                          ? "https://www.svgrepo.com/show/3158/moon.svg"
+                          : "https://www.svgrepo.com/show/83726/sun.svg"
+                      }
                       alt=""
                     />
                   </div>
@@ -142,11 +119,7 @@ const Navbar = ({ auth }) => {
                 <Accordion.Toggle
                   className="nav-btn"
                   onClick={() => {
-                    if ($(".navbar-toggler").attr("aria-expanded") == "false") {
-                      $(".navbar-toggler").attr("aria-expanded", "true");
-                    } else {
-                      $(".navbar-toggler").attr("aria-expanded", "false");
-                    }
+                    setnavbarExpanded(!navbarExpanded);
                   }}
                   as={Button}
                   variant="link"
@@ -157,7 +130,7 @@ const Navbar = ({ auth }) => {
                     type="button"
                     data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
+                    aria-expanded={navbarExpanded}
                     aria-label="Toggle navigation"
                   >
                     <span className="navbar-toggler-icon"></span>
@@ -192,7 +165,8 @@ const Navbar = ({ auth }) => {
 const mapStateToProps = (state) => {
   return {
     auth: state.auth,
+    ui: state.ui,
   };
 };
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, { setDisplayMode })(Navbar);

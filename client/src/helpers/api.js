@@ -1,7 +1,7 @@
-import { SERVICE_URL } from './../constants/utility';
+import { SERVICE_URL } from './';
 import axios from 'axios';
 
-const servicePost = async (path, payload, headers = null) => {
+export const servicePost = async (path, payload, headers = null) => {
   return new Promise((resolve, reject) => {
     axios
       .post(`${SERVICE_URL}/${path}`, payload, {
@@ -16,7 +16,7 @@ const servicePost = async (path, payload, headers = null) => {
   });
 };
 
-const serviceGet = async (path, payload) => {
+export const serviceGet = async (path, payload) => {
   return new Promise((resolve, reject) => {
     axios
       .get(`${SERVICE_URL}/${path}`, payload)
@@ -28,5 +28,3 @@ const serviceGet = async (path, payload) => {
       });
   });
 };
-
-export { servicePost, serviceGet };

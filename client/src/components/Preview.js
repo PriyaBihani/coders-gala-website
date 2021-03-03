@@ -11,13 +11,17 @@ import TopicsOverview from '../sections/preview/TopicsOverview';
 
 const Preview = ({ match, clearArticle, getSpeciality, speciality }) => {
   const [previewArticle, setPreviewArticle] = useState(speciality);
+
   const requiredSpeciality = match.params.specialityName;
-  console.log(speciality);
+
   useEffect(async () => {
     clearArticle();
-    await getSpeciality(requiredSpeciality);
-    setPreviewArticle(speciality && speciality);
+    getSpeciality(requiredSpeciality);
   }, []);
+
+  useEffect(() => {
+    setPreviewArticle(speciality);
+  }, [speciality]);
 
   return (
     <div className="topics-ovr-cont">

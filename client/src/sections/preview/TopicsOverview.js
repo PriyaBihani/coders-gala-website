@@ -1,16 +1,17 @@
-import { useEffect } from 'react';
-import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
-import { Accordion, Button } from 'react-bootstrap';
-import { getTopics, deleteTopic } from '../../actions';
-import ArticleNames from '../learn/ArticleNames';
-import AdminButtons from '../../layout/Buttons/AdminButtons';
+import { useEffect } from "react";
+import { connect } from "react-redux";
+import { toast } from "react-toastify";
+import { Accordion, Button } from "react-bootstrap";
+import { getTopics, deleteTopic } from "../../actions";
+import ArticleNames from "../learn/ArticleNames";
+import AdminButtons from "../../layout/Buttons/AdminButtons";
 
 const TopicsOverview = ({
   getTopics,
   specialityName,
   topics,
   setPreviewArticle,
+  deleteTopic,
 }) => {
   useEffect(async () => {
     getTopics(specialityName);
@@ -20,9 +21,9 @@ const TopicsOverview = ({
     const confirm = window.prompt(
       `You sure want to delete "${topic.Name}" ? Y or N (Deleting a topic will lead to deletion of all articles inside it) `
     );
-    if (confirm === 'Y') {
+    if (confirm === "Y") {
       deleteTopic(topic._id, specialityName);
-      toast('Deleted speciality sucessfully');
+      toast("Deleted speciality sucessfully");
     }
   };
 
@@ -35,13 +36,6 @@ const TopicsOverview = ({
             <div className="p-0 speciality-topic-container m-1" key={topic._id}>
               {/* When user clicked on the locked topic box referral article shows*/}
               <h4 className="float-left topicName">{topic.Name}</h4>
-              {/* <EditTopicModal
-                specialityName={specialityName}
-                name={topic.Name}
-                Locked={topic.locked}
-                id={topic._id}
-                modalId={topic.Name.split(' ')[0]}
-              /> */}
 
               {/* <Accordion
                 defaultActiveKey={
@@ -50,16 +44,20 @@ const TopicsOverview = ({
                     : ''
                 }
               > */}
-              <Accordion defaultActiveKey={topic.Name.split(/\s/).join('')}>
+              <Accordion defaultActiveKey={topic.Name.split(/\s/).join("")}>
                 {/* <ActionButtons
                   topic={topic}
                   handleDelete={handleDelete}
                   setOpenTopics={props.setOpenTopics}
                 /> */}
-                <ActionButtons topic={topic} handleDelete={handleDelete} />
+                <ActionButtons
+                  specialityName={specialityName}
+                  topic={topic}
+                  handleDelete={handleDelete}
+                />
 
                 <hr />
-                <Accordion.Collapse eventKey={topic.Name.split(/\s/).join('')}>
+                <Accordion.Collapse eventKey={topic.Name.split(/\s/).join("")}>
                   <ol>
                     {topic.articles &&
                       topic.articles.map((article) => {
@@ -90,13 +88,13 @@ export default connect(mapStateToProps, { getTopics, deleteTopic })(
   TopicsOverview
 );
 
-const ActionButtons = ({ handleDelete, topic, setOpenTopics }) => {
+const ActionButtons = ({ handleDelete, topic, specialityName }) => {
   return (
     <div className="action-buttons">
       <AdminButtons
         type="Edit"
-        dataTarget={`#${topic.Name.split(' ')[0]}`}
         data={topic}
+        url={`/${specialityName}/topic/edit/${topic._id}`}
       />
       <AdminButtons type="Delete" handler={handleDelete} data={topic} />
       <AdminButtons type="Add" data={topic} url={`/article/add/${topic._id}`} />
@@ -105,18 +103,18 @@ const ActionButtons = ({ handleDelete, topic, setOpenTopics }) => {
         as={Button}
         variant="link"
         className="float-right arrow-down"
-        eventKey={topic.Name.split(/\s/).join('')} // to remove spaces
+        eventKey={topic.Name.split(/\s/).join("")} // to remove spaces
         onClick={() => {
           {
             /* setOpenTopics(topic._id); */
           }
           document
-            .querySelector(`.fa-angle-down#${topic.Name.split(/\s/).join('')}`)
-            .classList.toggle('rotate');
+            .querySelector(`.fa-angle-down#${topic.Name.split(/\s/).join("")}`)
+            .classList.toggle("rotate");
         }}
       >
         <svg
-          id={topic.Name.split(/\s/).join('')}
+          id={topic.Name.split(/\s/).join("")}
           viewBox="0 0 32 32"
           className=" icon icon-chevron-bottom article-dwn article-toggle fa-angle-down"
           viewBox="0 0 32 32"

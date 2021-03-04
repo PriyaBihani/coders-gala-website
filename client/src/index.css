@@ -322,6 +322,10 @@ body.dark .icon {
 SVG Icons - svgicons.sparkk.fr
 ----- */
 
+body.dark svg {
+    fill: #f1f1f1
+}
+
 .svg-icon {
     width: 1.2em;
     height: 1.2em;

@@ -1,15 +1,23 @@
-import { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Accordion, Row, Col, Button } from 'react-bootstrap';
+import { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Accordion, Row, Col, Button } from "react-bootstrap";
 
-import { Footer } from '../layout';
-import { Seo } from '../helpers';
-import { getSpeciality, clearArticle } from '../actions';
+import { Footer } from "../layout";
+import { Seo } from "../helpers";
+import { getSpeciality, clearArticle } from "../actions";
 
-import ArticlePreview from '../sections/preview/ArticlePreview';
-import TopicsOverview from '../sections/preview/TopicsOverview';
+import ArticlePreview from "../sections/preview/ArticlePreview";
+import TopicsOverview from "../sections/preview/TopicsOverview";
+import { Add } from "../assets/icons";
 
-const Preview = ({ match, clearArticle, getSpeciality, speciality }) => {
+const Preview = ({
+  match,
+  clearArticle,
+  getSpeciality,
+  speciality,
+  isAdmin,
+}) => {
   const [previewArticle, setPreviewArticle] = useState(speciality);
 
   const requiredSpeciality = match.params.specialityName;
@@ -27,7 +35,7 @@ const Preview = ({ match, clearArticle, getSpeciality, speciality }) => {
     <div className="topics-ovr-cont">
       <Seo
         title="Select Article"
-        meta={[{ name: 'robots', content: 'index follow' }]}
+        meta={[{ name: "robots", content: "index follow" }]}
       />
 
       <div className="speciality-container">
@@ -37,22 +45,21 @@ const Preview = ({ match, clearArticle, getSpeciality, speciality }) => {
 
         <Row>
           <Col className="topic-ovr-container" lg={4}>
-            <Accordion defaultActiveKey={window.innerWidth <= 500 ? '1' : '0'}>
+            <Accordion defaultActiveKey={window.innerWidth <= 500 ? "1" : "0"}>
               <div className="topics-overview">
-                <h3 style={{ fontSize: '1rem' }} className="overview">
+                <h3 style={{ fontSize: "1rem" }} className="overview">
                   {/* Use content method of CSS */}
                   <span>
                     {window.innerWidth <= 500
-                      ? ' In this Module...'
-                      : 'Topics Overview'}{' '}
+                      ? " In this Module..."
+                      : "Topics Overview"}{" "}
                   </span>
 
-                  {/* {isAdmin ? (
-                    <AddTopicName
-                      specialityName={requiredSpeciality}
-                      speciality={props.specialities.speciality}
-                    />
-                  ) : null} */}
+                  {isAdmin ? (
+                    <Link to={`/${requiredSpeciality}/topic/add/`}>
+                      <Add />{" "}
+                    </Link>
+                  ) : null}
                 </h3>
 
                 <Accordion.Toggle
@@ -60,11 +67,11 @@ const Preview = ({ match, clearArticle, getSpeciality, speciality }) => {
                   variant="link"
                   onClick={() => {
                     document
-                      .querySelector('.arrow-down.overview')
-                      .classList.toggle('down');
+                      .querySelector(".arrow-down.overview")
+                      .classList.toggle("down");
                     document
-                      .querySelector('.arrow-down svg.topics-overview-toggle')
-                      .classList.remove('anim');
+                      .querySelector(".arrow-down svg.topics-overview-toggle")
+                      .classList.remove("anim");
                   }}
                   className="float-right speciality-dropdown overview arrow-down"
                   eventKey="0"
@@ -103,6 +110,7 @@ const Preview = ({ match, clearArticle, getSpeciality, speciality }) => {
 
 const mapStateToProps = (state) => ({
   speciality: state.speciality.speciality,
+  isAdmin: state.auth.isAdmin,
 });
 
 export default connect(mapStateToProps, {

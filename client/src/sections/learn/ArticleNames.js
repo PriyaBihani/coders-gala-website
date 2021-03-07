@@ -1,10 +1,10 @@
-import React from 'react';
-import { Tooltip } from 'react-tippy';
-import { connect } from 'react-redux';
-import { scrollTo } from '../../helpers';
-import { Button } from '../../layout';
-import { deleteArticle } from '../../actions/article';
-import AdminButtons from '../../layout/Buttons/AdminButtons';
+import React from "react";
+import { Tooltip } from "react-tippy";
+import { connect } from "react-redux";
+import { scrollTo } from "../../helpers";
+import { Button } from "../../layout";
+import { deleteArticle } from "../../actions/article";
+import AdminButtons from "../../layout/Buttons/AdminButtons";
 
 const Article = ({
   setPreviewArticle,
@@ -18,7 +18,7 @@ const Article = ({
     const confirm = window.prompt(
       `You sure want to delete "${ArticleName}" ? Y or N `
     );
-    if (confirm === 'Y') {
+    if (confirm === "Y") {
       deleteArticle(_id, topic._id, specialityName);
     }
   };
@@ -30,8 +30,9 @@ const Article = ({
           <a
             type="button"
             onClick={() => {
+              console.log(article);
               setPreviewArticle(article);
-              const pos = document.querySelector('.card-container');
+              const pos = document.querySelector(".card-container");
               if (window.innerWidth <= 500) {
                 scrollTo(pos);
               }
@@ -39,7 +40,7 @@ const Article = ({
             className="display-article"
           >
             <li className="article-name m-0">
-              {article.ArticleName}{' '}
+              {article.ArticleName}{" "}
               <span className="article-action-icons">
                 <AdminButtons
                   type="Edit"
@@ -61,7 +62,7 @@ const Article = ({
                     isButton={true}
                     handler={() => {
                       setPreviewArticle(article);
-                      const pos = document.querySelector('.card-container');
+                      const pos = document.querySelector(".card-container");
                       if (window.innerWidth <= 500) {
                         scrollTo(pos);
                       }

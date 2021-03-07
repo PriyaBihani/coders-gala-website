@@ -17,6 +17,7 @@ import UpsertCard from "./components/UpsertCard";
 import UpsertArticle from "./components/UpsertArticle";
 import Auth from "./components/Auth";
 import UpsertTopic from "./components/UpsertTopic";
+import PrivateRoute from "./helpers/PrivateRoute";
 
 const Preview = Loadable({
   loader: () => import("./components/Preview"),

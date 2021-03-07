@@ -1,14 +1,21 @@
-import { Link } from 'react-router-dom';
-import ReactHtmlParser from 'react-html-parser';
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import ReactHtmlParser from "react-html-parser";
+import { unlockTopic } from "../../actions/topic";
 
-const ArticlePreview = ({ SelectedArticle, specialityName }) => {
+const ArticlePreview = ({ SelectedArticle, specialityName, unlockTopic }) => {
   const ReadMoreUrl =
     SelectedArticle && SelectedArticle.ArticleName
       ? `/${specialityName}/read/${SelectedArticle.ArticleName.replace(
           /\s/g,
-          '-'
+          "-"
         )}`
       : `/${specialityName}/read/before-starting`;
+
+  const handleUnlock = async (topicId, specialityName) => {
+    const res = await unlockTopic(topicId, specialityName);
+    console.log(res);
+  };
   return (
     <div className="card-container">
       <div className="card">
@@ -17,7 +24,7 @@ const ArticlePreview = ({ SelectedArticle, specialityName }) => {
             <h1 className="material-icons card-header">
               {SelectedArticle && SelectedArticle.ArticleName
                 ? SelectedArticle.ArticleName
-                : 'Read This Before You Start...'}
+                : "Read This Before You Start..."}
               <div>
                 <h3 className="float-right"></h3>
               </div>
@@ -25,8 +32,24 @@ const ArticlePreview = ({ SelectedArticle, specialityName }) => {
             <hr />
             <div className="ql-snow">
               <div className="card-no-body ql-editor">
-                {ReactHtmlParser(
-                  SelectedArticle && SelectedArticle.ArticleContent
+                {SelectedArticle && SelectedArticle.locked ? (
+                  <div>
+                    To view this article please unlock it using points{" "}
+                    <button
+                      onClick={() => {
+                        handleUnlock(
+                          SelectedArticle && SelectedArticle.topicId,
+                          specialityName
+                        );
+                      }}
+                    >
+                      Unlock
+                    </button>{" "}
+                  </div>
+                ) : (
+                  ReactHtmlParser(
+                    SelectedArticle && SelectedArticle.ArticleContent
+                  )
                 )}
               </div>
             </div>
@@ -36,14 +59,18 @@ const ArticlePreview = ({ SelectedArticle, specialityName }) => {
           <Link
             onClick={() => {
               window.scroll({
-                behavior: 'smooth',
+                behavior: "smooth",
                 left: 0,
-                top: '0px',
+                top: "0px",
               });
             }}
             to={ReadMoreUrl}
           >
-            <h2 className="link">Read More.....</h2>
+            <h2 className="link">
+              {SelectedArticle && SelectedArticle.locked
+                ? "Unlock"
+                : "Read More....."}
+            </h2>
           </Link>
         </div>
       </div>
@@ -51,4 +78,4 @@ const ArticlePreview = ({ SelectedArticle, specialityName }) => {
   );
 };
 
-export default ArticlePreview;
+export default connect(null, { unlockTopic })(ArticlePreview);

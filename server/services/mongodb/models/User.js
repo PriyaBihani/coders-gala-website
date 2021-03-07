@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const UserSchema = new mongoose.Schema(
   {
@@ -40,8 +40,9 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    unLockedTopics: { type: Array, default: [] },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model("User", UserSchema);

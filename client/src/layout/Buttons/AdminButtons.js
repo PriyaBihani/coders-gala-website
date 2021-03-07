@@ -32,7 +32,11 @@ const AdminButtons = ({
         data={data}
       />
     </TooltipWrapper>
-  ) : null;
+  ) : (
+    <TooltipWrapper position={"top"}>
+      <AdminButtonsWrapper type={"Dummy"} />
+    </TooltipWrapper>
+  );
 
 const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
   switch (type) {
@@ -74,6 +78,13 @@ const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
           <Delete size="20" color="crimson" />
         </a>
       );
+    case "Dummy":
+      return (
+        <a href="#" className="edit-topic-modal-toggle">
+          <span></span>
+        </a>
+      );
+
     default:
       return null;
   }

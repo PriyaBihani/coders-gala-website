@@ -7,13 +7,13 @@ import {
   AUTH_ERROR,
   LOGOUT,
   SEND_RESET_EMAIL,
-} from '../actions/types';
+} from "../actions/types";
 
 const initialState = {
-  token: localStorage.getItem('token'),
+  token: localStorage.getItem("token"),
   isAuthenticated: null,
   loading: false,
-  user: null,
+  user: { unLockedTopics: [] },
   isAdmin: null,
 };
 
@@ -31,8 +31,8 @@ export default function (state = initialState, action) {
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-      localStorage.setItem('token', payload.token);
-      localStorage.setItem('userId', payload.userId);
+      localStorage.setItem("token", payload.token);
+      localStorage.setItem("userId", payload.userId);
       console.log(payload);
 
       return {
@@ -48,8 +48,8 @@ export default function (state = initialState, action) {
       };
     case LOGIN_FAIL:
     case AUTH_ERROR:
-      localStorage.removeItem('token');
-      localStorage.removeItem('userId');
+      localStorage.removeItem("token");
+      localStorage.removeItem("userId");
       return {
         ...state,
         token: null,
@@ -70,7 +70,7 @@ export default function (state = initialState, action) {
         ...payload,
       };
 
-    case 'SET_AUTH_LOADER':
+    case "SET_AUTH_LOADER":
       return {
         ...state,
         loading: true,

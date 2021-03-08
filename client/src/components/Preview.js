@@ -87,10 +87,12 @@ const Preview = ({
                 </Accordion.Toggle>
               </div>
               <Accordion.Collapse eventKey="0">
-                <TopicsOverview
-                  specialityName={requiredSpeciality}
-                  setPreviewArticle={setPreviewArticle}
-                />
+                <Accordion>
+                  <TopicsOverview
+                    specialityName={requiredSpeciality}
+                    setPreviewArticle={setPreviewArticle}
+                  />
+                </Accordion>
               </Accordion.Collapse>
             </Accordion>
           </Col>

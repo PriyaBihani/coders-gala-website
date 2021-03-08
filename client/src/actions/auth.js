@@ -7,23 +7,23 @@ import {
   AUTH_ERROR,
   SEND_RESET_EMAIL,
   SEND_RESET_EMAIL_FAIL,
-} from './types';
+} from "./types";
 
-import { toast } from 'react-toastify';
-import { serviceGet, servicePost, setAuthToken } from '../helpers';
+import { toast } from "react-toastify";
+import { serviceGet, servicePost, setAuthToken } from "../helpers";
 
 // Load User : Every time we logged in or register or refresh the page its gonna load.
 
 export const loadUser = () => async (dispatch) => {
   dispatch({
-    type: 'SET_AUTH_LOADER',
+    type: "SET_AUTH_LOADER",
   });
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
 
   if (localStorage.userId) {
-    const userId = localStorage.getItem('userId');
+    const userId = localStorage.getItem("userId");
 
     try {
       const res = await serviceGet(`api/auth/user/${userId}`);
@@ -40,18 +40,44 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
+export const refreshUser = (user) => async (dispatch) => {
+  dispatch({
+    type: "SET_AUTH_LOADER",
+  });
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+
+  if (localStorage.userId) {
+    const userId = localStorage.getItem("userId");
+
+    try {
+      const res = await serviceGet(`api/auth/user/${userId}`);
+
+      dispatch({
+        type: USER_LOADED,
+        payload: user,
+      });
+    } catch (err) {
+      dispatch({
+        type: AUTH_ERROR,
+      });
+    }
+  }
+};
+
 export const register = (data) => async (dispatch) => {
   dispatch({
-    type: 'SET_AUTH_LOADER',
+    type: "SET_AUTH_LOADER",
   });
   const headers = {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   };
 
   const body = JSON.stringify(data);
 
   try {
-    const res = await servicePost('api/auth/signup', body, headers);
+    const res = await servicePost("api/auth/signup", body, headers);
 
     dispatch({
       type: res.status === 1 ? REGISTER_SUCCESS : REGISTER_FAIL,
@@ -72,16 +98,16 @@ export const register = (data) => async (dispatch) => {
 
 export const login = ({ email, password }) => async (dispatch) => {
   dispatch({
-    type: 'SET_AUTH_LOADER',
+    type: "SET_AUTH_LOADER",
   });
   const headers = {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   };
 
   const body = JSON.stringify({ email, password });
 
   try {
-    const res = await servicePost('api/auth/login', body, headers);
+    const res = await servicePost("api/auth/login", body, headers);
 
     console.log(res);
 
@@ -103,24 +129,24 @@ export const login = ({ email, password }) => async (dispatch) => {
 export const logout = () => (dispatch) => {
   localStorage.clear();
   dispatch({
-    type: 'LOGOUT',
+    type: "LOGOUT",
   });
 };
 
 export const sendResetEmail = ({ email }) => async (dispatch) => {
   const config = {
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
   };
   const body = JSON.stringify({ email });
 
   try {
-    const res = await servicePost('/api/forgotpassword', body, config);
+    const res = await servicePost("/api/forgotpassword", body, config);
 
     const messagesArray = res.data.messages;
     // brand added message alert
-    messagesArray.forEach((message) => dispatch((message.msg, 'danger')));
+    messagesArray.forEach((message) => dispatch((message.msg, "danger")));
     dispatch({
       type: SEND_RESET_EMAIL,
       payload: res.data,

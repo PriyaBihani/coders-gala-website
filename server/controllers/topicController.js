@@ -1,4 +1,5 @@
 let Topic = require("../services/mongodb/models/Topic"),
+  User = require("../services/mongodb/models/User"),
   Speciality = require("../services/mongodb/models/Speciality"),
   Article = require("../services/mongodb/models/Article");
 const { validationResult } = require("express-validator");
@@ -124,6 +125,44 @@ exports.deleteTopic = async (req) => {
       message: "FAILED",
       data: null,
       errorMessage: "Server Error",
+      statusCode: 400,
+      status: 0,
+    };
+  }
+};
+exports.unlockTopicForUser = async (req) => {
+  try {
+    console.log(req.decodedToken.userId);
+    const user = await User.findById(req.decodedToken.userId);
+    var { unLockedTopics, points } = user;
+    if (!unLockedTopics.includes(req.params.topicId) && points > 0) {
+      unLockedTopics.push(req.params.topicId);
+      user.points = points - 1;
+      const updatedUser = await user.save();
+      return {
+        message: "SUCCESS",
+        data: { user: updatedUser },
+        error: null,
+        statusCode: 200,
+        status: 1,
+      };
+    } else {
+      return {
+        message: "SUCCESS",
+        data: { user: user },
+        error: "Not enough points",
+        statusCode: 200,
+        status: 1,
+      };
+    }
+
+    // console.log(user);
+  } catch (err) {
+    console.log(err);
+    return {
+      message: "FAILED",
+      data: null,
+      error: "Server error",
       statusCode: 400,
       status: 0,
     };

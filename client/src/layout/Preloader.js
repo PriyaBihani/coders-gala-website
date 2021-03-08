@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-const Preloader = () => {
+export const Preloader = () => {
   return (
     <div className="loader-section">
       <div className="loader-box">
@@ -11,5 +11,3 @@ const Preloader = () => {
     </div>
   );
 };
-
-export default Preloader;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const FooterSocialMedia = () => {
   return (
@@ -26,10 +26,10 @@ const FooterSocialMedia = () => {
   );
 };
 
-const Footer = () => {
-  const [email, setEmail] = useState("");
+export const Footer = () => {
+  const [email, setEmail] = useState('');
   const [message, setMessage] = useState(
-    "Enter Your Email here to subscribe for Newsletter"
+    'Enter Your Email here to subscribe for Newsletter'
   );
   return (
     <div className="footer-cont">
@@ -66,5 +66,3 @@ const Footer = () => {
     </div>
   );
 };
-
-export default Footer;

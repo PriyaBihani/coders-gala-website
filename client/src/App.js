@@ -12,12 +12,14 @@ import "bootstrap/dist/js/bootstrap.js";
 //this i s. a change
 
 import store from "./store";
-import Loader from "./layout/Preloader";
+import { Preloader as Loader } from "./layout";
 import Navbar from "./layout/Navbar/Navbar";
 import Article from "./components/Article";
 import UpsertCard from "./components/UpsertCard";
 import UpsertArticle from "./components/UpsertArticle";
 import Auth from "./components/Auth";
+import UpsertTopic from "./components/UpsertTopic";
+import PrivateRoute from "./helpers/PrivateRoute";
 
 const Preview = Loadable({
   loader: () => import("./components/Preview"),
@@ -59,6 +61,16 @@ const App = () => {
             render={(props) => <Auth {...props} type={"signup"} />}
             exact
             path="/signup"
+          />
+          <Route
+            render={(props) => <UpsertTopic edit={false} {...props} />}
+            exact
+            path="/:specialityName/topic/add"
+          />
+          <Route
+            render={(props) => <UpsertTopic edit={true} {...props} />}
+            exact
+            path="/:specialityName/topic/edit/:topicId"
           />
           <Route
             render={(props) => <Auth {...props} type={"signup"} />}

@@ -1,21 +1,17 @@
-/* eslint-disable */
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Accordion, Button, Col, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 import { setDisplayMode } from "../../actions/ui";
+import { isClient } from "../../helpers";
 
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 import SignedOutLinks from "./SignedOutLinks";
 import SignedInLinks from "./SignedInLinks";
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
-// jQuery-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
-// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-
 // logo imports
-import Logo from "./images/cgTransparent.PNG";
+import Logo from "../../assets/img/cgTransparent.PNG";
 
 const Navbar = ({ auth, ui, setDisplayMode }) => {
   // -------------------------------------------------
@@ -31,7 +27,7 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
   });
 
   // Getting the current mode from local storage
-  if (typeof window !== "undefined") {
+  if (isClient) {
     let mode = "light";
 
     mode = localStorage.getItem("mode");
@@ -70,7 +66,6 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
                   onClick={() => {
                     setDisplayMode();
                     setswitched(!switched);
-                    // window.location.reload();
                   }}
                   className={`switch float-right ${switched ? "switched" : ""}`}
                 >
@@ -107,7 +102,7 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
                 </div>
 
                 <div className="signed-links">
-                  {auth.user && auth.user.userId ? (
+                  {auth.isAuthenticated && auth.isAuthenticated ? (
                     <>
                       <SignedInLinks />
                     </>

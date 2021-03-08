@@ -7,5 +7,6 @@ exports.sanitizeUser = (user) => {
     role: user.role,
     referCode: user.referCode,
     email: user.email,
+    unLockedTopics: user.unLockedTopics,
   };
 };

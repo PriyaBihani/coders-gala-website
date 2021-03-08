@@ -5,6 +5,7 @@
 @import "../node_modules/bootstrap/dist/css/bootstrap.css";
 @import '../node_modules/react-toastify/dist/ReactToastify.css';
 @import '../node_modules/react-tippy/dist/tippy.css';
+@import '../node_modules/react-quill/dist/quill.snow.css';
 
 /* highlight js */
 
@@ -27,7 +28,7 @@
 
 /* Preview page */
 
-@import "./styles/preview/preview.css";
+@import "./styles/preview.css";
 
 /* Article */
 
@@ -39,13 +40,14 @@
 
 /* Topic */
 
-@import './styles/topic/topic.css';
+@import './styles/topic.css';
 
 /* LAYOUT */
 
 @import "./styles/button.css";
-@import "./layout/css/footer.css";
-@import "./layout/css/navbar.css";
+@import "./styles/footer.css";
+@import "./styles/navbar.css";
+@import './styles/editor.css';
 
 /* EDIt topic modal and add article button style */
 
@@ -57,6 +59,10 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.text-editor {
+    background-color: #fff;
 }
 
 .container-width {
@@ -315,6 +321,10 @@ body.dark .icon {
 /* -----
 SVG Icons - svgicons.sparkk.fr
 ----- */
+
+body.dark svg {
+    fill: #f1f1f1
+}
 
 .svg-icon {
     width: 1.2em;

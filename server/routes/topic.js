@@ -43,6 +43,22 @@ router.get("/get/:specialityName", async (req, res) => {
   }
 });
 
+router.post("/unlock/:topicId", authMiddleware, async (req, res) => {
+  try {
+    let topic = await topicController.unlockTopicForUser(req);
+    let code = topic.statusCode;
+    delete topic.statusCode;
+    res.status(code).send(topic);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "FAILED",
+      data: null,
+      error: error,
+    });
+  }
+});
+
 router.post("/update/:topicId", adminMiddleware, async (req, res) => {
   try {
     let topic = await topicController.updateTopic(req);

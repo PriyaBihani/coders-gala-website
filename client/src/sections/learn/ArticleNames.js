@@ -1,34 +1,25 @@
-/* eslint-disable */
-import React from 'react';
-import { Tooltip } from 'react-tippy';
-import { connect } from 'react-redux';
-import { scrollTo } from '../../helpers';
-import { deleteArticle } from '../../actions/article';
-import AdminButtons from '../../layout/Buttons/AdminButtons';
+import React from "react";
+import { Tooltip } from "react-tippy";
+import { connect } from "react-redux";
+import { scrollTo } from "../../helpers";
+import { Button } from "../../layout";
+import { deleteArticle } from "../../actions/article";
+import AdminButtons from "../../layout/Buttons/AdminButtons";
 
 const Article = ({
-  readArticle,
+  setPreviewArticle,
   article,
-  isAdmin,
-  displayMode,
   deleteArticle,
   topic,
-  specialities,
+  specialityName,
 }) => {
-  var readIconUrl;
-  if (displayMode === 'light') {
-    readIconUrl = 'https://www.svgrepo.com/show/21266/open-book.svg';
-  } else {
-    readIconUrl = 'https://www.svgrepo.com/show/1110/reader.svg';
-  }
-
   const handleDelete = (data) => {
     const { ArticleName, _id } = data;
     const confirm = window.prompt(
       `You sure want to delete "${ArticleName}" ? Y or N `
     );
-    if (confirm === 'Y') {
-      deleteArticle(_id, topic._id, specialities.speciality.Name);
+    if (confirm === "Y") {
+      deleteArticle(_id, topic._id, specialityName);
     }
   };
 
@@ -39,8 +30,9 @@ const Article = ({
           <a
             type="button"
             onClick={() => {
-              readArticle(article);
-              const pos = document.querySelector('.card-container');
+              console.log(article);
+              setPreviewArticle(article);
+              const pos = document.querySelector(".card-container");
               if (window.innerWidth <= 500) {
                 scrollTo(pos);
               }
@@ -48,7 +40,7 @@ const Article = ({
             className="display-article"
           >
             <li className="article-name m-0">
-              {article.ArticleName}{' '}
+              {article.ArticleName}{" "}
               <span className="article-action-icons">
                 <AdminButtons
                   type="Edit"
@@ -66,24 +58,16 @@ const Article = ({
                   position="top"
                   trigger="mouseenter"
                 >
-                  <a
-                    type="button"
-                    onClick={() => {
-                      readArticle(article);
-                      const pos = document.querySelector('.card-container');
+                  <Button
+                    isButton={true}
+                    handler={() => {
+                      setPreviewArticle(article);
+                      const pos = document.querySelector(".card-container");
                       if (window.innerWidth <= 500) {
                         scrollTo(pos);
                       }
                     }}
-                  >
-                    <span>
-                      <img
-                        src={readIconUrl}
-                        style={{ width: '20px' }}
-                        alt={'read ' + article.ArticleName}
-                      />
-                    </span>
-                  </a>
+                  />
                 </Tooltip>
               </span>
             </li>

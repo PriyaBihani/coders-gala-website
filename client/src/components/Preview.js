@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Accordion, Row, Col, Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
+import { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Accordion, Row, Col, Button } from "react-bootstrap";
 
-import Article from '../sections/learn/Article';
-import SpecialityPreviewArticle from '../sections/preview/SpecialityPreviewArticle';
-import PreviewArticle from '../sections/preview/PreviewArticle';
+import { Footer } from "../layout";
+import { Seo } from "../helpers";
+import { getSpeciality, clearArticle } from "../actions";
 
+<<<<<<< HEAD
 import { Seo, scrollTo } from '../helpers';
 import {
   getSpeciality,
@@ -58,54 +59,38 @@ const ActionButtons = ({ handleDelete, topic, setOpenTopics }) => {
     </div>
   );
 };
+=======
+import ArticlePreview from "../sections/preview/ArticlePreview";
+import TopicsOverview from "../sections/preview/TopicsOverview";
+import { Add } from "../assets/icons";
+>>>>>>> staging
 
-const Preview = (props) => {
-  const [topics, setTopics] = useState({});
-  const [selected, setSelected] = useState(false);
-  const [SelectedArticle, setSelectedArticle] = useState();
-  const [showReferralArticle, setshowReferralArticle] = useState(false);
-  const [referralTopicId, setreferralTopicId] = useState('');
-  const { user } = props;
+const Preview = ({
+  match,
+  clearArticle,
+  getSpeciality,
+  speciality,
+  isAdmin,
+}) => {
+  const [previewArticle, setPreviewArticle] = useState(speciality);
 
-  const isAdmin = user && user.isAdmin;
-
-  const requiredSpeciality = props.match.params.specialityName;
+  const requiredSpeciality = match.params.specialityName;
 
   useEffect(async () => {
-    props.clearArticle();
-
-    props.getSpeciality(requiredSpeciality);
-
-    props.getTopics(requiredSpeciality);
+    clearArticle();
+    getSpeciality(requiredSpeciality);
   }, []);
 
-  const readArticle = (article) => {
-    displayArticle(article);
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth <= 569) {
-        scrollTo();
-      }
-    }
-  };
-
-  const displayArticle = (article) => {
-    setSelectedArticle(article);
-    setSelected(true);
-  };
-
-  const handleDelete = (topic) => {
-    const confirm = window.prompt(
-      `You sure want to delete "${topic.Name}" ? Y or N (Deleting a topic will lead to deletion of all articles inside it) `
-    );
-    if (confirm === 'Y') {
-      props.deleteTopic(topic._id, requiredSpeciality);
-      toast('Deleted speciality sucessfully');
-    }
-  };
+  useEffect(() => {
+    setPreviewArticle(speciality);
+  }, [speciality]);
 
   return (
     <div className="topics-ovr-cont">
-      <Seo meta={[{ name: 'robots', content: 'index follow' }]} />
+      <Seo
+        title="Select Article"
+        meta={[{ name: "robots", content: "index follow" }]}
+      />
 
       <div className="speciality-container">
         <div className="speciality-heading">
@@ -114,22 +99,20 @@ const Preview = (props) => {
 
         <Row>
           <Col className="topic-ovr-container" lg={4}>
-            {/* Yeh pehla accordian deekhta kyun nahi h desktop mode mein */}
-            {/* {Kyuki mobile view mein vo collapse ho jata hai aur desktop mein nahi :) } */}
-            <Accordion defaultActiveKey={window.innerWidth <= 500 ? '1' : '0'}>
+            <Accordion defaultActiveKey={window.innerWidth <= 500 ? "1" : "0"}>
               <div className="topics-overview">
-                <h3 style={{ fontSize: '1rem' }} className="overview">
+                <h3 style={{ fontSize: "1rem" }} className="overview">
+                  {/* Use content method of CSS */}
                   <span>
                     {window.innerWidth <= 500
-                      ? ' In this Module...'
-                      : 'Topics Overview'}{' '}
+                      ? " In this Module..."
+                      : "Topics Overview"}{" "}
                   </span>
 
                   {isAdmin ? (
-                    <AddTopicName
-                      specialityName={requiredSpeciality}
-                      speciality={props.specialities.speciality}
-                    />
+                    <Link to={`/${requiredSpeciality}/topic/add/`}>
+                      <Add />{" "}
+                    </Link>
                   ) : null}
                 </h3>
 
@@ -138,11 +121,11 @@ const Preview = (props) => {
                   variant="link"
                   onClick={() => {
                     document
-                      .querySelector('.arrow-down.overview')
-                      .classList.toggle('down');
+                      .querySelector(".arrow-down.overview")
+                      .classList.toggle("down");
                     document
-                      .querySelector('.arrow-down svg.topics-overview-toggle')
-                      .classList.remove('anim');
+                      .querySelector(".arrow-down svg.topics-overview-toggle")
+                      .classList.remove("anim");
                   }}
                   className="float-right speciality-dropdown overview arrow-down"
                   eventKey="0"
@@ -157,87 +140,22 @@ const Preview = (props) => {
                   </svg>
                 </Accordion.Toggle>
               </div>
-              <br />
               <Accordion.Collapse eventKey="0">
-                <div id="specialities" className="Topic-names ">
-                  {props.topics.topics.length > 0 &&
-                    props.topics.topics.map((topic) => {
-                      return (
-                        <div key={topic._id}>
-                          <br />
-                          <div
-                            className="p-0 speciality-topic-container m-1"
-                            key={topic._id}
-                          >
-                            {/* When user clicked on the locked topic box referral article shows*/}
-                            <h4 className="float-left topicName">
-                              {topic.Name}
-                            </h4>
-                            <EditTopicModal
-                              specialityName={requiredSpeciality}
-                              name={topic.Name}
-                              Locked={topic.locked}
-                              id={topic._id}
-                              modalId={topic.Name.split(' ')[0]}
-                            />
-
-                            <Accordion
-                              defaultActiveKey={
-                                props.openTopics.includes(topic._id)
-                                  ? topic.Name.split(/\s/).join('')
-                                  : ''
-                              }
-                            >
-                              <ActionButtons
-                                topic={topic}
-                                handleDelete={handleDelete}
-                                setOpenTopics={props.setOpenTopics}
-                              />
-
-                              <hr />
-                              <Accordion.Collapse
-                                eventKey={topic.Name.split(/\s/).join('')}
-                              >
-                                <ol>
-                                  {topic.articles &&
-                                    topic.articles.map((article) => {
-                                      return (
-                                        <Article
-                                          specialities={props.specialities}
-                                          isAdmin={isAdmin}
-                                          topic={topic}
-                                          readArticle={readArticle}
-                                          displayMode={'light'}
-                                          article={article}
-                                        />
-                                      );
-                                    })}
-                                </ol>
-                              </Accordion.Collapse>
-                            </Accordion>
-                          </div>
-                        </div>
-                      );
-                    })}
-                </div>
+                <Accordion>
+                  <TopicsOverview
+                    specialityName={requiredSpeciality}
+                    setPreviewArticle={setPreviewArticle}
+                  />
+                </Accordion>
               </Accordion.Collapse>
             </Accordion>
           </Col>
 
           <Col l={8}>
-            <div className="card-container ">
-              {selected ? (
-                <PreviewArticle
-                  specialityName={requiredSpeciality}
-                  SelectedArticle={SelectedArticle}
-                />
-              ) : (
-                <SpecialityPreviewArticle
-                  item={props.specialities.speciality}
-                  requiredSpeciality={requiredSpeciality}
-                />
-              )}
-            </div>
+            <ArticlePreview
+              SelectedArticle={previewArticle && previewArticle}
+              specialityName={requiredSpeciality}
+            />
           </Col>
         </Row>
       </div>
@@ -247,16 +165,11 @@ const Preview = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  specialities: state.speciality,
-  topics: state.topic,
-  openTopics: state.ui.openTopics,
-  user: state.auth,
+  speciality: state.speciality.speciality,
+  isAdmin: state.auth.isAdmin,
 });
 
 export default connect(mapStateToProps, {
   getSpeciality,
-  getTopics,
   clearArticle,
-  setOpenTopics,
-  deleteTopic,
 })(Preview);

@@ -1,11 +1,11 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React from 'react';
+import { motion } from 'framer-motion';
 
-import { Seo } from "../helpers";
+import { Seo } from '../helpers';
 
-import Questions from "../sections/about/Questions";
-import AboutUs from "../sections/about/AboutUs";
-import Footer from "../layout/Footer/Footer";
+import Questions from '../sections/about/Questions';
+import AboutUs from '../sections/about/AboutUs';
+import { Footer } from '../layout';
 
 const About = () => {
   return (
@@ -17,7 +17,7 @@ const About = () => {
       <Seo title="About" />
       <div className="about-page scroller">
         <div className="ovr-wave top-slide">
-          <h1 style={{ textAlign: "center" }}>Hello there,</h1>
+          <h1 style={{ textAlign: 'center' }}>Hello there,</h1>
           <div className="subheading-about">
             We created <span className="logo text-dark">Coders Gala</span> to
             provide You Quality resources to learn From

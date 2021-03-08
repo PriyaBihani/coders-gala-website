@@ -29,13 +29,12 @@ const TopicsOverview = ({
     }
   };
 
-  const [open, setOpen] = useState();
+  const [selectedId, setSelectedId] = useState();
 
   useEffect(() => {
     console.log("changes");
-  }, [open]);
+  }, [selectedId]);
 
-  console.log(topics);
   return (
     <div id="specialities" className="Topic-names ">
       {topics.length > 0 &&
@@ -47,25 +46,12 @@ const TopicsOverview = ({
                 className="p-0 speciality-topic-container m-1"
                 key={topic._id}
               >
-                {/* When user clicked on the locked topic box referral article shows*/}
                 <h4 className="float-left topicName">{topic.Name}</h4>
 
-                {/* <Accordion
-                defaultActiveKey={
-                  props.openTopics.includes(topic._id)
-                    ? topic.Name.split(/\s/).join('')
-                    : ''
-                }
-              > */}
-
-                {/* <ActionButtons
-                  topic={topic}
-                  handleDelete={handleDelete}
-                  setOpenTopics={props.setOpenTopics}
-                /> */}
                 <ActionButtons
                   accordionKey={topic.Name.split(/\s/).join("")}
-                  setOpen={setOpen}
+                  setSelectedId={setSelectedId}
+                  selectedId={selectedId}
                   specialityName={specialityName}
                   setPreviewArticle={setPreviewArticle}
                   topic={topic}
@@ -117,9 +103,9 @@ const ActionButtons = ({
   handleDelete,
   topic,
   specialityName,
-  accordionKey,
+  selectedId,
   setPreviewArticle,
-  setOpen,
+  setSelectedId,
   user,
 }) => {
   return (
@@ -148,21 +134,19 @@ const ActionButtons = ({
           className="float-right arrow-down"
           eventKey={topic.Name.split(/\s/).join("")} // to remove spaces
           onClick={() => {
-            setOpen(topic.Name.split(/\s/).join(""));
-            {
-              /* setOpenTopics(topic._id); */
+            if (selectedId == topic._id) {
+              setSelectedId("");
+            } else {
+              setSelectedId(topic._id);
             }
-            document
-              .querySelector(
-                `.fa-angle-down#${topic.Name.split(/\s/).join("")}`
-              )
-              .classList.toggle("rotate");
           }}
         >
           <svg
             id={topic.Name.split(/\s/).join("")}
             viewBox="0 0 32 32"
-            className=" icon icon-chevron-bottom article-dwn article-toggle fa-angle-down"
+            className={`icon icon-chevron-bottom article-dwn article-toggle fa-angle-down ${
+              topic._id == selectedId ? "rotate" : ""
+            }`}
             viewBox="0 0 32 32"
           >
             <path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z" />

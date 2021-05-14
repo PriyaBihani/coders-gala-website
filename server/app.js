@@ -12,6 +12,7 @@ let authRoutes = require('./routes/auth'),
   specialityRoutes = require('./routes/speciality'),
   topicRoutes = require('./routes/topic'),
   articleRoutes = require('./routes/article');
+  videoRoutes = require('./routes/video')
 var indexRouter = require('./routes/index');
 
 // ================================================
@@ -32,6 +33,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/speciality', specialityRoutes);
 app.use('/api/topic', topicRoutes);
 app.use('/api/article', articleRoutes);
+app.use('/api/video', videoRoutes);
 app.use('/', indexRouter);
 
 // mongooseConnect

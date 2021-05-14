@@ -7,6 +7,7 @@ let articleController = require('./../controllers/articleController'),
 
 router.post(
   '/add/:topicId',
+  authMiddleware,
   adminMiddleware,
   [check('ArticleContent', 'Article can not be empty').notEmpty()],
   [check('ArticleName', 'Article name can not be empty').notEmpty()],
@@ -34,7 +35,7 @@ router.get('/get/:id', async (req, res) => {
     let code = article.statusCode;
     delete article.statusCode;
     res.status(code).send(article);
-  } catch (err) {
+  } catch (error) {
     console.log(error);
     res.status(500).send({
       message: 'FAILED',
@@ -44,13 +45,14 @@ router.get('/get/:id', async (req, res) => {
   }
 });
 
-router.post('/update/:id', async (req, res) => {
+router.post('/update/:id',   authMiddleware,
+  adminMiddleware, async (req, res) => {
   try {
     let article = await articleController.updateArticleById(req);
     let code = article.statusCode;
     delete article.statusCode;
     res.status(code).send(article);
-  } catch (err) {
+  } catch (error) {
     console.log(error);
     res.status(500).send({
       message: 'FAILED',
@@ -77,7 +79,8 @@ router.post('/get', async (req, res) => {
   }
 });
 
-router.post('/delete/:articleId/:topicId', async (req, res) => {
+router.post('/delete/:articleId/:topicId',   authMiddleware,
+  adminMiddleware, async (req, res) => {
   try {
     // console.log(req.body);
     let article = await articleController.deleteArticle(req);

@@ -35,4 +35,10 @@ Topics.Articles --> Topics.Videos
 
 12. Shift to babel, and webpack
 
+==== Immediate Server Changes
+
+13. Fix the error codes in routes and Controllers
+
+14. Add express Validators and middlewares
+
 

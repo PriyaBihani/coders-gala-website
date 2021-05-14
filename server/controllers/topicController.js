@@ -51,7 +51,7 @@ exports.getAllTopics = async (req) => {
     console.log(speciality);
     const topics = await Topic.find({
       SpecialityId: dataTypes.ObjectId(speciality._id),
-    }).populate("articles");
+    }).populate("videos");
 
     return {
       message: "SUCCESS",

@@ -1,0 +1,38 @@
+1. Nomenclature
+
+Specialities --> Courses
+Topics.Articles --> Topics.Videos
+
+// Change it in every freaking way: Database, Routes, Controllers, Redux, FileName 
+
+===== Database Changes
+
+2. Create Schema of Video.js which will have Name, Url, video Description, articlesLinked
+
+3. Changes in Topic Schema: add videos array
+
+===== API Changes
+
+4. Videos CRUD
+
+===== Front-end Changes
+
+5. Blog : App.js, components/Blog, layout/Navbar
+
+6. Preview : sections/preview/VideoPreview, components/Preview
+
+===== Future Changes
+
+7. Forgot Password
+
+8. Notification Service: Email Service ==> middleware
+
+9. Preview Page 
+
+10. Optimizations: React-hooks, API calls, Caching
+
+11. SEO Optimizations: SSR, Code Splitting
+
+12. Shift to babel, and webpack
+
+

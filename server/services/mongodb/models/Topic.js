@@ -13,6 +13,7 @@ const TopicSchema = new mongoose.Schema(
       default: false,
     },
     articles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Article' }],
+    videos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Video' }],
   },
   { timestamps: true }
 );

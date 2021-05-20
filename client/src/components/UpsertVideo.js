@@ -13,6 +13,7 @@ const UpsertVideo = ({
 	specialities,
 	prevVideo,
 }) => {
+	console.log(prevVideo);
 	const [name, setName] = useState(prevVideo ? prevVideo.name : '');
 	const [description, setDescription] = useState(
 		prevVideo ? prevVideo.description : ''

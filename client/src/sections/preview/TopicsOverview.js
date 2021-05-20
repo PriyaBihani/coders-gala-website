@@ -67,7 +67,6 @@ const TopicsOverview = ({
 										<ol>
 											{topic.videos.length > 0
 												? topic.videos.map((video) => {
-														console.log(topic);
 														return (
 															<VideoNames
 																topic={topic}

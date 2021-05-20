@@ -12,6 +12,7 @@ const VideoNames = ({
 	topic,
 	specialityName,
 }) => {
+	console.log(video);
 	const handleDelete = (data) => {
 		const { VideoName, _id } = data;
 		const confirm = window.prompt(

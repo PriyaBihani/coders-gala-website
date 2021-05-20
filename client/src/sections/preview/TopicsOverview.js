@@ -12,8 +12,6 @@ const TopicsOverview = ({
 	getTopics,
 	specialityName,
 	topics,
-	setPreviewArticle,
-	setPreviewVideo,
 	deleteTopic,
 	user,
 }) => {
@@ -59,7 +57,6 @@ const TopicsOverview = ({
 									setSelectedId={setSelectedId}
 									selectedId={selectedId}
 									specialityName={specialityName}
-									setPreviewArticle={setPreviewArticle}
 									topic={topic}
 									user={user}
 									handleDelete={handleDelete}
@@ -117,7 +114,6 @@ const ActionButtons = ({
 	topic,
 	specialityName,
 	selectedId,
-	setPreviewArticle,
 	setSelectedId,
 	user,
 }) => {
@@ -133,11 +129,13 @@ const ActionButtons = ({
 			{topic.locked && !user.unLockedTopics.includes(topic._id) ? (
 				<Lock
 					handler={() => {
-						setPreviewArticle({
+						{
+							/* setPreviewArticle({
 							ArticleName: 'This article is locked',
 							locked: true,
 							topicId: topic._id,
-						});
+						}); */
+						}
 					}}
 				/>
 			) : (

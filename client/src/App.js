@@ -18,6 +18,7 @@ import UpsertArticle from './components/UpsertArticle';
 import Auth from './components/Auth';
 import UpsertTopic from './components/UpsertTopic';
 import UpsertVideo from './components/UpsertVideo';
+import Blog from './components/Blog';
 // import PrivateRoute from './helpers/PrivateRoute';
 
 const Preview = Loadable({
@@ -85,12 +86,12 @@ const App = () => {
 					<Route
 						render={(props) => <UpsertArticle {...props} edit={false} />}
 						exact
-						path='/article/add/:topicId'
+						path='/article/add'
 					/>
 					<Route
 						render={(props) => <UpsertArticle {...props} edit={true} />}
 						exact
-						path='/article/update/:articleId'
+						path='/article/update'
 					/>
 					<Route
 						render={(props) => <UpsertVideo {...props} edit={false} />}
@@ -113,6 +114,8 @@ const App = () => {
 						exact
 						path='/updatespeciality/:specialityName'
 					/>
+
+					<Route exact path='/blog' component={Blog} />
 				</Switch>
 			</AnimatePresence>
 			<ToastContainer />

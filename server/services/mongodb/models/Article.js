@@ -6,12 +6,20 @@ const ArticleSchema = mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		featured: {
+			type: Boolean,
+			default: false,
+		},
 		name: {
 			type: String,
 			unique: true,
 			required: true,
 		},
 		keywords: {
+			type: String,
+			required: false,
+		},
+		thumbnailUrl: {
 			type: String,
 			required: false,
 		},

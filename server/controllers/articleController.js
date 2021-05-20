@@ -19,14 +19,14 @@ exports.addArticle = async (req) => {
 	try {
 		const article = new Article(req.body);
 		const articleSaved = await article.save();
-		let modifiedTopic = await Topic.findOne({
-			_id: dataTypes.ObjectId(req.params.topicId),
-		});
-		let articlesInTopic = modifiedTopic.articles;
-		modifiedTopic.articles = articlesInTopic.push(
-			dataTypes.ObjectId(articleSaved._id)
-		);
-		await Topic.findByIdAndUpdate(req.params.topicId, modifiedTopic);
+		// let modifiedTopic = await Topic.findOne({
+		// 	_id: dataTypes.ObjectId(req.params.topicId),
+		// });
+		// let articlesInTopic = modifiedTopic.articles;
+		// modifiedTopic.articles = articlesInTopic.push(
+		// 	dataTypes.ObjectId(articleSaved._id)
+		// );
+		// await Topic.findByIdAndUpdate(req.params.topicId, modifiedTopic);
 		return {
 			message: 'SUCCESS',
 			data: { article: article },
@@ -151,3 +151,27 @@ exports.deleteArticle = async (req) => {
 		};
 	}
 };
+
+
+exports.getAllArticles = async (req) => {
+	try {
+		const articles = await Article.find({});
+
+		return {
+			message: 'SUCCESS',
+			data: { articles },
+			error: null,
+			statusCode: 200,
+			status: 1,
+		};
+	} catch (err) {
+		console.log(err);
+		return {
+			message: 'FAILED',
+			data: null,
+			errorMessage: 'Server Error',
+			statusCode: 400,
+			status: 0,
+		};
+	}
+}

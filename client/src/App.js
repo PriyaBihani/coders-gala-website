@@ -103,7 +103,7 @@ const App = () => {
 						exact
 						path='/video/update/:videoId'
 					/>
-					<Route exact path='/:specialityId/:topicId/:id' component={Article} />
+					<Route exact path='/blog/read/:name' component={Article} />
 					<Route
 						render={(props) => <UpsertCard {...props} edit={false} />}
 						exact

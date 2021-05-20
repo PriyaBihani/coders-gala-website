@@ -11,7 +11,7 @@ const All = ({ articles }) => {
                     const ArticleId = article && article._id;
                     return (
                         <div className="grid__item-md" key={ArticleId}>
-                            <NavLink to={"/blog/article/" + ArticleId + "/read"}>
+                            <NavLink to={`/blog/read/${article && article.name.replace(/\s/g, "-")}`}>
                                 <img
                                     alt=""
                                     src={article.thumbnailUrl ? article.thumbnailUrl : "https://codersgala.com/static/media/cgTransparent.6a9c3496.PNG"}

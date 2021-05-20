@@ -12,7 +12,7 @@ const Featured = ({ articles }) => {
                         const ArticleId = article && article._id;
                         return (
                             <div className="grid__item-sm" key={article && article.id}>
-                                <NavLink to={"/blog/article/" + ArticleId + "/read"}>
+                                <NavLink to={`/blog/read/${article && article.name.replace(/\s/g, "-")}`}>
                                     <div>
                                         <p className="grid__item__category">
                                             {article && moment(article.createdAt).format("DD MM YYYY")}

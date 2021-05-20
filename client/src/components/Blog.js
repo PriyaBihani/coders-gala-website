@@ -9,7 +9,7 @@ import All from '../sections/blog/All'
 
 
 
-const Blog = ({ getAllArticles, articles }) => {
+const Blog = ({ getAllArticles, articles, isAdmin }) => {
     useEffect(() => {
         if (articles.length === 0) {
             getAllArticles()
@@ -23,11 +23,11 @@ const Blog = ({ getAllArticles, articles }) => {
             <nav className="nav__top">
                 <a rel="nofollow" href="#" className="nav__top__link"></a>
             </nav>
-            <NavLink to="/article/add" rel="nofollow">
+            {isAdmin && <NavLink to="/article/add" rel="nofollow">
                 <Button variant="primary" size="lg" block>
                     Add Article
                 </Button>
-            </NavLink>
+            </NavLink>}
             <div className="title">
                 <h1 style={{ fontFamily: "Dosis" }} className="title__h1">
                     {" "}
@@ -53,6 +53,8 @@ const Blog = ({ getAllArticles, articles }) => {
 
 const mapStateToProps = (state) => ({
     articles: state.article.articles,
+    isAdmin: state.auth.isAdmin,
+
 });
 
 export default connect(mapStateToProps, { getAllArticles })(Blog);

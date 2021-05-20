@@ -14,6 +14,8 @@ const UpsertArticle = (props) => {
 	const [content, setcontent] = useState('');
 	const [name, setname] = useState('');
 	const [keywords, setArticleKeywords] = useState('');
+	const [featured, setfeatured] = useState(false)
+	const [thumbnailUrl, setthumbnailUrl] = useState('')
 	const [Loading, setLoading] = useState(false);
 	const topicId = "ERROR_NA_DIYO";
 	function scrollTo(element) {
@@ -57,7 +59,7 @@ const UpsertArticle = (props) => {
 		e.preventDefault();
 		// console.log({ content, name, keywords });
 		addArticle(
-			{ content, name, keywords }
+			{ content, name, keywords, featured, thumbnailUrl }
 		);
 		toast('Article added successfully');
 	};
@@ -94,6 +96,19 @@ const UpsertArticle = (props) => {
 									}}
 								/>
 								<br />
+								<input
+									type='text'
+									id='thumbnailUrl'
+									placeholder='Article Thumbnail'
+									className='form-control'
+									defaultValue={
+										props.edit ? prevArticle && prevArticle.thumbnailUrl : ''
+									}
+									onChange={(e) => {
+										setthumbnailUrl(e.target.value);
+									}}
+								/>
+								<br />
 
 								<input
 									type='text'
@@ -106,6 +121,17 @@ const UpsertArticle = (props) => {
 									onChange={(e) => {
 										setArticleKeywords(e.target.value);
 									}}
+								/>
+								<br />
+								<label htmlFor="featured">IsFeatured &nbsp;{" "}</label>
+								<input
+									defaultValue={
+										props.edit ? prevArticle && prevArticle.featured : false
+									}
+									onChange={() => { setfeatured(!featured) }}
+									type='checkbox'
+									id='featured'
+
 								/>
 
 								<br />

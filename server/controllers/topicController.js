@@ -6,6 +6,7 @@ const { validationResult } = require('express-validator');
 var dataTypes = require('./../services/dataTypes/mongodb');
 
 exports.addTopic = async (req) => {
+	console.log('skdfhksj');
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return {
@@ -25,7 +26,7 @@ exports.addTopic = async (req) => {
 
 		return {
 			message: 'SUCCESS',
-			data: { topic: topic },
+			data: { topic },
 			error: null,
 			statusCode: 200,
 			status: 1,

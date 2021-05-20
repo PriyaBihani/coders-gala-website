@@ -26,7 +26,7 @@ const TopicsOverview = ({
 
 	const handleDelete = (topic) => {
 		const confirm = window.prompt(
-			`You sure want to delete "${topic.Name}" ? Y or N (Deleting a topic will lead to deletion of all articles inside it) `
+			`You sure want to delete "${topic.name}" ? Y or N (Deleting a topic will lead to deletion of all articles inside it) `
 		);
 		if (confirm === 'Y') {
 			deleteTopic(topic._id, specialityName);
@@ -50,10 +50,10 @@ const TopicsOverview = ({
 							<div
 								className='p-0 speciality-topic-container m-1'
 								key={topic._id}>
-								<h4 className='float-left topicName'>{topic.Name}</h4>
+								<h4 className='float-left topicName'>{topic.name}</h4>
 
 								<ActionButtons
-									accordionKey={topic.Name.split(/\s/).join('')}
+									accordionKey={topic.name.split(/\s/).join('')}
 									setSelectedId={setSelectedId}
 									selectedId={selectedId}
 									specialityName={specialityName}
@@ -67,7 +67,7 @@ const TopicsOverview = ({
 								{topic.locked &&
 								!user.unLockedTopics.includes(topic._id) ? null : (
 									<Accordion.Collapse
-										eventKey={topic.Name.split(/\s/).join('')}>
+										eventKey={topic.name.split(/\s/).join('')}>
 										<ol>
 											{topic.videos.length > 0
 												? topic.videos.map((video) => {
@@ -145,7 +145,7 @@ const ActionButtons = ({
 					as={Button}
 					variant='link'
 					className='float-right arrow-down'
-					eventKey={topic.Name.split(/\s/).join('')} // to remove spaces
+					eventKey={topic.name.split(/\s/).join('')} // to remove spaces
 					onClick={() => {
 						if (selectedId == topic._id) {
 							setSelectedId('');
@@ -154,7 +154,7 @@ const ActionButtons = ({
 						}
 					}}>
 					<svg
-						id={topic.Name.split(/\s/).join('')}
+						id={topic.name.split(/\s/).join('')}
 						viewBox='0 0 32 32'
 						className={`icon icon-chevron-bottom article-dwn article-toggle fa-angle-down ${
 							topic._id == selectedId ? 'rotate' : ''

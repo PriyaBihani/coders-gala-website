@@ -17,7 +17,7 @@ const UpsertTopic = ({
 	useEffect(() => {
 		setData({
 			locked: location.props && location.props.isLocked,
-			Name: location.props && location.props.name,
+			name: location.props && location.props.name,
 		});
 	}, [location.props]);
 
@@ -25,7 +25,7 @@ const UpsertTopic = ({
 		e.preventDefault();
 		if (!edit) {
 			addTopic(
-				{ ...data, SpecialityId: speciality._id },
+				{ ...data, specialityId: speciality._id },
 				match.params.specialityName
 			);
 			toast('Topic Added successfully');
@@ -44,7 +44,7 @@ const UpsertTopic = ({
 					<div className='form-input'>
 						<input
 							onChange={(e) => {
-								setData((prev) => ({ ...prev, Name: e.target.value }));
+								setData((prev) => ({ ...prev, name: e.target.value }));
 							}}
 							defaultValue={location.props && location.props.name}
 							type='text'

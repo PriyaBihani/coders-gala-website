@@ -12,8 +12,6 @@ const TopicsOverview = ({
 	getTopics,
 	specialityName,
 	topics,
-	setPreviewArticle,
-	setPreviewVideo,
 	deleteTopic,
 	user,
 }) => {
@@ -22,7 +20,9 @@ const TopicsOverview = ({
 			getTopics(specialityName);
 		};
 		fetchData();
-	}, []);
+	}, [getTopics, specialityName]);
+
+	console.log(topics);
 
 	const handleDelete = (topic) => {
 		const confirm = window.prompt(
@@ -57,7 +57,6 @@ const TopicsOverview = ({
 									setSelectedId={setSelectedId}
 									selectedId={selectedId}
 									specialityName={specialityName}
-									setPreviewArticle={setPreviewArticle}
 									topic={topic}
 									user={user}
 									handleDelete={handleDelete}
@@ -76,7 +75,6 @@ const TopicsOverview = ({
 															<VideoNames
 																topic={topic}
 																video={video}
-																setPreviewVideo={setPreviewVideo}
 																specialityName={specialityName}
 															/>
 														);
@@ -87,7 +85,6 @@ const TopicsOverview = ({
 															<ArticleNames
 																topic={topic}
 																article={article}
-																setPreviewArticle={setPreviewArticle}
 																specialityName={specialityName}
 															/>
 														);
@@ -117,7 +114,6 @@ const ActionButtons = ({
 	topic,
 	specialityName,
 	selectedId,
-	setPreviewArticle,
 	setSelectedId,
 	user,
 }) => {
@@ -133,11 +129,13 @@ const ActionButtons = ({
 			{topic.locked && !user.unLockedTopics.includes(topic._id) ? (
 				<Lock
 					handler={() => {
-						setPreviewArticle({
+						{
+							/* setPreviewArticle({
 							ArticleName: 'This article is locked',
 							locked: true,
 							topicId: topic._id,
-						});
+						}); */
+						}
 					}}
 				/>
 			) : (

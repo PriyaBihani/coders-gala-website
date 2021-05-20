@@ -5,7 +5,7 @@ import { Accordion, Row, Col, Button } from 'react-bootstrap';
 
 import { Footer } from '../layout';
 import { Seo } from '../helpers';
-import { getSpeciality, clearArticle } from '../actions';
+import { getSpeciality, clearArticle, selectVideo } from '../actions';
 
 import ArticlePreview from '../sections/preview/ArticlePreview';
 import VideoPreview from '../sections/preview/VideoPreview';
@@ -14,13 +14,16 @@ import { Add } from '../assets/icons';
 
 const Preview = ({
 	match,
+	selectVideo,
 	clearArticle,
 	getSpeciality,
 	speciality,
 	isAdmin,
 }) => {
-	const [previewArticle, setPreviewArticle] = useState(speciality);
-	const [previewVideo, setPreviewVideo] = useState(speciality);
+	// const [previewArticle, setPreviewArticle] = useState(speciality);
+	// const [previewVideo, setPreviewVideo] = useState(speciality);
+
+	console.log(speciality);
 
 	const requiredSpeciality = match.params.specialityName;
 
@@ -30,8 +33,8 @@ const Preview = ({
 	}, []);
 
 	useEffect(() => {
-		setPreviewArticle(speciality);
-	}, [speciality]);
+		selectVideo(speciality);
+	}, [speciality, selectVideo]);
 
 	return (
 		<div className='topics-ovr-cont'>
@@ -47,24 +50,24 @@ const Preview = ({
 
 				<Row>
 					<Col className='topic-ovr-container' lg={4}>
-						<Accordion defaultActiveKey={window.innerWidth <= 500 ? '1' : '0'}>
-							<div className='topics-overview'>
-								<h3 style={{ fontSize: '1rem' }} className='overview'>
-									{/* Use content method of CSS */}
-									<span>
-										{window.innerWidth <= 500
-											? ' In this Module...'
-											: 'Topics Overview'}{' '}
-									</span>
+						{/* <Accordion defaultActiveKey={window.innerWidth <= 500 ? '1' : '0'}> */}
+						<div className='topics-overview'>
+							<h3 style={{ fontSize: '1rem' }} className='overview'>
+								{/* Use content method of CSS */}
+								<span>
+									{window.innerWidth <= 500
+										? ' In this Module...'
+										: 'Topics Overview'}{' '}
+								</span>
 
-									{isAdmin ? (
-										<Link to={`/${requiredSpeciality}/topic/add/`}>
-											<Add />{' '}
-										</Link>
-									) : null}
-								</h3>
+								{isAdmin ? (
+									<Link to={`/${requiredSpeciality}/topic/add/`}>
+										<Add />{' '}
+									</Link>
+								) : null}
+							</h3>
 
-								<Accordion.Toggle
+							{/* <Accordion.Toggle
 									as={Button}
 									variant='link'
 									onClick={() => {
@@ -83,26 +86,19 @@ const Preview = ({
 										aria-hidden='true'>
 										<path d='M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z' />
 									</svg>
-								</Accordion.Toggle>
-							</div>
-							<Accordion.Collapse eventKey='0'>
-								<Accordion>
-									<TopicsOverview
-										specialityName={requiredSpeciality}
-										setPreviewArticle={setPreviewArticle}
-										setPreviewVideo={setPreviewVideo}
-									/>
-								</Accordion>
-							</Accordion.Collapse>
-						</Accordion>
+								</Accordion.Toggle> */}
+						</div>
+						{/* <Accordion.Collapse eventKey='0'> */}
+						{/* <Accordion> */}
+						<TopicsOverview specialityName={requiredSpeciality} />
+						{/* </Accordion> */}
+						{/* </Accordion.Collapse> */}
+						{/* </Accordion> */}
 					</Col>
 
 					<Col l={8}>
-						{/* <ArticlePreview
-							SelectedArticle={previewArticle && previewArticle}
-							specialityName={requiredSpeciality}
-						/> */}
-						<VideoPreview />
+						<ArticlePreview specialityName={requiredSpeciality} />
+						{/* <VideoPreview /> */}
 					</Col>
 				</Row>
 			</div>
@@ -119,4 +115,5 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
 	getSpeciality,
 	clearArticle,
+	selectVideo,
 })(Preview);

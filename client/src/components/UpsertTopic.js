@@ -13,7 +13,7 @@ const UpsertTopic = ({
 	edit,
 }) => {
 	const [data, setData] = useState({ locked: false });
-
+	console.log(location);
 	useEffect(() => {
 		setData({
 			locked: location.props && location.props.isLocked,
@@ -45,13 +45,11 @@ const UpsertTopic = ({
 					{' '}
 					<div className='form-input'>
 						<input
+							defaultValue={location.props && location.props.name}
 							onChange={(e) => {
 								setData((prev) => ({ ...prev, name: e.target.value }));
 							}}
-							defaultValue={location.props && location.props.name}
 							type='text'
-							name=''
-							id=''
 						/>
 					</div>
 					<div className='form-button'>

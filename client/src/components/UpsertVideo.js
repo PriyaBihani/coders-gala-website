@@ -11,9 +11,8 @@ const UpsertVideo = ({
 	editVideo,
 	getVideo,
 	specialities,
-	prevVideo,
+	prevVideo = null,
 }) => {
-	console.log(prevVideo);
 	const [name, setName] = useState(prevVideo ? prevVideo.name : '');
 	const [description, setDescription] = useState(
 		prevVideo ? prevVideo.description : ''
@@ -25,9 +24,8 @@ const UpsertVideo = ({
 		await addVideo(
 			{ name, description, url },
 			match.params.topicId,
-			specialities.speciality.Name
+			specialities.speciality.name
 		);
-		toast('Video added Successfully');
 	};
 
 	const handleEdit = async (e) => {
@@ -35,9 +33,8 @@ const UpsertVideo = ({
 		await editVideo(
 			{ name, description, url },
 			prevVideo._id,
-			specialities.speciality.Name
+			specialities.speciality.name
 		);
-		toast('Video edited Successfully');
 	};
 
 	return (
@@ -83,7 +80,7 @@ const UpsertVideo = ({
 
 const mapStateToProps = (state) => ({
 	specialities: state.speciality,
-	prevVideo: state.video.selectedVideo,
+	// prevVideo: state.video.selectedVideo,
 });
 
 export default connect(mapStateToProps, {

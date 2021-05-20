@@ -50,9 +50,8 @@ exports.getAllTopics = async (req) => {
 		const speciality = await Speciality.findOne({
 			name: req.params.specialityName,
 		});
-		console.log(speciality);
 		const topics = await Topic.find({
-			SpecialityId: dataTypes.ObjectId(speciality._id),
+			specialityId: dataTypes.ObjectId(speciality._id),
 		})
 			.populate('articles')
 			.populate('videos');

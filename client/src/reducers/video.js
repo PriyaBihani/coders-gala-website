@@ -1,4 +1,6 @@
-const initialState = {};
+const initialState = {
+	selectedVideo: null,
+};
 
 export default function videoReducer(state = initialState, action) {
 	const { type, payload } = action;
@@ -18,7 +20,7 @@ export default function videoReducer(state = initialState, action) {
 		case 'SELECT_VIDEO':
 			return {
 				...state,
-				selectedVideo: payload.video,
+				selectedVideo: payload,
 			};
 		case 'CLEAR_VIDEO':
 			return {

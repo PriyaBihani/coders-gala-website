@@ -16,10 +16,7 @@ const TopicsOverview = ({
 	user,
 }) => {
 	useEffect(() => {
-		const fetchData = async () => {
-			getTopics(specialityName);
-		};
-		fetchData();
+		getTopics(specialityName);
 	}, [getTopics, specialityName]);
 
 	console.log(topics);
@@ -70,7 +67,6 @@ const TopicsOverview = ({
 										<ol>
 											{topic.videos.length > 0
 												? topic.videos.map((video) => {
-														console.log(topic);
 														return (
 															<VideoNames
 																topic={topic}

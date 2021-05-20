@@ -10,7 +10,7 @@ exports.getSpeciality = async (req) => {
 		const speciality = await Speciality.findOne({
 			name: req.params.specialityName,
 		});
-
+		console.log(speciality);
 		return {
 			message: 'SUCCESS',
 			data: { speciality },

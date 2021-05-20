@@ -7,10 +7,11 @@ import { getSpecialities, deleteSpeciality } from '../../actions';
 const Card = ({ getSpecialities, specialities, deleteSpeciality }) => {
 	useEffect(() => {
 		console.log(specialities);
+
 		if (specialities.length === 0) {
 			getSpecialities();
 		}
-	}, [specialities, getSpecialities]);
+	}, []);
 
 	const handleDelete = (item) => {
 		// Got to helper, check

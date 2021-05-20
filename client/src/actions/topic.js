@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 export const getTopics = (specialityName) => async (dispatch) => {
 	try {
 		const res = await serviceGet(`api/topic/get/${specialityName}`);
+		console.log(res.data);
 		dispatch({
 			type: 'GET_TOPICS',
 			payload: res.data,

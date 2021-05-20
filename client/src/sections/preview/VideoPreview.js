@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ArticlePreview from './ArticlePreview';
 
 const VideoPreview = ({ video }) => {
-	return (
+	console.log(video);
+	return video && !video.content ? (
 		<div className='video-container'>
 			<div className='video'>
 				<iframe
@@ -21,6 +23,8 @@ const VideoPreview = ({ video }) => {
 				</div>
 			</div>
 		</div>
+	) : (
+		<ArticlePreview SelectedArticle={video} />
 	);
 };
 

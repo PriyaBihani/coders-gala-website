@@ -13,6 +13,7 @@ const ArticlePreview = ({ SelectedArticle, specialityName, unlockTopic }) => {
 		const res = await unlockTopic(topicId, specialityName);
 		console.log(res);
 	};
+	console.log(SelectedArticle);
 	return (
 		<div className='card-container'>
 			<div className='card'>

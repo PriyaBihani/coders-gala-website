@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { toast } from 'react-toastify';
 import { Button } from '../layout';
 import { addVideo, editVideo, getVideo } from '../actions';
 
@@ -11,7 +10,7 @@ const UpsertVideo = ({
 	editVideo,
 	getVideo,
 	specialities,
-	prevVideo = null,
+	prevVideo,
 }) => {
 	const [name, setName] = useState(prevVideo ? prevVideo.name : '');
 	const [description, setDescription] = useState(
@@ -80,7 +79,7 @@ const UpsertVideo = ({
 
 const mapStateToProps = (state) => ({
 	specialities: state.speciality,
-	// prevVideo: state.video.selectedVideo,
+	prevVideo: state.video.selectedVideo,
 });
 
 export default connect(mapStateToProps, {

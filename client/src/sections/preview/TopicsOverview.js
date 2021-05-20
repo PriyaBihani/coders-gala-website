@@ -33,9 +33,9 @@ const TopicsOverview = ({
 
 	const [selectedId, setSelectedId] = useState();
 
-	useEffect(() => {
-		console.log('changes');
-	}, [selectedId]);
+	// useEffect(() => {
+	// 	console.log('changes');
+	// }, [selectedId]);
 
 	return (
 		<div id='specialities' className='Topic-names '>

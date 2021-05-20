@@ -9,7 +9,7 @@ const VideoPreview = ({ video }) => {
 			<div className='video'>
 				<iframe
 					className='iframe'
-					src='https://www.youtube.com/embed/0Kl1ucZuSZ8'
+					src={video.url}
 					title='YouTube video player'
 					frameBorder='0'
 					allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'

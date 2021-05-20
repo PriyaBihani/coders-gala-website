@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Seo } from '../helpers';
 import Hero from '../sections/home/Hero';
 import HeroCards from '../sections/home/HeroCards';
-import { Preloader } from '../layout';
+import Preloader from '../layout/preloader';
 
 const Home = () => {
   var homeContent = 'adsf';

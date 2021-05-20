@@ -10,7 +10,7 @@ import { loadUser } from './actions/auth';
 import 'bootstrap/dist/js/bootstrap.js';
 
 import store from './store';
-import { Preloader as Loader } from './layout';
+import { Preloader as Loader } from './layout/preloader';
 import Navbar from './layout/Navbar/Navbar';
 import Article from './components/Article';
 import UpsertCard from './components/UpsertCard';

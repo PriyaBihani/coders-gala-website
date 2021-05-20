@@ -20,6 +20,7 @@ exports.addTopic = async (req) => {
 	}
 
 	try {
+		console.log(req.body)
 		const topic = new Topic(req.body);
 
 		await topic.save();
@@ -32,6 +33,7 @@ exports.addTopic = async (req) => {
 			status: 1,
 		};
 	} catch (err) {
+		console.log('failing')
 		console.log(err);
 		return {
 			message: 'FAILED',

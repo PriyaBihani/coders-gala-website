@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const VideoPreview = () => {
+const VideoPreview = ({ video }) => {
 	return (
 		<div className='video-container'>
 			<div className='video'>
@@ -13,14 +14,8 @@ const VideoPreview = () => {
 					allowFullScreen></iframe>
 			</div>
 			<div className='info'>
-				<h3 className='title'>Title of the video</h3>
-				<div className='desc'>
-					Description Of The Video Lorem ipsum, dolor sit amet consectetur
-					adipisicing elit. Labore, quae ipsum doloribus quam commodi nesciunt.
-					Iusto neque ipsa magnam saepe? Lorem ipsum dolor sit amet consectetur,
-					adipisicing elit. Voluptates, cupiditate?lore10 Lorem ipsum dolor sit
-					amet consectetur adipisicing elit. Mollitia, debitis.
-				</div>
+				<h3 className='title'>{video.name}</h3>
+				<div className='desc'>{video.description}</div>
 				<div className='linked-articles'>
 					<h4>Articles Related to the topic</h4>
 				</div>
@@ -29,4 +24,8 @@ const VideoPreview = () => {
 	);
 };
 
-export default VideoPreview;
+const mapStateToProps = (state) => ({
+	video: state.video.selectedVideo,
+});
+
+export default connect(mapStateToProps, null)(VideoPreview);

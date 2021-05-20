@@ -98,3 +98,16 @@ export const deleteVideo =
 			});
 		}
 	};
+
+export const selectVideo = (video) => (dispatch) => {
+	try {
+		dispatch({
+			type: 'SELECT_VIDEO',
+			payload: video,
+		});
+	} catch (error) {
+		dispatch({
+			type: 'SELECT_VIDEO_ERROR',
+		});
+	}
+};

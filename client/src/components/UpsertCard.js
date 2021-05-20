@@ -103,11 +103,7 @@ const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
 					</div>
 
 					<div className='add-article-button'>
-						<Button
-							onClick={(e) => {
-								handleSubmit(e);
-							}}
-							type='submit'>
+						<Button handler={handleSubmit} isButton={true} type='submit'>
 							{edit ? 'Update' : 'Add'}
 						</Button>
 					</div>

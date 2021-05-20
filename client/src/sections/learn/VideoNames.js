@@ -2,11 +2,11 @@ import React from 'react';
 import { Tooltip } from 'react-tippy';
 import { connect } from 'react-redux';
 import { Button } from '../../layout';
-import { deleteVideo } from '../../actions';
+import { deleteVideo, selectVideo } from '../../actions';
 import AdminButtons from '../../layout/Buttons/AdminButtons';
 
 const VideoNames = ({
-	setPreviewVideo,
+	selectVideo,
 	video,
 	deleteVideo,
 	topic,
@@ -29,7 +29,7 @@ const VideoNames = ({
 					<a
 						type='button'
 						onClick={() => {
-							setPreviewVideo(video);
+							selectVideo(video);
 						}}
 						className='display-article'>
 						<li className='article-name m-0'>
@@ -53,7 +53,7 @@ const VideoNames = ({
 									<Button
 										isButton={true}
 										handler={() => {
-											setPreviewVideo(video);
+											selectVideo(video);
 										}}
 									/>
 								</Tooltip>
@@ -69,4 +69,4 @@ const VideoNames = ({
 	);
 };
 
-export default connect(null, { deleteVideo })(VideoNames);
+export default connect(null, { deleteVideo, selectVideo })(VideoNames);

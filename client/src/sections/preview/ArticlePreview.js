@@ -5,11 +5,8 @@ import { unlockTopic } from '../../actions/topic';
 
 const ArticlePreview = ({ SelectedArticle, specialityName, unlockTopic }) => {
 	const ReadMoreUrl =
-		SelectedArticle && SelectedArticle.ArticleName
-			? `/${specialityName}/read/${SelectedArticle.ArticleName.replace(
-					/\s/g,
-					'-'
-			  )}`
+		SelectedArticle && SelectedArticle.name
+			? `/${specialityName}/read/${SelectedArticle.name.replace(/\s/g, '-')}`
 			: `/${specialityName}/read/before-starting`;
 
 	const handleUnlock = async (topicId, specialityName) => {
@@ -21,8 +18,8 @@ const ArticlePreview = ({ SelectedArticle, specialityName, unlockTopic }) => {
 			<div className='card'>
 				<div>
 					<h1 className='material-icons card-header'>
-						{SelectedArticle && SelectedArticle.ArticleName
-							? SelectedArticle.ArticleName
+						{SelectedArticle && SelectedArticle.name
+							? SelectedArticle.name
 							: 'Read This Before You Start...'}
 						{/* <div>
 							<h3 className='float-right'></h3>
@@ -45,9 +42,7 @@ const ArticlePreview = ({ SelectedArticle, specialityName, unlockTopic }) => {
 									</button>{' '}
 								</div>
 							) : (
-								ReactHtmlParser(
-									SelectedArticle && SelectedArticle.ArticleContent
-								)
+								ReactHtmlParser(SelectedArticle && SelectedArticle.content)
 							)}
 						</div>
 					</div>

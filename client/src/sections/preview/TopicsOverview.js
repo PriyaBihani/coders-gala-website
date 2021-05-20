@@ -22,7 +22,9 @@ const TopicsOverview = ({
 			getTopics(specialityName);
 		};
 		fetchData();
-	}, []);
+	}, [getTopics, specialityName]);
+
+	console.log(topics);
 
 	const handleDelete = (topic) => {
 		const confirm = window.prompt(
@@ -76,7 +78,6 @@ const TopicsOverview = ({
 															<VideoNames
 																topic={topic}
 																video={video}
-																setPreviewVideo={setPreviewVideo}
 																specialityName={specialityName}
 															/>
 														);
@@ -87,7 +88,6 @@ const TopicsOverview = ({
 															<ArticleNames
 																topic={topic}
 																article={article}
-																setPreviewArticle={setPreviewArticle}
 																specialityName={specialityName}
 															/>
 														);

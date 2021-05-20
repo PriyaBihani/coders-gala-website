@@ -15,6 +15,11 @@ export default function videoReducer(state = initialState, action) {
 				...state,
 				selectedVideo: payload.video,
 			};
+		case 'SELECT_VIDEO':
+			return {
+				...state,
+				selectedVideo: payload.video,
+			};
 		case 'CLEAR_VIDEO':
 			return {
 				...state,

@@ -32,7 +32,7 @@ exports.addTopic = async (req) => {
 			status: 1,
 		};
 	} catch (err) {
-		console.log(err);
+		console.log(err.message);
 		return {
 			message: 'FAILED',
 			data: null,

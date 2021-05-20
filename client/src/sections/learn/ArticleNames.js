@@ -3,11 +3,11 @@ import { Tooltip } from 'react-tippy';
 import { connect } from 'react-redux';
 import { scrollTo } from '../../helpers';
 import { Button } from '../../layout';
-import { deleteArticle } from '../../actions/article';
+import { deleteArticle, selectVideo } from '../../actions';
 import AdminButtons from '../../layout/Buttons/AdminButtons';
 
 const ArticleNames = ({
-	setPreviewArticle,
+	selectVideo,
 	article,
 	deleteArticle,
 	topic,
@@ -31,7 +31,7 @@ const ArticleNames = ({
 						type='button'
 						onClick={() => {
 							console.log(article);
-							setPreviewArticle(article);
+							selectVideo(article);
 							const pos = document.querySelector('.card-container');
 							if (window.innerWidth <= 500) {
 								scrollTo(pos);
@@ -59,7 +59,7 @@ const ArticleNames = ({
 									<Button
 										isButton={true}
 										handler={() => {
-											setPreviewArticle(article);
+											selectVideo(article);
 											const pos = document.querySelector('.card-container');
 											if (window.innerWidth <= 500) {
 												scrollTo(pos);
@@ -79,4 +79,4 @@ const ArticleNames = ({
 	);
 };
 
-export default connect(null, { deleteArticle })(ArticleNames);
+export default connect(null, { deleteArticle, selectVideo })(ArticleNames);

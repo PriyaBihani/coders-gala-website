@@ -46,7 +46,7 @@ exports.getAllTopics = async (req) => {
 	console.log('Fetching tpoics');
 	try {
 		const speciality = await Speciality.findOne({
-			Name: req.params.specialityName,
+			name: req.params.specialityName,
 		});
 		console.log(speciality);
 		const topics = await Topic.find({

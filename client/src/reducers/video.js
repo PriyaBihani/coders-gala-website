@@ -1,27 +1,27 @@
 const initialState = {};
 
-export default function articleReducer(state = initialState, action) {
+export default function videoReducer(state = initialState, action) {
 	const { type, payload } = action;
 
 	switch (type) {
-		case 'ADD_ARTICLE':
+		case 'ADD_VIDEO':
 			return {
 				...state,
 				topics: payload,
 			};
 
-		case 'GET_ARTICLE':
+		case 'GET_VIDEO':
 			return {
 				...state,
-				selectedArticle: payload.article,
+				selectedVideo: payload.video,
 			};
-		case 'CLEAR_ARTICLE':
+		case 'CLEAR_VIDEO':
 			return {
 				...state,
-				selectedArticle: {},
+				selectedVideo: {},
 			};
 
-		case 'ADD_ARTICLE_ERROR':
+		case 'ADD_VIDEO_ERROR':
 			return {
 				...state,
 			};

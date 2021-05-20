@@ -1,69 +1,59 @@
 import React from 'react';
 import { Tooltip } from 'react-tippy';
 import { connect } from 'react-redux';
-import { scrollTo } from '../../helpers';
 import { Button } from '../../layout';
-import { deleteArticle } from '../../actions/article';
+import { deleteVideo } from '../../actions';
 import AdminButtons from '../../layout/Buttons/AdminButtons';
 
-const ArticleNames = ({
-	setPreviewArticle,
-	article,
-	deleteArticle,
+const VideoNames = ({
+	setPreviewVideo,
+	video,
+	deleteVideo,
 	topic,
 	specialityName,
 }) => {
 	const handleDelete = (data) => {
-		const { ArticleName, _id } = data;
+		const { VideoName, _id } = data;
 		const confirm = window.prompt(
-			`You sure want to delete "${ArticleName}" ? Y or N `
+			`You sure want to delete "${VideoName}" ? Y or N `
 		);
 		if (confirm === 'Y') {
-			deleteArticle(_id, topic._id, specialityName);
+			deleteVideo(_id, topic._id, specialityName);
 		}
 	};
 
 	return (
 		<div className='row read-icon'>
-			<div className=' read col-10'>
+			<div className='read col-10'>
 				<div className='item'>
 					<a
 						type='button'
 						onClick={() => {
-							console.log(article);
-							setPreviewArticle(article);
-							const pos = document.querySelector('.card-container');
-							if (window.innerWidth <= 500) {
-								scrollTo(pos);
-							}
+							setPreviewVideo(video);
 						}}
 						className='display-article'>
 						<li className='article-name m-0'>
-							{article.ArticleName}{' '}
+							{video.name}{' '}
 							<span className='article-action-icons'>
 								<AdminButtons
 									type='Edit'
-									url={`/article/update/${article._id}`}
-									data={article}
+									url={`/video/update/${video._id}`}
+									data={video}
 								/>
 								<AdminButtons
 									type='Delete'
 									handler={handleDelete}
-									data={article}
+									data={video}
 								/>
 								<Tooltip
 									// options
-									title={`Read "${article.ArticleName}"`}
+									title={`Read "${video.name}"`}
 									position='top'
 									trigger='mouseenter'>
 									<Button
 										isButton={true}
 										handler={() => {
-											setPreviewArticle(article);
-											const pos = document.querySelector('.card-container');
-											if (window.innerWidth <= 500) {
-												scrollTo(pos);
-											}
+											setPreviewVideo(video);
 										}}
 									/>
 								</Tooltip>
@@ -79,4 +69,4 @@ const ArticleNames = ({
 	);
 };
 
-export default connect(null, { deleteArticle })(ArticleNames);
+export default connect(null, { deleteVideo })(VideoNames);

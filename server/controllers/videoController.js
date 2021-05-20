@@ -42,7 +42,7 @@ exports.addVideo = async (req) => {
 		await Topic.findByIdAndUpdate(req.params.topicId, modifiedTopic);
 		return {
 			message: 'SUCCESS',
-			data: { article: article },
+			data: { video },
 			error: null,
 			statusCode: 200,
 			status: 1,

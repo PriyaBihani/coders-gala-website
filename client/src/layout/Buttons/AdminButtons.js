@@ -11,46 +11,27 @@ const TooltipWrapper = ({ title, position, children }) => {
 	);
 };
 
-const AdminButtons = ({
-	type,
-	url,
-	handler,
-	isAdmin,
-	dataTarget = '',
-	data = {},
-}) =>
-	isAdmin ? (
+const AdminButtons = ({ type, url, handler, isAdmin, data = {} }) =>
+	isAdmin && (
 		<TooltipWrapper title={`${type} "${data.name}"`} position={'top'}>
 			<AdminButtonsWrapper
 				type={type}
 				url={url}
 				handler={handler}
-				dataTarget={dataTarget}
 				data={data}
 			/>
 		</TooltipWrapper>
-	) : (
-		<TooltipWrapper position={'top'}>
-			<AdminButtonsWrapper type={'Dummy'} />
-		</TooltipWrapper>
 	);
 
-const AdminButtonsWrapper = ({ type, url, handler, dataTarget, data }) => {
+const AdminButtonsWrapper = ({ type, url, handler, data }) => {
 	switch (type) {
 		case 'Add':
-			return dataTarget.length > 0 ? (
-				<button
-					type='button'
-					data-toggle='modal'
-					className='add-topic-btn'
-					data-target='#exampleModal12'>
-					<Add size='20' color='#A40E4C' />
-				</button>
-			) : (
+			return (
 				<Link to={url}>
 					<Add size='20' color='#000' />
 				</Link>
 			);
+
 		case 'Edit':
 			return (
 				<Link

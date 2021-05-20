@@ -3,6 +3,7 @@ import { serviceGet, servicePost } from '../helpers';
 export const getSpecialities = () => async (dispatch) => {
 	try {
 		const res = await serviceGet('api/speciality/all');
+		console.log(res);
 		dispatch({
 			type: 'GET_SPECIALITIES',
 			payload: res.data,

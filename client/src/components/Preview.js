@@ -97,8 +97,8 @@ const Preview = ({
 					</Col>
 
 					<Col l={8}>
-						<ArticlePreview specialityName={requiredSpeciality} />
-						{/* <VideoPreview /> */}
+						{/* <ArticlePreview specialityName={requiredSpeciality} /> */}
+						<VideoPreview specialityName={requiredSpeciality} />
 					</Col>
 				</Row>
 			</div>

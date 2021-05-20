@@ -16,10 +16,7 @@ const TopicsOverview = ({
 	user,
 }) => {
 	useEffect(() => {
-		const fetchData = async () => {
-			getTopics(specialityName);
-		};
-		fetchData();
+		getTopics(specialityName);
 	}, [getTopics, specialityName]);
 
 	console.log(topics);

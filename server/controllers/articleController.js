@@ -49,7 +49,7 @@ exports.addArticle = async (req) => {
 exports.getArticle = async (req) => {
 	try {
 		const article = await Article.findOne({
-			ArticleName: req.body.articleName,
+			name: req.body.name,
 		});
 
 		return {

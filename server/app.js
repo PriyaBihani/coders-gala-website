@@ -12,7 +12,7 @@ let authRoutes = require('./routes/auth'),
   specialityRoutes = require('./routes/speciality'),
   topicRoutes = require('./routes/topic'),
   articleRoutes = require('./routes/article');
-  videoRoutes = require('./routes/video')
+videoRoutes = require('./routes/video')
 var indexRouter = require('./routes/index');
 
 // ================================================
@@ -38,7 +38,7 @@ app.use('/', indexRouter);
 
 // mongooseConnect
 mongoose
-  .connect(`${process.env.MONGO_URI}`, {
+  .connect(`${process.env.NEW_MONGO_URI}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

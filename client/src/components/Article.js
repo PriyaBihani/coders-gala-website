@@ -48,9 +48,8 @@ const ShareArticle = ({ Nid, url }, props) => {
 					<li>
 						<a
 							className='mail-icon'
-							href={`mailto:?Subject=${
-								'Article on ' + Nid
-							}&Body=Hey look i just found out this Amazing article on "${Nid}",Check it out : ${url}`}
+							href={`mailto:?Subject=${'Article on ' + Nid
+								}&Body=Hey look i just found out this Amazing article on "${Nid}",Check it out : ${url}`}
 							target='_top'
 							rel='nofollow'>
 							Share on
@@ -70,21 +69,20 @@ const ShareArticle = ({ Nid, url }, props) => {
 
 const Article = (props) => {
 	const { getSpeciality } = props;
-	const { specialityId, topicId, id } = props.match.params;
+	const { name } = props.match.params;
 	const [article, setArticle] = useState({});
 
-	const Nid = id.replace(/-/g, ' ');
 
 	let url;
 	if (isClient) {
 		url = window.location.href;
 	}
 
-	const getArticle = async (Nid) => {
+	const getArticle = async (name) => {
 		const res = await servicePost(
 			`api/article/get`,
 			{
-				articleName: Nid,
+				name
 			},
 			{
 				'Content-Type': 'application/json',
@@ -94,31 +92,23 @@ const Article = (props) => {
 	};
 
 	useEffect(async () => {
-		if (!props.specialities.speciality && id == 'before-starting') {
-			getSpeciality(props.match.params.specialityId);
-		} else {
-			const article = await getArticle(Nid);
-			setArticle(article);
-		}
+		console.log(name)
+		const article = await getArticle(name.replace(/-/g, ' '));
+		setArticle(article);
 	}, []);
 
+	console.log(article)
 	const goToTop = () => {
 		scrollTo(document.getElementById('nav'));
 	};
 
-	const html =
-		id === 'before-starting'
-			? props.specialities?.speciality?.content
-			: article && article.content;
+
+	const html = article && article.content;
 
 	return (
 		<>
 			<div className='selected-article'>
-				<Seo
-					title={`Before starting ${specialityId}`}
-					description={specialityId}
-					meta={[{ name: 'robots', content: 'index follow' }]}
-				/>
+
 				<Row className='full-view-article p-2'>
 					<Col sm={2}>{/* Adds Here */}</Col>
 
@@ -136,17 +126,31 @@ const Article = (props) => {
 					<Col sm={2}>{/* Adds Here */}</Col>
 				</Row>
 			</div>
-			<Link to={'/learn/' + specialityId} className='back-btn'>
-				<ChevronsLeft size='50' color='#dc143c' />
-			</Link>
-			<ShareArticle Nid={Nid} url={url} />
+
 			<Footer />
 		</>
 	);
 };
 
 const mapStateToProps = (state) => ({
-	specialities: state.speciality,
+	auth: state.auth
 });
 
 export default connect(mapStateToProps, { getSpeciality })(Article);
+
+
+// import React from 'react'
+
+// const Article = (props) => {
+// 	const name = props.match.params.name
+// 	console.log(name.replace(/-/g, ' '))
+// 	return (
+// 		<div>
+// 			<div>
+// 				lorem100
+// 			</div>
+// 		</div>
+// 	);
+// }
+
+// export default Article;

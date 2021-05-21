@@ -11,11 +11,13 @@ import { ChevronsUp } from '../assets/icons';
 const UpsertArticle = (props) => {
 	const { addArticle, specialities, editArticle, getArticle, prevArticle } =
 		props;
-	const [ArticleContent, setArticleContent] = useState('');
-	const [ArticleName, setArticleName] = useState('');
+	const [content, setcontent] = useState('');
+	const [name, setname] = useState('');
 	const [keywords, setArticleKeywords] = useState('');
+	const [featured, setfeatured] = useState(false)
+	const [thumbnailUrl, setthumbnailUrl] = useState('')
 	const [Loading, setLoading] = useState(false);
-	const { topicId } = props.match.params;
+	const topicId = "ERROR_NA_DIYO";
 	function scrollTo(element) {
 		window.scroll({
 			behavior: 'smooth',
@@ -36,18 +38,18 @@ const UpsertArticle = (props) => {
 	}, [props, getArticle]);
 
 	const handleEditor = (html) => {
-		setArticleContent(html);
+		setcontent(html);
 	};
 
 	const handleEdit = async (e) => {
 		e.preventDefault();
-		console.log(ArticleName);
+		console.log(name);
 		console.log(keywords);
 		const data = {
-			ArticleName: ArticleName === '' ? prevArticle.ArticleName : ArticleName,
+			name: name === '' ? prevArticle.name : name,
 			keywords: keywords === '' ? prevArticle.keywords : keywords,
-			ArticleContent:
-				ArticleContent === '' ? prevArticle.ArticleContent : ArticleContent,
+			content:
+				content === '' ? prevArticle.content : content,
 		};
 		editArticle(data, prevArticle._id, specialities.speciality.Name);
 		toast('Article updated successfully');
@@ -55,11 +57,9 @@ const UpsertArticle = (props) => {
 
 	const handleAdd = async (e) => {
 		e.preventDefault();
-		// console.log({ ArticleContent, ArticleName, keywords });
+		// console.log({ content, name, keywords });
 		addArticle(
-			{ ArticleContent, ArticleName, keywords },
-			topicId,
-			specialities.speciality.Name
+			{ content, name, keywords, featured, thumbnailUrl }
 		);
 		toast('Article added successfully');
 	};
@@ -75,7 +75,7 @@ const UpsertArticle = (props) => {
 					<div className=''>
 						<h4 className='' id=''>
 							{props.edit
-								? `Update Article - ${prevArticle && prevArticle.ArticleName}`
+								? `Update Article - ${prevArticle && prevArticle.name}`
 								: 'Add a Article'}
 						</h4>
 					</div>
@@ -85,14 +85,27 @@ const UpsertArticle = (props) => {
 							<div className='form-group'>
 								<input
 									type='text'
-									id='ArticleName'
+									id='name'
 									placeholder='Article Name'
 									className='form-control'
 									defaultValue={
-										props.edit ? prevArticle && prevArticle.ArticleName : ''
+										props.edit ? prevArticle && prevArticle.name : ''
 									}
 									onChange={(e) => {
-										setArticleName(e.target.value);
+										setname(e.target.value);
+									}}
+								/>
+								<br />
+								<input
+									type='text'
+									id='thumbnailUrl'
+									placeholder='Article Thumbnail'
+									className='form-control'
+									defaultValue={
+										props.edit ? prevArticle && prevArticle.thumbnailUrl : ''
+									}
+									onChange={(e) => {
+										setthumbnailUrl(e.target.value);
 									}}
 								/>
 								<br />
@@ -109,15 +122,26 @@ const UpsertArticle = (props) => {
 										setArticleKeywords(e.target.value);
 									}}
 								/>
+								<br />
+								<label htmlFor="featured">IsFeatured &nbsp;{" "}</label>
+								<input
+									defaultValue={
+										props.edit ? prevArticle && prevArticle.featured : false
+									}
+									onChange={() => { setfeatured(!featured) }}
+									type='checkbox'
+									id='featured'
+
+								/>
 
 								<br />
 
 								<>
 									{props.edit ? (
-										prevArticle && prevArticle.ArticleContent ? (
+										prevArticle && prevArticle.content ? (
 											<Editor
 												handleEditor={handleEditor}
-												defaultValue={prevArticle && prevArticle.ArticleContent}
+												defaultValue={prevArticle && prevArticle.content}
 											/>
 										) : null
 									) : (

@@ -1,4 +1,4 @@
-const initialState = {};
+const initialState = { articles: [] };
 
 export default function articleReducer(state = initialState, action) {
 	const { type, payload } = action;
@@ -14,6 +14,11 @@ export default function articleReducer(state = initialState, action) {
 			return {
 				...state,
 				selectedArticle: payload.article,
+			};
+		case 'GET_ALL_ARTICLES':
+			return {
+				...state,
+				articles: payload.articles,
 			};
 		case 'CLEAR_ARTICLE':
 			return {

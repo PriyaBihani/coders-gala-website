@@ -24,6 +24,8 @@ const UpsertTopic = ({
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (!edit) {
+			console.log({ ...data, specialityId: speciality._id },
+				match.params.specialityName)
 			addTopic(
 				{ ...data, specialityId: speciality._id },
 				match.params.specialityName

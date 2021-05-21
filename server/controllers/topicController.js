@@ -20,6 +20,7 @@ exports.addTopic = async (req) => {
 	}
 
 	try {
+		console.log(req.body)
 		const topic = new Topic(req.body);
 
 		await topic.save();

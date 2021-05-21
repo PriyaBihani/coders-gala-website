@@ -6,14 +6,14 @@ let articleController = require('./../controllers/articleController'),
   adminMiddleware = require('./../services/middlewares/admin');
 
 router.post(
-  '/add/:topicId',
+  '/add',
   authMiddleware,
   adminMiddleware,
-  [check('ArticleContent', 'Article can not be empty').notEmpty()],
-  [check('ArticleName', 'Article name can not be empty').notEmpty()],
+  [check('content', 'Article can not be empty').notEmpty()],
+  [check('name', 'Article name can not be empty').notEmpty()],
   async (req, res) => {
     try {
-      // console.log(req.body);
+      console.log(req.body);
       let article = await articleController.addArticle(req);
       let code = article.statusCode;
       delete article.statusCode;
@@ -45,22 +45,22 @@ router.get('/get/:id', async (req, res) => {
   }
 });
 
-router.post('/update/:id',   authMiddleware,
+router.post('/update/:id', authMiddleware,
   adminMiddleware, async (req, res) => {
-  try {
-    let article = await articleController.updateArticleById(req);
-    let code = article.statusCode;
-    delete article.statusCode;
-    res.status(code).send(article);
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      message: 'FAILED',
-      data: null,
-      error: error,
-    });
-  }
-});
+    try {
+      let article = await articleController.updateArticleById(req);
+      let code = article.statusCode;
+      delete article.statusCode;
+      res.status(code).send(article);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        message: 'FAILED',
+        data: null,
+        error: error,
+      });
+    }
+  });
 
 router.post('/get', async (req, res) => {
   try {
@@ -79,11 +79,28 @@ router.post('/get', async (req, res) => {
   }
 });
 
-router.post('/delete/:articleId/:topicId',   authMiddleware,
+router.post('/delete/:articleId/:topicId', authMiddleware,
   adminMiddleware, async (req, res) => {
+    try {
+      // console.log(req.body);
+      let article = await articleController.deleteArticle(req);
+      let code = article.statusCode;
+      delete article.statusCode;
+      res.status(code).send(article);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        message: 'FAILED',
+        data: null,
+        error: error,
+      });
+    }
+  });
+
+router.get("/all", async (req, res) => {
   try {
     // console.log(req.body);
-    let article = await articleController.deleteArticle(req);
+    let article = await articleController.getAllArticles(req);
     let code = article.statusCode;
     delete article.statusCode;
     res.status(code).send(article);
@@ -95,7 +112,7 @@ router.post('/delete/:articleId/:topicId',   authMiddleware,
       error: error,
     });
   }
-});
+})
 
 // router.get("/all", async (req, res) => {
 //   try {

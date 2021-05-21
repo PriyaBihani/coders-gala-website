@@ -407,6 +407,7 @@ img {
 		z-index: 10;
 		height: 25vh;
 		border-radius: 0;
+		transition: all 0.2s ease-in-out;
 	}
 	.topic-ovr-container .topics-overview {
 		position: sticky;
@@ -419,6 +420,7 @@ img {
 	}
 	.topics-overview .close-toggle {
 		display: block;
+		padding-bottom: 2px;
 	}
 }
 
@@ -432,6 +434,7 @@ img {
 	opacity: 0.4;
 	z-index: 5;
 	height: 100vh;
+	transition: all 0.4s ease-in-out;
 }
 
 /* dark */

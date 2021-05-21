@@ -19,8 +19,6 @@ const TopicsOverview = ({
 		getTopics(specialityName);
 	}, [getTopics, specialityName]);
 
-	console.log(topics);
-
 	const handleDelete = (topic) => {
 		const confirm = window.prompt(
 			`You sure want to delete "${topic.name}" ? Y or N (Deleting a topic will lead to deletion of all articles inside it) `
@@ -32,10 +30,6 @@ const TopicsOverview = ({
 	};
 
 	const [selectedId, setSelectedId] = useState();
-
-	// useEffect(() => {
-	// 	console.log('changes');
-	// }, [selectedId]);
 
 	return (
 		<div id='specialities' className='Topic-names '>
@@ -152,8 +146,7 @@ const ActionButtons = ({
 						viewBox='0 0 32 32'
 						className={`icon icon-chevron-bottom article-dwn article-toggle fa-angle-down ${
 							topic._id == selectedId ? 'rotate' : ''
-						}`}
-						viewBox='0 0 32 32'>
+						}`}>
 						<path d='M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z' />
 					</svg>
 				</Accordion.Toggle>

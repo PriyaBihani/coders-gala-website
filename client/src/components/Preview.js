@@ -4,6 +4,7 @@ import { Accordion, Row, Col } from 'react-bootstrap';
 
 import { Footer } from '../layout';
 import { Seo } from '../helpers';
+import { ChevronsUp, Cross } from '../assets/icons';
 import { getSpeciality, clearArticle, selectVideo } from '../actions';
 
 import VideoPreview from '../sections/preview/VideoPreview';
@@ -57,9 +58,13 @@ const Preview = ({
 							</h3>
 							<div className='close-toggle'>
 								{close ? (
-									<span onClick={() => setClose(!close)}>Up</span>
+									<span onClick={() => setClose(!close)}>
+										<ChevronsUp />
+									</span>
 								) : (
-									<span onClick={() => setClose(!close)}>Down</span>
+									<span onClick={() => setClose(!close)}>
+										<Cross />
+									</span>
 								)}
 							</div>
 						</div>

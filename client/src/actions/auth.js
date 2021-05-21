@@ -52,7 +52,8 @@ export const refreshUser = (user) => async (dispatch) => {
 		const userId = localStorage.getItem('userId');
 
 		try {
-			const res = await serviceGet(`api/auth/user/${userId}`);
+			// const res = await serviceGet(`api/auth/user/${userId}`);
+			await serviceGet(`api/auth/user/${userId}`);
 
 			dispatch({
 				type: USER_LOADED,
@@ -88,7 +89,7 @@ export const register = (data) => async (dispatch) => {
 		console.log(res);
 		dispatch(loadUser());
 	} catch (err) {
-		const errors = err.response.data.errors;
+		// const errors = err.response.data.errors;
 
 		dispatch({
 			type: REGISTER_FAIL,
@@ -98,36 +99,36 @@ export const register = (data) => async (dispatch) => {
 
 export const login =
 	({ email, password }) =>
-	async (dispatch) => {
-		dispatch({
-			type: 'SET_AUTH_LOADER',
-		});
-		const headers = {
-			'Content-Type': 'application/json',
+		async (dispatch) => {
+			dispatch({
+				type: 'SET_AUTH_LOADER',
+			});
+			const headers = {
+				'Content-Type': 'application/json',
+			};
+
+			const body = JSON.stringify({ email, password });
+
+			try {
+				const res = await servicePost('api/auth/login', body, headers);
+
+				console.log(res);
+
+				dispatch({
+					type: res.status === 1 ? LOGIN_SUCCESS : LOGIN_FAIL,
+					payload: { userId: res.data?.user?.userId, token: res.data?.token },
+				});
+				toast(res.message);
+				dispatch(loadUser());
+			} catch (err) {
+				console.log(err);
+				// const errors = err && err.response.data.errors;
+
+				dispatch({
+					type: LOGIN_FAIL,
+				});
+			}
 		};
-
-		const body = JSON.stringify({ email, password });
-
-		try {
-			const res = await servicePost('api/auth/login', body, headers);
-
-			console.log(res);
-
-			dispatch({
-				type: res.status === 1 ? LOGIN_SUCCESS : LOGIN_FAIL,
-				payload: { userId: res.data?.user?.userId, token: res.data?.token },
-			});
-			toast(res.message);
-			dispatch(loadUser());
-		} catch (err) {
-			console.log(err);
-			const errors = err && err.response.data.errors;
-
-			dispatch({
-				type: LOGIN_FAIL,
-			});
-		}
-	};
 
 export const logout = () => (dispatch) => {
 	localStorage.clear();
@@ -138,30 +139,30 @@ export const logout = () => (dispatch) => {
 
 export const sendResetEmail =
 	({ email }) =>
-	async (dispatch) => {
-		const config = {
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		};
-		const body = JSON.stringify({ email });
+		async (dispatch) => {
+			const config = {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			};
+			const body = JSON.stringify({ email });
 
-		try {
-			const res = await servicePost('/api/forgotpassword', body, config);
+			try {
+				const res = await servicePost('/api/forgotpassword', body, config);
 
-			const messagesArray = res.data.messages;
-			// brand added message alert
-			messagesArray.forEach((message) => dispatch((message.msg, 'danger')));
-			dispatch({
-				type: SEND_RESET_EMAIL,
-				payload: res.data,
-			});
-		} catch (err) {
-			const errors = err && err.response.data.errors;
-			if (errors) {
+				const messagesArray = res.data.messages;
+				// brand added message alert
+				messagesArray.forEach((message) => dispatch((message.msg, 'danger')));
+				dispatch({
+					type: SEND_RESET_EMAIL,
+					payload: res.data,
+				});
+			} catch (err) {
+				const errors = err && err.response.data.errors;
+				if (errors) {
+				}
+				dispatch({
+					type: SEND_RESET_EMAIL_FAIL,
+				});
 			}
-			dispatch({
-				type: SEND_RESET_EMAIL_FAIL,
-			});
-		}
-	};
+		};

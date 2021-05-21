@@ -19,11 +19,12 @@ const Preview = ({
 	speciality,
 }) => {
 	const [close, setClose] = useState(true);
+	const { specialityName } = match.params
 
 	useEffect(() => {
 		clearArticle();
-		getSpeciality(match.params.specialityName);
-	}, []);
+		getSpeciality(specialityName);
+	}, [clearArticle, getSpeciality, specialityName]);
 	useEffect(() => {
 		selectVideo(speciality);
 	}, [speciality, selectVideo]);

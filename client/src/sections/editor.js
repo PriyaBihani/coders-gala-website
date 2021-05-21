@@ -15,13 +15,13 @@ const CustomButton = () => (
   />
 );
 
-const CodeLine = () => (
-  <img
-    style={{ width: '20px' }}
-    src="https://www.svgrepo.com/show/294145/code.svg"
-    alt=""
-  />
-);
+// const CodeLine = () => (
+//   <img
+//     style={{ width: '20px' }}
+//     src="https://www.svgrepo.com/show/294145/code.svg"
+//     alt=""
+//   />
+// );
 
 const Size = Quill.import('formats/size');
 Size.whitelist = [
@@ -41,7 +41,7 @@ Size.whitelist = [
 ];
 Quill.register(Size, true);
 
-class inlineCodeBlot extends Inline {}
+class inlineCodeBlot extends Inline { }
 inlineCodeBlot.blotName = 'inlineCode';
 inlineCodeBlot.tagName = 'code';
 

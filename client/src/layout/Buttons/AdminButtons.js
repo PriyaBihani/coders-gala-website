@@ -13,7 +13,7 @@ const TooltipWrapper = ({ title, position, children }) => {
 };
 
 const AdminButtons = ({ type, url, handler, isAdmin, data = {} }) =>
-	isAdmin && (
+	isAdmin ? (
 		<TooltipWrapper title={`${type} "${data.name}"`} position={'top'}>
 			<AdminButtonsWrapper
 				type={type}
@@ -22,7 +22,14 @@ const AdminButtons = ({ type, url, handler, isAdmin, data = {} }) =>
 				data={data}
 			/>
 		</TooltipWrapper>
-	);
+	) :
+		<AdminButtonsWrapper
+			type={"None"}
+			url={url}
+			handler={handler}
+			data={data}
+		/>
+	;
 
 const AdminButtonsWrapper = ({ type, url, handler, data }) => {
 	switch (type) {
@@ -49,17 +56,22 @@ const AdminButtonsWrapper = ({ type, url, handler, data }) => {
 
 		case 'Delete':
 			return (
-				<a
+				<button
+					style={{ background: "none", border: "none", outline: "none" }}
 					onClick={() => {
 						handler(data);
 					}}
 					className='edit-topic-modal-toggle'>
 					<Delete size='20' color='crimson' />
-				</a>
+				</button>
 			);
 
 		default:
-			return null;
+			return <button href="#"
+				style={{ background: "none", border: "none", outline: "none", display: "none" }}
+				className='edit-topic-modal-toggle'>
+				<Delete size='0' color='' />
+			</button>;
 	}
 };
 

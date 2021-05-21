@@ -56,30 +56,30 @@ const TopicsOverview = ({
 
 								<hr />
 								{topic.locked &&
-								!user.unLockedTopics.includes(topic._id) ? null : (
+									!user.unLockedTopics.includes(topic._id) ? null : (
 									<Accordion.Collapse
 										eventKey={topic.name.split(/\s/).join('')}>
 										<ol>
 											{topic.videos.length > 0
 												? topic.videos.map((video) => {
-														return (
-															<VideoNames
-																topic={topic}
-																video={video}
-																specialityName={specialityName}
-															/>
-														);
-												  })
+													return (
+														<VideoNames
+															topic={topic}
+															video={video}
+															specialityName={specialityName}
+														/>
+													);
+												})
 												: topic.articles &&
-												  topic.articles.map((article) => {
-														return (
-															<ArticleNames
-																topic={topic}
-																article={article}
-																specialityName={specialityName}
-															/>
-														);
-												  })}
+												topic.articles.map((article) => {
+													return (
+														<ArticleNames
+															topic={topic}
+															article={article}
+															specialityName={specialityName}
+														/>
+													);
+												})}
 										</ol>
 									</Accordion.Collapse>
 								)}
@@ -119,15 +119,7 @@ const ActionButtons = ({
 			<AdminButtons type='Add' data={topic} url={`/video/add/${topic._id}`} />
 			{topic.locked && !user.unLockedTopics.includes(topic._id) ? (
 				<Lock
-					handler={() => {
-						{
-							/* setPreviewArticle({
-							ArticleName: 'This article is locked',
-							locked: true,
-							topicId: topic._id,
-						}); */
-						}
-					}}
+
 				/>
 			) : (
 				<Accordion.Toggle
@@ -136,7 +128,7 @@ const ActionButtons = ({
 					className='float-right arrow-down'
 					eventKey={topic.name.split(/\s/).join('')} // to remove spaces
 					onClick={() => {
-						if (selectedId == topic._id) {
+						if (selectedId === topic._id) {
 							setSelectedId('');
 						} else {
 							setSelectedId(topic._id);
@@ -145,9 +137,8 @@ const ActionButtons = ({
 					<svg
 						id={topic.name.split(/\s/).join('')}
 						viewBox='0 0 32 32'
-						className={`icon icon-chevron-bottom article-dwn article-toggle fa-angle-down ${
-							topic._id == selectedId ? 'rotate' : ''
-						}`}>
+						className={`icon icon-chevron-bottom article-dwn article-toggle fa-angle-down ${topic._id === selectedId ? 'rotate' : ''
+							}`}>
 						<path d='M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z' />
 					</svg>
 				</Accordion.Toggle>

@@ -16,8 +16,8 @@ const UpsertArticle = (props) => {
 	const [keywords, setArticleKeywords] = useState('');
 	const [featured, setfeatured] = useState(false)
 	const [thumbnailUrl, setthumbnailUrl] = useState('')
-	const [Loading, setLoading] = useState(false);
-	const topicId = "ERROR_NA_DIYO";
+	// const [Loading, setLoading] = useState(false);
+	// const topicId = "ERROR_NA_DIYO";
 	function scrollTo(element) {
 		window.scroll({
 			behavior: 'smooth',

@@ -21,10 +21,10 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
 	useEffect(() => {
 		document.querySelector('body').classList.add(ui.displayMode);
 		console.log(ui.displayMode);
-		if (ui.displayMode == 'dark') {
+		if (ui.displayMode === 'dark') {
 			setswitched(true);
 		}
-	});
+	}, [setswitched, ui.displayMode]);
 
 	// Getting the current mode from local storage
 	if (isClient) {
@@ -41,7 +41,8 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
 
 	//
 
-	const links = <SignedOutLinks />;
+	// const links = <SignedOutLinks />;
+
 	return (
 		<div className='navigation-wrap bg-light start-header start-style'>
 			<div className='container'>
@@ -66,20 +67,19 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
 										setDisplayMode();
 										setswitched(!switched);
 									}}
-									className={`switch float-right ${
-										switched ? 'switched' : ''
-									}`}>
+									className={`switch float-right ${switched ? 'switched' : ''
+										}`}>
 									<div
 										style={{
 											backgroundColor:
-												ui.displayMode == 'dark' ? '#111' : '#f1f1f1',
+												ui.displayMode === 'dark' ? '#111' : '#f1f1f1',
 										}}
 										id='circle'>
 										<img
 											className='mode-icon'
 											style={{ width: '20px' }}
 											src={
-												ui.displayMode == 'dark'
+												ui.displayMode === 'dark'
 													? 'https://www.svgrepo.com/show/3158/moon.svg'
 													: 'https://www.svgrepo.com/show/83726/sun.svg'
 											}
@@ -92,6 +92,7 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
 										<span className='points-text'> Points </span>
 										<span>
 											<img
+												alt="CG Points"
 												src='https://image.flaticon.com/icons/svg/715/715709.svg'
 												className='points-img'
 											/>

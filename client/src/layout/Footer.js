@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 
 const FooterSocialMedia = () => {
   return (
     <div className="social-media">
-      <a rel="nofollow" href="#">
+      <a rel="nofollow" href="https://gmail.com">
         <img
           src="https://www.svgrepo.com/show/303161/gmail-icon-logo.svg"
           alt=""
         />
       </a>
-      <a rel="nofollow" href="#">
+      <a rel="nofollow" href="https://twitter.com">
         <img src="https://www.svgrepo.com/show/183608/twitter.svg" alt="" />
       </a>
-      <a rel="nofollow" href="#">
+      <a rel="nofollow" href="https://instagram.com/bihani.priya">
         <img src="https://www.svgrepo.com/show/111199/instagram.svg" alt="" />
       </a>
-      <a rel="nofollow" href="#">
+      <a rel="nofollow" href="https://github.com">
         <img
           src="https://www.svgrepo.com/show/217753/github.svg"
           className="github"
@@ -28,9 +28,15 @@ const FooterSocialMedia = () => {
 
 export const Footer = () => {
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState(
-    'Enter Your Email here to subscribe for Newsletter'
-  );
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    setFooterMessage()
+  })
+
+  const setFooterMessage = useCallback(() => { setMessage('Enter Your Email here to subscribe for Newsletter') }
+    , [])
+
   return (
     <div className="footer-cont">
       <footer>

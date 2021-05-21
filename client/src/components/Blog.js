@@ -14,7 +14,7 @@ const Blog = ({ getAllArticles, articles, isAdmin }) => {
         if (articles.length === 0) {
             getAllArticles()
         }
-    }, [])
+    }, [articles, getAllArticles])
 
     console.log(articles)
     return (

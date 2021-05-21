@@ -8,7 +8,7 @@ export const Seo = ({
 	meta = [],
 	richresult,
 }) => {
-	const { favicon } = '';
+	// const { favicon } = '';
 
 	const metaTitle = `CodersGala | ${title}`;
 	const metaDescription =

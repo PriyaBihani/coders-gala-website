@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Seo } from '../helpers';
 import { Footer } from '../layout/';

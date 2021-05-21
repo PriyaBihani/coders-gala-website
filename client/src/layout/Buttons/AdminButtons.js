@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tooltip } from 'react-tippy';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';

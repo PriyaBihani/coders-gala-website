@@ -4,8 +4,8 @@ import { ToastContainer } from 'react-toastify';
 import { AnimatePresence } from 'framer-motion';
 import Loadable from 'react-loadable';
 
-import { setAuthToken } from './helpers';
 import { loadUser } from './actions/auth';
+import { setAuthToken } from './helpers/setAuthToken';
 
 import 'bootstrap/dist/js/bootstrap.js';
 
@@ -114,7 +114,6 @@ const App = () => {
 						exact
 						path='/updatespeciality/:specialityName'
 					/>
-
 					<Route exact path='/blog' component={Blog} />
 				</Switch>
 			</AnimatePresence>

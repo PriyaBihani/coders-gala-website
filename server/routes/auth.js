@@ -41,9 +41,10 @@ router.post(
       res.status(code).send(userRegister);
     } catch (error) {
       res.status(500).send({
-        message: 'FAILED',
         data: null,
-        error: error,
+        error: [{ msg: error.message }],
+        message: 'Internal server error',
+        status: 0,
       });
     }
   }
@@ -66,9 +67,10 @@ router.post(
       res.status(code).send(userRegister);
     } catch (error) {
       res.status(500).send({
-        message: 'FAILED',
         data: null,
-        error: error,
+        error: [{ msg: error.message }],
+        message: 'Internal server error',
+        status: 0,
       });
     }
   }
@@ -85,9 +87,10 @@ router.get(
       res.status(code).send(user);
     } catch (error) {
       res.status(500).send({
-        message: 'FAILED',
         data: null,
-        error: error,
+        error: [{ msg: error.message }],
+        message: 'Internal server error',
+        status: 0,
       });
     }
   }
@@ -105,9 +108,10 @@ router.get(
       res.status(code).send(users);
     } catch (error) {
       res.status(500).send({
-        message: 'FAILED',
         data: null,
-        error: error,
+        error: [{ msg: error.message }],
+        message: 'Internal server error',
+        status: 0,
       });
     }
   }

@@ -11,12 +11,12 @@ module.exports = async (req, res, next) => {
 
     next();
   } catch (error) {
-    res.status(400).send({
-      message: "FAILED",
+    res.status(500).send({
+      error: [{ msg: error.message }],
+      message: 'Access Denied',
       data: null,
-      errorMessage: "Login to proceed",
-      error: error,
+      statusCode: 304,
       status: 0,
-    });
+    })
   }
 };

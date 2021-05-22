@@ -14,7 +14,7 @@ exports.signup = async (req) => {
   if (!errors.isEmpty()) {
     return {
       data: null,
-      errors: errors.array(),
+      error: errors.array(),
       message: 'Validation Error',
       statusCode: 400,
       status: 0,
@@ -30,7 +30,7 @@ exports.signup = async (req) => {
     if (user) {
       return {
         data: null,
-        error: null,
+        error: [],
         message: 'User already exists',
         statusCode: 200,
         status: 0,
@@ -85,7 +85,7 @@ exports.signup = async (req) => {
 
     return {
       data: { user: dbFilters.sanitizeUser(user), token },
-      error: null,
+      error: [],
       message: 'User registered successfully',
       statusCode: 200,
       status: 1,
@@ -99,9 +99,9 @@ exports.signup = async (req) => {
     });
     return {
       data: null,
-      error: err.message,
-      message: 'Server Error',
-      statusCode: 400,
+      error: [{ msg: error.message }],
+      message: 'Internal Server Error',
+      statusCode: 500,
       status: 0,
     };
   }
@@ -112,7 +112,7 @@ exports.signin = async (req, res) => {
   if (!errors.isEmpty()) {
     return {
       data: null,
-      errors: errors.array(),
+      error: errors.array(),
       message: 'Validation Error',
       statusCode: 400,
       status: 0,
@@ -127,7 +127,7 @@ exports.signin = async (req, res) => {
     if (!user) {
       return {
         data: null,
-        error: null,
+        error: [],
         message: 'User does not exist',
         statusCode: 200,
         status: 0,
@@ -139,7 +139,7 @@ exports.signin = async (req, res) => {
     if (!isMatch) {
       return {
         data: null,
-        error: null,
+        error: [],
         message: 'Incorrect password',
         statusCode: 200,
         status: 0,
@@ -150,8 +150,8 @@ exports.signin = async (req, res) => {
 
     return {
       data: { user: dbFilters.sanitizeUser(user), token },
-      error: null,
-      message: 'You logged in successfully.',
+      error: [],
+      message: 'Login Success',
       statusCode: 200,
       status: 1,
     };
@@ -159,9 +159,9 @@ exports.signin = async (req, res) => {
     console.error(err.message);
     return {
       data: null,
-      error: err.message,
-      message: 'Server Error',
-      statusCode: 400,
+      error: [{ msg: 'Internal server error' }],
+      message: 'Internal server error',
+      statusCode: 500,
       status: 0,
     };
   }
@@ -173,17 +173,17 @@ exports.getUserById = async (req) => {
 
     return {
       data: { user: dbFilters.sanitizeUser(user) },
-      error: null,
-      message: 'SUCCESS',
+      error: [],
+      message: 'User fetched successfully',
       statusCode: 200,
       status: 1,
     };
   } catch (err) {
     return {
       data: null,
-      error: err.message,
-      message: 'Server Error',
-      statusCode: 400,
+      error: [{ msg: 'Internal server error' }],
+      message: 'Internal server error',
+      statusCode: 500,
       status: 0,
     };
   }
@@ -197,16 +197,16 @@ exports.fetchAllUsers = async (req) => {
     return {
       data: users,
       error: null,
-      message: 'SUCCESS',
+      message: 'Users fetched successfully',
       statusCode: 200,
       status: 1,
     };
   } catch (err) {
     return {
       data: null,
-      error: err.message,
-      message: 'Server Error',
-      statusCode: 400,
+      error: [{ msg: 'Internal server error' }],
+      message: 'Internal server error',
+      statusCode: 500,
       status: 0,
     };
   }

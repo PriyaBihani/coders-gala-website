@@ -12,19 +12,19 @@ exports.getSpeciality = async (req) => {
 		});
 		console.log(speciality);
 		return {
-			message: 'SUCCESS',
+			message: 'Speciality Fetched',
 			data: { speciality },
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
+			message: 'Server Error',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -34,10 +34,9 @@ exports.addSpeciality = async (req) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return {
-			message: 'FAILED',
+			message: 'Validation Error',
 			data: null,
-			errors: errors.array(),
-			errorMessage: 'validation Error',
+			error: errors.array(),
 			statusCode: 400,
 			status: 0,
 		};
@@ -48,19 +47,19 @@ exports.addSpeciality = async (req) => {
 		await speciality.save();
 
 		return {
-			message: 'SUCCESS',
+			message: 'Speciality added successfully',
 			data: { speciality: speciality },
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
+			message: 'Server Error',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -71,19 +70,19 @@ exports.getAllSpecialities = async (req) => {
 		const speciality = await Speciality.find({});
 
 		return {
-			message: 'SUCCESS',
+			message: 'Specialities fetched',
 			data: speciality,
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
+			message: 'Server Error',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -97,19 +96,19 @@ exports.updateSpeciality = async (req) => {
 		);
 
 		return {
-			message: 'SUCCESS',
+			message: 'Speciality updated successfully',
 			data: speciality,
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
+			message: 'Server Error',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -127,7 +126,7 @@ exports.deleteSpeciality = async (req) => {
 		}
 
 		return {
-			message: 'SUCCESS',
+			message: 'Speciality deleted successfully',
 			error: null,
 			statusCode: 200,
 			status: 1,
@@ -135,10 +134,10 @@ exports.deleteSpeciality = async (req) => {
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
+			message: 'Server Error',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			statusCode: 500,
 			status: 0,
 		};
 	}

@@ -9,8 +9,8 @@ import {
 	SEND_RESET_EMAIL_FAIL,
 } from './types';
 
-import { toast } from 'react-toastify';
 import { serviceGet, servicePost, setAuthToken } from '../helpers';
+import { errorToast, successToast } from './toast';
 
 // Load User : Every time we logged in or register or refresh the page its gonna load.
 
@@ -27,12 +27,16 @@ export const loadUser = () => async (dispatch) => {
 
 		try {
 			const res = await serviceGet(`api/auth/user/${userId}`);
+			// displayToast
+			successToast(res)
 
 			dispatch({
 				type: USER_LOADED,
 				payload: res.data.user,
 			});
 		} catch (err) {
+			// display toast
+			errorToast(err)
 			dispatch({
 				type: AUTH_ERROR,
 			});
@@ -84,13 +88,14 @@ export const register = (data) => async (dispatch) => {
 			type: res.status === 1 ? REGISTER_SUCCESS : REGISTER_FAIL,
 			payload: res.data,
 		});
-		toast(res.message);
+
+		successToast(res)
 
 		console.log(res);
 		dispatch(loadUser());
 	} catch (err) {
 		// const errors = err.response.data.errors;
-
+		errorToast(err)
 		dispatch({
 			type: REGISTER_FAIL,
 		});
@@ -118,12 +123,12 @@ export const login =
 					type: res.status === 1 ? LOGIN_SUCCESS : LOGIN_FAIL,
 					payload: { userId: res.data?.user?.userId, token: res.data?.token },
 				});
-				toast(res.message);
+
 				dispatch(loadUser());
+				successToast(res)
 			} catch (err) {
 				console.log(err);
-				// const errors = err && err.response.data.errors;
-
+				errorToast(err)
 				dispatch({
 					type: LOGIN_FAIL,
 				});

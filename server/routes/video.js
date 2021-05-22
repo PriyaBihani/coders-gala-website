@@ -1,12 +1,14 @@
 const express = require('express');
+const { check } = require('express-validator');
+
 const router = express.Router();
 
 let {
-		getVideoById,
-		addVideo,
-		updateVideoById,
-		deleteVideo,
-	} = require('./../controllers/videoController'),
+	getVideoById,
+	addVideo,
+	updateVideoById,
+	deleteVideo,
+} = require('./../controllers/videoController'),
 	authMiddleware = require('./../services/middlewares/auth'),
 	adminMiddleware = require('./../services/middlewares/admin');
 
@@ -19,9 +21,10 @@ router.get('/get/:id', async (req, res) => {
 	} catch (error) {
 		console.log(error);
 		res.status(500).send({
-			message: 'FAILED',
 			data: null,
-			error: error,
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
+			status: 0,
 		});
 	}
 });
@@ -30,6 +33,8 @@ router.post(
 	'/add/:topicId',
 	authMiddleware,
 	adminMiddleware,
+	[check('name', 'Video name not be empty').notEmpty()],
+	[check('url', 'Video url can not be empty').notEmpty()],
 	async (req, res) => {
 		try {
 			let video = await addVideo(req);
@@ -39,9 +44,10 @@ router.post(
 		} catch (error) {
 			console.log(error);
 			res.status(500).send({
-				message: 'FAILED',
 				data: null,
-				error: error,
+				error: [{ msg: error.message }],
+				message: 'Internal server error',
+				status: 0,
 			});
 		}
 	}
@@ -60,9 +66,10 @@ router.post(
 		} catch (error) {
 			console.log(error);
 			res.status(500).send({
-				message: 'FAILED',
 				data: null,
-				error: error,
+				error: [{ msg: error.message }],
+				message: 'Internal server error',
+				status: 0,
 			});
 		}
 	}
@@ -81,9 +88,10 @@ router.post(
 		} catch (error) {
 			console.log(error);
 			res.status(500).send({
-				message: 'FAILED',
 				data: null,
-				error: error,
+				error: [{ msg: error.message }],
+				message: 'Internal server error',
+				status: 0,
 			});
 		}
 	}

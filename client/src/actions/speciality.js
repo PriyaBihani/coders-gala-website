@@ -1,4 +1,5 @@
 import { serviceGet, servicePost } from '../helpers';
+import { errorToast, successToast } from './toast';
 
 export const getSpecialities = () => async (dispatch) => {
 	try {
@@ -8,7 +9,9 @@ export const getSpecialities = () => async (dispatch) => {
 			type: 'GET_SPECIALITIES',
 			payload: res.data,
 		});
+		successToast(res)
 	} catch (error) {
+		errorToast(error)
 		dispatch({
 			type: 'GET_SPECIALITIES_ERROR',
 			payload: {},
@@ -30,7 +33,9 @@ export const getSpeciality = (specialityName) => async (dispatch) => {
 			type: 'GET_SPECIALITY',
 			payload: res.data.speciality,
 		});
+		successToast(res)
 	} catch (error) {
+		errorToast(error)
 		console.log(error);
 		dispatch({
 			type: 'GET_SPECIALITY_ERROR',
@@ -55,7 +60,9 @@ export const addSpeciality = (data) => async (dispatch) => {
 			type: 'GET_SPECIALITIES',
 			payload: res2.data,
 		});
+		successToast(res)
 	} catch (error) {
+		errorToast(error)
 		dispatch({
 			type: 'ADD_SPECIALITY_ERROR',
 			payload: {},
@@ -77,7 +84,9 @@ export const editSpeciality = (data, id) => async (dispatch) => {
 			type: 'GET_SPECIALITIES',
 			payload: res2.data,
 		});
+		successToast(res)
 	} catch (error) {
+		errorToast(error)
 		dispatch({
 			type: 'EDIT_SPECIALITY_ERROR',
 			payload: {},
@@ -103,7 +112,9 @@ export const deleteSpeciality = (id) => async (dispatch) => {
 			type: 'GET_SPECIALITIES',
 			payload: res2.data,
 		});
+		successToast(res)
 	} catch (error) {
+		errorToast(error)
 		dispatch({
 			type: 'DELETE_SPECIALITY_ERROR',
 			payload: {},

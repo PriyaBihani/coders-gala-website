@@ -19,11 +19,11 @@ router.post(
       delete article.statusCode;
       res.status(code).send(article);
     } catch (error) {
-      console.log(error);
       res.status(500).send({
-        message: 'FAILED',
         data: null,
-        error: error,
+        error: [{ msg: error.message }],
+        message: 'Internal server error',
+        status: 0,
       });
     }
   }
@@ -36,12 +36,13 @@ router.get('/get/:id', async (req, res) => {
     delete article.statusCode;
     res.status(code).send(article);
   } catch (error) {
-    console.log(error);
     res.status(500).send({
-      message: 'FAILED',
       data: null,
-      error: error,
+      error: [{ msg: error.message }],
+      message: 'Internal server error',
+      status: 0,
     });
+
   }
 });
 
@@ -53,11 +54,11 @@ router.post('/update/:id', authMiddleware,
       delete article.statusCode;
       res.status(code).send(article);
     } catch (error) {
-      console.log(error);
       res.status(500).send({
-        message: 'FAILED',
         data: null,
-        error: error,
+        error: [{ msg: error.message }],
+        message: 'Internal server error',
+        status: 0,
       });
     }
   });
@@ -70,11 +71,11 @@ router.post('/get', async (req, res) => {
     delete article.statusCode;
     res.status(code).send(article);
   } catch (error) {
-    console.log(error);
     res.status(500).send({
-      message: 'FAILED',
       data: null,
-      error: error,
+      error: [{ msg: error.message }],
+      message: 'Internal server error',
+      status: 0,
     });
   }
 });
@@ -90,9 +91,10 @@ router.post('/delete/:articleId/:topicId', authMiddleware,
     } catch (error) {
       console.log(error);
       res.status(500).send({
-        message: 'FAILED',
         data: null,
-        error: error,
+        error: [{ msg: error.message }],
+        message: 'Internal server error',
+        status: 0,
       });
     }
   });
@@ -107,9 +109,10 @@ router.get("/all", async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      message: 'FAILED',
       data: null,
-      error: error,
+      error: [{ msg: error.message }],
+      message: 'Internal server error',
+      status: 0,
     });
   }
 })

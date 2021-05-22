@@ -7,10 +7,9 @@ exports.addArticle = async (req) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return {
-			message: 'FAILED',
 			data: null,
-			errors: errors.array(),
-			errorMessage: 'validation Error',
+			error: errors.array(),
+			message: 'validation Error',
 			statusCode: 400,
 			status: 0,
 		};
@@ -28,19 +27,19 @@ exports.addArticle = async (req) => {
 		// );
 		// await Topic.findByIdAndUpdate(req.params.topicId, modifiedTopic);
 		return {
-			message: 'SUCCESS',
+			message: 'Article added successfully',
 			data: { article: article },
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
+			message: 'Server Error',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -55,18 +54,19 @@ exports.getArticle = async (req) => {
 		return {
 			message: 'SUCCESS',
 			data: { article: article },
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			status: 0,
+			statusCode: 500,
+
 		};
 	}
 };
@@ -79,19 +79,19 @@ exports.updateArticleById = async (req) => {
 		);
 
 		return {
-			message: 'SUCCESS',
+			message: 'Updated Article Successfully',
 			data: { article: article },
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
+			message: 'Server Error',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -102,19 +102,19 @@ exports.getArticleById = async (req) => {
 		const article = await Article.findById(req.params.id);
 
 		return {
-			message: 'SUCCESS',
+			message: 'Article Fetched',
 			data: { article: article },
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -134,19 +134,19 @@ exports.deleteArticle = async (req) => {
 		await topic.save();
 
 		return {
-			message: 'SUCCESS',
-			data: { article: article },
-			error: null,
+			message: 'Deleted article successfully',
+			data: { articles },
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -156,22 +156,21 @@ exports.deleteArticle = async (req) => {
 exports.getAllArticles = async (req) => {
 	try {
 		const articles = await Article.find({});
-
 		return {
-			message: 'SUCCESS',
+			message: 'All articles fetched',
 			data: { articles },
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			status: 0,
+			statusCode: 500,
 		};
 	}
 }

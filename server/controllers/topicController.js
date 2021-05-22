@@ -10,10 +10,9 @@ exports.addTopic = async (req) => {
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		return {
-			message: 'FAILED',
 			data: null,
-			errors: errors.array(),
-			errorMessage: 'validation Error',
+			error: errors.array(),
+			message: 'Validation Error',
 			statusCode: 400,
 			status: 0,
 		};
@@ -26,19 +25,19 @@ exports.addTopic = async (req) => {
 		await topic.save();
 
 		return {
-			message: 'SUCCESS',
+			message: 'Topic added successfully',
 			data: { topic },
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err.message);
 		return {
-			message: 'FAILED',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			message: 'Internal Server Error',
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -57,19 +56,19 @@ exports.getAllTopics = async (req) => {
 			.populate('videos');
 
 		return {
-			message: 'SUCCESS',
+			message: 'Fetched topics successfully',
 			data: topics,
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			message: 'Internal Server Error',
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -83,19 +82,19 @@ exports.updateTopic = async (req) => {
 		);
 
 		return {
-			message: 'SUCCESS',
+			message: 'Updated topic successfully',
 			data: topic,
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			message: 'Internal Server Error',
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -116,19 +115,19 @@ exports.deleteTopic = async (req) => {
 
 		console.log(topic);
 		return {
-			message: 'SUCCESS',
+			message: 'Topic deleted successfully',
 			data: topic,
-			error: null,
+			error: [],
 			statusCode: 200,
 			status: 1,
 		};
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
 			data: null,
-			errorMessage: 'Server Error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			message: 'Internal Server Error',
+			statusCode: 500,
 			status: 0,
 		};
 	}
@@ -143,19 +142,19 @@ exports.unlockTopicForUser = async (req) => {
 			user.points = points - 1;
 			const updatedUser = await user.save();
 			return {
-				message: 'SUCCESS',
+				message: 'Unlocked topic successfully',
 				data: { user: updatedUser },
-				error: null,
+				error: [],
 				statusCode: 200,
 				status: 1,
 			};
 		} else {
 			return {
-				message: 'SUCCESS',
+				message: 'Not enough points to unlock topic',
 				data: { user: user },
-				error: 'Not enough points',
+				error: [{ msg: 'Not enough points' }],
 				statusCode: 200,
-				status: 1,
+				status: 0,
 			};
 		}
 
@@ -163,10 +162,10 @@ exports.unlockTopicForUser = async (req) => {
 	} catch (err) {
 		console.log(err);
 		return {
-			message: 'FAILED',
 			data: null,
-			error: 'Server error',
-			statusCode: 400,
+			error: [{ msg: error.message }],
+			message: 'Internal Server Error',
+			statusCode: 500,
 			status: 0,
 		};
 	}

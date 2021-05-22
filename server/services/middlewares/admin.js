@@ -19,20 +19,20 @@ module.exports = async (req, res, next) => {
 			next();
 		} else {
 			return res.status(400).send({
-				message: 'SUCCESS',
+				error: [],
+				message: 'Unauthorised',
 				data: null,
-				errorMessage: 'Access denied',
-				error: error,
-				status: 1,
+				statusCode: 304,
+				status: 0,
 			});
 		}
 	} catch (error) {
-		res.status(400).send({
-			message: 'FAILED',
+		res.status(500).send({
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			data: null,
-			errorMessage: 'SERVER ERROR / ACCESS DENIED',
-			error: error,
+			statusCode: 500,
 			status: 0,
-		});
+		})
 	}
 };

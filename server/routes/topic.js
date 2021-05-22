@@ -37,10 +37,12 @@ router.get('/get/:specialityName', async (req, res) => {
 	} catch (error) {
 		console.log(error);
 		res.status(500).send({
-			message: 'FAILED',
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			data: null,
-			error: error,
-		});
+			statusCode: 500,
+			status: 0,
+		})
 	}
 });
 
@@ -53,10 +55,12 @@ router.post('/unlock/:topicId', authMiddleware, async (req, res) => {
 	} catch (error) {
 		console.log(error);
 		res.status(500).send({
-			message: 'FAILED',
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			data: null,
-			error: error,
-		});
+			statusCode: 500,
+			status: 0,
+		})
 	}
 });
 
@@ -69,10 +73,12 @@ router.post('/update/:topicId', adminMiddleware, async (req, res) => {
 	} catch (error) {
 		console.log(error);
 		res.status(500).send({
-			message: 'FAILED',
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			data: null,
-			error: error,
-		});
+			statusCode: 500,
+			status: 0,
+		})
 	}
 });
 
@@ -85,10 +91,12 @@ router.post('/delete/:topicId', adminMiddleware, async (req, res) => {
 	} catch (error) {
 		console.log(error);
 		res.status(500).send({
-			message: 'FAILED',
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			data: null,
-			error: error,
-		});
+			statusCode: 500,
+			status: 0,
+		})
 	}
 });
 

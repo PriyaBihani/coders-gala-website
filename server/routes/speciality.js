@@ -19,15 +19,16 @@ router.post(
 			delete speciality.statusCode;
 			res.status(code).send(speciality);
 		} catch (error) {
-			console.log(error);
 			res.status(500).send({
-				message: 'FAILED',
+				error: [{ msg: error.message }],
+				message: 'Internal server error',
 				data: null,
-				error: error,
-			});
+				statusCode: 500,
+				status: 0,
+			})
 		}
 	}
-);
+)
 
 router.get('/all', async (req, res) => {
 	try {
@@ -36,12 +37,13 @@ router.get('/all', async (req, res) => {
 		delete speciality.statusCode;
 		res.status(code).send(speciality);
 	} catch (error) {
-		console.log(error);
 		res.status(500).send({
-			message: 'FAILED',
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			data: null,
-			error: error,
-		});
+			statusCode: 500,
+			status: 0,
+		})
 	}
 });
 
@@ -52,12 +54,13 @@ router.get('/get/:specialityName', async (req, res) => {
 		delete speciality.statusCode;
 		res.status(code).send(speciality);
 	} catch (error) {
-		console.log(error);
 		res.status(500).send({
-			message: 'FAILED',
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			data: null,
-			error: error,
-		});
+			statusCode: 500,
+			status: 0,
+		})
 	}
 });
 
@@ -68,12 +71,13 @@ router.post('/update/:specialityId', adminMiddleware, async (req, res) => {
 		delete speciality.statusCode;
 		res.status(code).send(speciality);
 	} catch (error) {
-		console.log(error);
 		res.status(500).send({
-			message: 'FAILED',
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			data: null,
-			error: error,
-		});
+			statusCode: 500,
+			status: 0,
+		})
 	}
 });
 
@@ -84,12 +88,13 @@ router.post('/delete/:specialityId', adminMiddleware, async (req, res) => {
 		delete speciality.statusCode;
 		res.status(code).send(speciality);
 	} catch (error) {
-		console.log(error);
 		res.status(500).send({
-			message: 'FAILED',
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
 			data: null,
-			error: error,
-		});
+			statusCode: 500,
+			status: 0,
+		})
 	}
 });
 

@@ -68,7 +68,7 @@ const AdminButtonsWrapper = ({ type, url, handler, data }) => {
 
 		default:
 			return <button href="#"
-				style={{ background: "none", border: "none", outline: "none", display: "none" }}
+				style={{ background: "none", border: "none", outline: "none", }}
 				className='edit-topic-modal-toggle'>
 				<Delete size='0' color='' />
 			</button>;

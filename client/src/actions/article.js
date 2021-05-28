@@ -6,6 +6,28 @@ export const clearArticle = (id) => async (dispatch) => {
   });
 };
 
+
+export const likeArticle = (data) => async (dispatch) => {
+  const { action, articleId, userId } = data
+  try {
+    const res = await servicePost(`api/article/${articleId}/${action}`, { userId }, {
+      'Content-Type': 'application/json',
+    });
+    console.log(res.data);
+    successToast(res)
+    dispatch({
+      type: 'LIKE_ARTICLE',
+      payload: res.data,
+    });
+  } catch (error) {
+    errorToast(error)
+    dispatch({
+      type: 'LIKE_ARTICLE_ERROR',
+      payload: {},
+    });
+  }
+}
+
 export const getArticle = (id) => async (dispatch) => {
   try {
     const res = await serviceGet(`api/article/get/${id}`);

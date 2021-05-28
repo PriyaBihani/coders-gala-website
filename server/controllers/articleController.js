@@ -1,7 +1,58 @@
 let Article = require('../services/mongodb/models/Article'),
+	User = require('../services/mongodb/models/User'),
 	Topic = require('../services/mongodb/models/Topic');
 const { validationResult } = require('express-validator');
 var dataTypes = require('./../services/dataTypes/mongodb');
+let dbFilters = require('./../services/filters/db-filters');
+
+
+
+exports.likeArticle = async (req) => {
+	const { articleId, action } = req.params
+	const { userId } = req.body
+	console.log(userId)
+	try {
+		// get User
+		var user = await User.findById(userId)
+		// get user's liked articles
+		var likedArticles = user.likedArticles
+		console.log('likedarticles', likedArticles)
+		switch (action) {
+			case "like":
+				if (!likedArticles.includes(articleId)) {
+					likedArticles.push(articleId)
+				}
+				break
+			case "unlike":
+				if (likedArticles.includes(articleId)) {
+					likedArticles.splice(likedArticles.indexOf(articleId), 1)
+
+				}
+				break
+		}
+		console.log('likedArticlesarray', likedArticles)
+		user.likedArticles = likedArticles
+		console.log(user)
+
+		await user.save()
+		return {
+			message: `Article ${action}d successfully`,
+			data: { user: dbFilters.sanitizeUser(user) },
+			error: [],
+			statusCode: 200,
+			status: 1,
+		};
+	} catch (error) {
+		console.log(err);
+		return {
+			message: 'Server Error',
+			data: null,
+			error: [{ msg: error.message }],
+			statusCode: 500,
+			status: 0,
+		};
+	}
+}
 
 exports.addArticle = async (req) => {
 	const errors = validationResult(req);

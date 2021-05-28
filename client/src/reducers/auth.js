@@ -29,6 +29,12 @@ export default function authReducer(state = initialState, action) {
 				isAdmin: payload.role === 0 ? false : true,
 				loading: false,
 			};
+		case "LIKE_ARTICLE":
+			console.log(payload.user)
+			return {
+				...state,
+				user: payload.user,
+			};
 		case REGISTER_SUCCESS:
 		case LOGIN_SUCCESS:
 			localStorage.setItem('token', payload.token);

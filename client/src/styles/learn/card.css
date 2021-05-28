@@ -4,7 +4,7 @@
     margin: 10px auto;
 }
 
-.container .card {
+.learn-container .container .card {
     position: relative;
     width: 400px;
     height: 58vh;
@@ -45,7 +45,7 @@
     }
 }
 
-.container .card:before {
+.learn-container .container .card:before {
     content: "";
     position: absolute;
     top: 0;
@@ -57,7 +57,7 @@
     transition: 0.5s ease-in-out;
 }
 
-.container .card:hover:before {
+.learn-container .container .card:hover:before {
     clip-path: circle(300px at 80% -20%);
 }
 

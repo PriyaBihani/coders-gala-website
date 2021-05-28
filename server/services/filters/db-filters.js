@@ -8,5 +8,6 @@ exports.sanitizeUser = (user) => {
     referCode: user.referCode,
     email: user.email,
     unLockedTopics: user.unLockedTopics,
+    likedArticles: user.likedArticles
   };
 };

@@ -1,6 +1,7 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
+import Like from '../article/like';
 
 const Featured = ({ articles }) => {
 	return (
@@ -9,37 +10,35 @@ const Featured = ({ articles }) => {
 				articles.map((article) => {
 					if (article && article.featured === true) {
 						console.log(article);
-						const ArticleId = article && article._id;
 						return (
-							<div className='grid__item-sm' key={article && article.id}>
-								<NavLink
-									to={`/blog/read/${
-										article && article.name.replace(/\s/g, '-')
-									}`}>
-									<div>
-										<p className='grid__item__category'>
-											{article &&
-												moment(article.createdAt).format('DD MM YYYY')}
-										</p>
-										<h4 className='grid__item__title'>
-											{article && article.name}
-										</h4>
-										<br />
-										<br />
-										<p className='grid__item__author'>By CodersGala</p>
+							<div className="card single_post">
+								<div className="body">
+									<div className="img-post">
+										<img style={{ width: "800px", height: "280px" }} className="d-block img-fluid" src={article.thumbnailUrl} alt="" />
 									</div>
-									<div>
-										<img
-											src={
-												article.thumbnailUrl
-													? article.thumbnailUrl
-													: 'https://codersgala.com/static/media/cgTransparent.6a9c3496.PNG'
-											}
-											className='grid__item__img'
-											alt=''
-										/>
+									<h3>
+										<a href="blog-details.html">{article.name}</a>
+									</h3>
+									<p>
+										It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+									</p>
+								</div>
+								<div className="footer">
+									<div className="actions">
+										<Link to={`/blog/read/${article.name.replace(
+											/\s/g,
+											"-"
+										)}`} className="btn btn-outline-secondary">Continue Reading</
+										Link>
 									</div>
-								</NavLink>
+									<ul className="stats">
+
+										<li>
+											<Like articleId={article._id} />
+										</li>
+
+									</ul>
+								</div>
 							</div>
 						);
 					}

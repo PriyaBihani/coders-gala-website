@@ -5,6 +5,24 @@ let articleController = require('./../controllers/articleController'),
   authMiddleware = require('./../services/middlewares/auth'),
   adminMiddleware = require('./../services/middlewares/admin');
 
+
+router.post("/:articleId/:action", authMiddleware, async (req, res) => {
+  try {
+    let user = await articleController.likeArticle(req);
+    let code = user.statusCode;
+    delete user.statusCode;
+    res.status(code).send(user);
+  } catch (error) {
+    res.status(500).send({
+      data: null,
+      error: [{ msg: error.message }],
+      message: 'Internal server error',
+      status: 0,
+    });
+  }
+})
+
+
 router.post(
   '/add',
   authMiddleware,

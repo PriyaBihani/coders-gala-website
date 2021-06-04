@@ -225,3 +225,51 @@ exports.getAllArticles = async (req) => {
 		};
 	}
 }
+
+
+exports.getArticleOptions = async (req) => {
+
+	try {
+
+		const options = await Article.aggregate([
+			{
+				$match: {},
+			},
+			{
+				"$group": {
+					"_id": {
+						"_id": "$_id",
+						"label": "$name",
+						"value": "$_id",
+
+					},
+				}
+			},
+			{
+				"$project": {
+					"_id": 0,
+					"label": "$_id.label",
+					"value": "$_id.value"
+				}
+			},
+
+		])
+
+		return {
+			message: 'All options fetched',
+			data: { options },
+			error: [],
+			statusCode: 200,
+			status: 1,
+		};
+	} catch (error) {
+		console.log(error);
+		return {
+			data: null,
+			error: [{ msg: error.message }],
+			message: 'Internal server error',
+			status: 0,
+			statusCode: 500,
+		};
+	}
+}

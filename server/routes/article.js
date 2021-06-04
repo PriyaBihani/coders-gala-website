@@ -135,6 +135,22 @@ router.get("/all", async (req, res) => {
   }
 })
 
+router.get("/options", async (req, res) => {
+  try {
+    let options = await articleController.getArticleOptions(req);
+    let code = options.statusCode;
+    delete options.statusCode;
+    res.status(code).send(options);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      data: null,
+      error: [{ msg: error.message }],
+      message: 'Internal server error',
+      status: 0,
+    });
+  }
+})
 // router.get("/all", async (req, res) => {
 //   try {
 //     let speciality = await specialityController.getAllSpecialities(req);

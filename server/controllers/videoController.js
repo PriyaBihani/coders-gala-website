@@ -17,7 +17,7 @@ exports.getVideoById = async (req) => {
 		};
 	}
 	try {
-		const video = await Video.findById(req.params.id);
+		const video = await Video.findById(req.params.id).populate("articles");
 		return {
 			message: 'Video fetched successfully',
 			data: { video },

@@ -34,11 +34,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/speciality', specialityRoutes);
 app.use('/api/topic', topicRoutes);
 app.use('/api/article', articleRoutes);
-<<<<<<< HEAD
-=======
 app.use('/api/video', videoRoutes);
 app.use('/', indexRouter);
->>>>>>> staging
 
 // mongooseConnect
 mongoose

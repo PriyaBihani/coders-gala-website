@@ -48,61 +48,61 @@ exports.getAllTopics = async (req) => {
 		const speciality = await Speciality.findOne({
 			name: req.params.specialityName,
 		});
-		// const topics = await Topic.find({
-		// 	specialityId: dataTypes.ObjectId(speciality._id),
-		// })
-		// 	.populate('articles')
-		// 	.populate('videos')
+		const topics = await Topic.find({
+			specialityId: dataTypes.ObjectId(speciality._id),
+		})
+			.populate('articles')
+			.populate('videos')
 
-		const topics = await Topic.aggregate([
-			{
-				$match: {
-					specialityId: {
-						$eq: dataTypes.ObjectId(speciality._id),
-					}
-				},
-			},
-			{
-				$lookup: {
-					from: "videos",
-					pipeline: [
-						{
-							$lookup: {
-								from: "articles",
-								let: { articlesLinked: "$articlesLinked" },
-								pipeline: [
-									{
-										$match: {
-											// $expr: { $in: ["$_id", "$$linkedArticles"] },
-											$expr: { $in: ['$_id', { $ifNull: ['$$articlesLinked', []] }] },
-										}
-									},
-									{
-										"$group": {
-											"_id": {
-												"_id": "$_id",
-												"name": "$name",
-												"thumbnail": "$thumbnailUrl",
-											},
-										}
-									},
-									{
-										"$project": {
-											"_id": 0,
-											"id": "$_id._id",
-											"name": "$_id.name",
-											"thumbnail": "$_id.thumbnail"
-										}
-									},
-								],
-								as: "articlesLinked",
-							},
-						},
-					],
-					as: "videos",
-				},
-			},
-		])
+		// const topics = await Topic.aggregate([
+		// 	{
+		// 		$match: {
+		// 			specialityId: {
+		// 				$eq: dataTypes.ObjectId(speciality._id),
+		// 			}
+		// 		},
+		// 	},
+		// 	{
+		// 		$lookup: {
+		// 			from: "videos",
+		// 			pipeline: [
+		// 				{
+		// 					$lookup: {
+		// 						from: "articles",
+		// 						let: { articlesLinked: "$articlesLinked" },
+		// 						pipeline: [
+		// 							{
+		// 								$match: {
+		// 									// $expr: { $in: ["$_id", "$$linkedArticles"] },
+		// 									$expr: { $in: ['$_id', { $ifNull: ['$$articlesLinked', []] }] },
+		// 								}
+		// 							},
+		// 							{
+		// 								"$group": {
+		// 									"_id": {
+		// 										"_id": "$_id",
+		// 										"name": "$name",
+		// 										"thumbnail": "$thumbnailUrl",
+		// 									},
+		// 								}
+		// 							},
+		// 							{
+		// 								"$project": {
+		// 									"_id": 0,
+		// 									"id": "$_id._id",
+		// 									"name": "$_id.name",
+		// 									"thumbnail": "$_id.thumbnail"
+		// 								}
+		// 							},
+		// 						],
+		// 						as: "articlesLinked",
+		// 					},
+		// 				},
+		// 			],
+		// 			as: "videos",
+		// 		},
+		// 	},
+		// ])
 
 		return {
 			message: 'Fetched topics successfully',

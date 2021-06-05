@@ -1,17 +1,30 @@
 {
-    "name": "client",
-    "version": "0.1.0",
-    "private": true,
+    "name": "webpack-babel-config-react",
+    "version": "1.0.0",
+    "description": "",
+    "main": "dist/main.js",
+    "scripts": {
+        "start": "node dist/main.js",
+        "start:webp": "webpack serve --open",
+        "build": "rm -rf dist build && webpack --config webpack.server.js && webpack --config webpack.client.prod.js --mode production --progress",
+        "build:dev": "rm -rf dist build && webpack --config webpack.server.js && webpack --config webpack.client.dev.js --mode development",
+        "dev": "yarn build:dev && npm-run-all --parallel dev:*",
+        "dev:build-server": "webpack --config webpack.server.js --watch",
+        "dev:build-client": "webpack --config webpack.client.dev.js --watch",
+        "dev:server": "nodemon --watch dist --exec \"node dist/main.js\""
+    },
+    "author": "Priya Bihani",
+    "license": "ISC",
     "dependencies": {
-        "@testing-library/jest-dom": "^5.11.4",
-        "@testing-library/react": "^11.1.0",
-        "@testing-library/user-event": "^12.1.10",
         "axios": "^0.21.1",
         "bootstrap": "^4.5.0",
+        "buffer": "^6.0.3",
+        "core-js": "^3.13.1",
+        "express": "^4.17.1",
         "framer-motion": "^1.10.3",
         "highlight.js": "^10.0.3",
         "jquery": "^3.5.1",
-        "moment": "^2.29.1",
+        "npm-run-all": "^4.1.5",
         "popper.js": "^1.16.1",
         "react": "^17.0.1",
         "react-bootstrap": "^1.0.0",
@@ -22,7 +35,6 @@
         "react-quill": "^1.3.3",
         "react-redux": "^7.2.1",
         "react-router-dom": "^5.2.0",
-        "react-scripts": "4.0.1",
         "react-search-autocomplete": "^5.2.2",
         "react-select": "^4.3.1",
         "react-tippy": "^1.4.0",
@@ -30,30 +42,26 @@
         "redux": "^4.0.5",
         "redux-devtools-extension": "^2.13.8",
         "redux-thunk": "^2.3.0",
+        "regenerator-runtime": "^0.13.7",
         "web-vitals": "^0.2.4"
     },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
+    "devDependencies": {
+        "@babel/core": "^7.14.3",
+        "@babel/preset-env": "^7.14.2",
+        "@babel/preset-react": "^7.13.13",
+        "babel-loader": "^8.2.2",
+        "compression-webpack-plugin": "^8.0.0",
+        "css-loader": "^5.2.5",
+        "html-loader": "^2.1.2",
+        "html-webpack-plugin": "^5.3.1",
+        "nodemon": "^2.0.7",
+        "reload": "^3.1.1",
+        "style-loader": "^2.0.0",
+        "webpack": "^5.37.1",
+        "webpack-bundle-analyzer": "^4.4.2",
+        "webpack-cli": "^4.7.0",
+        "webpack-dev-server": "^3.11.2",
+        "webpack-merge": "^5.7.3",
+        "webpack-node-externals": "^3.0.0"
     }
 }

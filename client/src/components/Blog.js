@@ -23,17 +23,7 @@ const Blog = ({ getAllArticles, articles, isAdmin, history }) => {
             <div className="blog-header">
                 <h1 class="heading">CodersGala <span class="underline--magical">Blog</span> </h1>
             </div>
-            <div className="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-12 left-box">
-                        <Featured articles={articles} />
-                    </div>
-                    <Sidebar history={history} articles={articles} />
-                </div>
-                <div className="row">
-                    <All articles={articles} />
-                </div>
-            </div>
+
         </div>
     );
 }

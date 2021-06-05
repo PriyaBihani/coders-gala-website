@@ -46,15 +46,14 @@ const Navbar = ({ auth, ui, setDisplayMode }) => {
 	return (
 		<div className='navigation-wrap bg-light start-header start-style'>
 			<div className='container'>
-				<Accordion
-					className={window.innerWidth >= 767 ? null : 'dropdown-accordion'}>
+				<Accordion>
 					<Row>
 						<Col>
 							<nav className='navbar navbar-expand-md navbar-light'>
 								<Link to='/'>
 									<img
 										style={{
-											fontSize: window.innerHeight >= 767 ? '2rem' : '1.2rem',
+											fontSize: isClient && window.innerHeight >= 767 ? '2rem' : '1.2rem',
 										}}
 										className='nav-logo'
 										src={Logo}

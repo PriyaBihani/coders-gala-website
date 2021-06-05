@@ -19,7 +19,7 @@ const Preview = ({
 	speciality,
 }) => {
 	const [close, setClose] = useState(true);
-	const { specialityName } = match.params
+	const { specialityName } = match.params;
 
 	useEffect(() => {
 		clearArticle();
@@ -87,8 +87,19 @@ const mapStateToProps = (state) => ({
 	speciality: state.speciality.speciality,
 });
 
-export default connect(mapStateToProps, {
-	getSpeciality,
-	clearArticle,
-	selectVideo,
-})(Preview);
+const loadData = (store, param) => {
+	// store.getState().speciality.speciality is a sham
+	console.log(
+		store.dispatch(selectVideo(store.getState().speciality.speciality))
+	);
+	return store.dispatch(getSpeciality('WebDevelopment'));
+};
+
+export default {
+	component: connect(mapStateToProps, {
+		getSpeciality,
+		clearArticle,
+		selectVideo,
+	})(Preview),
+	loadData,
+};

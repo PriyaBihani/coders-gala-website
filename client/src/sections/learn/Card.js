@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '../../layout';
+import { isClient } from '../../helpers';
 import AdminButtons from '../../layout/Buttons/AdminButtons';
 import { getSpecialities, deleteSpeciality } from '../../actions';
 
 const Card = ({ getSpecialities, specialities, deleteSpeciality }) => {
 	useEffect(() => {
-
 		if (specialities.length === 0) {
 			getSpecialities();
 		}
@@ -14,9 +14,11 @@ const Card = ({ getSpecialities, specialities, deleteSpeciality }) => {
 
 	const handleDelete = (item) => {
 		// Got to helper, check
-		const confirm = window.prompt(
-			`You sure want to delete "${item.Name}" ? Y or N (Deleting a speciality will lead to deletion of all topics and articles inside it) `
-		);
+		const confirm =
+			isClient &&
+			window.prompt(
+				`You sure want to delete "${item.Name}" ? Y or N (Deleting a speciality will lead to deletion of all topics and articles inside it) `
+			);
 		if (confirm === 'Y') {
 			deleteSpeciality(item._id);
 		}
@@ -40,7 +42,10 @@ const Card = ({ getSpecialities, specialities, deleteSpeciality }) => {
 										</div>
 										<div
 											style={{
-												height: window.innerWidth <= 600 ? '150px' : 'auto',
+												height:
+													isClient && window.innerWidth <= 600
+														? '150px'
+														: 'auto',
 											}}
 											className='contentBx'>
 											<h2> {item.name}</h2>

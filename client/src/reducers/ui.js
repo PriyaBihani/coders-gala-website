@@ -1,10 +1,11 @@
+import { isClient } from '../helpers';
 const initialState = {
 	openTopics: [],
-	displayMode: localStorage.getItem('mode')
-		? localStorage.getItem('mode')
-		: 'light',
+	displayMode:
+		isClient && localStorage.getItem('mode')
+			? isClient && localStorage.getItem('mode')
+			: 'light',
 };
-console.log(localStorage.getItem('mode'));
 
 export default function uiReducer(state = initialState, action) {
 	const { type, payload } = action;

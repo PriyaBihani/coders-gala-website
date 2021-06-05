@@ -2,6 +2,7 @@ import React from 'react';
 import { Tooltip } from 'react-tippy';
 import { connect } from 'react-redux';
 import { Button } from '../../layout';
+import { isClient } from '../../helpers';
 import { deleteVideo, selectVideo } from '../../actions';
 import AdminButtons from '../../layout/Buttons/AdminButtons';
 
@@ -15,9 +16,9 @@ const VideoNames = ({
 	console.log(video);
 	const handleDelete = (data) => {
 		const { VideoName, _id } = data;
-		const confirm = window.prompt(
-			`You sure want to delete "${VideoName}" ? Y or N `
-		);
+		const confirm =
+			isClient &&
+			window.prompt(`You sure want to delete "${VideoName}" ? Y or N `);
 		if (confirm === 'Y') {
 			deleteVideo(_id, topic._id, specialityName);
 		}

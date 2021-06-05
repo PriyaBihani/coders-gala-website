@@ -9,34 +9,39 @@ import {
 	SEND_RESET_EMAIL_FAIL,
 } from './types';
 
-import { serviceGet, servicePost, setAuthToken } from '../helpers';
+import { serviceGet, servicePost, setAuthToken, isClient } from '../helpers';
 import { errorToast, successToast } from './toast';
 
 // Load User : Every time we logged in or register or refresh the page its gonna load.
 
 export const loadUser = () => async (dispatch) => {
+	console.log("loadUser")
 	dispatch({
 		type: 'SET_AUTH_LOADER',
 	});
-	if (localStorage.token) {
+
+	console.log(isClient)
+	if (isClient && localStorage.token) {
 		setAuthToken(localStorage.token);
 	}
 
-	if (localStorage.userId) {
+
+
+	if (isClient && localStorage.userId) {
 		const userId = localStorage.getItem('userId');
 
 		try {
 			const res = await serviceGet(`api/auth/user/${userId}`);
 			// displayToast
-			successToast(res)
-
+			successToast(res);
+			console.log('this is user', res.data)
 			dispatch({
-				type: USER_LOADED,
+				type: "USER_LOADED",
 				payload: res.data.user,
 			});
 		} catch (err) {
 			// display toast
-			errorToast(err)
+			errorToast(err);
 			dispatch({
 				type: AUTH_ERROR,
 			});
@@ -48,11 +53,11 @@ export const refreshUser = (user) => async (dispatch) => {
 	dispatch({
 		type: 'SET_AUTH_LOADER',
 	});
-	if (localStorage.token) {
+	if (isClient && localStorage.token) {
 		setAuthToken(localStorage.token);
 	}
 
-	if (localStorage.userId) {
+	if (isClient && localStorage.userId) {
 		const userId = localStorage.getItem('userId');
 
 		try {
@@ -89,13 +94,13 @@ export const register = (data) => async (dispatch) => {
 			payload: res.data,
 		});
 
-		successToast(res)
+		successToast(res);
 
 		console.log(res);
 		dispatch(loadUser());
 	} catch (err) {
 		// const errors = err.response.data.errors;
-		errorToast(err)
+		errorToast(err);
 		dispatch({
 			type: REGISTER_FAIL,
 		});
@@ -125,10 +130,10 @@ export const login =
 				});
 
 				dispatch(loadUser());
-				successToast(res)
+				successToast(res);
 			} catch (err) {
 				console.log(err);
-				errorToast(err)
+				errorToast(err);
 				dispatch({
 					type: LOGIN_FAIL,
 				});
@@ -136,7 +141,7 @@ export const login =
 		};
 
 export const logout = () => (dispatch) => {
-	localStorage.clear();
+	if (isClient) localStorage.clear();
 	dispatch({
 		type: 'LOGOUT',
 	});

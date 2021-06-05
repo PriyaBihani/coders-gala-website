@@ -53,13 +53,3 @@
 .button:hover .o2 {
     stroke-dashoffset: -420;
 }
-
-.body.search .wrapper {
-    min-width: 300px !important;
-}
-
-@media(max-width:1300px) {
-    .body.search .wrapper {
-        min-width: 250px !important;
-    }
-}

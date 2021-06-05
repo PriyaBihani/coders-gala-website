@@ -434,6 +434,21 @@ i.fa-heart:hover {
 }
 
 
+/* search */
+
+@media(min-width:1100px) {
+    .search .wrapper {
+        width: 350px !important;
+    }
+}
+
+@media(min-width:800px) {
+    .search .wrapper {
+        width: 250px !important;
+    }
+}
+
+
 /*================================================
 Start Important Part
 ==================================================*/

@@ -28,23 +28,43 @@ export const likeArticle = (data) => async (dispatch) => {
   }
 }
 
-export const getArticle = (id) => async (dispatch) => {
+export const getArticleOptions = () => async (dispatch) => {
   try {
-    const res = await serviceGet(`api/article/get/${id}`);
-    console.log(res.data);
+    const res = await serviceGet(`api/article/options`);
     successToast(res)
+    dispatch({
+      type: 'GET_ARTICLE_OPTIONS',
+      payload: res.data,
+    });
+  } catch (error) {
+    errorToast(error)
+    dispatch({
+      type: 'GET_ARTICLE_OPTIONS_ERROR',
+      payload: {},
+    });
+  }
+};
+
+export const getArticle = (articleName) => async (dispatch) => {
+  try {
+    const res = await servicePost(`api/article/get`, { name: articleName }, {
+      'Content-Type': 'application/json',
+    });
+    successToast(res)
+    console.log(res.data)
     dispatch({
       type: 'GET_ARTICLE',
       payload: res.data,
     });
   } catch (error) {
     errorToast(error)
+
     dispatch({
       type: 'GET_ARTICLE_ERROR',
       payload: {},
     });
   }
-};
+}
 
 export const getAllArticles = () => async (dispatch) => {
   try {

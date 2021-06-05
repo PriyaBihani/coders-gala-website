@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactHtmlParser from 'react-html-parser';
 import { unlockTopic } from '../../actions/topic';
+import { isClient } from '../../helpers';
 
 const ArticlePreview = ({ SelectedArticle, specialityName, unlockTopic }) => {
 	const ReadMoreUrl =
@@ -52,11 +53,12 @@ const ArticlePreview = ({ SelectedArticle, specialityName, unlockTopic }) => {
 				<div>
 					<Link
 						onClick={() => {
-							window.scroll({
-								behavior: 'smooth',
-								left: 0,
-								top: '0px',
-							});
+							isClient &&
+								window.scroll({
+									behavior: 'smooth',
+									left: 0,
+									top: '0px',
+								});
 						}}
 						to={ReadMoreUrl}>
 						<h2 className='link'>

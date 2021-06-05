@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tooltip } from 'react-tippy';
 import { connect } from 'react-redux';
-import { scrollTo } from '../../helpers';
+import { scrollTo, isClient } from '../../helpers';
 import { Button } from '../../layout';
 import { deleteArticle, selectVideo } from '../../actions';
 import AdminButtons from '../../layout/Buttons/AdminButtons';
@@ -15,9 +15,9 @@ const ArticleNames = ({
 }) => {
 	const handleDelete = (data) => {
 		const { ArticleName, _id } = data;
-		const confirm = window.prompt(
-			`You sure want to delete "${ArticleName}" ? Y or N `
-		);
+		const confirm =
+			isClient &&
+			window.prompt(`You sure want to delete "${ArticleName}" ? Y or N `);
 		if (confirm === 'Y') {
 			deleteArticle(_id, topic._id, specialityName);
 		}
@@ -33,7 +33,7 @@ const ArticleNames = ({
 							console.log(article);
 							selectVideo(article);
 							const pos = document.querySelector('.card-container');
-							if (window.innerWidth <= 500) {
+							if (isClient && window.innerWidth <= 500) {
 								scrollTo(pos);
 							}
 						}}
@@ -61,7 +61,7 @@ const ArticleNames = ({
 										handler={() => {
 											selectVideo(article);
 											const pos = document.querySelector('.card-container');
-											if (window.innerWidth <= 500) {
+											if (isClient && window.innerWidth <= 500) {
 												scrollTo(pos);
 											}
 										}}

@@ -5,104 +5,28 @@ import ReactHtmlParser from 'react-html-parser';
 
 import { Footer } from '../layout';
 
-import { getSpeciality } from '../actions';
-import { servicePost, scrollTo } from '../helpers';
+import { getAllArticles, getArticle } from '../actions/article';
+import { scrollTo } from '../helpers';
 import { ChevronsUp } from '../assets/icons';
 
-// const ShareArticle = ({ Nid, url }, props) => {
-
-
-// 	function actionToggle() {
-// 		document.querySelector('.action').classList.toggle('active');
-// 	}
-
-// 	return (
-// 		<>
-// 			<div class='action' onClick={actionToggle}>
-// 				<span>
-// 					<img
-// 						style={{ width: '25px' }}
-// 						src='https://www.svgrepo.com/show/19199/share.svg'
-// 						alt=''
-// 					/>
-// 				</span>
-// 				<ul>
-// 					<li>
-// 						<a
-// 							className='whatsapp-icon'
-// 							rel='noopener noreferrer'
-// 							href={`https://api.whatsapp.com/send?text=Hey look i just found out this Amazing article on "${Nid}",Check it out : ${url}`}
-// 							target='_blank'>
-// 							Share on
-// 							<img
-// 								style={{ width: '25px', marginLeft: '20px' }}
-// 								src='https://www.svgrepo.com/show/303150/whatsapp-symbol-logo.svg'
-// 								alt={'share ' + Nid + ' on Whatsapp'}
-// 							/>
-// 						</a>
-// 					</li>
-
-// 					<li>
-// 						<a
-// 							className='mail-icon'
-// 							href={`mailto:?Subject=${'Article on ' + Nid
-// 								}&Body=Hey look i just found out this Amazing article on "${Nid}",Check it out : ${url}`}
-// 							target='_top'
-// 							rel='nofollow'>
-// 							Share on
-// 							<img
-// 								style={{ width: '25px', marginLeft: '20px' }}
-// 								className='share-image'
-// 								src='https://www.svgrepo.com/show/303161/gmail-icon-logo.svg'
-// 								alt={'share ' + Nid + ' on Gmail'}
-// 							/>
-// 						</a>
-// 					</li>
-// 				</ul>
-// 			</div>
-// 		</>
-// 	);
-// };
-
 const Article = (props) => {
+	const { getArticle, article } = props
 	const { name } = props.match.params;
-	const [article, setArticle] = useState({});
 
 
-
-
-	const getArticle = async (name) => {
-		const res = await servicePost(
-			`api/article/get`,
-			{
-				name
-			},
-			{
-				'Content-Type': 'application/json',
-			}
-		);
-		return res.data.article;
-	};
-
-	const getArticleEffect = useCallback(
-		async () => {
-			const article = await getArticle(name.replace(/-/g, ' '));
-			setArticle(article);
-		},
-		[name],
-	)
 
 	useEffect(() => {
-		getArticleEffect()
-	}, [getArticleEffect]);
+		getArticle(name.replace(/-/g, ' '))
+	}, []);
 
-	console.log(article)
+
 	const goToTop = () => {
 		scrollTo(document.getElementById('nav'));
 	};
 
 
 	const html = article && article.content;
+	console.log(html)
 
 	return (
 		<>
@@ -132,24 +56,20 @@ const Article = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-	auth: state.auth
+	auth: state.auth,
+	article: state.article.selectedArticle
 });
 
-export default connect(mapStateToProps, { getSpeciality })(Article);
+const loadData = (store, params) => {
+	const { name } = params
+
+	return store.dispatch(getArticle(name && name.replace(/-/g, ' ')));
+};
 
 
-// import React from 'react'
+export default {
+	component: connect(mapStateToProps, { getArticle })(Article),
+	loadData,
+};
 
-// const Article = (props) => {
-// 	const name = props.match.params.name
-// 	console.log(name.replace(/-/g, ' '))
-// 	return (
-// 		<div>
-// 			<div>
-// 				lorem100
-// 			</div>
-// 		</div>
-// 	);
-// }
 
-// export default Article;

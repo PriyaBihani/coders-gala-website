@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import ArticlePreview from './ArticlePreview';
 
 const VideoPreview = ({ video }) => {
@@ -20,6 +21,21 @@ const VideoPreview = ({ video }) => {
 				<div className='desc'>{video.description}</div>
 				<div className='linked-articles'>
 					<h4>Articles Related to the topic</h4>
+					<div className="row">
+						{
+							video.articlesLinked.map(article => {
+								return (
+									<div className="col">
+										<Link
+											to={`/blog/read/${article.name.replace(/\s/g, '-')}`}
+											className='btn btn-outline-secondary'>
+											{article.name}
+										</Link>
+									</div>
+								)
+							})
+						}
+					</div>
 				</div>
 			</div>
 		</div>

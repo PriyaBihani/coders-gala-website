@@ -10,5 +10,5 @@ export const SEND_RESET_EMAIL_FAIL = 'SEND_RESET_EMAIL_FAIL';
 
 export const LOGOUT = 'LOGOUT';
 
-export const USER_LOADED = 'USERLOADED';
+export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';

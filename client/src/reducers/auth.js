@@ -8,9 +8,10 @@ import {
 	LOGOUT,
 	SEND_RESET_EMAIL,
 } from '../actions/types';
+import { isClient } from '../helpers/utils';
 
 const initialState = {
-	token: localStorage.getItem('token'),
+	token: isClient && localStorage.getItem('token'),
 	isAuthenticated: null,
 	loading: false,
 	user: null,
@@ -22,6 +23,7 @@ export default function authReducer(state = initialState, action) {
 
 	switch (type) {
 		case USER_LOADED:
+			console.log("auth payload ye hai", payload)
 			return {
 				...state,
 				user: payload,
@@ -29,16 +31,16 @@ export default function authReducer(state = initialState, action) {
 				isAdmin: payload.role === 0 ? false : true,
 				loading: false,
 			};
-		case "LIKE_ARTICLE":
-			console.log(payload.user)
+		case 'LIKE_ARTICLE':
+			console.log(payload.user);
 			return {
 				...state,
 				user: payload.user,
 			};
 		case REGISTER_SUCCESS:
 		case LOGIN_SUCCESS:
-			localStorage.setItem('token', payload.token);
-			localStorage.setItem('userId', payload.userId);
+			isClient && localStorage.setItem('token', payload.token);
+			isClient && localStorage.setItem('userId', payload.userId);
 			console.log(payload);
 
 			return {
@@ -54,8 +56,8 @@ export default function authReducer(state = initialState, action) {
 			};
 		case LOGIN_FAIL:
 		case AUTH_ERROR:
-			localStorage.removeItem('token');
-			localStorage.removeItem('userId');
+			isClient && localStorage.removeItem('token');
+			isClient && localStorage.removeItem('userId');
 			return {
 				...state,
 				token: null,

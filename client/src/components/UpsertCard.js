@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Button } from '../layout';
-import { serviceGet } from '../helpers';
+import { isClient, serviceGet } from '../helpers';
 import { addSpeciality, editSpeciality } from '../actions';
 import Editor from '../sections/editor';
 
@@ -83,23 +83,13 @@ const UpsertCard = ({ addSpeciality, editSpeciality, edit, match }) => {
 					)}
 
 					<div className='ql-snow'>
-						{edit ? (
-							data && data.content ? (
-								<Editor
-									required
-									defaultValue={data && data.content}
-									className='ql-editor'
-									handleEditor={handleEditor}
-								/>
-							) : null
-						) : (
-							<Editor
-								required
-								defaultValue=''
-								className='ql-editor'
-								handleEditor={handleEditor}
-							/>
-						)}
+
+						{isClient && <Editor
+							required
+							defaultValue=''
+							className='ql-editor'
+							handleEditor={handleEditor}
+						/>}
 					</div>
 
 					<div className='add-article-button'>

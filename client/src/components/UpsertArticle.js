@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Button } from '../layout';
 
 import { addArticle, editArticle, getArticle } from '../actions';
+import { isClient } from '../helpers';
 import { ChevronsUp } from '../assets/icons';
 
 const UpsertArticle = (props) => {
@@ -14,16 +15,17 @@ const UpsertArticle = (props) => {
 	const [content, setcontent] = useState('');
 	const [name, setname] = useState('');
 	const [keywords, setArticleKeywords] = useState('');
-	const [featured, setfeatured] = useState(false)
-	const [thumbnailUrl, setthumbnailUrl] = useState('')
+	const [featured, setfeatured] = useState(false);
+	const [thumbnailUrl, setthumbnailUrl] = useState('');
 	// const [Loading, setLoading] = useState(false);
 	// const topicId = "ERROR_NA_DIYO";
 	function scrollTo(element) {
-		window.scroll({
-			behavior: 'smooth',
-			left: 0,
-			top: element.offsetTop,
-		});
+		isClient &&
+			window.scroll({
+				behavior: 'smooth',
+				left: 0,
+				top: element.offsetTop,
+			});
 	}
 	const goToTop = () => {
 		scrollTo(document.getElementById('nav'));
@@ -48,8 +50,7 @@ const UpsertArticle = (props) => {
 		const data = {
 			name: name === '' ? prevArticle.name : name,
 			keywords: keywords === '' ? prevArticle.keywords : keywords,
-			content:
-				content === '' ? prevArticle.content : content,
+			content: content === '' ? prevArticle.content : content,
 		};
 		editArticle(data, prevArticle._id, specialities.speciality.Name);
 		toast('Article updated successfully');
@@ -58,9 +59,7 @@ const UpsertArticle = (props) => {
 	const handleAdd = async (e) => {
 		e.preventDefault();
 		// console.log({ content, name, keywords });
-		addArticle(
-			{ content, name, keywords, featured, thumbnailUrl }
-		);
+		addArticle({ content, name, keywords, featured, thumbnailUrl });
 		toast('Article added successfully');
 	};
 
@@ -123,15 +122,16 @@ const UpsertArticle = (props) => {
 									}}
 								/>
 								<br />
-								<label htmlFor="featured">IsFeatured &nbsp;{" "}</label>
+								<label htmlFor='featured'>IsFeatured &nbsp; </label>
 								<input
 									defaultValue={
 										props.edit ? prevArticle && prevArticle.featured : false
 									}
-									onChange={() => { setfeatured(!featured) }}
+									onChange={() => {
+										setfeatured(!featured);
+									}}
 									type='checkbox'
 									id='featured'
-
 								/>
 
 								<br />

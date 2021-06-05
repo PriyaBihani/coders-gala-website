@@ -21,10 +21,10 @@ app.set('port', port);
 
 server.listen(port);
 server.on('error', () => {
-  console.log('ERROR');
+	console.log('ERROR');
 });
 server.on('listening', () => {
-  console.log(`listening on port ${port}`);
+	console.log(`listening on port ${port}`);
 });
 
 /**

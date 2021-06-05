@@ -1,170 +1,221 @@
-let Topic = require("../services/mongodb/models/Topic"),
-  User = require("../services/mongodb/models/User"),
-  Speciality = require("../services/mongodb/models/Speciality"),
-  Article = require("../services/mongodb/models/Article");
-const { validationResult } = require("express-validator");
-var dataTypes = require("./../services/dataTypes/mongodb");
+let Topic = require('../services/mongodb/models/Topic'),
+	User = require('../services/mongodb/models/User'),
+	Speciality = require('../services/mongodb/models/Speciality'),
+	Article = require('../services/mongodb/models/Article');
+const { validationResult } = require('express-validator');
+var dataTypes = require('./../services/dataTypes/mongodb');
 
 exports.addTopic = async (req) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return {
-      message: "FAILED",
-      data: null,
-      errors: errors.array(),
-      errorMessage: "validation Error",
-      statusCode: 400,
-      status: 0,
-    };
-  }
+	console.log('skdfhksj');
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		return {
+			data: null,
+			error: errors.array(),
+			message: 'Validation Error',
+			statusCode: 400,
+			status: 0,
+		};
+	}
 
-  try {
-    const topic = new Topic(req.body);
+	try {
+		console.log(req.body)
+		const topic = new Topic(req.body);
 
-    await topic.save();
+		await topic.save();
 
-    return {
-      message: "SUCCESS",
-      data: { topic: topic },
-      error: null,
-      statusCode: 200,
-      status: 1,
-    };
-  } catch (err) {
-    console.log(err);
-    return {
-      message: "FAILED",
-      data: null,
-      errorMessage: "Server Error",
-      statusCode: 400,
-      status: 0,
-    };
-  }
+		return {
+			message: 'Topic added successfully',
+			data: { topic },
+			error: [],
+			statusCode: 200,
+			status: 1,
+		};
+	} catch (err) {
+		console.log(err.message);
+		return {
+			data: null,
+			error: [{ msg: error.message }],
+			message: 'Internal Server Error',
+			statusCode: 500,
+			status: 0,
+		};
+	}
 };
 
 exports.getAllTopics = async (req) => {
-  console.log("Fetching tpoics");
-  try {
-    const speciality = await Speciality.findOne({
-      Name: req.params.specialityName,
-    });
-    console.log(speciality);
-    const topics = await Topic.find({
-      SpecialityId: dataTypes.ObjectId(speciality._id),
-    }).populate("articles");
+	try {
+		const speciality = await Speciality.findOne({
+			name: req.params.specialityName,
+		});
+		// const topics = await Topic.find({
+		// 	specialityId: dataTypes.ObjectId(speciality._id),
+		// })
+		// 	.populate('articles')
+		// 	.populate('videos')
 
-    return {
-      message: "SUCCESS",
-      data: topics,
-      error: null,
-      statusCode: 200,
-      status: 1,
-    };
-  } catch (err) {
-    console.log(err);
-    return {
-      message: "FAILED",
-      data: null,
-      errorMessage: "Server Error",
-      statusCode: 400,
-      status: 0,
-    };
-  }
+		const topics = await Topic.aggregate([
+			{
+				$match: {
+					specialityId: {
+						$eq: dataTypes.ObjectId(speciality._id),
+					}
+				},
+			},
+			{
+				$lookup: {
+					from: "videos",
+					pipeline: [
+						{
+							$lookup: {
+								from: "articles",
+								let: { articlesLinked: "$articlesLinked" },
+								pipeline: [
+									{
+										$match: {
+											// $expr: { $in: ["$_id", "$$linkedArticles"] },
+											$expr: { $in: ['$_id', { $ifNull: ['$$articlesLinked', []] }] },
+										}
+									},
+									{
+										"$group": {
+											"_id": {
+												"_id": "$_id",
+												"name": "$name",
+												"thumbnail": "$thumbnailUrl",
+											},
+										}
+									},
+									{
+										"$project": {
+											"_id": 0,
+											"id": "$_id._id",
+											"name": "$_id.name",
+											"thumbnail": "$_id.thumbnail"
+										}
+									},
+								],
+								as: "articlesLinked",
+							},
+						},
+					],
+					as: "videos",
+				},
+			},
+		])
+
+		return {
+			message: 'Fetched topics successfully',
+			data: topics,
+			error: [],
+			statusCode: 200,
+			status: 1,
+		};
+	} catch (err) {
+		console.log(err);
+		return {
+			data: null,
+			error: [{ msg: err.message }],
+			message: 'Internal Server Error',
+			statusCode: 500,
+			status: 0,
+		};
+	}
 };
 
 exports.updateTopic = async (req) => {
-  try {
-    const topic = await Topic.findOneAndUpdate(
-      { _id: req.params.topicId },
-      req.body
-    );
+	try {
+		const topic = await Topic.findOneAndUpdate(
+			{ _id: req.params.topicId },
+			req.body
+		);
 
-    return {
-      message: "SUCCESS",
-      data: topic,
-      error: null,
-      statusCode: 200,
-      status: 1,
-    };
-  } catch (err) {
-    console.log(err);
-    return {
-      message: "FAILED",
-      data: null,
-      errorMessage: "Server Error",
-      statusCode: 400,
-      status: 0,
-    };
-  }
+		return {
+			message: 'Updated topic successfully',
+			data: topic,
+			error: [],
+			statusCode: 200,
+			status: 1,
+		};
+	} catch (err) {
+		console.log(err);
+		return {
+			data: null,
+			error: [{ msg: error.message }],
+			message: 'Internal Server Error',
+			statusCode: 500,
+			status: 0,
+		};
+	}
 };
 
 exports.deleteTopic = async (req) => {
-  try {
-    const topic = await Topic.findById(req.params.topicId);
-    const articlesArray = topic.articles;
+	try {
+		const topic = await Topic.findById(req.params.topicId);
+		const articlesArray = topic.articles;
 
-    await Article.deleteMany({
-      _id: {
-        $in: articlesArray,
-      },
-    });
+		await Article.deleteMany({
+			_id: {
+				$in: articlesArray,
+			},
+		});
 
-    await topic.remove();
+		await topic.remove();
 
-    console.log(topic);
-    return {
-      message: "SUCCESS",
-      data: topic,
-      error: null,
-      statusCode: 200,
-      status: 1,
-    };
-  } catch (err) {
-    console.log(err);
-    return {
-      message: "FAILED",
-      data: null,
-      errorMessage: "Server Error",
-      statusCode: 400,
-      status: 0,
-    };
-  }
+		console.log(topic);
+		return {
+			message: 'Topic deleted successfully',
+			data: topic,
+			error: [],
+			statusCode: 200,
+			status: 1,
+		};
+	} catch (err) {
+		console.log(err);
+		return {
+			data: null,
+			error: [{ msg: error.message }],
+			message: 'Internal Server Error',
+			statusCode: 500,
+			status: 0,
+		};
+	}
 };
 exports.unlockTopicForUser = async (req) => {
-  try {
-    console.log(req.decodedToken.userId);
-    const user = await User.findById(req.decodedToken.userId);
-    var { unLockedTopics, points } = user;
-    if (!unLockedTopics.includes(req.params.topicId) && points > 0) {
-      unLockedTopics.push(req.params.topicId);
-      user.points = points - 1;
-      const updatedUser = await user.save();
-      return {
-        message: "SUCCESS",
-        data: { user: updatedUser },
-        error: null,
-        statusCode: 200,
-        status: 1,
-      };
-    } else {
-      return {
-        message: "SUCCESS",
-        data: { user: user },
-        error: "Not enough points",
-        statusCode: 200,
-        status: 1,
-      };
-    }
+	try {
+		console.log(req.decodedToken.userId);
+		const user = await User.findById(req.decodedToken.userId);
+		var { unLockedTopics, points } = user;
+		if (!unLockedTopics.includes(req.params.topicId) && points > 0) {
+			unLockedTopics.push(req.params.topicId);
+			user.points = points - 1;
+			const updatedUser = await user.save();
+			return {
+				message: 'Unlocked topic successfully',
+				data: { user: updatedUser },
+				error: [],
+				statusCode: 200,
+				status: 1,
+			};
+		} else {
+			return {
+				message: 'Not enough points to unlock topic',
+				data: { user: user },
+				error: [{ msg: 'Not enough points' }],
+				statusCode: 200,
+				status: 0,
+			};
+		}
 
-    // console.log(user);
-  } catch (err) {
-    console.log(err);
-    return {
-      message: "FAILED",
-      data: null,
-      error: "Server error",
-      statusCode: 400,
-      status: 0,
-    };
-  }
+		// console.log(user);
+	} catch (err) {
+		console.log(err);
+		return {
+			data: null,
+			error: [{ msg: error.message }],
+			message: 'Internal Server Error',
+			statusCode: 500,
+			status: 0,
+		};
+	}
 };

@@ -40,6 +40,9 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    likedArticles: {
+      type: Array, default: []
+    },
     unLockedTopics: { type: Array, default: [] },
   },
   { timestamps: true }

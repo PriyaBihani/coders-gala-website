@@ -1,19 +1,44 @@
 import { serviceGet, servicePost } from '../helpers';
+import { errorToast, successToast } from './toast';
 export const clearArticle = (id) => async (dispatch) => {
   dispatch({
     type: 'CLEAR_ARTICLE',
   });
 };
 
+
+export const likeArticle = (data) => async (dispatch) => {
+  const { action, articleId, userId } = data
+  try {
+    const res = await servicePost(`api/article/${articleId}/${action}`, { userId }, {
+      'Content-Type': 'application/json',
+    });
+    console.log(res.data);
+    successToast(res)
+    dispatch({
+      type: 'LIKE_ARTICLE',
+      payload: res.data,
+    });
+  } catch (error) {
+    errorToast(error)
+    dispatch({
+      type: 'LIKE_ARTICLE_ERROR',
+      payload: {},
+    });
+  }
+}
+
 export const getArticle = (id) => async (dispatch) => {
   try {
     const res = await serviceGet(`api/article/get/${id}`);
     console.log(res.data);
+    successToast(res)
     dispatch({
       type: 'GET_ARTICLE',
       payload: res.data,
     });
   } catch (error) {
+    errorToast(error)
     dispatch({
       type: 'GET_ARTICLE_ERROR',
       payload: {},
@@ -21,9 +46,28 @@ export const getArticle = (id) => async (dispatch) => {
   }
 };
 
-export const addArticle = (data, id, specialityName) => async (dispatch) => {
+export const getAllArticles = () => async (dispatch) => {
   try {
-    const res = await servicePost(`api/article/add/${id}`, data, {
+    const res = await serviceGet(`api/article/all`);
+    console.log(res.status)
+    successToast(res)
+    dispatch({
+      type: 'GET_ALL_ARTICLES',
+      payload: res.data,
+    });
+  } catch (error) {
+    errorToast(error)
+    dispatch({
+      type: 'GET_ALL_ARTICLES_ERROR',
+      payload: {},
+    });
+  }
+};
+
+export const addArticle = (data) => async (dispatch) => {
+  try {
+    console.log(data)
+    const res = await servicePost(`api/article/add`, data, {
       'Content-Type': 'application/json',
     });
     console.log(res.data);
@@ -31,14 +75,16 @@ export const addArticle = (data, id, specialityName) => async (dispatch) => {
       type: 'ADD_ARTICLE',
       payload: res.data,
     });
-    const res2 = await serviceGet(`api/topic/get/${specialityName}`);
-    console.log(res2.data);
+    successToast(res)
+    // const res2 = await serviceGet(`api/topic/get/${specialityName}`);
+    // console.log(res2.data);
 
-    dispatch({
-      type: 'GET_TOPICS',
-      payload: res2.data,
-    });
+    // dispatch({
+    //   type: 'GET_TOPICS',
+    //   payload: res2.data,
+    // });
   } catch (error) {
+    errorToast(error)
     dispatch({
       type: 'ADD_ARTICLE_ERROR',
       payload: {},
@@ -59,11 +105,14 @@ export const editArticle = (data, id, specialityName) => async (dispatch) => {
     const res2 = await serviceGet(`api/topic/get/${specialityName}`);
     console.log(res2.data);
 
+    successToast(res)
+
     dispatch({
       type: 'GET_TOPICS',
       payload: res2.data,
     });
   } catch (error) {
+    errorToast(error)
     dispatch({
       type: 'EDIT_ARTICLE_ERROR',
       payload: {},
@@ -90,11 +139,14 @@ export const deleteArticle = (articleId, topicId, specialityName) => async (
     const res2 = await serviceGet(`api/topic/get/${specialityName}`);
     console.log(res2.data);
 
+    successToast(res)
+
     dispatch({
       type: 'GET_TOPICS',
       payload: res2.data,
     });
   } catch (error) {
+    errorToast(error)
     dispatch({
       type: 'DELETE_ARTICLE_ERROR',
       payload: {},

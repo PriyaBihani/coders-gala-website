@@ -17,7 +17,7 @@ export const setOpenTopics = (id) => async (dispatch) => {
 
 export const setDisplayMode = () => async (dispatch) => {
   const displayMode =
-    store.getState().ui.displayMode == "dark" ? "light" : "dark";
+    store.getState().ui.displayMode === "dark" ? "light" : "dark";
   localStorage.setItem("mode", displayMode);
 
   dispatch({

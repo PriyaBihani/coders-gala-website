@@ -1,34 +1,34 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
 
 /* CSS Imports */
 
-@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@import '../node_modules/bootstrap/dist/css/bootstrap.css';
 @import '../node_modules/react-toastify/dist/ReactToastify.css';
 @import '../node_modules/react-tippy/dist/tippy.css';
 @import '../node_modules/react-quill/dist/quill.snow.css';
 
 /* highlight js */
 
-@import "../node_modules/highlight.js/styles/gradient-dark.css";
-@import "./styles/font-families.css";
+@import '../node_modules/highlight.js/styles/gradient-dark.css';
+@import './styles/font-families.css';
 @import './styles/preloader.css';
 
 /* HOME*/
 
-@import "./styles/home/home.css";
+@import './styles/home/home.css';
 
 /* ABOUT PAGE*/
 
-@import "./styles/about/about.css";
+@import './styles/about/about.css';
 
 /* Learn page */
 
-@import "./styles/learn/addButton.css";
-@import "./styles/learn/card.css";
+@import './styles/learn/addButton.css';
+@import './styles/learn/card.css';
 
 /* Preview page */
 
-@import "./styles/preview.css";
+@import './styles/preview.css';
 
 /* Article */
 
@@ -36,18 +36,23 @@
 
 /* AUTH */
 
-@import "./styles/auth/auth.css";
+@import './styles/auth/auth.css';
 
 /* Topic */
 
 @import './styles/topic.css';
 
+/* Blog */
+
+@import './styles/blog/blog.css';
+
 /* LAYOUT */
 
-@import "./styles/button.css";
-@import "./styles/footer.css";
-@import "./styles/navbar.css";
+@import './styles/button.css';
+@import './styles/footer.css';
+@import './styles/navbar.css';
 @import './styles/editor.css';
+@import './styles/video.css';
 
 /* EDIt topic modal and add article button style */
 
@@ -56,7 +61,7 @@
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -71,7 +76,7 @@ body {
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 .button-outline {
@@ -86,7 +91,7 @@ code {
 }
 
 .hljs-attr {
-    color: #FC5C65 !important;
+    color: #fc5c65 !important;
 }
 
 element.style {
@@ -105,7 +110,7 @@ element.style {
     box-shadow: none !important;
 }
 
-@media(max-width:500px) {
+@media (max-width: 500px) {
     .col {
         padding: 1px;
     }
@@ -273,7 +278,7 @@ body.dark .article-name {
 }
 
 body.dark .icon {
-    fill: #7161EF;
+    fill: #7161ef;
 }
 
 .icon:hover {
@@ -323,7 +328,7 @@ SVG Icons - svgicons.sparkk.fr
 ----- */
 
 body.dark svg {
-    fill: #f1f1f1
+    fill: #f1f1f1;
 }
 
 .svg-icon {

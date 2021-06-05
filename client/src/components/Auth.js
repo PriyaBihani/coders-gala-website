@@ -12,7 +12,7 @@ const Auth = ({ login, register, token, type }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (type == "signup") {
+    if (type === "signup") {
       document.querySelector(".section h1").classList.add("changed");
 
       register(data);
@@ -30,7 +30,7 @@ const Auth = ({ login, register, token, type }) => {
         <div className="form-container">
           <div className="section">
             <h6 className="dinTag">{dinText}</h6>
-            {type == "signup" ? (
+            {type === "signup" ? (
               <>
                 <h1>Sign Up</h1>
                 <p>Hey, Welcome to CodersGala !!</p>
@@ -42,7 +42,7 @@ const Auth = ({ login, register, token, type }) => {
               </>
             )}
             <form onSubmit={handleSubmit}>
-              <div className={type == "signup" ? "flex" : ""}>
+              <div className={type === "signup" ? "flex" : ""}>
                 <div className="form-field">
                   <label htmlFor="email">Email</label>
                   <input
@@ -67,12 +67,11 @@ const Auth = ({ login, register, token, type }) => {
                     }}
                     type="password"
                     className="form-control"
-                    required
                     placeholder="Last Name"
                   />
                 </div>
               </div>
-              {type == "signup" ? (
+              {type === "signup" ? (
                 <>
                   {" "}
                   <div className="flex">
@@ -146,7 +145,7 @@ const Auth = ({ login, register, token, type }) => {
                 </>
               ) : null}
 
-              {type == "signup" ? (
+              {type === "signup" ? (
                 <div className="form-options">
                   <div className="checkbox-field">
                     <label htmlFor="rememberMe">Have an account?</label>

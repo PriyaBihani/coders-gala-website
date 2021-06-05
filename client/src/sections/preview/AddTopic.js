@@ -32,29 +32,11 @@ const AddTopicName = (props) => {
   return (
     <div className="container add-topic m-0 p-0 ">
       {' '}
-<<<<<<< HEAD
-      <div className="add-topic-btn">
-        <AdminButtons
-          type="Add"
-          data-target="#exampleModal12"
-          data={{ Name: 'Add Topic' }}
-        />
-        {/* <Tooltip
-          // options
-          title={`Add Topic to "${props.specialityName}"`}
-          position="bottom"
-          trigger="mouseenter"
-        >
-          <i style={{ marginLeft: '20px' }} className="fa fa-plus"></i>
-        </Tooltip> */}
-      </div>
-=======
       <AdminButtons
         type="Add"
         dataTarget={'#exampleModal12'}
         data={{ Name: 'Add topic' }}
       />
->>>>>>> staging
       <div
         className="modal fade"
         id="exampleModal12"

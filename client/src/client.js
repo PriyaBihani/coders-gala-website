@@ -5,6 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import { loadableReady } from '@loadable/component';
 
 import App from './App';
 import store from './clientStore';
@@ -14,13 +15,15 @@ import 'bootstrap/dist/js/bootstrap.js';
 
 console.log('working prehydreate');
 
-ReactDOM.hydrate(
-    <React.StrictMode>
-        <Provider store={store}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        </Provider>
-    </React.StrictMode>,
-    document.getElementById('root')
-);
+loadableReady(() => {
+    ReactDOM.hydrate(
+        <React.StrictMode>
+            <Provider store={store}>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </Provider>
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+});

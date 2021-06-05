@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const BundleAnalyzerPlugin =
 	require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const LoadablePlugin = require('@loadable/webpack-plugin');
 
 const config = {
 	mode: 'production',
@@ -33,6 +34,7 @@ const config = {
 			template: path.resolve(__dirname, 'public', 'index.html'),
 			favicon: './public/favicon.ico',
 		}),
+		new LoadablePlugin(),
 		new BundleAnalyzerPlugin(),
 		new CompressionPlugin(),
 		new webpack.DefinePlugin({

@@ -3,9 +3,11 @@ import express from 'express';
 import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
+import { ChunkExtractor } from '@loadable/server';
 import { StaticRouter, matchPath } from 'react-router-dom';
 
 import fs from 'fs';
+import path from 'path';
 import reload from 'reload';
 import serialize from 'serialize-javascript';
 
@@ -25,8 +27,10 @@ app.use(express.static('build'));
 if (dev) reload(app);
 
 app.use(async (req, res) => {
-    const store = createStore();
     let activeRoute;
+    const store = createStore();
+    const statsFile = path.resolve('./build/loadable-stats.json');
+
     routes.map((route) => {
         const match = matchPath(req.url, { ...route, exact: true, url: req.url });
         if (match) {
@@ -50,7 +54,8 @@ app.use(async (req, res) => {
                 </Provider>
             </React.StrictMode>
         );
-        const html = renderToString(reactMarkup);
+        const extractor = new ChunkExtractor({ statsFile, publicPath: '/' });
+        const html = renderToString(extractor.collectChunks(reactMarkup));
         const helmet = Helmet.renderStatic();
         let finalHtml = index
             .replace(
@@ -66,7 +71,8 @@ app.use(async (req, res) => {
                     /</g,
                     '\\u003c'
                 )}`
-            );
+            )
+            .replace('<!-- loadable -->', extractor.getScriptTags());
         // console.log('working', finalHtml);
         res.send(finalHtml);
         res.end();

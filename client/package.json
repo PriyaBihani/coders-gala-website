@@ -19,7 +19,6 @@
         "@loadable/component": "^5.15.0",
         "@loadable/server": "^5.15.0",
         "axios": "^0.21.1",
-        "bootstrap": "^4.5.0",
         "buffer": "^6.0.3",
         "core-js": "^3.13.1",
         "express": "^4.17.1",

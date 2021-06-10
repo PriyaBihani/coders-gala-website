@@ -8,7 +8,6 @@ import { StaticRouter, matchPath } from 'react-router-dom';
 
 import fs from 'fs';
 import path from 'path';
-import reload from 'reload';
 import serialize from 'serialize-javascript';
 
 import App from './src/App';
@@ -23,8 +22,6 @@ const app = express();
 const dev = process.env.NODE_ENV === 'development';
 
 app.use(express.static('build'));
-
-if (dev) reload(app);
 
 app.use(async (req, res) => {
     let activeRoute;

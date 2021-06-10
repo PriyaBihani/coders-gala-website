@@ -1,1 +1,1 @@
-export const SERVICE_URL = 'http://localhost:3001';
+export const SERVICE_URL = 'https://codersgala-server.herokuapp.com/';

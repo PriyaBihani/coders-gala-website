@@ -11,7 +11,6 @@ import App from './App';
 import store from './clientStore';
 
 import './index.css';
-import 'bootstrap/dist/js/bootstrap.js';
 
 console.log('working prehydreate');
 

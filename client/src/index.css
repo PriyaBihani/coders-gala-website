@@ -2,7 +2,7 @@
 
 /* CSS Imports */
 
-@import '../node_modules/bootstrap/dist/css/bootstrap.css';
+@import './styles/bootstrap.css';
 @import '../node_modules/react-toastify/dist/ReactToastify.css';
 @import '../node_modules/react-tippy/dist/tippy.css';
 @import '../node_modules/react-quill/dist/quill.snow.css';

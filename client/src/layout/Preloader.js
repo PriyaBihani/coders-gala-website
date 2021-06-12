@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Preloader = () => {
+const Preloader = () => {
   return (
     <div className="loader-section">
       <div className="loader-box">

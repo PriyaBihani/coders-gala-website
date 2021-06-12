@@ -11,5 +11,14 @@
 			}
 		],
 		"@babel/preset-react"
+	],
+	"plugins": [
+		"@loadable/babel-plugin",
+		[
+			"dynamic-import-node",
+			{
+				"noInterop": true
+			}
+		]
 	]
 }

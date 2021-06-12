@@ -18,6 +18,7 @@ const PORT = process.env.PORT || 3000;
 
 var index = fs.readFileSync('build/index.html').toString();
 
+
 const app = express();
 const dev = process.env.NODE_ENV === 'development';
 
@@ -27,6 +28,7 @@ app.use(async (req, res) => {
     let activeRoute;
     const store = createStore();
     const statsFile = path.resolve('./build/loadable-stats.json');
+    console.log("statsFile", statsFile)
 
     routes.map((route) => {
         const match = matchPath(req.url, { ...route, exact: true, url: req.url });

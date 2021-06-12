@@ -1,6 +1,6 @@
 import React from 'react';
 import loadable from '@loadable/component';
-import Preloader from './layout/preloader';
+import Preloader from './layout/Preloader';
 
 const Home = loadable(() => import('./components/Home'), {
     fallback: <Preloader />,

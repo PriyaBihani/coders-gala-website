@@ -2,24 +2,30 @@ import React from 'react';
 import loadable from '@loadable/component';
 import Preloader from './layout/Preloader';
 
-const Home = loadable(() => import('./components/Home'), {
-    fallback: <Preloader />,
-});
-const About = loadable(() => import('./components/About'), {
-    fallback: <Preloader />,
-});
-const Learn = loadable(() => import('./components/Learn'), {
-    fallback: <Preloader />,
-});
-const Article = loadable(() => import('./components/Article'), {
-    fallback: <Preloader />,
-});
-const Preview = loadable(() => import('./components/Preview'), {
-    fallback: <Preloader />,
-});
-const Blog = loadable(() => import('./components/Blog'), {
-    fallback: <Preloader />,
-});
+// const Home = loadable(() => import('./components/Home'), {
+//     fallback: <Preloader />,
+// });
+// const About = loadable(() => import('./components/About'), {
+//     fallback: <Preloader />,
+// });
+// const Learn = loadable(() => import('./components/Learn'), {
+//     fallback: <Preloader />,
+// });
+// const Article = loadable(() => import('./components/Article'), {
+//     fallback: <Preloader />,
+// });
+// const Preview = loadable(() => import('./components/Preview'), {
+//     fallback: <Preloader />,
+// });
+// const Blog = loadable(() => import('./components/Blog'), {
+//     fallback: <Preloader />,
+// });
+import Home from './components/Home'
+import About from './components/About'
+import Learn from './components/Learn'
+import Article from './components/Article'
+import Preview from './components/Preview'
+import Blog from './components/Blog'
 
 import Auth from './components/Auth';
 import UpsertCard from './components/UpsertCard';

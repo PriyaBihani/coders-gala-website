@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import Editor from '../sections/editor';
+// import Editor from '../sections/editor';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 import { Button } from '../layout';
@@ -8,6 +8,11 @@ import { Button } from '../layout';
 import { addArticle, editArticle, getArticle } from '../actions';
 import { isClient } from '../helpers';
 import { ChevronsUp } from '../assets/icons';
+
+import ReactDynamicImport from "react-dynamic-import";
+const loader = () => import(`./Editor.js`);
+
+const Editor = ReactDynamicImport({ loader, isHOC: true });
 
 const UpsertArticle = (props) => {
 	const { addArticle, specialities, editArticle, getArticle, prevArticle } =

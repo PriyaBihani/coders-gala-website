@@ -1,0 +1,544 @@
+2021-10-29 13:05:04 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-10-29 13:05:04 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-10-29 17:08:29 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-10-29 17:08:29 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-10-29 17:10:50 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-10-29 17:10:51 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 11:29:36 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 11:29:37 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 11:33:38 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 11:33:38 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 11:36:43 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 11:36:44 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 12:18:28 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 12:18:29 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 12:21:24 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 12:21:25 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 13:25:25 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 13:25:25 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 13:38:44 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 13:38:44 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 13:39:26 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 13:39:27 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 13:39:39 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 13:39:39 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 13:39:42 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 13:39:42 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 13:45:26 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 13:45:26 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 13:45:52 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 13:45:52 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 23:22:52 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 23:22:53 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 23:27:02 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 23:27:03 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 23:29:52 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 23:29:53 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 23:29:57 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 23:29:58 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 23:31:48 [35mhttp[39m: [35mGET / 404 139 - 2.656 ms[39m
+[35m[39m
+2021-11-05 23:31:53 [35mhttp[39m: [35mGET /callback 404 147 - 0.491 ms[39m
+[35m[39m
+2021-11-05 23:48:31 [35mhttp[39m: [35mGET /callback?code=Ydhs86hYU8_bXwwQ_ABSrKbPcJuCXppgA 404 147 - 0.699 ms[39m
+[35m[39m
+2021-11-05 23:48:49 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-05 23:48:49 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-05 23:50:56 [35mhttp[39m: [35mGET /callback?code=bbFal34Qz8_bXwwQ_ABSrKbPcJuCXppgA - - - - ms[39m
+[35m[39m
+2021-11-05 23:50:57 [35mhttp[39m: [35mGET /favicon.ico 404 150 - 1.766 ms[39m
+[35m[39m
+2021-11-06 00:09:09 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 00:09:10 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 00:10:05 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 00:10:05 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 00:15:07 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 00:15:08 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 11:06:33 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 11:06:34 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 11:25:49 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 11:25:49 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 21:54:51 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 21:54:51 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 22:08:56 [35mhttp[39m: [35mPOST /test/mentor/add 200 116 - 57.949 ms[39m
+[35m[39m
+2021-11-06 22:09:22 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 22:09:22 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 22:09:51 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 22:09:52 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 22:09:54 [35mhttp[39m: [35mPOST /test/mentor/add 200 100 - 52.744 ms[39m
+[35m[39m
+2021-11-06 22:10:10 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 22:10:10 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 22:10:10 [35mhttp[39m: [35mPOST /test/mentor/add 200 122 - 500.907 ms[39m
+[35m[39m
+2021-11-06 22:11:33 [35mhttp[39m: [35mPOST /test/mentor/add 200 194 - 46.595 ms[39m
+[35m[39m
+2021-11-06 22:13:00 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 22:13:01 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 22:14:10 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 22:14:10 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 22:14:10 [35mhttp[39m: [35mPOST /test/student/add 200 125 - 556.337 ms[39m
+[35m[39m
+2021-11-06 22:18:04 [35mhttp[39m: [35mPOST /test/student/add 200 126 - 36.966 ms[39m
+[35m[39m
+2021-11-06 22:18:22 [35mhttp[39m: [35mPOST /test/student/add 200 129 - 35.333 ms[39m
+[35m[39m
+2021-11-06 22:38:24 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 22:38:24 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 22:38:38 [35mhttp[39m: [35mPOST /test/course/add 200 859 - 67.524 ms[39m
+[35m[39m
+2021-11-06 22:40:35 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 22:40:36 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 22:40:43 [35mhttp[39m: [35mPOST /test/course/add 200 82 - 11.675 ms[39m
+[35m[39m
+2021-11-06 22:40:54 [35mhttp[39m: [35mPOST /test/course/add 200 111 - 2.677 ms[39m
+[35m[39m
+2021-11-06 23:11:05 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:11:06 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:20:29 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:20:29 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:20:36 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 9.854 ms[39m
+[35m[39m
+2021-11-06 23:40:30 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:40:30 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:40:42 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:40:43 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:49:28 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:49:29 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:51:07 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:51:07 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:51:15 [35mhttp[39m: [35mPOST /test/course/add 200 82 - 12.194 ms[39m
+[35m[39m
+2021-11-06 23:51:28 [35mhttp[39m: [35mPOST /test/course/add 200 82 - 2.598 ms[39m
+[35m[39m
+2021-11-06 23:51:47 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:51:47 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:51:48 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 680.548 ms[39m
+[35m[39m
+2021-11-06 23:54:59 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:54:59 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:55:12 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 57.667 ms[39m
+[35m[39m
+2021-11-06 23:55:45 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:55:45 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:56:25 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 166.009 ms[39m
+[35m[39m
+2021-11-06 23:56:50 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:56:50 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:57:14 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 68.183 ms[39m
+[35m[39m
+2021-11-06 23:57:35 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:57:35 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:57:59 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 66.551 ms[39m
+[35m[39m
+2021-11-06 23:58:41 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-06 23:58:41 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-06 23:59:05 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 96.248 ms[39m
+[35m[39m
+2021-11-07 00:00:21 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:00:21 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:00:39 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 71.921 ms[39m
+[35m[39m
+2021-11-07 00:00:53 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:00:53 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:01:11 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:01:12 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:01:41 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 59.679 ms[39m
+[35m[39m
+2021-11-07 00:03:33 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:03:33 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:04:15 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:04:15 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:04:52 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 101.004 ms[39m
+[35m[39m
+2021-11-07 00:05:49 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:05:50 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:06:12 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 76.613 ms[39m
+[35m[39m
+2021-11-07 00:46:29 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:46:30 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:46:51 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 59.607 ms[39m
+[35m[39m
+2021-11-07 00:47:04 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:47:04 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:47:07 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 57.541 ms[39m
+[35m[39m
+2021-11-07 00:47:42 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:47:42 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:47:43 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 369.494 ms[39m
+[35m[39m
+2021-11-07 00:47:59 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:48:00 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:48:00 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 907.964 ms[39m
+[35m[39m
+2021-11-07 00:48:09 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:48:09 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:48:12 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 86.497 ms[39m
+[35m[39m
+2021-11-07 00:49:37 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:49:38 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:49:57 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:49:57 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:50:00 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 62.229 ms[39m
+[35m[39m
+2021-11-07 00:50:49 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:50:51 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 00:51:27 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 198.442 ms[39m
+[35m[39m
+2021-11-07 00:53:59 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 00:54:11 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 01:33:28 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 01:33:28 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 01:33:50 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 65.829 ms[39m
+[35m[39m
+2021-11-07 01:43:06 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 01:43:08 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 01:46:09 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 01:46:10 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 01:46:18 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 01:46:19 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 01:46:22 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 7.213 ms[39m
+[35m[39m
+2021-11-07 01:52:56 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 01:52:56 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 01:55:19 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 01:55:21 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 01:55:37 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 9.730 ms[39m
+[35m[39m
+2021-11-07 02:06:26 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 02:06:26 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 02:07:14 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 389.547 ms[39m
+[35m[39m
+2021-11-07 02:07:52 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 02:07:53 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 02:08:54 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 02:08:55 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 11:55:40 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 11:55:40 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 11:56:21 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 11:56:21 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 11:57:17 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 11:57:18 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 11:59:43 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 11:59:44 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:10:11 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:10:12 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:12:56 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:12:57 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:24:31 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:24:32 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:26:05 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:26:06 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:27:00 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 46.463 ms[39m
+[35m[39m
+2021-11-07 12:27:29 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:27:30 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:33:15 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 70.430 ms[39m
+[35m[39m
+2021-11-07 12:39:27 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:39:28 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:39:38 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:39:38 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:40:16 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 62.452 ms[39m
+[35m[39m
+2021-11-07 12:41:34 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:41:35 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:41:43 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:41:43 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:42:28 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:42:28 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:42:56 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 194.673 ms[39m
+[35m[39m
+2021-11-07 12:42:56 [33mwarn[39m: [33m{[39m
+[33m  '0': new ObjectId("61877c7802e311ad8134f66d"),[39m
+[33m  '1': new ObjectId("61877c7802e311ad8134f66e")[39m
+[33m}[39m
+2021-11-07 12:42:56 [33mwarn[39m: [33m{[39m
+[33m  '0': new ObjectId("61877c7802e311ad8134f66d"),[39m
+[33m  '1': new ObjectId("61877c7802e311ad8134f66e")[39m
+[33m}[39m
+2021-11-07 12:42:56 [33mwarn[39m: [33m{[39m
+[33m  '0': new ObjectId("61877c7802e311ad8134f66f"),[39m
+[33m  '1': new ObjectId("61877c7802e311ad8134f670")[39m
+[33m}[39m
+2021-11-07 12:42:56 [33mwarn[39m: [33m{[39m
+[33m  '0': new ObjectId("61877c7802e311ad8134f66f"),[39m
+[33m  '1': new ObjectId("61877c7802e311ad8134f670")[39m
+[33m}[39m
+2021-11-07 12:45:56 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:45:57 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:46:24 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 765.539 ms[39m
+[35m[39m
+2021-11-07 12:46:24 [33mwarn[39m: [33m{[39m
+[33m  level: 'error',[39m
+[33m  insertedIds: {[39m
+[33m    '0': new ObjectId("61877d48c7204fce0f33affd"),[39m
+[33m    '1': new ObjectId("61877d48c7204fce0f33affe")[39m
+[33m  }[39m
+[33m}[39m
+2021-11-07 12:46:24 [33mwarn[39m: [33m{[39m
+[33m  level: 'error',[39m
+[33m  insertedIds: {[39m
+[33m    '0': new ObjectId("61877d48c7204fce0f33affd"),[39m
+[33m    '1': new ObjectId("61877d48c7204fce0f33affe")[39m
+[33m  }[39m
+[33m}[39m
+2021-11-07 12:46:24 [33mwarn[39m: [33m{[39m
+[33m  level: 'error',[39m
+[33m  insertedIds: {[39m
+[33m    '0': new ObjectId("61877d48c7204fce0f33affb"),[39m
+[33m    '1': new ObjectId("61877d48c7204fce0f33affc")[39m
+[33m  }[39m
+[33m}[39m
+2021-11-07 12:46:24 [33mwarn[39m: [33m{[39m
+[33m  level: 'error',[39m
+[33m  insertedIds: {[39m
+[33m    '0': new ObjectId("61877d48c7204fce0f33affb"),[39m
+[33m    '1': new ObjectId("61877d48c7204fce0f33affc")[39m
+[33m  }[39m
+[33m}[39m
+2021-11-07 12:47:22 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:47:23 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:50:04 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:50:05 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:50:54 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 73.149 ms[39m
+[35m[39m
+2021-11-07 12:52:05 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:52:05 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 12:52:17 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 12:52:17 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:03:15 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 88.320 ms[39m
+[35m[39m
+2021-11-07 13:06:28 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:06:29 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:06:32 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:06:32 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:06:58 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:06:58 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:07:30 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 446.485 ms[39m
+[35m[39m
+2021-11-07 13:09:38 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:09:38 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:09:40 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:09:40 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:09:49 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:09:52 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:10:44 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 175.889 ms[39m
+[35m[39m
+2021-11-07 13:12:18 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:12:19 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:13:33 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 591.480 ms[39m
+[35m[39m
+2021-11-07 13:14:20 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:14:21 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:14:34 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:14:37 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:16:07 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 66.282 ms[39m
+[35m[39m
+2021-11-07 13:18:21 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:18:22 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:21:31 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 758.593 ms[39m
+[35m[39m
+2021-11-07 13:26:38 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:26:38 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:26:51 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:26:52 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:27:04 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:27:04 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:28:39 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 800.933 ms[39m
+[35m[39m
+2021-11-07 13:30:48 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:30:49 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:30:51 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:30:51 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:33:00 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 68.850 ms[39m
+[35m[39m
+2021-11-07 13:34:06 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:34:11 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:35:19 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 140.521 ms[39m
+[35m[39m
+2021-11-07 13:36:29 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:36:29 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:36:37 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:36:43 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:38:45 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 999.142 ms[39m
+[35m[39m
+2021-11-07 13:44:06 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 49.682 ms[39m
+[35m[39m
+2021-11-07 13:45:07 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:45:11 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:46:03 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 479.662 ms[39m
+[35m[39m
+2021-11-07 13:47:18 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:47:18 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:47:34 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:47:35 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:54:50 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:54:51 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:59:24 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 13:59:24 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 13:59:46 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 914 - 48.791 ms[39m
+[35m[39m
+2021-11-07 14:00:27 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 14:00:27 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 14:00:28 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 129 - 48.184 ms[39m
+[35m[39m
+2021-11-07 14:00:45 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 14:00:46 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 14:00:47 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 129 - 826.480 ms[39m
+[35m[39m
+2021-11-07 14:00:48 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 129 - 35.792 ms[39m
+[35m[39m
+2021-11-07 14:00:59 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 14:01:00 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 14:01:02 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 1190 - 93.561 ms[39m
+[35m[39m
+2021-11-07 14:08:48 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 14:08:52 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 14:08:56 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 129 - 5205.797 ms[39m
+[35m[39m
+2021-11-07 15:09:12 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:09:12 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:09:16 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 84.401 ms[39m
+[35m[39m
+2021-11-07 15:09:17 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 34.065 ms[39m
+[35m[39m
+2021-11-07 15:09:46 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:09:47 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:09:47 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 715.086 ms[39m
+[35m[39m
+2021-11-07 15:09:48 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 33.480 ms[39m
+[35m[39m
+2021-11-07 15:10:40 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:10:40 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:10:43 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 38.608 ms[39m
+[35m[39m
+2021-11-07 15:10:44 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 34.799 ms[39m
+[35m[39m
+2021-11-07 15:10:57 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:10:57 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:10:58 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 46.674 ms[39m
+[35m[39m
+2021-11-07 15:12:54 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:12:54 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:12:55 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 45.565 ms[39m
+[35m[39m
+2021-11-07 15:13:05 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 45.294 ms[39m
+[35m[39m
+2021-11-07 15:13:35 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 36.246 ms[39m
+[35m[39m
+2021-11-07 15:13:38 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 35.949 ms[39m
+[35m[39m
+2021-11-07 15:14:09 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 37.513 ms[39m
+[35m[39m
+2021-11-07 15:14:27 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 39.164 ms[39m
+[35m[39m
+2021-11-07 15:14:28 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 38.748 ms[39m
+[35m[39m
+2021-11-07 15:15:54 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:15:54 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:16:14 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 1190 - 94.989 ms[39m
+[35m[39m
+2021-11-07 15:17:20 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:17:20 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:17:21 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 1010.094 ms[39m
+[35m[39m
+2021-11-07 15:17:22 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 35.395 ms[39m
+[35m[39m
+2021-11-07 15:17:32 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:17:33 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:17:33 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 550.218 ms[39m
+[35m[39m
+2021-11-07 15:17:40 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:17:41 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:17:41 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 476.678 ms[39m
+[35m[39m
+2021-11-07 15:17:42 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 35.817 ms[39m
+[35m[39m
+2021-11-07 15:17:49 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:17:49 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:17:50 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 1190 - 263.071 ms[39m
+[35m[39m
+2021-11-07 15:18:02 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:18:02 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:18:15 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:18:16 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:18:16 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 41.969 ms[39m
+[35m[39m
+2021-11-07 15:19:03 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:19:04 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:19:06 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 39.251 ms[39m
+[35m[39m
+2021-11-07 15:19:07 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 29.950 ms[39m
+[35m[39m
+2021-11-07 15:19:08 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 32.310 ms[39m
+[35m[39m
+2021-11-07 15:21:34 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 35.752 ms[39m
+[35m[39m
+2021-11-07 15:21:50 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:21:51 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:21:53 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 41.089 ms[39m
+[35m[39m
+2021-11-07 15:23:32 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:23:32 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 31 - 2.849 ms[39m
+[35m[39m
+2021-11-07 15:23:32 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:23:36 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 31 - 0.326 ms[39m
+[35m[39m
+2021-11-07 15:23:49 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:23:49 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:23:55 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:23:55 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:23:56 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 953.221 ms[39m
+[35m[39m
+2021-11-07 15:24:04 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 33.032 ms[39m
+[35m[39m
+2021-11-07 15:24:10 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 39.738 ms[39m
+[35m[39m
+2021-11-07 15:25:26 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:25:27 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:25:27 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 914 - 431.181 ms[39m
+[35m[39m
+2021-11-07 15:57:06 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:57:11 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:57:12 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:57:13 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 1190 - 41.497 ms[39m
+[35m[39m
+2021-11-07 15:58:28 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 15:58:28 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 15:59:07 [35mhttp[39m: [35mPOST /test/course/add 200 2 - 66.167 ms[39m
+[35m[39m
+2021-11-07 15:59:10 [35mhttp[39m: [35mGET /test/course/61878b43bd4dfce4ca319253 200 13 - 41.931 ms[39m
+[35m[39m
+2021-11-07 15:59:21 [35mhttp[39m: [35mGET /test/course/6187aa7343007aafd7351dfe 200 1262 - 46.278 ms[39m
+[35m[39m
+2021-11-07 16:17:01 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 16:17:01 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 16:17:06 [35mhttp[39m: [35mGET /test/course/6187aa7343007aafd7351dfe 200 1262 - 55.769 ms[39m
+[35m[39m
+2021-11-07 16:20:12 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 16:20:12 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 16:20:13 [35mhttp[39m: [35mGET /test/course/6187aa7343007aafd7351dfe 200 1698 - 47.215 ms[39m
+[35m[39m
+2021-11-07 16:22:48 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 16:22:48 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 16:25:55 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 16:25:56 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 16:25:58 [35mhttp[39m: [35mGET /test/course/6187aa7343007aafd7351dfe 200 1682 - 44.893 ms[39m
+[35m[39m
+2021-11-07 16:26:42 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 16:26:43 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 16:26:43 [35mhttp[39m: [35mGET /test/course/6187aa7343007aafd7351dfe 200 1822 - 1002.059 ms[39m
+[35m[39m
+2021-11-07 16:26:53 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 16:26:54 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 16:27:21 [35mhttp[39m: [35mGET /test/course/6187aa7343007aafd7351dfe 200 1698 - 50.507 ms[39m
+[35m[39m
+2021-11-07 16:58:22 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 16:58:22 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 20:22:31 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 20:22:31 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-07 20:22:36 [37mdebug[39m: [37mServer listening at http://localhost:8080[39m
+2021-11-07 20:22:37 [32minfo[39m: [32mMongoDB Connected......[39m
+2021-11-26 19:20:49 [32minfo[39m: [32mDB Connected[39m

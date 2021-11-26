@@ -5,36 +5,32 @@ const { validationResult } = require('express-validator');
 var dataTypes = require('./../services/dataTypes/mongodb');
 let dbFilters = require('./../services/filters/db-filters');
 
-
-
 exports.likeArticle = async (req) => {
-	const { articleId, action } = req.params
-	const { userId } = req.body
-	console.log(userId)
+	const { articleId, action } = req.params;
+	const { userId } = req.body;
 	try {
 		// get User
-		var user = await User.findById(userId)
+		var user = await User.findById(userId);
 		// get user's liked articles
-		var likedArticles = user.likedArticles
-		console.log('likedarticles', likedArticles)
+		var likedArticles = user.likedArticles;
+		console.log('likedarticles', likedArticles);
 		switch (action) {
-			case "like":
+			case 'like':
 				if (!likedArticles.includes(articleId)) {
-					likedArticles.push(articleId)
+					likedArticles.push(articleId);
 				}
-				break
-			case "unlike":
+				break;
+			case 'unlike':
 				if (likedArticles.includes(articleId)) {
-					likedArticles.splice(likedArticles.indexOf(articleId), 1)
-
+					likedArticles.splice(likedArticles.indexOf(articleId), 1);
 				}
-				break
+				break;
 		}
-		console.log('likedArticlesarray', likedArticles)
-		user.likedArticles = likedArticles
-		console.log(user)
+		console.log('likedArticlesarray', likedArticles);
+		user.likedArticles = likedArticles;
+		console.log(user);
 
-		await user.save()
+		await user.save();
 		return {
 			message: `Article ${action}d successfully`,
 			data: { user: dbFilters.sanitizeUser(user) },
@@ -52,7 +48,7 @@ exports.likeArticle = async (req) => {
 			status: 0,
 		};
 	}
-}
+};
 
 exports.addArticle = async (req) => {
 	const errors = validationResult(req);
@@ -117,7 +113,6 @@ exports.getArticle = async (req) => {
 			message: 'Internal server error',
 			status: 0,
 			statusCode: 500,
-
 		};
 	}
 };
@@ -203,7 +198,6 @@ exports.deleteArticle = async (req) => {
 	}
 };
 
-
 exports.getAllArticles = async (req) => {
 	try {
 		const articles = await Article.find({});
@@ -224,36 +218,31 @@ exports.getAllArticles = async (req) => {
 			statusCode: 500,
 		};
 	}
-}
-
+};
 
 exports.getArticleOptions = async (req) => {
-
 	try {
-
 		const options = await Article.aggregate([
 			{
 				$match: {},
 			},
 			{
-				"$group": {
-					"_id": {
-						"_id": "$_id",
-						"label": "$name",
-						"value": "$_id",
-
+				$group: {
+					_id: {
+						_id: '$_id',
+						label: '$name',
+						value: '$_id',
 					},
-				}
+				},
 			},
 			{
-				"$project": {
-					"_id": 0,
-					"label": "$_id.label",
-					"value": "$_id.value"
-				}
+				$project: {
+					_id: 0,
+					label: '$_id.label',
+					value: '$_id.value',
+				},
 			},
-
-		])
+		]);
 
 		return {
 			message: 'All options fetched',
@@ -272,4 +261,4 @@ exports.getArticleOptions = async (req) => {
 			statusCode: 500,
 		};
 	}
-}
+};
